@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import me from 'assets/pictures/me.jpg';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.section`
   padding: 12rem 0;
   color: #ffffff;
   @media (max-width: 960px) {

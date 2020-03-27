@@ -1,6 +1,6 @@
 import React from 'react';
 import { Layout, SEO } from 'components/common';
-import { Intro, About } from 'components/landing';
+import { Intro, About, Experience } from 'components/landing';
 import { Footer } from 'components/theme';
 
 export default () => (
@@ -8,6 +8,7 @@ export default () => (
     <SEO />
     <Intro />
     <About />
+    <Experience />
     <Footer />
   </Layout>
 );
