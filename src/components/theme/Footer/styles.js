@@ -2,14 +2,14 @@ import footerIllustration from 'assets/illustrations/footer.svg';
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  padding: 28rem 0 4rem 0;
+  padding-top: 28rem;
   background-image: url(${footerIllustration});
   background-size: cover;
   background-position: top;
   background-repeat: no-repeat;
 
   @media (max-width: 1960px) {
-    padding: 14rem 0 4rem;
+    padding-top: 14rem;
   }
 `;
 
@@ -40,11 +40,5 @@ export const Links = styled.div`
     &:last-child {
       margin: 0;
     }
-  }
-`;
-
-export const Details = styled.div`
-  @media (max-width: 680px) {
-    margin-bottom: 2rem;
   }
 `;

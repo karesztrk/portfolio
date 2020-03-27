@@ -1,12 +1,10 @@
 import React from 'react';
-import { Footer } from 'components/theme';
-import { Global } from './styles';
+import { Global, Main } from './styles';
 import './fonts.css';
 
 export const Layout = ({ children }) => (
-  <>
+  <Main>
     <Global />
     {children}
-    <Footer />
-  </>
+  </Main>
 );

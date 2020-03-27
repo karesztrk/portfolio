@@ -1,8 +1,8 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 export const Global = createGlobalStyle`
   html {
-    font-family: 'Roboto', Helvetica, sans-serif;
+    font-family: 'Nunito', sans-serif;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
 
@@ -602,7 +602,7 @@ export const Global = createGlobalStyle`
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Roboto', Helvetica, sans-serif;
+      font-family: 'Nunito', sans-serif;
       color: hsla(0, 0%, 0%, 0.8);
       font-weight: normal;
       word-wrap: break-word;
@@ -623,4 +623,8 @@ export const Global = createGlobalStyle`
       }
     }
   }
+`;
+
+export const Main = styled.div`
+  background: linear-gradient(180deg, rgba(8, 105, 114, 0.4) -36.68%, rgba(255, 255, 255, 0) 121.26%), #071a52;
 `;
