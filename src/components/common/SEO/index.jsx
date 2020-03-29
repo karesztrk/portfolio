@@ -11,12 +11,9 @@ import {
   foundingDate,
   logo,
 } from 'data/config';
+import PropTypes from 'prop-types';
 
-export const SEO = ({
-  title = defaultTitle,
-  description = defaultDescription,
-  location = '',
-}) => {
+export const SEO = ({ title, description }) => {
   const structuredDataOrganization = `{ 
 		"@context": "http://schema.org",
 		"@type": "Organization",
@@ -41,22 +38,31 @@ export const SEO = ({
 			"postalCode": "${address.zipCode}"
 		},
 		"sameAs": [
-			"${socialLinks.google}",
-			"${socialLinks.youtube}",
+			"${socialLinks.github}",
 			"${socialLinks.linkedin}",
 			"${socialLinks.instagram}",
-			"${socialLinks.github}"
+			"${socialLinks.youtube}",
+			"${socialLinks.facebook}"
 		]
   	}`;
 
   return (
     <Helmet>
       <meta name="description" content={description} />
-      {/* <meta name="image" content={Thumbnail} /> */}
 
       <script type="application/ld+json">{structuredDataOrganization}</script>
       <title>{title}</title>
       <html lang="en" dir="ltr" />
     </Helmet>
   );
+};
+
+SEO.defaultProps = {
+  title: defaultTitle,
+  description: defaultDescription,
+};
+
+SEO.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
 };

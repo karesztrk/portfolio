@@ -11,26 +11,31 @@ export const Wrapper = styled.section`
   h2 {
     font-weight: bold;
     font-size: 3rem;
-    display: inline-block;
+
+    @media (max-width: 960px) {
+      font-size: 2rem;
+    }
   }
 `;
 
 export const Details = styled.div`
   display: flex;
+
+  @media (max-width: 960px) {
+    flex-direction: column;
+  }
 `;
 
 export const Column = styled.div`
   flex: 1;
   font-size: 1.5rem;
   line-height: 2rem;
-`;
 
-export const Divider = styled.div`
-  width: 195px;
-  height: 10px;
-  background: #a7ff83;
-  display: inline-block;
-  margin: 10px 0 10px 30px;
+  @media (max-width: 960px) {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    text-align: justify;
+  }
 `;
 
 export const PhotoFrame = styled.div`
@@ -38,24 +43,25 @@ export const PhotoFrame = styled.div`
   width: 225px;
   height: 280px;
   margin: 0 auto;
-  background-image: url(${me});
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  z-index: 1;
-  transform-style: preserve-3d;
+  background: #a7ff83;
+  box-shadow: 0px 10px 30px rgb(0, 0, 0);
 
-  &:after {
+  &:before {
     content: '';
     position: absolute;
-    z-index: 0;
     width: 225px;
     height: 280px;
     display: block;
-    background: #a7ff83;
-    right: -10px;
-    bottom: -10px;
-    transform: translateZ(-1px);
+    background-image: url(${me});
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: all 0.25s ease 0s;
+  }
+
+  &:hover {
+    &:before {
+      transform: translate(-10px, -10px);
+    }
   }
 `;

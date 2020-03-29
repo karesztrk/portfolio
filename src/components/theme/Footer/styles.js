@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
 export const Flex = styled.div`
   display: flex;
   align-items: flex-end;
-  justify-content: space-between;
+  justify-content: flex-end;
 
   @media (max-width: 680px) {
     flex-direction: column;
@@ -28,16 +28,12 @@ export const Flex = styled.div`
 export const Links = styled.div`
   display: flex;
   align-items: center;
+  margin-bottom: 0.5rem;
 
   a {
     margin: 0 0.5rem;
 
     img {
-      margin: 0;
-    }
-
-    &:first-child,
-    &:last-child {
       margin: 0;
     }
   }

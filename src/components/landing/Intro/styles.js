@@ -38,7 +38,8 @@ export const Details = styled.div`
     margin: 0;
 
     @media (max-width: 680px) {
-      font-size: 30px;
+      font-size: 1.5rem;
+      line-height: 3rem;
       max-width: initial;
     }
   }
@@ -51,7 +52,7 @@ export const Details = styled.div`
     margin: 0;
 
     @media (max-width: 680px) {
-      font-size: 24px;
+      font-size: 1rem;
     }
   }
 
@@ -63,19 +64,7 @@ export const Details = styled.div`
     color: #ffffff;
 
     @media (max-width: 680px) {
-      font-size: 24px;
+      font-size: 1rem;
     }
-  }
-`;
-
-export const Thumbnail = styled.div`
-  flex: 1;
-
-  @media (max-width: 960px) {
-    width: 100%;
-  }
-
-  img {
-    width: 100%;
   }
 `;

@@ -1,25 +1,26 @@
-import React, {useCallback, useState} from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { TabButton } from './TabButton';
-import { Wrapper } from './styles';
+import { Wrapper, List, ListItem, Content, Indicator } from './styles';
 
 export const Tabs = ({ activeTab, children }) => {
   const [activeTabValue, setActiveTabValue] = useState(activeTab);
-  const tab = children.find(child => child.props.tabKey === activeTabValue);
-  const onClick = key => setActiveTabValue(key);
+  const tabIndex = children.findIndex(child => child.props.tabKey === activeTabValue);
+  const tab = children[tabIndex];
   return (
     <Wrapper>
-      <ul>
-        {children.map(child => {
+      <List>
+        {children.map((child, index) => {
           const { title, tabKey } = child.props;
           return (
-            <li key={tabKey}>
-              <TabButton tabKey={tabKey} title={title} onClick={onClick} />
-            </li>
+            <ListItem key={tabKey} active={tabIndex === index}>
+              <TabButton tabKey={tabKey} title={title} onClick={setActiveTabValue} />
+            </ListItem>
           );
         })}
-      </ul>
-      <div>{tab.props.children}</div>
+      </List>
+      <Indicator position={tabIndex} />
+      <Content>{tab.props.children}</Content>
     </Wrapper>
   );
 };

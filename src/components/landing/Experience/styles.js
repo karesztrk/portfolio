@@ -11,16 +11,28 @@ export const Wrapper = styled.section`
     font-weight: bold;
     font-size: 3rem;
     display: inline-block;
+
+    @media (max-width: 960px) {
+      font-size: 2rem;
+    }
   }
 `;
 
 export const Details = styled.div`
+  ul {
+    font-size: 1.5rem;
+
+    @media (max-width: 960px) {
+      font-size: 1rem;
+    }
+  }
 `;
 
-export const Divider = styled.div`
-  width: 195px;
-  height: 10px;
-  background: #a7ff83;
-  display: inline-block;
-  margin: 10px 0 10px 30px;
+export const Content = styled.p`
+  font-size: 1.5rem;
+  line-height: 2rem;
+
+  @media (max-width: 960px) {
+    font-size: 1rem;
+  }
 `;

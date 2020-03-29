@@ -1,12 +1,13 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
+import { Button } from './styles';
 
 export const TabButton = ({ tabKey, title, onClick }) => {
   const onButtonClick = useCallback(() => onClick(tabKey), [onClick, tabKey]);
   return (
-    <button type="button" onClick={onButtonClick}>
+    <Button type="button" onClick={onButtonClick}>
       {title}
-    </button>
+    </Button>
   );
 };
 

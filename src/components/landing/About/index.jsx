@@ -1,11 +1,13 @@
 import React from 'react';
-import { Container } from 'components/common';
-import { Wrapper, Details, Column, PhotoFrame, Divider } from './styles';
+import { Container, Divider, SectionHeader } from 'components/common';
+import { Wrapper, Details, Column, PhotoFrame } from './styles';
 
 export const About = () => (
   <Wrapper as={Container} id="about">
-    <h2>About</h2>
-    <Divider />
+    <SectionHeader>
+      <h2>About</h2>
+      <Divider />
+    </SectionHeader>
     <Details>
       <Column>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore

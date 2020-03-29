@@ -1,22 +1,29 @@
 import React from 'react';
-import { Container } from 'components/common';
+import { Container, Divider, SectionHeader } from 'components/common';
 import { Tabs, Tab } from 'components/theme';
-import { Wrapper, Details, Divider } from './styles';
+import { Wrapper, Details, Content } from './styles';
 
 export const Experience = () => (
   <Wrapper as={Container} id="experience">
-    <h2>Experience</h2>
-    <Divider />
+    <SectionHeader>
+      <h2>Experience</h2>
+      <Divider />
+    </SectionHeader>
     <Details>
       <Tabs activeTab="first">
         <Tab tabKey="first" title="first title">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat.
+          <Content>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ex ea commodo consequat.
+          </Content>
         </Tab>
         <Tab tabKey="second" title="second title">
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          <Content>
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+            laborum.
+          </Content>
         </Tab>
       </Tabs>
     </Details>
