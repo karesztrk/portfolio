@@ -1,33 +1,4 @@
 @font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-display: fallback;
-  font-weight: 400;
-  src: url('./fonts/roboto-v18-latin-regular.eot');
-  src: local('Roboto'), local('Roboto-Regular'),
-    url('./fonts/roboto-v18-latin-regular.eot?#iefix')
-      format('embedded-opentype'),
-    url('./fonts/roboto-v18-latin-regular.woff2') format('woff2'),
-    url('./fonts/roboto-v18-latin-regular.woff') format('woff'),
-    url('./fonts/roboto-v18-latin-regular.ttf') format('truetype'),
-    url('./fonts/roboto-v18-latin-regular.svg#Roboto') format('svg');
-}
-
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-display: fallback;
-  font-weight: 700;
-  src: url('./fonts/roboto-v18-latin-700.eot');
-  src: local('Roboto Bold'), local('Roboto-Bold'),
-    url('./fonts/roboto-v18-latin-700.eot?#iefix') format('embedded-opentype'),
-    url('./fonts/roboto-v18-latin-700.woff2') format('woff2'),
-    url('./fonts/roboto-v18-latin-700.woff') format('woff'),
-    url('./fonts/roboto-v18-latin-700.ttf') format('truetype'),
-    url('./fonts/roboto-v18-latin-700.svg#Roboto') format('svg');
-}
-
-@font-face {
   font-family: 'Nunito';
   font-weight: 400;
   font-style: normal;
@@ -42,7 +13,7 @@
 
 @font-face {
   font-family: 'Nunito';
-  font-weight: 700;
+  font-weight: 300;
   font-style: normal;
   font-display: fallback;
   src: url('./fonts/nunito-bold.eot');
@@ -51,6 +22,43 @@
   url('./fonts/nunito-bold.woff') format('woff'),
   url('./fonts/nunito-bold.ttf') format('truetype'),
   url('./fonts/nunito-bold.svg#nunitobold') format('svg');
-
 }
 
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 400;
+  font-style: normal;
+  font-display: fallback;
+  src: url('./fonts/montserrat-regular.eot');
+  src: url('./fonts/montserrat-regular.eot?#iefix') format('embedded-opentype'),
+  url('./fonts/montserrat-regular.woff2') format('woff2'),
+  url('./fonts/montserrat-regular.woff') format('woff'),
+  url('./fonts/montserrat-regular.ttf') format('truetype'),
+  url('./fonts/montserrat-regular.svg#montserratregular') format('svg');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 300;
+  font-style: normal;
+  font-display: fallback;
+  src: url('./fonts/montserrat-light.eot');
+  src: url('./fonts/montserrat-light.eot?#iefix') format('embedded-opentype'),
+  url('./fonts/montserrat-light.woff2') format('woff2'),
+  url('./fonts/montserrat-light.woff') format('woff'),
+  url('./fonts/montserrat-light.ttf') format('truetype'),
+  url('./fonts/montserrat-light.svg#montserratlight') format('svg');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 700;
+  font-style: normal;
+  font-display: fallback;
+  src: url('./fonts/montserrat-bold.eot');
+  src: url('./fonts/montserrat-bold.eot?#iefix') format('embedded-opentype'),
+  url('./fonts/montserrat-bold.woff2') format('woff2'),
+  url('./fonts/montserrat-bold.woff') format('woff'),
+  url('./fonts/montserrat-bold.ttf') format('truetype'),
+  url('./fonts/montserrat-bold.svg#montserratbold') format('svg');
+}

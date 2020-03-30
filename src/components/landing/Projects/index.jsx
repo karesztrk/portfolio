@@ -1,41 +1,66 @@
 import React from 'react';
-import { Container, Card } from 'components/common';
-import starIcon from 'assets/icons/star.svg';
-import forkIcon from 'assets/icons/fork.svg';
-import { Wrapper, Grid, Item, Content, Stats } from './styles';
+import { Container, SectionHeader, Divider } from 'components/common';
+import { Wrapper, Grid, GridItem } from './styles';
 
 export const Projects = () => {
-  const edges = [];
   return (
     <Wrapper as={Container} id="projects">
-      <h2>Projects</h2>
+      <SectionHeader>
+        <h2>Projects</h2>
+        <Divider />
+      </SectionHeader>
       <Grid>
-        {edges.map(({ node }) => (
-          <Item
-            key={node.id}
-            as="a"
-            href={node.url}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Card>
-              <Content>
-                <h4>{node.name}</h4>
-                <p>{node.description}</p>
-              </Content>
-              <Stats>
-                <div>
-                  <img src={starIcon} alt="stars" />
-                  <span>{node.stargazers.totalCount}</span>
-                </div>
-                <div>
-                  <img src={forkIcon} alt="forks" />
-                  <span>{node.forkCount}</span>
-                </div>
-              </Stats>
-            </Card>
-          </Item>
-        ))}
+        <GridItem>
+          <header>
+            <div>2020</div>
+            <h4>Project 3</h4>
+          </header>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
+          </p>
+          <footer>
+            <ul>
+              <li>Tech one</li>
+              <li>Tech two</li>
+            </ul>
+            <div>Project type</div>
+          </footer>
+        </GridItem>
+        <GridItem>
+          <header>
+            <div>2019</div>
+            <h4>Project 2</h4>
+          </header>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
+          </p>
+          <footer>
+            <ul>
+              <li>Tech three</li>
+              <li>Tech two</li>
+            </ul>
+            <div>Smething</div>
+          </footer>
+        </GridItem>
+        <GridItem>
+          <header>
+            <div>2018</div>
+            <h4>Project 1</h4>
+          </header>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
+          </p>
+          <footer>
+            <ul>
+              <li>Tech three</li>
+              <li>Tech one</li>
+            </ul>
+            <div>Anything</div>
+          </footer>
+        </GridItem>
       </Grid>
     </Wrapper>
   );

@@ -7,15 +7,6 @@ export const Wrapper = styled.section`
   @media (max-width: 960px) {
     flex-direction: column;
   }
-
-  h2 {
-    font-weight: bold;
-    font-size: 3rem;
-
-    @media (max-width: 960px) {
-      font-size: 2rem;
-    }
-  }
 `;
 
 export const Details = styled.div`

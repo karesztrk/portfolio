@@ -1,61 +1,79 @@
 import styled from 'styled-components';
+import header from 'assets/illustrations/article-header.svg';
+import footer from 'assets/illustrations/article-footer.svg';
 
-export const Wrapper = styled.div`
-  padding: 2rem 0;
+export const Wrapper = styled.section`
+  padding: 12rem 0;
+  color: #ffffff;
 `;
 
 export const Grid = styled.div`
   display: grid;
-  align-items: center;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 8fr;
-  gap: 1.2rem 1.2rem;
-
-  @media (max-width: 960px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (max-width: 680px) {
-    grid-template-columns: 1fr;
-  }
+  grid-template-columns: repeat(auto-fill, minmax(23rem, 1fr));
+  grid-gap: 1.5rem;
 `;
 
-export const Item = styled.div`
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.11);
+export const GridItem = styled.article`
+  background: #086972;
+  box-shadow: 0px 10px 30px rgb(0, 0, 0);
+  padding: 3.5rem 1.5rem;
+  position: relative;
+  transition: all 0.25s ease 0s;
 
-  h4 {
-    color: #212121;
+  &:hover {
+    transform: translate(0, -10px);
+  }
+
+  div:first-child {
+    font-size: 1.2rem;
+    background: url(${header}) no-repeat center;
+    background-size: cover;
+    padding: 0.6rem 1.6rem;
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #071a52;
+    font-weight: bold;
+  }
+
+  header {
+    h4 {
+      font-size: 1.5rem;
+    }
   }
 
   p {
-    color: #707070;
+    font-size: 1rem;
   }
-`;
 
-export const Content = styled.div`
-  padding: 1rem 0;
-`;
-
-export const Stats = styled.div`
-  display: flex;
-  align-items: center;
-
-  div {
+  footer {
     display: flex;
-    &:first-child {
-      margin-right: 0.5rem;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    ul {
+      margin: 0.5rem 1.5rem;
+      font-size: 0.875rem;
+      font-family: 'Montserrat';
+      font-weight: 300;
+
+      li {
+        display: inline;
+        padding-right: 0.5rem;
+      }
     }
 
-    img {
-      margin: 0;
-    }
-
-    span {
-      color: #000;
-      margin-left: 0.5rem;
+    div:last-child {
+      font-size: 1.2rem;
+      background: url(${footer}) no-repeat center;
+      background-size: cover;
+      color: #071a52;
+      font-weight: bold;
+      padding: 0.6rem 1.5rem;
+      min-width: 5.5rem;
     }
   }
 `;

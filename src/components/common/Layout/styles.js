@@ -2,7 +2,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 export const Global = createGlobalStyle`
   html {
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Nunito', Open Sans;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
 
@@ -602,7 +602,7 @@ export const Global = createGlobalStyle`
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Nunito', sans-serif;
+      font-family: 'Nunito', Open Sans;
       color: hsla(0, 0%, 0%, 0.8);
       font-weight: normal;
       word-wrap: break-word;

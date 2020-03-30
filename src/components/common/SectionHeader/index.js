@@ -7,6 +7,12 @@ export const SectionHeader = styled.div`
 
   h2 {
     margin: 0;
+    font-weight: bold;
+    font-size: 3rem;
+
+    @media (max-width: 960px) {
+      font-size: 2rem;
+    }
   }
 
   @media (max-width: 960px) {
