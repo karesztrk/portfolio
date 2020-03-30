@@ -15,13 +15,14 @@ export const Grid = styled.div`
 
 export const GridItem = styled.article`
   background: #086972;
-  box-shadow: 0px 10px 30px rgb(0, 0, 0);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
   padding: 3.5rem 1.5rem;
   position: relative;
   transition: all 0.25s ease 0s;
 
   &:hover {
     transform: translate(0, -10px);
+    box-shadow: 0px 10px 30px rgb(0, 0, 0);
   }
 `;
 

@@ -1,4 +1,5 @@
-<svg width="1440" height="836" viewBox="0 0 1440 836" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="1440" height="874" viewBox="0 0 1440 874" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<path d="M0 437.112H1440V585.5L720 873.534L0 585.5V437.112Z" fill="black" fill-opacity="0.2"/>
 <path d="M0 -1H1440V547L720 835.5L0 547V-1Z" fill="url(#pattern0)"/>
 <defs>
 <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">

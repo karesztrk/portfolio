@@ -22,6 +22,10 @@ export const Column = styled.div`
   font-size: 1.5rem;
   line-height: 2.2rem;
 
+  a {
+    color: #a7ff83;
+  }
+
   @media (max-width: 960px) {
     font-size: 1.2rem;
     margin-bottom: 2rem;
@@ -54,5 +58,20 @@ export const PhotoFrame = styled.div`
     &:before {
       transform: translate(-10px, -10px);
     }
+  }
+`;
+
+export const TechContainer = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+  list-style: none;
+  margin: 0;
+
+  * {
+    padding-right: 1rem;
+    color: #086972;
+    font-family: 'Montserrat';
+    font-weight: 300;
   }
 `;

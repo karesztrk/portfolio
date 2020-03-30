@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import introBackground from 'assets/pictures/intro.svg';
+import heroBackground from 'assets/pictures/hero.svg';
 
 export const Wrapper = styled.div`
   padding-bottom: 4rem;
-  background: url(${introBackground});
+  background: url(${heroBackground});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

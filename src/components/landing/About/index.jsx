@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Divider, SectionHeader } from 'components/common';
-import { Wrapper, Details, Column, PhotoFrame } from './styles';
+import { Wrapper, Details, Column, PhotoFrame, TechContainer } from './styles';
 
 export const About = () => (
   <Wrapper as={Container} id="about">
@@ -10,11 +10,35 @@ export const About = () => (
     </SectionHeader>
     <Details>
       <Column>
-        Hey, this is Károly. I am a Software developer since 2009. I've started building applications at University of
-        of Szeged before my graduation. During that time we were using Server Faces technology to deliver content and
-        functionality. Because of that I always considered myself as a Backend developer. And Java became my primary
-        programming language. But as the trend changes, so I adapt. Building pixel perfect, dynamic and extreme fast
-        applications because my obsession. I enjoy creating new stuff and embrace all the challenges they require.
+        <p>
+          Hey, this is Károly <span>👋</span> I live in <a href="https://goo.gl/maps/iS7ynsLC4MXW1kZJ8">Szeged</a>, Hungary. And I am a
+          Software Developer since 2009.
+        </p>
+        <p>
+          I've finished my study at the University of Szeged. I've started to work here very soon. During that time we
+          were using Server Faces technology to deliver content and functionality. Because of that I always considered
+          myself as a Backend developer. And Java became my primary programming language. But as the trend changes, so I
+          adapt. Building pixel perfect, dynamic and extreme fast applications because my obsession. HTML + CSS + JS
+          =&nbsp;<span>🤟</span>. I enjoy creating new stuff and embrace all the challenges they require.
+        </p>
+        <p>
+          In my free time, I usually obeying to my second obsession: Fitness <span>🏃‍🏋️🏊‍</span>. During my entire
+          life there was something my mind which was telling me: move out and become better. Probably this is also the
+          reason why I am eager to learn.
+        </p>
+        <p>
+          Technologies and languages that I'm actively using:
+          <TechContainer>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>React</li>
+            <li>CSS</li>
+            <li>Java</li>
+            <li>Spring</li>
+            <li>OpenAPI</li>
+          </TechContainer>
+        </p>
       </Column>
       <Column>
         <PhotoFrame />
