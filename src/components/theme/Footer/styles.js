@@ -35,6 +35,13 @@ export const Links = styled.div`
 
     img {
       margin: 0;
+      filter: grayscale(100%);
+    }
+
+    &:hover {
+      img {
+        filter: none;
+      }
     }
   }
 `;

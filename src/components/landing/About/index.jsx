@@ -10,10 +10,11 @@ export const About = () => (
     </SectionHeader>
     <Details>
       <Column>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        Hey, this is Károly. I am a Software developer since 2009. I've started building applications at University of
+        of Szeged before my graduation. During that time we were using Server Faces technology to deliver content and
+        functionality. Because of that I always considered myself as a Backend developer. And Java became my primary
+        programming language. But as the trend changes, so I adapt. Building pixel perfect, dynamic and extreme fast
+        applications because my obsession. I enjoy creating new stuff and embrace all the challenges they require.
       </Column>
       <Column>
         <PhotoFrame />

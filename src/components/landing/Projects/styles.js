@@ -23,8 +23,18 @@ export const GridItem = styled.article`
   &:hover {
     transform: translate(0, -10px);
   }
+`;
 
-  div:first-child {
+export const Description = styled.p`
+  font-size: 1rem;
+`;
+
+export const Header = styled.header`
+  h4 {
+    font-size: 1.5rem;
+  }
+
+  time {
     font-size: 1.2rem;
     background: url(${header}) no-repeat center;
     background-size: cover;
@@ -35,45 +45,38 @@ export const GridItem = styled.article`
     color: #071a52;
     font-weight: bold;
   }
+`;
 
-  header {
-    h4 {
-      font-size: 1.5rem;
+export const Footer = styled.footer`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  ul {
+    max-width: 50%;
+    margin: 0.5rem 0 0.5rem 1.5rem;
+    font-size: 0.875rem;
+    font-family: 'Montserrat';
+    font-weight: 300;
+
+    li {
+      display: inline;
+      padding-right: 0.5rem;
     }
   }
 
-  p {
-    font-size: 1rem;
-  }
-
-  footer {
-    display: flex;
-    justify-content: space-between;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-
-    ul {
-      margin: 0.5rem 1.5rem;
-      font-size: 0.875rem;
-      font-family: 'Montserrat';
-      font-weight: 300;
-
-      li {
-        display: inline;
-        padding-right: 0.5rem;
-      }
-    }
-
-    div:last-child {
-      font-size: 1.2rem;
-      background: url(${footer}) no-repeat center;
-      background-size: cover;
-      color: #071a52;
-      font-weight: bold;
-      padding: 0.6rem 1.5rem;
-      min-width: 5.5rem;
-    }
+  div {
+    font-size: 1.2rem;
+    background: url(${footer}) no-repeat center;
+    background-size: cover;
+    text-align: right;
+    color: #071a52;
+    font-weight: bold;
+    padding: 0.6rem 1.5rem;
+    min-width: 5.5rem;
   }
 `;

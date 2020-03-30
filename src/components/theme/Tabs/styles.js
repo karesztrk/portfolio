@@ -22,7 +22,7 @@ export const ListItem = styled.li`
 `;
 
 export const Content = styled.div`
-  margin-left: 1.5rem;
+  margin: 1.5rem;
 
   @media (max-width: 960px) {
     text-align: justify;

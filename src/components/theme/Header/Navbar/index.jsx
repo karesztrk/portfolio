@@ -1,13 +1,15 @@
 import React from 'react';
+import { Link } from 'gatsby'
 import logo from 'assets/icons/logo.png';
 import { Container } from 'components/common';
 import NavbarLinks from '../NavbarLinks';
-import { Wrapper } from './styles';
+import { Wrapper, Logo } from './styles';
 
 const Navbar = () => (
   <Wrapper as={Container}>
-    <img src={logo} alt="logo" />
-    {/* <Link to="/"></Link> */}
+    <Link to="/">
+      <Logo src={logo} alt="Logo" />
+    </Link>
     <NavbarLinks desktop />
   </Wrapper>
 );

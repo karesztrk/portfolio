@@ -7,6 +7,10 @@ export const Wrapper = styled.div`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+
+  @media (max-width: 960px) {
+    padding-bottom: 8rem;
+  }
 `;
 
 export const IntroWrapper = styled.div`
@@ -52,7 +56,7 @@ export const Details = styled.div`
     margin: 0;
 
     @media (max-width: 680px) {
-      font-size: 1rem;
+      font-size: 2rem;
     }
   }
 

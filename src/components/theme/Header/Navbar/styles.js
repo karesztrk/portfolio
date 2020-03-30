@@ -11,7 +11,6 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const Logo = styled.div`
-  background-repeat: no-repeat;
-  background-position: center;
+export const Logo = styled.img`
+  margin: 0;
 `;

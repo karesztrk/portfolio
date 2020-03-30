@@ -9,20 +9,20 @@ export const Wrapper = styled.section`
 `;
 
 export const Details = styled.div`
-  ul {
-    font-size: 1.5rem;
-
-    @media (max-width: 960px) {
-      font-size: 1rem;
-    }
-  }
 `;
 
-export const Content = styled.p`
-  font-size: 1.5rem;
-  line-height: 2rem;
+export const Content = styled.div`
+  line-height: 2.2rem;
+
+  h4 {
+    font-size: 1.5rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
 
   @media (max-width: 960px) {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 `;

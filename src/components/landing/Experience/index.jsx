@@ -10,19 +10,37 @@ export const Experience = () => (
       <Divider />
     </SectionHeader>
     <Details>
-      <Tabs activeTab="first">
-        <Tab tabKey="first" title="first title">
+      <Tabs activeTab="minero">
+        <Tab tabKey="minero" title="Minero IT">
           <Content>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ex ea commodo consequat.
+            <h4>Software Developer</h4>
+            <h4>2015 - Present</h4>
+            <p>
+              I currently work at an outsourcing company called Minero. Here I've learn a lot. This is not just about
+              the enormous technical stuff but the way of delivering products to a customer in a mature way.
+              <ul>
+                <li>
+                  Worked with several automotive companies (Volkswagen, Skoda, Porsche, BMW, Deloitte) as a customer.
+                  their stack and regulations is a must.
+                </li>
+                <li>
+                  Onsite development and cooperation with developers, managers and product owners from all over the
+                  world.
+                </li>
+              </ul>
+            </p>
           </Content>
         </Tab>
-        <Tab tabKey="second" title="second title">
+        <Tab tabKey="aensys" title="AENSys">
           <Content>
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-            laborum.
+            <h4>Lead Developer</h4>
+            <h4>2012 - 2015</h4>
+          </Content>
+        </Tab>
+        <Tab tabKey="university" title="University of Szeged">
+          <Content>
+            <h4>Experienced Developer</h4>
+            <h4>2009 - 2015</h4>
           </Content>
         </Tab>
       </Tabs>
