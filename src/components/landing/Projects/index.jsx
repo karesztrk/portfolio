@@ -12,6 +12,25 @@ export const Projects = () => (
       <GridItem>
         <Header>
           <time>2018</time>
+          <h4>ŠKODA Connect</h4>
+        </Header>
+        <Description>
+          Automated remote vehicle management. The users can comfortably check their vehicle status, health or even plan
+          trips ahead.
+        </Description>
+        <Footer>
+          <ul>
+            <li>React</li>
+            <li>Node.js</li>
+            <li>Spring Cloud</li>
+            <li>Gradle</li>
+          </ul>
+          <div>Web</div>
+        </Footer>
+      </GridItem>
+      <GridItem>
+        <Header>
+          <time>2018</time>
           <h4>Trustee</h4>
         </Header>
         <Description>
