@@ -1,6 +1,5 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import Thumbnail from 'assets/thumbnail/thumbnail.png';
 import {
   url,
   defaultDescription,
@@ -12,12 +11,9 @@ import {
   foundingDate,
   logo,
 } from 'data/config';
+import PropTypes from 'prop-types';
 
-export const SEO = ({
-  title = defaultTitle,
-  description = defaultDescription,
-  location = '',
-}) => {
+export const SEO = ({ title, description }) => {
   const structuredDataOrganization = `{ 
 		"@context": "http://schema.org",
 		"@type": "Organization",
@@ -42,33 +38,31 @@ export const SEO = ({
 			"postalCode": "${address.zipCode}"
 		},
 		"sameAs": [
-			"${socialLinks.twitter}",
-			"${socialLinks.google}",
-			"${socialLinks.youtube}",
+			"${socialLinks.github}",
 			"${socialLinks.linkedin}",
 			"${socialLinks.instagram}",
-			"${socialLinks.github}"
+			"${socialLinks.youtube}",
+			"${socialLinks.facebook}"
 		]
   	}`;
 
   return (
     <Helmet>
       <meta name="description" content={description} />
-      <meta name="image" content={Thumbnail} />
 
-      <meta property="og:url" content={`${url}${location}/?ref=smakosh.com`} />
-      <meta property="og:type" content="website" />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
-      <meta property="og:image" content={Thumbnail} />
-
-      <meta name="twitter:card" content="summary" />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image:src" content={Thumbnail} />
       <script type="application/ld+json">{structuredDataOrganization}</script>
       <title>{title}</title>
       <html lang="en" dir="ltr" />
     </Helmet>
   );
+};
+
+SEO.defaultProps = {
+  title: defaultTitle,
+  description: defaultDescription,
+};
+
+SEO.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
 };

@@ -2,23 +2,20 @@ import React from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import { Header } from 'components/theme';
 import { Container, Button } from 'components/common';
-import dev from 'assets/illustrations/dev.svg';
-import { Wrapper, IntroWrapper, Details, Thumbnail } from './styles';
+import { Wrapper, IntroWrapper, Details } from './styles';
 
 export const Intro = () => (
   <Wrapper>
     <Header />
     <IntroWrapper as={Container}>
       <Details>
-        <h1>Hi There!</h1>
-        <h4>I’m Károly and I’m a full stack developer!</h4>
-        <Button as={AnchorLink} href="#">
-          Hire me
+        <h4>Károly Török</h4>
+        <h1>Bringing your ideas to life</h1>
+        <p>Experienced full-stack web developer</p>
+        <Button as={AnchorLink} href="#about">
+          Learn more
         </Button>
       </Details>
-      <Thumbnail>
-        <img src={dev} alt="I’m Károly and I’m a full stack developer!" />
-      </Thumbnail>
     </IntroWrapper>
   </Wrapper>
 );

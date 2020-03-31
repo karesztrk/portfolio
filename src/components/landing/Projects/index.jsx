@@ -1,42 +1,32 @@
 import React from 'react';
-import { Container, Card } from 'components/common';
-import starIcon from 'assets/icons/star.svg';
-import forkIcon from 'assets/icons/fork.svg';
-import { Wrapper, Grid, Item, Content, Stats } from './styles';
+import { Container, SectionHeader, Divider } from 'components/common';
+import { Wrapper, Grid, GridItem, Header, Footer, Description } from './styles';
+import projects from './projects.json';
 
-export const Projects = () => {
-  const edges = [];
-  return (
-    <Wrapper as={Container} id="projects">
+export const Projects = () => (
+  <Wrapper as={Container} id="projects">
+    <SectionHeader>
       <h2>Projects</h2>
-      <Grid>
-        {edges.map(({ node }) => (
-          <Item
-            key={node.id}
-            as="a"
-            href={node.url}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Card>
-              <Content>
-                <h4>{node.name}</h4>
-                <p>{node.description}</p>
-              </Content>
-              <Stats>
-                <div>
-                  <img src={starIcon} alt="stars" />
-                  <span>{node.stargazers.totalCount}</span>
-                </div>
-                <div>
-                  <img src={forkIcon} alt="forks" />
-                  <span>{node.forkCount}</span>
-                </div>
-              </Stats>
-            </Card>
-          </Item>
-        ))}
-      </Grid>
-    </Wrapper>
-  );
-};
+      <Divider />
+    </SectionHeader>
+    <Grid>
+      {projects.map(({ time, title, description, type, technologies }) => (
+        <GridItem key={title}>
+          <Header>
+            <time>{time}</time>
+            <h4>{title}</h4>
+          </Header>
+          <Description>{description}</Description>
+          <Footer>
+            <ul>
+              {technologies.map(tech => (
+                <li>{tech}</li>
+              ))}
+            </ul>
+            <div>{type}</div>
+          </Footer>
+        </GridItem>
+      ))}
+    </Grid>
+  </Wrapper>
+);
