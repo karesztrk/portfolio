@@ -33,6 +33,7 @@ export const Description = styled.p`
 export const Header = styled.header`
   h4 {
     font-size: 1.5rem;
+    text-transform: uppercase;
   }
 
   time {
@@ -63,10 +64,13 @@ export const Footer = styled.footer`
     font-size: 0.875rem;
     font-family: 'Montserrat';
     font-weight: 300;
+    display: flex;
+    flex-wrap: wrap;
 
     li {
       display: inline;
       padding-right: 0.5rem;
+      margin: 0;
     }
   }
 

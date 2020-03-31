@@ -69,8 +69,9 @@ export const TechContainer = styled.ul`
   margin: 0;
 
   * {
-    padding-right: 1rem;
-    color: #086972;
+    color: inherit;
+    background: #086972;
+    margin-right: 1rem;
     font-family: 'Montserrat';
     font-weight: 300;
   }

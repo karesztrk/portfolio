@@ -29,14 +29,14 @@ export const About = () => (
         <p>
           Technologies and languages that I'm actively using:
           <TechContainer>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-            <li>React</li>
-            <li>CSS</li>
-            <li>Java</li>
-            <li>Spring</li>
-            <li>OpenAPI</li>
+            <mark>HTML</mark>
+            <mark>CSS</mark>
+            <mark>JavaScript</mark>
+            <mark>React</mark>
+            <mark>CSS</mark>
+            <mark>Java</mark>
+            <mark>Spring</mark>
+            <mark>OpenAPI</mark>
           </TechContainer>
         </p>
       </Column>

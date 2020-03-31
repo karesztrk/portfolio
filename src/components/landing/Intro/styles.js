@@ -14,13 +14,17 @@ export const Wrapper = styled.div`
 `;
 
 export const IntroWrapper = styled.div`
-  padding: 10vw 0 20vw 0;
+  padding: 10vw 0 30vw 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
 
   @media (max-width: 960px) {
     flex-direction: column;
+  }
+
+  @media (max-width: 1350px) {
+    padding: 10vw 0 20vw 0;
   }
 `;
 
@@ -56,7 +60,7 @@ export const Details = styled.div`
     margin: 0;
 
     @media (max-width: 680px) {
-      font-size: 2rem;
+      font-size: 1rem;
     }
   }
 
