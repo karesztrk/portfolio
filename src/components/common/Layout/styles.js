@@ -622,6 +622,11 @@ export const Global = createGlobalStyle`
         outline: none;
       }
     }
+    
+    /* Fix to correctly fill the height of the Reveal component */
+    div.react-reveal {
+      display: flex;
+    }
   }
 `;
 

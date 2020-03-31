@@ -1,6 +1,9 @@
+import React from 'react';
 import styled from 'styled-components';
 import header from 'assets/illustrations/article-header.svg';
 import footer from 'assets/illustrations/article-footer.svg';
+import { Slide } from 'react-reveal';
+import withReveal from 'react-reveal/withReveal';
 
 export const Wrapper = styled.section`
   padding: 12rem 0;
@@ -13,18 +16,21 @@ export const Grid = styled.div`
   grid-gap: 1.5rem;
 `;
 
-export const GridItem = styled.article`
-  background: linear-gradient(180deg, rgba(8, 105, 114, 0.4) 0%, rgba(255, 255, 255, 0) 100%), #071a52;
-  box-shadow: 0px 2px 5px rgba(167, 255, 131, 0.2);
-  padding: 3.5rem 1.5rem;
-  position: relative;
-  transition: all 0.25s ease 0s;
+export const GridItem = withReveal(
+  styled.article`
+    background: linear-gradient(180deg, rgba(8, 105, 114, 0.4) 0%, rgba(255, 255, 255, 0) 100%), #071a52;
+    box-shadow: 0px 2px 5px rgba(167, 255, 131, 0.2);
+    padding: 3.5rem 1.5rem;
+    position: relative;
+    transition: all 0.25s ease 0s;
 
-  &:hover {
-    transform: translate(0, -10px);
-    box-shadow: 0px 10px 30px rgb(167, 255, 131);
-  }
-`;
+    &:hover {
+      transform: translate(0, -10px);
+      box-shadow: 0px 10px 30px rgb(167, 255, 131);
+    }
+  `,
+  <Slide bottom />
+);
 
 export const Description = styled.p`
   font-size: 1rem;

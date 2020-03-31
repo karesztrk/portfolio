@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Divider, SectionHeader } from 'components/common';
 import { Tabs, Tab } from 'components/theme';
-import { Wrapper, Content } from './styles';
+import { Wrapper, Content, Details } from './styles';
 
 export const Experience = () => (
   <Wrapper as={Container} id="experience">
@@ -9,7 +9,7 @@ export const Experience = () => (
       <h2>Experience</h2>
       <Divider />
     </SectionHeader>
-    <div>
+    <Details>
       <Tabs activeTab="minero">
         <Tab tabKey="minero" title="Minero IT" buttonGrow={5}>
           <Content>
@@ -22,8 +22,8 @@ export const Experience = () => (
             <h4>2015 - Present</h4>
             <div>
               <p>
-                I currently work at an outsourcing company called Minero. Here I've learn a lot. This is not just about
-                the enormous technical stuff but the way of delivering products to a customer in a mature way.
+                I currently work at an outsourcing company called Minero. Here I've learn a lot. This is not just
+                about the enormous technical stuff but the way of delivering products to a customer in a mature way.
               </p>
               <ul>
                 <li>
@@ -48,7 +48,7 @@ export const Experience = () => (
             <h4>2012 - 2015</h4>
             <div>
               <p>
-                Working at this company was my first step to build applications to end-users. It taught all the that can
+                Working at this company was my first step to build applications to end-users. It taught all the that
                 that can occur once the application becomes live.
               </p>
               <ul>
@@ -71,7 +71,7 @@ export const Experience = () => (
             <h4>2009 - 2012</h4>
             <div>
               <p>
-                I've started to work in the University before my graduation. Working and studying in parallel was not an
+                I've started to work in the University before my graduation. Working and studying in parallel was not
                 easy way of life. But it certainly shaped and prepared me for life.
               </p>
               <ul>
@@ -83,6 +83,6 @@ export const Experience = () => (
           </Content>
         </Tab>
       </Tabs>
-    </div>
+    </Details>
   </Wrapper>
 );

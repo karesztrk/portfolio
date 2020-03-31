@@ -9,7 +9,13 @@ export const Footer = () => (
     <Flex as={Container}>
       <Links>
         {social.map(({ name, icon }) => (
-          <a href={socialLinks[name]} target="_blank" rel="noopener noreferrer" aria-label={`follow me on ${name}`}>
+          <a
+            key={name}
+            href={socialLinks[name]}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`follow me on ${name}`}
+          >
             <img width="24" src={icon} alt={name} />
           </a>
         ))}

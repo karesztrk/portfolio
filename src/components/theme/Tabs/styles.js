@@ -30,7 +30,7 @@ export const ListItem = styled.li`
   color: #071a52;
   font-size: 1rem;
   font-weight: bold;
-  transition: background-image 0.25s ease 0s;
+  transition: background 0.25s ease 0s;
 
   ${({ grow }) =>
     grow &&
@@ -46,7 +46,6 @@ export const ListItem = styled.li`
     active &&
     `
     background: url(${itemActive}) no-repeat center;
-    background-size: cover;
   `}
 
   @media (max-width: 960px) {
