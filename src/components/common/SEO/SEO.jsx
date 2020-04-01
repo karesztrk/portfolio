@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import {
   url,
@@ -11,7 +12,6 @@ import {
   foundingDate,
   logo,
 } from 'data/config';
-import PropTypes from 'prop-types';
 
 export const SEO = ({ title, description }) => {
   const structuredDataOrganization = `{ 

@@ -1,6 +1,5 @@
-export * from './Intro';
-export * from './Skills';
-export * from './Contact';
-export * from './Projects';
-export * from './About';
-export * from './Experience';
+export { Intro } from './Intro';
+export { Contact } from './Contact';
+export { Projects } from './Projects';
+export { About } from './About';
+export { Experience } from './Experience';

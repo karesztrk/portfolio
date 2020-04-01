@@ -29,4 +29,13 @@ export const Content = styled.div`
   }
 `;
 
-export const Details = withReveal(styled.div``, <Slide bottom />);
+export const Details = withReveal(
+  styled.div`
+    padding: 0 2rem;
+
+    @media (max-width: 960px) {
+      padding: 0;
+    }
+  `,
+  <Slide bottom />
+);

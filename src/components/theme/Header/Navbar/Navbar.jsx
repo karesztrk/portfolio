@@ -1,11 +1,11 @@
 import React from 'react';
-import { Link } from 'gatsby'
+import { Link } from 'gatsby';
 import logo from 'assets/icons/logo.png';
 import { Container } from 'components/common';
-import NavbarLinks from '../NavbarLinks';
+import { NavbarLinks } from '../NavbarLinks';
 import { Wrapper, Logo } from './styles';
 
-const Navbar = () => (
+export const Navbar = () => (
   <Wrapper as={Container}>
     <Link to="/">
       <Logo src={logo} alt="Logo" />
@@ -13,5 +13,3 @@ const Navbar = () => (
     <NavbarLinks desktop />
   </Wrapper>
 );
-
-export default Navbar;

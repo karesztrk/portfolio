@@ -80,7 +80,7 @@ export const ListItem = styled.li`
 `;
 
 export const Content = styled.div`
-  margin: 0 1.5rem;
+  margin-left: 1.5rem;
 
   @media (max-width: 960px) {
     text-align: justify;

@@ -1,4 +1,4 @@
-export * from './Header';
-export * from './Footer';
-export * from './Tabs';
-export * from './Tab';
+export { Header } from './Header';
+export { Footer } from './Footer';
+export { Tabs } from './Tabs';
+export { Tab } from './Tab';

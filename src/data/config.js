@@ -13,11 +13,10 @@ module.exports = {
     youtube: 'https://www.youtube.com/user/r0nan87',
     facebook: 'https://www.facebook.com/karoly.torok.9/',
   },
-  themeColor: '#6b63ff',
-  backgroundColor: '#6b63ff',
+  themeColor: '#071a52',
+  backgroundColor: '#071a52',
   social: {
     facebook: 'appId',
-    twitter: '@smakosh',
   },
   address: {
     city: 'Szeged',

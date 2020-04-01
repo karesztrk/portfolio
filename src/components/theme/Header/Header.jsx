@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Navbar from './Navbar';
-import Hamburger from './Hamburger';
-import Sidebar from './Sidebar';
+import { Navbar } from './Navbar';
+import { Hamburger } from './Hamburger';
+import { Sidebar } from './Sidebar';
 import { Wrapper, Overlay } from './styles';
 
 export const Header = () => {
