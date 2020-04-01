@@ -56,7 +56,7 @@ export const Details = styled.div`
     font-weight: bold;
     font-size: 1.5rem;
     line-height: 2rem;
-    color: #a7ff83;
+    color: ${({ theme }) => theme.primaryColor};
     margin: 0;
 
     @media (max-width: 680px) {

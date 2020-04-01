@@ -26,7 +26,7 @@ export const Column = styled.div`
   line-height: 2.2rem;
 
   a {
-    color: #a7ff83;
+    color: ${({ theme }) => theme.primaryColor};
   }
 
   @media (max-width: 960px) {
@@ -42,7 +42,7 @@ export const PhotoFrame = withReveal(
     width: 225px;
     height: 280px;
     margin: 0 auto;
-    background: #a7ff83;
+    background: ${({ theme }) => theme.primaryColor};
     box-shadow: 0px 10px 30px rgb(0, 0, 0);
 
     &:before {
@@ -80,11 +80,11 @@ export const TechContainer = styled.ul`
     margin: 0.5rem 1rem 0.5rem 0;
     font-family: 'Montserrat';
     font-weight: 300;
-    box-shadow: inset 0 -4px 0 #086972;
+    box-shadow: inset 0 -4px 0 ${({ theme }) => theme.tertiaryColor};
     transition: box-shadow 0.25s ease 0s;
 
     &:hover {
-      box-shadow: inset 0 -2.5rem 0 #086972;
+      box-shadow: inset 0 -2.5rem 0 ${({ theme }) => theme.tertiaryColor};
     }
   }
 `;

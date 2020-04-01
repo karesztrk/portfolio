@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Wrapper, List, ListItem, Content } from './styles';
+import { Wrapper, List, ListItem, Content, ItemIndicator } from './styles';
 
 export const Tabs = ({ activeTab, children }) => {
   const [activeTabValue, setActiveTabValue] = useState(activeTab);
@@ -15,6 +15,7 @@ export const Tabs = ({ activeTab, children }) => {
           const onListItemClick = () => setActiveTabValue(tabKey);
           return (
             <ListItem key={tabKey} active={tabIndex === i} onClick={onListItemClick} grow={buttonGrow}>
+              <ItemIndicator active={tabIndex === i} />
               {title}
             </ListItem>
           );

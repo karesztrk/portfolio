@@ -631,5 +631,6 @@ export const Global = createGlobalStyle`
 `;
 
 export const Main = styled.div`
-  background: linear-gradient(180deg, rgba(8, 105, 114, 0.4) -36.68%, rgba(255, 255, 255, 0) 121.26%), #071a52;
+  background: linear-gradient(180deg, rgba(8, 105, 114, 0.4) -36.68%, rgba(255, 255, 255, 0) 121.26%),
+    ${({ theme }) => theme.quaternaryColor};
 `;

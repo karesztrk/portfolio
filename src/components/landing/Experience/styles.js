@@ -25,7 +25,7 @@ export const Content = styled.div`
   }
 
   a {
-    color: #a7ff83;
+    color: ${({ theme }) => theme.primaryColor};
   }
 `;
 

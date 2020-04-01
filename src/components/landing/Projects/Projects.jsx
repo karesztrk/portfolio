@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, SectionHeader, Divider } from 'components/common';
-import { Wrapper, Grid, GridItem, Header, Footer, Description } from './styles';
+import { Wrapper, Grid, GridItem, Header, Footer, Description, HeaderImage, Time, FooterImage } from './styles';
 import projects from './projects.json';
 
 export const Projects = () => (
@@ -13,7 +13,12 @@ export const Projects = () => (
       {projects.map(({ time, title, description, type, technologies }) => (
         <GridItem key={title}>
           <Header>
-            <time>{time}</time>
+            <Time>
+              <div>
+                <HeaderImage />
+                <span>{time}</span>
+              </div>
+            </Time>
             <h4>{title}</h4>
           </Header>
           <Description>{description}</Description>
@@ -23,7 +28,10 @@ export const Projects = () => (
                 <li>{tech}</li>
               ))}
             </ul>
-            <div>{type}</div>
+            <div>
+              <FooterImage />
+              <span>{type}</span>
+            </div>
           </Footer>
         </GridItem>
       ))}

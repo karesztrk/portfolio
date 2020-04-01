@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import header from 'assets/illustrations/article-header.svg';
-import footer from 'assets/illustrations/article-footer.svg';
+import header from 'assets/illustrations/article-header.inline.svg';
+import footer from 'assets/illustrations/article-footer.inline.svg';
 import { Slide } from 'react-reveal';
 import withReveal from 'react-reveal/withReveal';
 
@@ -18,7 +18,8 @@ export const Grid = styled.div`
 
 export const GridItem = withReveal(
   styled.article`
-    background: linear-gradient(180deg, rgba(8, 105, 114, 0.4) 0%, rgba(255, 255, 255, 0) 100%), #071a52;
+    background: linear-gradient(180deg, rgba(8, 105, 114, 0.4) 0%, rgba(255, 255, 255, 0) 100%),
+      ${({ theme }) => theme.quaternaryColor};
     box-shadow: 0px 2px 5px rgba(167, 255, 131, 0.2);
     padding: 3.5rem 1.5rem;
     position: relative;
@@ -41,18 +42,31 @@ export const Header = styled.header`
     font-size: 1.5rem;
     text-transform: uppercase;
   }
+`;
 
-  time {
-    font-size: 1.2rem;
-    background: url(${header}) no-repeat center;
-    background-size: cover;
-    padding: 0.6rem 1.6rem;
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: #071a52;
-    font-weight: bold;
+export const Time = styled.time`
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 1.2rem;
+  color: ${({ theme }) => theme.quaternaryColor};
+  font-weight: bold;
+
+  div {
+    position: relative;
+    z-index: 0;
+    padding: 0.75rem 1.5rem;
   }
+`;
+
+export const HeaderImage = styled(header)`
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  color: ${({ theme }) => theme.primaryColor};
 `;
 
 export const Footer = styled.footer`
@@ -81,13 +95,22 @@ export const Footer = styled.footer`
   }
 
   div {
+    position: relative;
+    z-index: 0;
     font-size: 1.2rem;
-    background: url(${footer}) no-repeat center;
-    background-size: cover;
     text-align: right;
-    color: #071a52;
+    color: ${({ theme }) => theme.quaternaryColor};
     font-weight: bold;
-    padding: 0.6rem 1.5rem;
-    min-width: 5.5rem;
+    padding: 0.75rem 1.5rem;
   }
+`;
+
+export const FooterImage = styled(footer)`
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  color: ${({ theme }) => theme.primaryColor};
 `;
