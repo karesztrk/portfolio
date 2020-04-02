@@ -1,7 +1,6 @@
 import React from 'react';
-import { Layout, SEO } from 'components/common';
-import { Intro, About, Experience, Projects } from 'components/landing';
-import { Footer } from 'components/theme';
+import { Layout, SEO, Footer } from 'components/common';
+import { Intro, About, Experience, Projects } from 'components/sections';
 
 export default () => (
   <Layout>

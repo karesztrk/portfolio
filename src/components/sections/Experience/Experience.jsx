@@ -1,6 +1,5 @@
 import React from 'react';
-import { Container, Divider, SectionHeader } from 'components/common';
-import { Tabs, Tab } from 'components/theme';
+import { Container, Divider, SectionHeader, Tabs, Tab } from 'components/common';
 import { Wrapper, Content, Details } from './styles';
 
 export const Experience = () => (
