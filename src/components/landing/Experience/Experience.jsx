@@ -22,7 +22,7 @@ export const Experience = () => (
             <h4>2015 - Present</h4>
             <div>
               <p>
-                I currently work at an outsourcing company called Minero. Here I've learn a lot. This is not just
+                I currently work at an outsourcing company called Minero. Here I've learn a lot. This is not just about
                 about the enormous technical stuff but the way of delivering products to a customer in a mature way.
               </p>
               <ul>

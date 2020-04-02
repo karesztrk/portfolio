@@ -82,7 +82,7 @@ export const Footer = styled.footer`
     max-width: 50%;
     margin: 0.5rem 0 0.5rem 1.5rem;
     font-size: 0.875rem;
-    font-family: 'Montserrat';
+    font-family: ${({ theme }) => theme.secondaryFont};
     font-weight: 300;
     display: flex;
     flex-wrap: wrap;

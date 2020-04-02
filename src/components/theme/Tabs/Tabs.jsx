@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Wrapper, List, ListItem, Content, ItemIndicator } from './styles';
+import { Wrapper, List, ListItem, Content, ItemImage } from './styles';
 
 export const Tabs = ({ activeTab, children }) => {
   const [activeTabValue, setActiveTabValue] = useState(activeTab);
@@ -13,9 +13,10 @@ export const Tabs = ({ activeTab, children }) => {
         {children.map((child, i) => {
           const { title, tabKey, buttonGrow } = child.props;
           const onListItemClick = () => setActiveTabValue(tabKey);
+          const active = tabIndex === i;
           return (
-            <ListItem key={tabKey} active={tabIndex === i} onClick={onListItemClick} grow={buttonGrow}>
-              <ItemIndicator active={tabIndex === i} />
+            <ListItem key={tabKey} active={active} onClick={onListItemClick} grow={buttonGrow}>
+              <ItemImage state={{ active }} />
               {title}
             </ListItem>
           );

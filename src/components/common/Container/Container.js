@@ -5,11 +5,11 @@ export const Container = styled.div`
   margin: 0 auto;
   width: 90%;
 
-  @media (min-width: 601px) {
+  ${({ theme }) => theme.md`
     width: 90%;
-  }
+  `}
 
-  @media (min-width: 993px) {
+  ${({ theme }) => theme.lg`
     width: 80%;
-  }
+  `}
 `;

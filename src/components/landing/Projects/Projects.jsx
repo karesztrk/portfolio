@@ -25,7 +25,7 @@ export const Projects = () => (
           <Footer>
             <ul>
               {technologies.map(tech => (
-                <li>{tech}</li>
+                <li key={tech}>{tech}</li>
               ))}
             </ul>
             <div>

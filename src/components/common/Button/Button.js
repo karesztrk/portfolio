@@ -14,6 +14,7 @@ export const Button = styled.button`
   user-select: none;
   color: #fff;
   background: ${({ theme }) => theme.tertiaryColor};
+  font-size: 1rem;
 
   &:focus {
     outline: none;
@@ -27,5 +28,9 @@ export const Button = styled.button`
     secondary &&
     `
 		background: #001F3F;
+	`}
+
+	${({ theme }) => theme.md`
+	  font-size: 1.2rem;
 	`}
 `;

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import ItemImage from 'assets/illustrations/timeline-item.inline.svg';
+import item from 'assets/illustrations/timeline-item.inline.svg';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -11,11 +11,11 @@ export const List = styled.ul`
   list-style: none;
   margin: 0;
   border-right: 10px solid ${({ theme }) => theme.tertiaryColor};
-  min-width: 221px;
+  min-width: 110px;
 
-  @media (max-width: 960px) {
-    min-width: 110px;
-  }
+  ${({ theme }) => theme.md`
+    min-width: 221px;
+  `}
 `;
 
 export const ListItem = styled.li`
@@ -53,23 +53,24 @@ export const ListItem = styled.li`
 
 export const Content = styled.div`
   margin-left: 1.5rem;
+  text-align: justify;
 
-  @media (max-width: 960px) {
-    text-align: justify;
-  }
+  ${({ theme }) => theme.md`
+    text-align: left;
+  `}
 `;
 
-export const ItemIndicator = styled(ItemImage)`
+export const ItemImage = styled(item)`
   position: absolute;
   transition: color 0.25s ease 0s;
   z-index: -1;
   top: 0;
   left: 0;
-  color: ${({ active, theme }) => (active ? theme.primaryColor : theme.secondaryColor)};
-  width: 221px;
+  color: ${({ state, theme }) => (state && state.active ? theme.primaryColor : theme.secondaryColor)};
+  width: 110px;
   height: 100%;
 
-  @media (max-width: 960px) {
-    width: 110px;
-  }
+  ${({ theme }) => theme.md`
+    width: 221px;
+  `}
 `;
