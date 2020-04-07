@@ -1,18 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import { Header, Container, Button } from 'components/common';
 import { Wrapper, IntroWrapper, Details, Separator } from './styles';
 
 export const Intro = () => {
-  const [scroll, setScroll] = useState(0);
-  useEffect(() => {
-    document.addEventListener('scroll', () => {
-      const pos = window.pageYOffset * -0.5;
-      setScroll(pos);
-    });
-  }, []);
   return (
-    <Wrapper scroll={scroll}>
+    <Wrapper>
       <Header />
       <IntroWrapper as={Container}>
         <Details>

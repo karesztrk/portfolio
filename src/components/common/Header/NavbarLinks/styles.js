@@ -4,7 +4,8 @@ const desktopStyle = ({ theme }) => css`
   display: none;
 
   ${theme.md`
-    display: block;
+      display: flex;
+      align-items: center;
   `}
 
   a {
