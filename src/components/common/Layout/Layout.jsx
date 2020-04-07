@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ThemeProvider, css } from 'styled-components';
-import { Global, Main } from './styles';
+import { Global } from './styles';
 import './fonts.css';
 
 const breakpoints = {
@@ -33,10 +33,8 @@ const theme = {
 
 export const Layout = ({ children }) => (
   <ThemeProvider theme={theme}>
-    <Main>
-      <Global />
-      {children}
-    </Main>
+    <Global />
+    {children}
   </ThemeProvider>
 );
 
