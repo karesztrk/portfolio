@@ -19,7 +19,7 @@ const desktopStyle = ({ theme }) => css`
     }
 
     &:hover {
-      box-shadow: 0 4px 0 ${theme.tertiaryColor};
+      box-shadow: 0 4px 0 ${theme.secondaryColor};
     }
   }
 `;

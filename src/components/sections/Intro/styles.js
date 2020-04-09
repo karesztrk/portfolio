@@ -5,7 +5,6 @@ import separator from 'assets/illustrations/separator.inline.svg';
 export const Wrapper = styled.div`
   padding-bottom: 8rem;
   position: relative;
-  z-index: 0;
   max-height: 100vh;
 
   ${({ theme }) => theme.md`

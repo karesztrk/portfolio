@@ -209,6 +209,7 @@ export const Global = createGlobalStyle`
     }
     * {
       box-sizing: inherit;
+      transition: color 0.4s ease, background 0.4s ease;
     }
     *:before {
       box-sizing: inherit;

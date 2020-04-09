@@ -18,8 +18,7 @@ export const Grid = styled.div`
 
 export const GridItem = withReveal(
   styled.article`
-    background: linear-gradient(180deg, rgba(8, 105, 114, 0.4) 0%, rgba(255, 255, 255, 0) 100%),
-      ${({ theme }) => theme.quaternaryColor};
+    background: linear-gradient(180deg, ${({ theme }) => `${theme.tertiaryColor} 0%, ${theme.quaternaryColor} 100%`});
     box-shadow: 0px 2px 5px rgba(167, 255, 131, 0.2);
     padding: 3.5rem 1.5rem;
     position: relative;
@@ -27,7 +26,7 @@ export const GridItem = withReveal(
 
     &:hover {
       transform: translate(0, -10px);
-      box-shadow: 0px 10px 30px rgb(167, 255, 131);
+      box-shadow: 0px 10px 30px ${({ theme }) => theme.primaryColor};
     }
   `,
   <Slide bottom />

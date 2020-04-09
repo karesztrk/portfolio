@@ -85,11 +85,11 @@ export const TechContainer = styled.ul`
     margin: 0.5rem 1rem 0.5rem 0;
     font-family: ${({ theme }) => theme.secondaryFont};
     font-weight: 300;
-    box-shadow: inset 0 -4px 0 ${({ theme }) => theme.tertiaryColor};
+    box-shadow: inset 0 -4px 0 ${({ theme }) => theme.secondaryColor};
     transition: box-shadow 0.25s ease 0s;
 
     &:hover {
-      box-shadow: inset 0 -2.5rem 0 ${({ theme }) => theme.tertiaryColor};
+      box-shadow: inset 0 -2.5rem 0 ${({ theme }) => theme.secondaryColor};
     }
   }
 `;
