@@ -47,7 +47,7 @@ export const Bar = styled.div`
     sidebar &&
     `
     
-    background-color: #212121;
+    background-color: #ffffff;
 		transform: translateY(8px) rotate(-135deg);
 	`}
 
@@ -55,7 +55,7 @@ export const Bar = styled.div`
     mid &&
     sidebar &&
     `
-    	background-color: #212121;
+    	background-color: #ffffff;
 			transform: scale(0);
 	`}
 
@@ -63,7 +63,7 @@ export const Bar = styled.div`
     bottom &&
     sidebar &&
     `
-    	background-color: #212121;
+    	background-color: #ffffff;
 			transform: translateY(-6px) rotate(-45deg);
 	`}
 `;

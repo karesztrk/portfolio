@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { ThemeProvider, css } from 'styled-components';
-import { Global, Main } from './styles';
+import { loadScheme, saveScheme } from 'data/storage';
+import { Global } from './styles';
 import './fonts.css';
+import schemes from './schemes.json';
 
 const breakpoints = {
   sm: 600,
@@ -20,25 +22,46 @@ const respMin = Object.keys(breakpoints).reduce((accumulator, label) => {
   return accumulator;
 }, {});
 
-const theme = {
-  primaryColor: '#a7ff83',
-  secondaryColor: '#17b978',
-  tertiaryColor: '#086972',
-  quaternaryColor: '#071a52',
-  breakpoints,
-  primaryFont: "'Nunito', Open Sans",
-  secondaryFont: "'Montserrat', Open Sans",
-  ...respMin,
+const applyScheme = (theme, scheme) => {
+  const { schemes: colorSchemes } = theme;
+  const selectedScheme = colorSchemes.find(s => s.name === scheme);
+  const colors = selectedScheme && selectedScheme.colors;
+  return {
+    ...theme,
+    ...colors,
+  };
 };
 
-export const Layout = ({ children }) => (
-  <ThemeProvider theme={theme}>
-    <Main>
+export const Layout = ({ children }) => {
+  const [selectedScheme, setSelectedScheme] = useState();
+  const defaultTheme = {
+    primaryColor: '#a7ff83',
+    secondaryColor: '#17b978',
+    tertiaryColor: '#086972',
+    quaternaryColor: '#071a52',
+    breakpoints,
+    primaryFont: "'Nunito', Open Sans",
+    secondaryFont: "'Montserrat', Open Sans",
+    ...respMin,
+    onChangeScheme: name => setSelectedScheme(name),
+    schemes,
+  };
+
+  const t = applyScheme(defaultTheme, loadScheme());
+  const [theme, setTheme] = useState(t);
+
+  useEffect(() => {
+    saveScheme(selectedScheme);
+    const newTheme = applyScheme(theme, selectedScheme);
+    setTheme(newTheme);
+  }, [selectedScheme]);
+  return (
+    <ThemeProvider theme={theme}>
       <Global />
       {children}
-    </Main>
-  </ThemeProvider>
-);
+    </ThemeProvider>
+  );
+};
 
 Layout.propTypes = {
   children: PropTypes.array,

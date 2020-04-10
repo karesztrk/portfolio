@@ -17,7 +17,7 @@ export const Tabs = ({ activeTab, children }) => {
           return (
             <ListItem key={tabKey} active={active} onClick={onListItemClick} grow={buttonGrow}>
               <ItemImage state={{ active }} />
-              {title}
+              {active && <span>{title}</span>}
             </ListItem>
           );
         })}

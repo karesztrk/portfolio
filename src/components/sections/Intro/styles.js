@@ -1,16 +1,40 @@
 import styled from 'styled-components';
-import heroBackground from 'assets/pictures/hero.svg';
+import heroBackground from 'assets/pictures/background.jpg';
+import separator from 'assets/illustrations/separator.inline.svg';
 
 export const Wrapper = styled.div`
-  background: url(${heroBackground});
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   padding-bottom: 8rem;
+  position: relative;
+  max-height: 100vh;
 
   ${({ theme }) => theme.md`
     padding-bottom: 4rem;
   `}
+
+  &:after {
+    content: '';
+    position: absolute;
+    z-index: -2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(${heroBackground});
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: saturate(50%);
+  }
+`;
+
+export const Separator = styled(separator)`
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  color: ${({ theme }) => theme.tertiaryColor};
+  z-index: -1;
 `;
 
 export const IntroWrapper = styled.div`

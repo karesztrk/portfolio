@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import item from 'assets/illustrations/timeline-item.inline.svg';
 
 export const Wrapper = styled.div`
@@ -20,9 +20,10 @@ export const List = styled.ul`
 
 export const ListItem = styled.li`
   position: relative;
+  z-index: 0;
   padding: 10px;
   mask-size: cover;
-  cursor: pointer;
+  pointer-events: none;
   color: ${({ theme }) => theme.quaternaryColor};
   font-size: 1rem;
   font-weight: bold;
@@ -36,6 +37,8 @@ export const ListItem = styled.li`
 
   &:after {
     content: '';
+    cursor: pointer;
+    pointer-events: auto;
     position: absolute;
     display: block;
     border-radius: 100%;
@@ -60,17 +63,28 @@ export const Content = styled.div`
   `}
 `;
 
+const activeStyle = ({ theme }) => css`
+  width: 110px;
+
+  ${theme.md`
+    width: 221px;
+  `}
+`;
+
 export const ItemImage = styled(item)`
   position: absolute;
-  transition: color 0.25s ease 0s;
+  transition: color 0.25s ease 0s, width 0.25s ease;
   z-index: -1;
   top: 0;
   left: 0;
-  color: ${({ state, theme }) => (state && state.active ? theme.primaryColor : theme.secondaryColor)};
-  width: 110px;
   height: 100%;
+  color: ${({ theme }) => theme.primaryColor};
+  ${({ state }) =>
+    state &&
+    !state.active &&
+    `
+      width: 0%;
+      `}
 
-  ${({ theme }) => theme.md`
-    width: 221px;
-  `}
+  ${({ state }) => state && state.active && activeStyle}
 `;

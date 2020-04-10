@@ -1,6 +1,26 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle, css } from 'styled-components';
+
+const scrollbarStyle = ({ theme }) => css`
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: ${theme.tertiaryColor} black;
+  }
+
+  /* Chrome/Edge/Safari */
+  *::-webkit-scrollbar {
+    width: 5px;
+  }
+  *::-webkit-scrollbar-track {
+    background: black;
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: ${theme.tertiaryColor};
+  }
+`;
 
 export const Global = createGlobalStyle`
+  ${scrollbarStyle}
+
   html {
     font-family: ${({ theme }) => theme.primaryFont};
     -ms-text-size-adjust: 100%;
@@ -189,6 +209,7 @@ export const Global = createGlobalStyle`
     }
     * {
       box-sizing: inherit;
+      transition: color 0.4s ease, background 0.4s ease;
     }
     *:before {
       box-sizing: inherit;
@@ -628,9 +649,4 @@ export const Global = createGlobalStyle`
       display: flex;
     }
   }
-`;
-
-export const Main = styled.div`
-  background: linear-gradient(180deg, rgba(8, 105, 114, 0.4) -36.68%, rgba(255, 255, 255, 0) 121.26%),
-    ${({ theme }) => theme.quaternaryColor};
 `;
