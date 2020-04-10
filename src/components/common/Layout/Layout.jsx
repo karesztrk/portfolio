@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { ThemeProvider, css } from 'styled-components';
+import { loadScheme, saveScheme } from 'data/storage';
 import { Global } from './styles';
 import './fonts.css';
 import schemes from './schemes.json';
@@ -46,12 +47,11 @@ export const Layout = ({ children }) => {
     schemes,
   };
 
-  const scheme = localStorage.getItem('scheme');
-  const t = applyScheme(defaultTheme, scheme);
+  const t = applyScheme(defaultTheme, loadScheme());
   const [theme, setTheme] = useState(t);
 
   useEffect(() => {
-    localStorage.setItem('scheme', selectedScheme);
+    saveScheme(selectedScheme);
     const newTheme = applyScheme(theme, selectedScheme);
     setTheme(newTheme);
   }, [selectedScheme]);
@@ -61,7 +61,7 @@ export const Layout = ({ children }) => {
       {children}
     </ThemeProvider>
   );
-}
+};
 
 Layout.propTypes = {
   children: PropTypes.array,

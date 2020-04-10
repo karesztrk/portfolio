@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import item from 'assets/illustrations/timeline-item.inline.svg';
 
 export const Wrapper = styled.div`
