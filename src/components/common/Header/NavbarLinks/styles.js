@@ -24,18 +24,23 @@ const desktopStyle = ({ theme }) => css`
   }
 `;
 
-const nonDesktopStyle = `
+const nonDesktopStyle = ({ theme }) => css`
   padding: 3rem;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  background: ${theme.quaternaryColor};
 
   a {
-    color: #6d6d6d;
+    color: ${theme.primaryColor};
+    font-family: ${theme.secondaryFont};
+    font-size: 2rem;
     text-decoration: none;
     margin-bottom: 1rem;
 
     &:last-child {
-        margin-bottom: unset;
+      margin-bottom: unset;
     }
   }
 `;
