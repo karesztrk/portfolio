@@ -24,25 +24,8 @@ export const Flex = styled.div`
     align-items: flex-end;
     justify-content: flex-end;
   `}
-`;
 
-export const Links = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 0.5rem;
-
-  a {
-    margin: 0 0.5rem;
-
-    img {
-      margin: 0;
-      filter: grayscale(100%);
-    }
-
-    &:hover {
-      img {
-        filter: none;
-      }
-    }
+  svg {
+    color: ${({ theme }) => theme.quaternaryColor};
   }
 `;

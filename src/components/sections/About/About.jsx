@@ -1,20 +1,20 @@
 import React from 'react';
-import { Container, Divider, SectionHeader } from 'components/common';
+import { Container, Divider, SectionHeader, Separator } from 'components/common';
 import { Slide } from 'react-reveal';
 import { Wrapper, Details, Column, PhotoFrame, TechContainer } from './styles';
 
 export const About = () => (
   <Wrapper as={Container} id="about">
     <SectionHeader>
-      <h2>About</h2>
+      <h2>Story</h2>
       <Divider />
     </SectionHeader>
     <Details>
       <Column>
         <Slide left>
           <p>
-            Hey, this is Károly <span>👋</span> I live in <a href="https://goo.gl/maps/iS7ynsLC4MXW1kZJ8">Szeged</a>, Hungary. And I am a
-            Software Developer since 2009.
+            Hey, this is Károly <span>👋</span> I live in <a href="https://goo.gl/maps/iS7ynsLC4MXW1kZJ8">Szeged</a>,
+            Hungary. And I am a Software Developer since 2009.
           </p>
           <p>
             I've finished my study at the University of Szeged. I've started to work here very soon. During that time we
@@ -45,5 +45,6 @@ export const About = () => (
         <PhotoFrame />
       </Column>
     </Details>
+    <Separator />
   </Wrapper>
 );

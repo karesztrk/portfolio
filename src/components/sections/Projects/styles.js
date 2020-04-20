@@ -6,14 +6,13 @@ import { Slide } from 'react-reveal';
 import withReveal from 'react-reveal/withReveal';
 
 export const Wrapper = styled.section`
-  padding: 12rem 0;
   color: #ffffff;
 `;
 
 export const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-  grid-gap: 1.5rem;
+  grid-gap: 2rem;
 `;
 
 export const GridItem = withReveal(
