@@ -23,7 +23,7 @@ export const Wrapper = styled.div`
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    filter: saturate(50%);
+    filter: saturate(50%) brightness(75%);
   }
 `;
 
@@ -102,4 +102,20 @@ export const Details = styled.div`
       font-size: 1.5rem;
     `}
   }
+
+  svg {
+    padding-right: 20px;
+    width: 24px;
+    color: ${({ theme }) => theme.primaryColor};
+  }
+`;
+
+export const Divider = styled.div`
+  height: 5px;
+  background: #ffffff;
+
+  ${({ theme }) => theme.md`
+    width: 111px;
+    height: 10px;
+  `}
 `;

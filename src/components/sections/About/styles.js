@@ -5,7 +5,6 @@ import { Slide } from 'react-reveal';
 import withReveal from 'react-reveal/withReveal';
 
 export const Wrapper = styled.section`
-  padding: 12rem 0;
   color: #ffffff;
   flex-direction: column;
 
@@ -47,12 +46,15 @@ export const PhotoFrame = withReveal(
     width: 225px;
     height: 280px;
     margin: 0 auto;
-    background: ${({ theme }) => theme.primaryColor};
-    box-shadow: 0px 10px 30px rgb(0, 0, 0);
+    border: 3px solid ${({ theme }) => theme.primaryColor};
+    box-shadow: 0px 5px 15px rgb(0, 0, 0);
+    box-sizing: border-box;
 
     &:before {
       content: '';
       position: absolute;
+      left: -3px;
+      top: -3px;
       width: 225px;
       height: 280px;
       display: block;
@@ -61,11 +63,12 @@ export const PhotoFrame = withReveal(
       background-position: center;
       background-repeat: no-repeat;
       transition: all 0.25s ease 0s;
+      transform: translate(-10px, -10px);
     }
 
     &:hover {
       &:before {
-        transform: translate(-10px, -10px);
+        transform: translate(0px, 0px);
       }
     }
   `,

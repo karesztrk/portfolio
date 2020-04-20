@@ -10,3 +10,5 @@ export { Footer } from './Footer';
 export { Tabs } from './Tabs';
 export { Tab } from './Tab';
 export { Main } from './Main';
+export { SocialLinksMenu } from './SocialLinksMenu';
+export { Separator } from './Separator';

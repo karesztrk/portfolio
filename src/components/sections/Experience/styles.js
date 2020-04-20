@@ -4,7 +4,6 @@ import { Slide } from 'react-reveal';
 import withReveal from 'react-reveal/withReveal';
 
 export const Wrapper = styled.section`
-  padding: 12rem 0;
   color: #ffffff;
   flex-direction: column;
 

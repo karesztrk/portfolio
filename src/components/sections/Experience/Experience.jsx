@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Divider, SectionHeader, Tabs, Tab } from 'components/common';
+import { Container, Divider, SectionHeader, Tabs, Tab, Separator } from 'components/common';
 import { Wrapper, Content, Details } from './styles';
 
 export const Experience = () => (
@@ -83,5 +83,6 @@ export const Experience = () => (
         </Tab>
       </Tabs>
     </Details>
+    <Separator variant="dark" />
   </Wrapper>
 );
