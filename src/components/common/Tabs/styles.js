@@ -49,8 +49,14 @@ export const ListItem = styled.li`
     box-sizing: border-box;
     background-image: none;
     background-color: ${({ theme }) => theme.tertiaryColor};
-    transition: border 0.25s ease 0s;
+    transition: all 0.25s ease 0s;
     top: -10px;
+
+    ${({ theme, active }) =>
+      active &&
+      `
+        box-shadow: 0 0 10px ${theme.primaryColor};
+      `}
   }
 `;
 
