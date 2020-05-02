@@ -47,8 +47,8 @@ export const Experience = () => (
             <h4>2012 - 2015</h4>
             <div>
               <p>
-                Working at this company was my first step to build applications to end-users. It taught all the that
-                that can occur once the application becomes live.
+                Working at this company was my first step to build applications to end-users. It taught all things that
+                can occur once the application becomes live.
               </p>
               <ul>
                 <li>Lead and coordinated a small (3-4) development team</li>

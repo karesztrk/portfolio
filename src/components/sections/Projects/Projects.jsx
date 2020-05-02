@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, SectionHeader, Divider } from 'components/common';
+import { Container, SectionHeader, Divider, Separator } from 'components/common';
 import { Wrapper, Grid, GridItem, Header, Footer, Description, HeaderImage, Time, FooterImage } from './styles';
 import projects from './projects.json';
 
@@ -36,5 +36,6 @@ export const Projects = () => (
         </GridItem>
       ))}
     </Grid>
+    <Separator variant="dark" />
   </Wrapper>
 );

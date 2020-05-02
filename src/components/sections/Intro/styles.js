@@ -113,6 +113,7 @@ export const Details = styled.div`
 export const Divider = styled.div`
   height: 5px;
   background: #ffffff;
+  width: 111px;
 
   ${({ theme }) => theme.md`
     width: 111px;

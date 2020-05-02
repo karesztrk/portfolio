@@ -1,6 +1,6 @@
 import React from 'react';
 import { Layout, SEO, Footer, Main } from 'components/common';
-import { Intro, About, Experience, Projects } from 'components/sections';
+import { Intro, About, Experience, Projects, Contact } from 'components/sections';
 
 export default () => (
   <Layout>
@@ -10,6 +10,7 @@ export default () => (
       <About />
       <Experience />
       <Projects />
+      <Contact />
       <Footer />
     </Main>
   </Layout>
