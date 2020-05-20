@@ -1,7 +1,8 @@
 import React from 'react';
 import { Container, SectionHeader, Divider, Separator } from 'components/common';
-import { Wrapper, Grid, GridItem, Header, Footer, Description, HeaderImage, Time, FooterImage } from './styles';
+import { Wrapper, Grid } from './styles';
 import projects from './projects.json';
+import { ProjectItem } from './ProjectItem';
 
 export const Projects = () => (
   <Wrapper as={Container} id="projects">
@@ -10,30 +11,8 @@ export const Projects = () => (
       <Divider />
     </SectionHeader>
     <Grid>
-      {projects.map(({ time, title, description, type, technologies }) => (
-        <GridItem key={title}>
-          <Header>
-            <Time>
-              <div>
-                <HeaderImage />
-                <span>{time}</span>
-              </div>
-            </Time>
-            <h4>{title}</h4>
-          </Header>
-          <Description>{description}</Description>
-          <Footer>
-            <ul>
-              {technologies.map(tech => (
-                <li key={tech}>{tech}</li>
-              ))}
-            </ul>
-            <div>
-              <FooterImage />
-              <span>{type}</span>
-            </div>
-          </Footer>
-        </GridItem>
+      {projects.map(project => (
+        <ProjectItem key={project.title} project={project} />
       ))}
     </Grid>
     <Separator variant="dark" />
