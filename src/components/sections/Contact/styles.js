@@ -25,6 +25,7 @@ export const Paragraph = styled.p`
 
   a {
     color: ${({ theme }) => theme.primaryColor};
+    transition: box-shadow 0.25s ease 0s;
 
     &:hover {
       box-shadow: 0 4px 0 ${({ theme }) => theme.primaryColor};

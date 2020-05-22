@@ -154,6 +154,9 @@ export const Footer = styled.ul`
   list-style: square;
   max-width: 80%;
   text-align: center;
+  list-style: none;
+  vertical-align: baseline;
+  line-height: 1.2rem;
 
   ${({ theme }) => theme.sm`
       font-size: 1rem;
@@ -162,6 +165,11 @@ export const Footer = styled.ul`
   li {
     padding-right: 0.5rem;
     margin: 0;
+  }
+
+  li::before {
+    content: '⬢ ';
+    font-size: 0.8rem;
   }
 `;
 
