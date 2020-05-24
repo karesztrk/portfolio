@@ -11,8 +11,8 @@ export const Projects = () => (
       <Divider />
     </SectionHeader>
     <Grid>
-      {projects.map(project => (
-        <ProjectItem key={project.title} project={project} />
+      {projects.map((project, index) => (
+        <ProjectItem key={project.title} project={project} guide={index === 0} />
       ))}
     </Grid>
     <Separator variant="dark" />
