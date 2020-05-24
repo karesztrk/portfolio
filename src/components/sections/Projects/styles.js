@@ -1,7 +1,5 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import header from 'assets/illustrations/article-header.inline.svg';
-import footer from 'assets/illustrations/article-footer.inline.svg';
 import { animated } from 'react-spring';
 
 export const Wrapper = styled.section`
@@ -84,6 +82,15 @@ export const GridItem = animated(styled.article`
     ${columns(5)}
     ${rows(5)}
   }
+`);
+
+export const GridContent = animated(styled.div`
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
 
   svg {
     position: absolute;
@@ -92,29 +99,61 @@ export const GridItem = animated(styled.article`
     height: 100%;
     width: 100%;
     transition: all 0.25s ease 0s;
+    z-index: -1;
   }
 `);
 
 export const ProjectContent = styled.div`
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
+  z-index: 1;
+  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  height: 100%;
+
+  .clickable {
+    .pulse {
+      fill-opacity: 0;
+      transform-origin: 50% 50%;
+      animation-duration: 2s;
+      animation-name: pulse;
+      animation-iteration-count: infinite;
+    }
+
+    @keyframes pulse {
+      from {
+        stroke-width: 3px;
+        stroke-opacity: 1;
+        transform: scale(0.3);
+      }
+
+      to {
+        stroke-width: 0;
+        stroke-opacity: 0;
+        transform: scale(2);
+      }
+    }
+  }
 `;
 
 export const Description = styled.p`
   font-size: 1rem;
+  max-width: 60%;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
 `;
 
 export const Header = styled.h4`
-  max-width: 60%;
+  max-width: 50%;
   font-size: 1rem;
-  text-align: center;
 
   ${({ theme }) => theme.sm`
       font-size: 1.5rem;
@@ -122,28 +161,9 @@ export const Header = styled.h4`
 `;
 
 export const Time = styled.time`
-  position: absolute;
-  top: 0;
-  left: 0;
   font-size: 1.2rem;
-  color: ${({ theme }) => theme.quaternaryColor};
-  font-weight: bold;
-
-  div {
-    position: relative;
-    z-index: 0;
-    padding: 0.75rem 1.5rem;
-  }
-`;
-
-export const HeaderImage = styled(header)`
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  color: ${({ theme }) => theme.primaryColor};
+  letter-spacing: 0.25rem;
+  font-family: ${({ theme }) => theme.secondaryFont};
 `;
 
 export const Footer = styled.ul`
@@ -151,12 +171,12 @@ export const Footer = styled.ul`
   font-size: 0.8rem;
   font-family: ${({ theme }) => theme.secondaryFont};
   font-weight: 300;
-  list-style: square;
   max-width: 80%;
-  text-align: center;
   list-style: none;
-  vertical-align: baseline;
   line-height: 1.2rem;
+  letter-spacing: 0.25rem;
+  display: flex;
+  flex-direction: column;
 
   ${({ theme }) => theme.sm`
       font-size: 1rem;
@@ -164,21 +184,7 @@ export const Footer = styled.ul`
 
   li {
     padding-right: 0.5rem;
-    margin: 0;
+    padding: 0;
+    margin: 0 1rem;
   }
-
-  li::before {
-    content: '⬢ ';
-    font-size: 0.8rem;
-  }
-`;
-
-export const FooterImage = styled(footer)`
-  position: absolute;
-  z-index: -1;
-  bottom: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  color: ${({ theme }) => theme.primaryColor};
 `;
