@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, SectionHeader, Divider, Separator } from 'components/common';
+import { Container, SectionHeader, Divider } from 'components/common';
 import { Wrapper, Grid } from './styles';
 import projects from './projects.json';
 import { ProjectItem } from './ProjectItem';
@@ -15,6 +15,5 @@ export const Projects = () => (
         <ProjectItem key={project.title} project={project} guide={index === 0} />
       ))}
     </Grid>
-    <Separator variant="dark" />
   </Wrapper>
 );
