@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Divider, SectionHeader, Separator } from 'components/common';
+import { Container, Divider, SectionHeader } from 'components/common';
 import { Slide } from 'react-reveal';
 import { Wrapper, Details, Column, PhotoFrame, TechContainer } from './styles';
 
@@ -45,6 +45,5 @@ export const About = () => (
         <PhotoFrame />
       </Column>
     </Details>
-    <Separator />
   </Wrapper>
 );

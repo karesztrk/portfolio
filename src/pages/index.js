@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, SEO, Footer, Main } from 'components/common';
+import { Layout, SEO, Footer, Main, Separator } from 'components/common';
 import { Intro, About, Experience, Projects, Contact } from 'components/sections';
 
 export default () => (
@@ -8,10 +8,13 @@ export default () => (
     <Intro />
     <Main>
       <About />
+      <Separator />
       <Experience />
+      <Separator variant="dark" />
       <Projects />
+      <Separator variant="dark" />
       <Contact />
       <Footer />
     </Main>
   </Layout>
-);
+)

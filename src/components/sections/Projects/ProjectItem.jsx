@@ -12,7 +12,6 @@ export const ProjectItem = ({ project, guide }) => {
   const { transform, opacity } = useSpring({
     opacity: flipped ? 0 : 1,
     transform: `perspective(600px) rotateX(${flipped ? 0 : 180}deg)`,
-    config: { mass: 5, tension: 500, friction: 80 },
   });
 
   const theme = useContext(ThemeContext);
