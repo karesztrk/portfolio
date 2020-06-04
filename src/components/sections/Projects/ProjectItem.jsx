@@ -31,7 +31,7 @@ export const ProjectItem = ({ project, guide }) => {
           {guide && <Guide />}
           <Footer>
             {technologies.map(tech => (
-              <li>{tech}</li>
+              <li key={tech}>{tech}</li>
             ))}
           </Footer>
         </ProjectContent>

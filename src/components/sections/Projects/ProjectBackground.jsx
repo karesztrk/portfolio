@@ -19,7 +19,7 @@ export const ProjectBackground = ({ id, colorScheme, back }) => (
         gradientUnits="userSpaceOnUse"
       >
         <stop stopColor={back ? colorScheme.quaternaryColor : colorScheme.tertiaryColor} />
-        <stop stopColor={back ? colorScheme.tertiaryColor : colorScheme.quaternaryColor} offset="1" />
+        <stop stopColor={back ? colorScheme.quaternaryColor : colorScheme.quaternaryColor} offset="1" />
       </linearGradient>
     </defs>
   </svg>
