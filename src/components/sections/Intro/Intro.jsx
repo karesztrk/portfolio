@@ -1,5 +1,6 @@
 import React from 'react';
 import { Header, Container, SocialLinksMenu } from 'components/common';
+import { useTransition } from 'react-spring';
 import {
   Wrapper,
   IntroWrapper,
@@ -19,33 +20,110 @@ import {
   HeroBoxTen,
 } from './styles';
 
-export const Intro = () => (
-  <Wrapper>
-    <Header />
-    <IntroWrapper as={Container}>
-      <Details>
-        <h4>Károly Török</h4>
-        <h1>Bringing your ideas to life</h1>
-        <p>Experienced full-stack web developer</p>
-        <Divider />
-        <SocialLinksMenu />
-      </Details>
-      <HeroBoxWrapper>
-        <svg className="placeholder" width="528" height="396" viewBox="0 0 528 396">
-          <rect width="528" height="396" style={{ fill: 'transparent' }} />
-        </svg>
-        <HeroBoxOne dataRotation="45deg" />
-        <HeroBoxTwo dataRotation="-45deg" />
-        <HeroBoxThree dataRotation="0deg" />
-        <HeroBoxFour dataRotation="-135deg" />
-        <HeroBoxFive />
-        <HeroBoxSix />
-        <HeroBoxSeven />
-        <HeroBoxEight dataRotation="-22deg" />
-        <HeroBoxNine dataRotation="-52deg" />
-        <HeroBoxTen dataRotation="-50deg" />
-      </HeroBoxWrapper>
-    </IntroWrapper>
-    <Separator />
-  </Wrapper>
-);
+export const Intro = () => {
+  const config = { mass: 1, tension: 450, friction: 30 };
+  const majorBoxTransition = useTransition(true, null, {
+    initial: { transform: 'perspective(0px) scaleX(0.05) scaleY(0) rotateX(0deg) rotateY(0deg) rotateZ(0deg)' },
+    enter: [
+      { transform: 'perspective(500px) scaleX(0.05) scaleY(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg)' },
+      { transform: 'perspective(500px) scaleX(1) scaleY(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg)' },
+      { transform: 'perspective(500px) scaleX(1) scaleY(1) rotateX(8deg) rotateY(-15deg) rotateZ(-1deg)' },
+    ],
+    config,
+  });
+
+  const minorBoxTransition = useTransition(true, null, {
+    initial: { transform: 'perspective(0px) scaleX(0.05) scaleY(0) rotateZ(0deg)' },
+    enter: [
+      { transform: 'perspective(500px) scaleX(0.05) scaleY(1) rotateZ(0deg)' },
+      { transform: 'perspective(500px) scaleX(1) scaleY(1) rotateZ(0deg)' },
+      { transform: 'perspective(500px) scaleX(1) scaleY(1) rotateZ(20deg)' },
+    ],
+    config,
+  });
+
+  const microBoxTransition = useTransition(true, null, {
+    from: () => ({ opacity: 0, transform: [0, 0.7] }),
+    enter: () => ({ opacity: 1, transform: [10, 1] }),
+    config,
+  });
+  return (
+    <Wrapper>
+      <Header />
+      <IntroWrapper as={Container}>
+        <Details>
+          <h4>Károly Török</h4>
+          <h1>Bringing your ideas to life</h1>
+          <p>Experienced full-stack web developer</p>
+          <Divider />
+          <SocialLinksMenu />
+        </Details>
+        <HeroBoxWrapper>
+          <svg className="placeholder" width="528" height="396" viewBox="0 0 528 396">
+            <rect width="528" height="396" style={{ fill: 'transparent' }} />
+          </svg>
+          {microBoxTransition.map(({ key, props: { transform, ...rest } }) => (
+            <React.Fragment key={`box-micro-one-${key}`}>
+              <HeroBoxOne
+                style={{
+                  transform: transform.interpolate((rotate, scale) => `rotate(${rotate * 1}deg) scale(${scale})`),
+                  ...rest,
+                }}
+              />
+              <HeroBoxTwo
+                style={{
+                  transform: transform.interpolate((rotate, scale) => `rotate(${rotate * -1}deg) scale(${scale})`),
+                  ...rest,
+                }}
+              />
+              <HeroBoxThree
+                style={{
+                  transform: transform.interpolate((rotate, scale) => `rotate(${rotate}deg) scale(${scale})`),
+                  ...rest,
+                }}
+              />
+              <HeroBoxFour
+                style={{
+                  transform: transform.interpolate((rotate, scale) => `rotate(${rotate * -3}deg) scale(${scale})`),
+                  ...rest,
+                }}
+              />
+            </React.Fragment>
+          ))}
+          {majorBoxTransition.map(({ key, props }) => (
+            <HeroBoxFive key={`box-five-${key}`} style={props} />
+          ))}
+          {minorBoxTransition.map(({ key, props }) => (
+            <React.Fragment key={`box-minor-${key}`}>
+              <HeroBoxSix style={props} />
+              <HeroBoxSeven style={props} />
+            </React.Fragment>
+          ))}
+          {microBoxTransition.map(({ key, props: { transform, ...rest } }) => (
+            <React.Fragment key={`box-micro-two-${key}`}>
+              <HeroBoxEight
+                style={{
+                  transform: transform.interpolate((rotate, scale) => `rotate(${rotate * -0.5}deg) scale(${scale})`),
+                  ...rest,
+                }}
+              />
+              <HeroBoxNine
+                style={{
+                  transform: transform.interpolate((rotate, scale) => `rotate(${rotate * -1.2}deg) scale(${scale})`),
+                  ...rest,
+                }}
+              />
+              <HeroBoxTen
+                style={{
+                  transform: transform.interpolate((rotate, scale) => `rotate(${rotate * -1.1}deg) scale(${scale})`),
+                  ...rest,
+                }}
+              />
+            </React.Fragment>
+          ))}
+        </HeroBoxWrapper>
+      </IntroWrapper>
+      <Separator />
+    </Wrapper>
+  );
+};

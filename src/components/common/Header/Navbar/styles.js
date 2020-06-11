@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   position: relative;
+  z-index: 100;
 
   a {
     color: #ffffff;

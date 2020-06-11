@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import heroBackground from 'assets/pictures/background.jpg';
 import separator from 'assets/illustrations/separator.inline.svg';
+import { animated } from 'react-spring';
 
 export const Wrapper = styled.div`
   padding-bottom: 8rem;
@@ -60,6 +61,7 @@ export const Details = styled.div`
   flex-basis: 100%;
   width: 100%;
   margin-bottom: 2rem;
+  z-index: 10;
 
   ${({ theme }) => theme.md`
     flex: 1;
@@ -152,7 +154,7 @@ const HeroBoxLight = styled(HeroBox)`
   }
 `;
 
-export const HeroBoxOne = styled(HeroBoxLight)`
+export const HeroBoxOne = animated(styled(HeroBoxLight)`
   left: 103.2%;
   top: 41.9%;
   width: 28.03%;
@@ -164,9 +166,9 @@ export const HeroBoxOne = styled(HeroBoxLight)`
     background: linear-gradient(to left, #15181d 0%, rgba(0, 0, 0, 0) 60%);
     transform: rotateZ(45deg) scale(1.5);
   }
-`;
+`);
 
-export const HeroBoxTwo = styled(HeroBoxLight)`
+export const HeroBoxTwo = animated(styled(HeroBoxLight)`
   left: 61.3%;
   top: 64.1%;
   width: 37.87%;
@@ -178,9 +180,9 @@ export const HeroBoxTwo = styled(HeroBoxLight)`
     background: linear-gradient(to top, ${({ theme }) => theme.quaternaryColor} 0%, rgba(0, 0, 0, 0) 60%);
     transform: rotateZ(-45deg) scale(1.5);
   }
-`;
+`);
 
-export const HeroBoxThree = styled(HeroBoxLight)`
+export const HeroBoxThree = animated(styled(HeroBoxLight)`
   left: 87.7%;
   top: -56.8%;
   width: 56.81%;
@@ -191,9 +193,9 @@ export const HeroBoxThree = styled(HeroBoxLight)`
     background: linear-gradient(to left, #15181d 0%, rgba(0, 0, 0, 0) 60%);
     transform: rotateZ(45deg) scale(1.5);
   }
-`;
+`);
 
-export const HeroBoxFour = styled(HeroBoxLight)`
+export const HeroBoxFour = animated(styled(HeroBoxLight)`
   left: 54.9%;
   top: -8%;
   width: 45.45%;
@@ -205,33 +207,31 @@ export const HeroBoxFour = styled(HeroBoxLight)`
     background: linear-gradient(to top, rgba(255, 255, 255, 0.24) 0%, rgba(0, 0, 0, 0) 60%);
     transform: rotateZ(-45deg) scale(1.5);
   }
-`;
+`);
 
-export const HeroBoxFive = styled(HeroBoxDark)`
+export const HeroBoxFive = animated(styled(HeroBoxDark)`
   left: 17.4%;
   top: 13.3%;
   width: 64%;
   height: 73.7%;
-  transform: perspective(500px) rotateY(-15deg) rotateX(8deg) rotateZ(-1deg);
-`;
+`);
 
-export const HeroBoxSix = styled(HeroBoxDark)`
+export const HeroBoxSix = animated(styled(HeroBoxDark)`
   left: 65.5%;
   top: 6.3%;
   width: 30.3%;
   height: 40.4%;
-  transform: rotateZ(20deg);
-`;
+`);
 
-export const HeroBoxSeven = styled(HeroBoxDark)`
+export const HeroBoxSeven = animated(styled(HeroBoxDark)`
   left: 1.9%;
   top: 42.4%;
   width: 12.12%;
   height: 16.16%;
   transform: rotateZ(20deg);
-`;
+`);
 
-export const HeroBoxEight = styled(HeroBoxLight)`
+export const HeroBoxEight = animated(styled(HeroBoxLight)`
   left: 27.1%;
   top: 81.6%;
   width: 19.51%;
@@ -243,9 +243,9 @@ export const HeroBoxEight = styled(HeroBoxLight)`
     background: linear-gradient(to left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.48) 100%);
     transform: rotateZ(45deg) scale(1.5);
   }
-`;
+`);
 
-export const HeroBoxNine = styled(HeroBoxLight)`
+export const HeroBoxNine = animated(styled(HeroBoxLight)`
   left: 42.6%;
   top: -17.9%;
   width: 6.63%;
@@ -257,13 +257,13 @@ export const HeroBoxNine = styled(HeroBoxLight)`
     background: linear-gradient(to left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.64) 100%);
     transform: rotateZ(45deg) scale(1.5);
   }
-`;
+`);
 
-export const HeroBoxTen = styled(HeroBoxLight)`
+export const HeroBoxTen = animated(styled(HeroBoxLight)`
   left: -3.8%;
   top: 4.3%;
   width: 3.03%;
   height: 4.04%;
   background: rgba(0, 191, 251, 0.32);
   transform: rotateZ(-50deg);
-`;
+`);
