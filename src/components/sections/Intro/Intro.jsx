@@ -19,6 +19,7 @@ import {
   HeroBoxNine,
   HeroBoxTen,
 } from './styles';
+import { Media, MediaContextProvider } from '../../common/Layout/Layout'
 
 export const Intro = () => {
   const config = { mass: 1, tension: 450, friction: 30 };
@@ -48,7 +49,8 @@ export const Intro = () => {
     config,
   });
   return (
-    <Wrapper>
+    <MediaContextProvider>
+      <Wrapper>
       <Header />
       <IntroWrapper as={Container}>
         <Details>
@@ -58,7 +60,8 @@ export const Intro = () => {
           <Divider />
           <SocialLinksMenu />
         </Details>
-        <HeroBoxWrapper>
+        <Media greaterThan="sm">
+          <HeroBoxWrapper>
           <svg className="placeholder" width="528" height="396" viewBox="0 0 528 396">
             <rect width="528" height="396" style={{ fill: 'transparent' }} />
           </svg>
@@ -122,8 +125,10 @@ export const Intro = () => {
             </React.Fragment>
           ))}
         </HeroBoxWrapper>
+        </Media>
       </IntroWrapper>
       <Separator />
     </Wrapper>
+    </MediaContextProvider>
   );
 };

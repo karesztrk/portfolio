@@ -5,6 +5,7 @@ import { loadScheme, saveScheme } from 'data/storage';
 import { Global } from './styles';
 import './fonts.css';
 import schemes from './schemes.json';
+import { createMedia } from "@artsy/fresnel"
 
 const breakpoints = {
   sm: 600,
@@ -12,6 +13,15 @@ const breakpoints = {
   lg: 1280,
   xl: 1920,
 };
+
+export const AppMedia = createMedia({
+  breakpoints,
+});
+
+export const mediaStyles = AppMedia.createMediaStyle()
+
+export const { Media, MediaContextProvider } = AppMedia;
+
 
 const respMin = Object.keys(breakpoints).reduce((accumulator, label) => {
   accumulator[label] = (...args) => css`

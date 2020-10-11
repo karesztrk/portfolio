@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import me from 'assets/pictures/me.jpg';
+import me from 'assets/pictures/me.webp';
 import { Slide } from 'react-reveal';
 import withReveal from 'react-reveal/withReveal';
 

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import heroBackground from 'assets/pictures/background.jpg';
+import heroBackground from 'assets/pictures/background.webp';
 import separator from 'assets/illustrations/separator.inline.svg';
 import { animated } from 'react-spring';
 
