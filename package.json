@@ -5,6 +5,7 @@
   "version": "0.1.2",
   "author": "karesztrk",
   "dependencies": {
+    "@artsy/fresnel": "^1.2.2",
     "dotenv": "^6.2.0",
     "gatsby": "^2.17.7",
     "gatsby-image": "^2.2.30",
@@ -40,6 +41,7 @@
   "scripts": {
     "build": "gatsby build",
     "start": "gatsby develop -o",
+    "clean": "gatsby clean",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "reset": "rm -rf .cache/ public/",
