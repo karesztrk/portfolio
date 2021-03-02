@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import {
   url,
@@ -13,7 +12,7 @@ import {
   logo,
 } from 'data/config';
 
-export const SEO = ({ title, description }) => {
+export const SEO = ({ title = defaultTitle, description = defaultDescription }) => {
   const structuredDataOrganization = `{ 
 		"@context": "http://schema.org",
 		"@type": "Organization",
@@ -55,14 +54,4 @@ export const SEO = ({ title, description }) => {
       <html lang="en" dir="ltr" />
     </Helmet>
   );
-};
-
-SEO.defaultProps = {
-  title: defaultTitle,
-  description: defaultDescription,
-};
-
-SEO.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string,
 };

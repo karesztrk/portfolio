@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Wrapper, Bar } from './styles';
 
 export const Hamburger = ({ sidebar, toggle }) => (
@@ -9,8 +8,3 @@ export const Hamburger = ({ sidebar, toggle }) => (
     <Bar bottom sidebar={sidebar} />
   </Wrapper>
 );
-
-Hamburger.propTypes = {
-  sidebar: PropTypes.bool,
-  toggle: PropTypes.func,
-};

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 export const ProjectBackground = ({ id, colorScheme, back }) => (
   <svg width="302" height="262" viewBox="0 0 302 262" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -24,9 +23,3 @@ export const ProjectBackground = ({ id, colorScheme, back }) => (
     </defs>
   </svg>
 );
-
-ProjectBackground.propTypes = {
-  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  colorScheme: PropTypes.object,
-  back: PropTypes.bool,
-};

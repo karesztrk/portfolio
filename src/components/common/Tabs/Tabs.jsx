@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { Wrapper, List, ListItem, Content, ItemImage } from './styles';
 
 export const Tabs = ({ activeTab, children }) => {
@@ -25,9 +24,4 @@ export const Tabs = ({ activeTab, children }) => {
       <Content>{tab.props.children}</Content>
     </Wrapper>
   );
-};
-
-Tabs.propTypes = {
-  activeTab: PropTypes.string,
-  children: PropTypes.array,
 };

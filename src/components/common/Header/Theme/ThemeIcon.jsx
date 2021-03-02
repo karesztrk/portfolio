@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 export const ThemeIcon = ({ id, colorScheme, onClick }) => (
   <svg id={id} width="33" height="36" viewBox="0 0 33 36" xmlns="http://www.w3.org/2000/svg" onClick={onClick}>
@@ -18,9 +17,3 @@ export const ThemeIcon = ({ id, colorScheme, onClick }) => (
     </defs>
   </svg>
 );
-
-ThemeIcon.propTypes = {
-  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  colorScheme: PropTypes.object,
-  onClick: PropTypes.func,
-};

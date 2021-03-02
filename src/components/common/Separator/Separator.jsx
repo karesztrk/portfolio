@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
 import { useSpring } from 'react-spring';
 import {
   Wrapper,
@@ -58,8 +57,4 @@ export const Separator = ({ variant = 'light' }) => {
     });
   }, []);
   return <Wrapper ref={ref}>{renderImage(variant, transform)}</Wrapper>;
-};
-
-Separator.propTypes = {
-  variant: PropTypes.string,
 };

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import { ThemeProvider, css } from 'styled-components';
 import { loadScheme, saveScheme } from 'data/storage';
 import { Global } from './styles';
@@ -71,8 +70,4 @@ export const Layout = ({ children }) => {
       {children}
     </ThemeProvider>
   );
-};
-
-Layout.propTypes = {
-  children: PropTypes.array,
 };

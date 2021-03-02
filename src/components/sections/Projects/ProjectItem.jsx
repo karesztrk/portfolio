@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
 import { useSpring } from 'react-spring';
-import PropTypes from 'prop-types';
 import { ThemeContext } from 'styled-components';
 import { GridItem, Header, ProjectContent, Footer, GridContent, Time, Description } from './styles';
 import { ProjectBackground } from './ProjectBackground';
@@ -46,9 +45,4 @@ export const ProjectItem = ({ project, guide }) => {
       </GridContent>
     </GridItem>
   );
-};
-
-ProjectItem.propTypes = {
-  project: PropTypes.object,
-  guide: PropTypes.bool,
 };

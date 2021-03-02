@@ -1,6 +1,13 @@
 import React from 'react';
 import { Layout, SEO, Footer, Main, Separator } from 'components/common';
-import { Intro, About, Experience, Projects, Contact } from 'components/sections';
+import {
+  Intro,
+  About,
+  Experience,
+  Projects,
+  Contact,
+} from 'components/sections';
+import { Highlights } from 'components/sections/Highlights';
 
 export default () => (
   <Layout>
@@ -10,11 +17,12 @@ export default () => (
       <About />
       <Separator />
       <Experience />
-      <Separator variant="dark" />
+      <Separator variant='dark' />
+      <Highlights />
       <Projects />
-      <Separator variant="dark" />
+      <Separator variant='dark' />
       <Contact />
       <Footer />
     </Main>
   </Layout>
-)
+);
