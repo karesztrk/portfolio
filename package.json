@@ -31,7 +31,13 @@
     "clean": "gatsby clean"
   },
   "devDependencies": {
+    "@types/react": "^17.0.2",
+    "@types/react-anchor-link-smooth-scroll": "^1.0.0",
+    "@types/react-dom": "^17.0.1",
+    "@types/react-helmet": "^6.1.0",
+    "@types/styled-components": "^5.1.7",
     "babel-plugin-styled-components": "^1.10.6",
-    "prettier": "^2.2.1"
+    "prettier": "^2.2.1",
+    "typescript": "^4.2.2"
   }
 }
