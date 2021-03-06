@@ -6,6 +6,7 @@ import {
   Experience,
   Projects,
   Contact,
+  Highlights,
 } from 'components/sections';
 
 export default function IndexRoute() {
@@ -18,7 +19,8 @@ export default function IndexRoute() {
         <Separator />
         <Experience />
         <Separator variant='dark' />
-        {/* <Highlights /> */}
+        <Highlights />
+        <Separator />
         <Projects />
         <Separator variant='dark' />
         <Contact />
