@@ -1,10 +1,11 @@
 import React from 'react';
 import styled, { css, ThemeProps } from 'styled-components';
-import { animated } from 'react-spring';
 import { Theme } from 'components/common/Layout/Layout';
+import { motion } from 'framer-motion';
 
 export const Wrapper = styled.section`
   color: #ffffff;
+  position: relative;
 `;
 
 const gridCounter = ({ theme }: ThemeProps<Theme>) => css`
@@ -57,7 +58,7 @@ const rows = (amount: number) => {
   `;
 };
 
-export const Grid = styled.div`
+export const Grid = styled(motion.div)`
   ${gridCounter}
   display: grid;
   grid-template-columns: repeat(var(--amount), 1fr 2fr) 1fr;
@@ -66,7 +67,7 @@ export const Grid = styled.div`
   padding: 0;
 `;
 
-export const GridItem = animated(styled.article`
+export const GridItem = styled(motion.article)`
   position: relative;
   grid-column: 1 / span 3;
   grid-row: calc(var(--counter) + var(--counter)) / span 2;
@@ -89,28 +90,28 @@ export const GridItem = animated(styled.article`
     ${columns(5)}
     ${rows(5)}
   }
-`);
+`;
 
-export const GridContent = animated(styled.div`
+export const BackgroundImage = styled(motion.svg)`
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  transition: all 0.25s ease 0s;
+  z-index: -1;
+`;
+
+export const GridContent = styled(motion.div)`
   position: absolute;
   left: 0;
   top: 0;
   height: 100%;
   width: 100%;
   cursor: pointer;
+`;
 
-  svg {
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    transition: all 0.25s ease 0s;
-    z-index: -1;
-  }
-`);
-
-export const ProjectContent = styled.div`
+export const ProjectContent = styled(motion.div)`
   z-index: 1;
   text-align: center;
   display: flex;
@@ -144,21 +145,13 @@ export const ProjectContent = styled.div`
   }
 `;
 
-export const Description = styled.p`
-  font-size: 1rem;
+export const Description = styled(motion.p)`
+  font-size: 1.2rem;
   max-width: 60%;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-
-  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
+  margin: 0;
 `;
 
-export const Header = styled.h4`
+export const Header = styled(motion.h4)`
   max-width: 50%;
   font-size: 1rem;
 
@@ -167,13 +160,13 @@ export const Header = styled.h4`
   `}
 `;
 
-export const Time = styled.time`
+export const Time = styled(motion.time)`
   font-size: 1.2rem;
   letter-spacing: 0.25rem;
   font-family: ${({ theme }) => theme.secondaryFont};
 `;
 
-export const Footer = styled.ul`
+export const Technologies = styled(motion.ul)`
   margin: 0;
   font-size: 0.8rem;
   font-family: ${({ theme }) => theme.secondaryFont};
@@ -194,4 +187,40 @@ export const Footer = styled.ul`
     padding: 0;
     margin: 0 1rem;
   }
+`;
+
+export const Popup = styled(motion.div)`
+  top: 50%;
+  left: 50%;
+  position: fixed;
+  overflow: hidden;
+  width: 90%;
+  height: 70vw;
+  margin-left: -45%;
+  margin-top: -45%;
+
+  ${({ theme }) => theme.md`
+    width: 30%;
+    height: 50%;
+    margin-left: -15%;
+    margin-top: -15%;
+  `}
+`;
+
+export const PopupContent = styled(motion.div)`
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+`;
+
+export const PopupHeader = styled(motion.div)`
+  max-width: 50%;
+  font-size: 2rem;
+
+  ${({ theme }) => theme.sm`
+    font-size: 2.5rem;
+  `}
 `;

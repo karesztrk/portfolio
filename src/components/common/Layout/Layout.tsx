@@ -9,6 +9,7 @@ import { Global } from './styles';
 import './fonts.css';
 import schemes from './schemes.json';
 import { createMedia } from '@artsy/fresnel';
+import { AnimateSharedLayout } from 'framer-motion';
 
 type BreakPointKey = 'sm' | 'md' | 'lg' | 'xl';
 
@@ -107,7 +108,7 @@ export const Layout: FC = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
       <Global />
-      {children}
+      <AnimateSharedLayout type='crossfade'>{children}</AnimateSharedLayout>
     </ThemeProvider>
   );
 };
