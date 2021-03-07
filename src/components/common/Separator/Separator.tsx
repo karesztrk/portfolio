@@ -12,21 +12,21 @@ import {
 
 interface SeparatorProps {
   variant?: string;
-  id: string;
 }
 
-export const Separator: FC<SeparatorProps> = ({ variant = 'light', id }) => {
+export const Separator: FC<SeparatorProps> = ({ variant = 'light' }) => {
   const { scrollY } = useViewportScroll();
-  const [start, setStart] = useState<number>();
+  const [start, setStart] = useState<number>(0);
+  const [end, setEnd] = useState<number>(0);
   const { ref, inView, entry } = useInView({
     triggerOnce: true,
   });
-  const y = useTransform(scrollY, (value) => {
-    return start ? (start - value) / 50 : 0;
-  });
+  const y = useTransform(scrollY, [start, end], [0, -50]);
   useEffect(() => {
     if (inView && entry) {
-      setStart(entry.boundingClientRect.top);
+      const { offsetTop } = entry.target as HTMLElement;
+      setStart(offsetTop - window.innerHeight);
+      setEnd(offsetTop);
     }
   }, [inView]);
   const renderImage = () => {

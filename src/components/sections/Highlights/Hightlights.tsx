@@ -9,7 +9,7 @@ const imageMotion: Variants = {
   initial: {
     transformPerspective: 1000,
     opacity: 0,
-    translateX: '2%',
+    translateX: '10%',
     translateY: '2%',
   },
   reveal: {
@@ -18,6 +18,7 @@ const imageMotion: Variants = {
     rotateZ: -2,
     scale: 0.95,
     transformPerspective: 1000,
+    translateX: '0%',
     translateY: '2%',
     opacity: 1,
   },

@@ -14,6 +14,7 @@ export const SeparatorImage = styled.svg`
 export const SeparatorLightSide = styled(motion.path)`
   stroke: ${({ theme }) => theme.quaternaryColor};
   stroke-width: 5px;
+  position: absolute;
 `;
 
 export const SeparatorLightMiddle = styled(motion.path)`
@@ -25,6 +26,7 @@ export const SeparatorLightMiddle = styled(motion.path)`
 export const SeparatorDarkSide = styled(motion.path)`
   stroke: ${({ theme }) => theme.secondaryColor};
   stroke-width: 5px;
+  position: absolute;
 `;
 
 export const SeparatorDarkMiddle = styled(motion.path)`
