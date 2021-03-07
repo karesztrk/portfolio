@@ -1,6 +1,5 @@
-import { MotionValue, useTransform, useViewportScroll } from 'framer-motion';
+import { useTransform, useViewportScroll } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { useStaticQuery } from 'gatsby';
 import React, { FC, useEffect, useRef, useState } from 'react';
 import {
   Wrapper,
