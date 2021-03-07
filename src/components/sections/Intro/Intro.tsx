@@ -127,7 +127,7 @@ export const Intro = () => {
         </HeroBoxWrapper>
         </Media>
       </IntroWrapper>
-      <Separator />
+      <Separator id="intro" />
     </Wrapper>
     </MediaContextProvider>
   );

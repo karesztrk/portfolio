@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import me from 'assets/pictures/me.webp';
-import { Slide } from 'react-reveal';
-import withReveal from 'react-reveal/withReveal';
 
 export const Wrapper = styled.section`
   color: #ffffff;
@@ -40,40 +38,37 @@ export const Column = styled.div`
   `}
 `;
 
-export const PhotoFrame = withReveal(
-  styled.div`
-    position: relative;
+export const PhotoFrame = styled.div`
+  position: relative;
+  width: 225px;
+  height: 280px;
+  margin: 0 auto;
+  border: 3px solid ${({ theme }) => theme.primaryColor};
+  box-shadow: 0px 5px 15px rgb(0, 0, 0);
+  box-sizing: border-box;
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: -3px;
+    top: -3px;
     width: 225px;
     height: 280px;
-    margin: 0 auto;
-    border: 3px solid ${({ theme }) => theme.primaryColor};
-    box-shadow: 0px 5px 15px rgb(0, 0, 0);
-    box-sizing: border-box;
+    display: block;
+    background-image: url(${me});
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: all 0.25s ease 0s;
+    transform: translate(-10px, -10px);
+  }
 
+  &:hover {
     &:before {
-      content: '';
-      position: absolute;
-      left: -3px;
-      top: -3px;
-      width: 225px;
-      height: 280px;
-      display: block;
-      background-image: url(${me});
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      transition: all 0.25s ease 0s;
-      transform: translate(-10px, -10px);
+      transform: translate(0px, 0px);
     }
-
-    &:hover {
-      &:before {
-        transform: translate(0px, 0px);
-      }
-    }
-  `,
-  <Slide right />
-);
+  }
+`;
 
 export const TechContainer = styled.ul`
   display: flex;

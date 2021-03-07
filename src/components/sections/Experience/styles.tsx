@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Slide } from 'react-reveal';
-import withReveal from 'react-reveal/withReveal';
 
 export const Wrapper = styled.section`
   color: #ffffff;
@@ -31,13 +29,10 @@ export const Content = styled.div`
   }
 `;
 
-export const Details = withReveal(
-  styled.div`
-    padding: 0;
+export const Details = styled.div`
+  padding: 0;
 
-    ${({ theme }) => theme.md`
+  ${({ theme }) => theme.md`
       padding: 0 2rem;
     `}
-  `,
-  <Slide bottom />
-);
+`;

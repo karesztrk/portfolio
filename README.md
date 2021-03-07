@@ -4,7 +4,7 @@
 
 ## Libraries used
 
-* React
-* Gatsby
-* Styled-components
-* React Reveal
+- React
+- Gatsby
+- Styled-components
+- Framer Motion

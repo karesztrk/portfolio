@@ -16,13 +16,13 @@ export default function IndexRoute() {
       <Intro />
       <Main>
         <About />
-        <Separator />
+        <Separator id='about' />
         <Experience />
-        <Separator variant='dark' />
+        <Separator variant='dark' id='experience' />
         <Highlights />
-        <Separator />
+        <Separator id='highlights' />
         <Projects />
-        <Separator variant='dark' />
+        <Separator variant='dark' id='projects' />
         <Contact />
         <Footer />
       </Main>
