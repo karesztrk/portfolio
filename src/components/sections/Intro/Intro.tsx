@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Header, Container, SocialLinksMenu } from 'components/common';
-import { useTransition } from 'react-spring';
 import {
   Wrapper,
   IntroWrapper,
@@ -19,116 +18,245 @@ import {
   HeroBoxNine,
   HeroBoxTen,
 } from './styles';
-import { Media, MediaContextProvider } from '../../common/Layout/Layout'
+import { Media, MediaContextProvider } from '../../common/Layout/Layout';
+import { useAnimation, Variants } from 'framer-motion';
+
+const microBoxVariants = {
+  initial: {
+    opacity: 0,
+    rotate: 0,
+    scale: 0.7,
+  },
+  animate: {
+    opacity: 1,
+    rotate: 10,
+    scale: 1,
+    transition: {
+      delay: 1,
+    },
+  },
+};
+
+const minorBoxVariants = {
+  initial: {
+    transformPerspective: 0,
+    scaleX: 0.05,
+    scaleY: 0,
+    rotateZ: 0,
+  },
+  phaseOne: {
+    transformPerspective: 500,
+    scaleX: 0.05,
+    scaleY: 1,
+    transition: {
+      type: 'spring',
+      duration: 0.5,
+      delay: Math.random() * 0.25,
+    },
+  },
+  phaseTwo: {
+    scaleX: 1,
+    transition: {
+      type: 'spring',
+      duration: 0.35,
+    },
+  },
+  phaseThree: {
+    rotateZ: 20,
+    transition: {
+      type: 'spring',
+      duration: 0.7,
+    },
+  },
+};
+
+const majorBoxVariants = {
+  initial: {
+    transformPerspective: 0,
+    scaleX: 0.05,
+    scaleY: 0,
+    rotateX: 0,
+    rotateY: 0,
+    rotateZ: 0,
+  },
+  phaseOne: {
+    transformPerspective: 500,
+    scaleX: 0.05,
+    scaleY: 1,
+    transition: {
+      type: 'spring',
+      duration: 0.5,
+    },
+  },
+  phaseTwo: {
+    scaleX: 1,
+    transition: {
+      type: 'spring',
+      duration: 0.35,
+    },
+  },
+  phaseThree: {
+    rotateX: 8,
+    rotateY: -15,
+    rotateZ: -1,
+    transition: {
+      type: 'spring',
+      duration: 0.7,
+    },
+  },
+};
+
+const heroBoxOneVariants = microBoxVariants;
+
+const heroBoxTwoVariants = {
+  ...microBoxVariants,
+  animate: {
+    ...microBoxVariants.animate,
+    rotate: microBoxVariants.animate.rotate * -1,
+  },
+};
+
+const heroBoxThreeVariants = {
+  ...microBoxVariants,
+  animate: {
+    ...microBoxVariants.animate,
+    rotate: microBoxVariants.animate.rotate * 3,
+  },
+};
+
+const heroBoxFourVariants = {
+  ...microBoxVariants,
+  animate: {
+    ...microBoxVariants.animate,
+    rotate: microBoxVariants.animate.rotate * -3,
+  },
+};
+
+const heroBoxEightVariants = {
+  ...microBoxVariants,
+  animate: {
+    ...microBoxVariants.animate,
+    rotate: microBoxVariants.animate.rotate * -0.5,
+  },
+};
+
+const heroBoxNineVariants = {
+  ...microBoxVariants,
+  animate: {
+    ...microBoxVariants.animate,
+    rotate: microBoxVariants.animate.rotate * -1.2,
+  },
+};
+
+const heroBoxTenVariants = {
+  ...microBoxVariants,
+  animate: {
+    ...microBoxVariants.animate,
+    rotate: microBoxVariants.animate.rotate * -1.1,
+  },
+};
 
 export const Intro = () => {
-  const config = { mass: 1, tension: 450, friction: 30 };
-  const majorBoxTransition = useTransition(true, null, {
-    initial: { transform: 'perspective(0px) scaleX(0.05) scaleY(0) rotateX(0deg) rotateY(0deg) rotateZ(0deg)' },
-    enter: [
-      { transform: 'perspective(500px) scaleX(0.05) scaleY(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg)' },
-      { transform: 'perspective(500px) scaleX(1) scaleY(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg)' },
-      { transform: 'perspective(500px) scaleX(1) scaleY(1) rotateX(8deg) rotateY(-15deg) rotateZ(-1deg)' },
-    ],
-    config,
-  });
+  const minorBox = useAnimation();
+  const majorBox = useAnimation();
+  const startIntroSequence = async () => {
+    minorBox.start('phaseOne').then(() => {
+      minorBox.start('phaseTwo').then(() => {
+        minorBox.start('phaseThree');
+      });
+    });
+    majorBox.start('phaseOne').then(() => {
+      majorBox.start('phaseTwo').then(() => {
+        majorBox.start('phaseThree');
+      });
+    });
+  };
 
-  const minorBoxTransition = useTransition(true, null, {
-    initial: { transform: 'perspective(0px) scaleX(0.05) scaleY(0) rotateZ(0deg)' },
-    enter: [
-      { transform: 'perspective(500px) scaleX(0.05) scaleY(1) rotateZ(0deg)' },
-      { transform: 'perspective(500px) scaleX(1) scaleY(1) rotateZ(0deg)' },
-      { transform: 'perspective(500px) scaleX(1) scaleY(1) rotateZ(20deg)' },
-    ],
-    config,
-  });
+  useEffect(() => {
+    startIntroSequence();
+  }, []);
 
-  const microBoxTransition = useTransition(true, null, {
-    from: () => ({ opacity: 0, transform: [0, 0.7] }),
-    enter: () => ({ opacity: 1, transform: [10, 1] }),
-    config,
-  });
   return (
     <MediaContextProvider>
       <Wrapper>
-      <Header />
-      <IntroWrapper as={Container}>
-        <Details>
-          <h4>Károly Török</h4>
-          <h1>Bringing your ideas to life</h1>
-          <p>Experienced full-stack web developer</p>
-          <Divider />
-          <SocialLinksMenu />
-        </Details>
-        <Media greaterThan="sm">
-          <HeroBoxWrapper>
-          <svg className="placeholder" width="528" height="396" viewBox="0 0 528 396">
-            <rect width="528" height="396" style={{ fill: 'transparent' }} />
-          </svg>
-          {microBoxTransition.map(({ key, props: { transform, ...rest } }) => (
-            <React.Fragment key={`box-micro-one-${key}`}>
+        <Header />
+        <IntroWrapper as={Container}>
+          <Details>
+            <h4>Károly Török</h4>
+            <h1>Bringing your ideas to life</h1>
+            <p>Experienced full-stack web developer</p>
+            <Divider />
+            <SocialLinksMenu />
+          </Details>
+          <Media greaterThan='sm'>
+            <HeroBoxWrapper>
+              <svg
+                className='placeholder'
+                width='528'
+                height='396'
+                viewBox='0 0 528 396'
+              >
+                <rect
+                  width='528'
+                  height='396'
+                  style={{ fill: 'transparent' }}
+                />
+              </svg>
               <HeroBoxOne
-                style={{
-                  transform: transform.interpolate((rotate, scale) => `rotate(${rotate * 1}deg) scale(${scale})`),
-                  ...rest,
-                }}
+                initial='initial'
+                animate='animate'
+                variants={heroBoxOneVariants}
               />
               <HeroBoxTwo
-                style={{
-                  transform: transform.interpolate((rotate, scale) => `rotate(${rotate * -1}deg) scale(${scale})`),
-                  ...rest,
-                }}
+                initial='initial'
+                animate='animate'
+                variants={heroBoxTwoVariants}
               />
               <HeroBoxThree
-                style={{
-                  transform: transform.interpolate((rotate, scale) => `rotate(${rotate}deg) scale(${scale})`),
-                  ...rest,
-                }}
+                initial='initial'
+                animate='animate'
+                variants={heroBoxThreeVariants}
               />
               <HeroBoxFour
-                style={{
-                  transform: transform.interpolate((rotate, scale) => `rotate(${rotate * -3}deg) scale(${scale})`),
-                  ...rest,
-                }}
+                initial='initial'
+                animate='animate'
+                variants={heroBoxFourVariants}
               />
-            </React.Fragment>
-          ))}
-          {majorBoxTransition.map(({ key, props }) => (
-            <HeroBoxFive key={`box-five-${key}`} style={props} />
-          ))}
-          {minorBoxTransition.map(({ key, props }) => (
-            <React.Fragment key={`box-minor-${key}`}>
-              <HeroBoxSix style={props} />
-              <HeroBoxSeven style={props} />
-            </React.Fragment>
-          ))}
-          {microBoxTransition.map(({ key, props: { transform, ...rest } }) => (
-            <React.Fragment key={`box-micro-two-${key}`}>
+              <HeroBoxFive
+                initial='initial'
+                variants={majorBoxVariants}
+                animate={majorBox}
+              />
+              <HeroBoxSix
+                initial='initial'
+                variants={minorBoxVariants}
+                animate={minorBox}
+              />
+              <HeroBoxSeven
+                initial='initial'
+                variants={minorBoxVariants}
+                animate={minorBox}
+              />
               <HeroBoxEight
-                style={{
-                  transform: transform.interpolate((rotate, scale) => `rotate(${rotate * -0.5}deg) scale(${scale})`),
-                  ...rest,
-                }}
+                initial='initial'
+                animate='animate'
+                variants={heroBoxEightVariants}
               />
               <HeroBoxNine
-                style={{
-                  transform: transform.interpolate((rotate, scale) => `rotate(${rotate * -1.2}deg) scale(${scale})`),
-                  ...rest,
-                }}
+                initial='initial'
+                animate='animate'
+                variants={heroBoxNineVariants}
               />
               <HeroBoxTen
-                style={{
-                  transform: transform.interpolate((rotate, scale) => `rotate(${rotate * -1.1}deg) scale(${scale})`),
-                  ...rest,
-                }}
+                initial='initial'
+                animate='animate'
+                variants={heroBoxTenVariants}
               />
-            </React.Fragment>
-          ))}
-        </HeroBoxWrapper>
-        </Media>
-      </IntroWrapper>
-      <Separator id="intro" />
-    </Wrapper>
+            </HeroBoxWrapper>
+          </Media>
+        </IntroWrapper>
+        <Separator id='intro' />
+      </Wrapper>
     </MediaContextProvider>
   );
 };
