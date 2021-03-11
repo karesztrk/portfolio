@@ -198,6 +198,7 @@ export const Popup = styled(motion.div)`
   height: 70vw;
   margin-left: -45%;
   margin-top: -45%;
+  z-index: 10;
 
   ${({ theme }) => theme.md`
     width: 30%;

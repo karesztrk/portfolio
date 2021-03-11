@@ -1,10 +1,11 @@
+import { motion } from 'framer-motion';
 import React from 'react';
 import styled from 'styled-components';
 
-export const SectionHeader = styled.div`
+export const SectionHeader = styled(motion.div)`
   display: flex;
   align-items: center;
-  margin-bottom: 1.45rem;
+  margin-bottom: 2.5rem;
   width: 100%;
   justify-content: space-between;
 

@@ -9,6 +9,7 @@ import {
 } from './styles';
 import { ProjectBackground } from './ProjectBackground';
 import { Guide } from './Guide';
+import { Variants } from 'framer-motion';
 
 interface ProjectItemProps {
   project: {
@@ -20,12 +21,14 @@ interface ProjectItemProps {
   };
   guide: boolean;
   onItemClick: (id: string) => void;
+  variants: Variants;
 }
 
 export const ProjectItem: FC<ProjectItemProps> = ({
   project,
   guide,
   onItemClick,
+  variants,
 }) => {
   const { id, title, technologies } = project;
   const theme = useContext(ThemeContext);
@@ -42,7 +45,7 @@ export const ProjectItem: FC<ProjectItemProps> = ({
     quaternaryColor,
   };
   return (
-    <GridItem layoutId={id} onClick={() => onItemClick(id)}>
+    <GridItem layoutId={id} onClick={() => onItemClick(id)} variants={variants}>
       <GridContent
         style={{
           transform: `perspective(600px)`,

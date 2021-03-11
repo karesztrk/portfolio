@@ -4,57 +4,78 @@ import { Column, Details, Wrapper } from './styles';
 import skodaconnect from 'assets/pictures/skodaconnect.webp';
 import { useInView } from 'react-intersection-observer';
 import { motion, useAnimation, Variants } from 'framer-motion';
+import useInViewAnimation from 'hooks/useInViewAnimation';
 
 const imageMotion: Variants = {
   initial: {
     transformPerspective: 1000,
     opacity: 0,
-    translateX: '10%',
-    translateY: '2%',
+    x: 100,
+    y: 20,
   },
-  reveal: {
+  show: {
     rotateX: 7,
     rotateY: 16,
     rotateZ: -2,
     scale: 0.95,
     transformPerspective: 1000,
-    translateX: '0%',
-    translateY: '2%',
+    x: 0,
+    y: 20,
     opacity: 1,
+    transition: {
+      duration: 1,
+    },
+  },
+};
+
+const header = {
+  hidden: {
+    opacity: 0,
+    x: -150,
+  },
+  show: {
+    opacity: 1,
+    x: 0,
+  },
+};
+
+const rightSide = {
+  hidden: {
+    opacity: 0,
+    x: 100,
+  },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 1,
+      staggerChildren: 0.2,
+    },
   },
 };
 
 //
 export const Highlights = () => {
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    threshold: 1,
-  });
-  const animation = useAnimation();
-  useEffect(() => {
-    console.log(inView);
-    if (inView) {
-      animation.start('reveal');
-    }
-  }, [inView]);
+  const { ref, animation } = useInViewAnimation();
+  const { ref: imageRef, animation: imageAnimation } = useInViewAnimation(1);
   return (
-    <Wrapper as={Container} id='highlights'>
-      <SectionHeader>
+    <Wrapper ref={ref} as={Container} id='highlights'>
+      <SectionHeader initial='hidden' animate={animation} variants={header}>
         <h2>Highlights</h2>
         <Divider />
       </SectionHeader>
       <Details>
         <Column>
           <motion.img
-            ref={ref}
+            ref={imageRef}
             initial={'initial'}
-            animate={animation}
+            animate={imageAnimation}
             variants={imageMotion}
             alt='Skoda Connect'
             src={skodaconnect}
           />
         </Column>
-        <Column>
+        <Column initial='hidden' animate={animation} variants={rightSide}>
           <p>
             Škoda-Connect is a highly interactive Single Page Application that
             gives you the ease of remote vehicle management. Through this web
@@ -68,6 +89,10 @@ export const Highlights = () => {
             I've got familiar with the top Front-end technologies and soon I've
             become a passionate Java Script developer. This excitement has not
             faded since then .
+          </p>
+          <p>
+            In this team I learned how professional software if getting
+            released.
           </p>
         </Column>
       </Details>

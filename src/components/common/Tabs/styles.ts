@@ -1,13 +1,14 @@
 import styled, { css, ThemeProps } from 'styled-components';
 import item from 'assets/illustrations/timeline-item.inline.svg';
 import { MediaQueryies } from 'components/common/Layout';
+import { motion } from 'framer-motion';
 
 export const Wrapper = styled.div`
   display: flex;
   font-size: inherit;
 `;
 
-export const List = styled.ul`
+export const List = styled(motion.ul)`
   font-size: inherit;
   list-style: none;
   margin: 0;
@@ -19,7 +20,7 @@ export const List = styled.ul`
   `}
 `;
 
-export const ListItem = styled.li<{ active: boolean; grow: number }>`
+export const ListItem = styled(motion.li)<{ active: boolean; grow: number }>`
   position: relative;
   z-index: 0;
   padding: 10px;

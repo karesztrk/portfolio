@@ -1,11 +1,39 @@
+import { AnimationControls, useAnimation } from 'framer-motion';
 import React, { FC, useState } from 'react';
 import { Wrapper, List, ListItem, Content, ItemImage } from './styles';
 
 interface TabsProps {
   activeTab: string;
+  animation: AnimationControls;
 }
 
-export const Tabs: FC<TabsProps> = ({ activeTab, children }) => {
+const listVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.75,
+    },
+  },
+};
+
+const listItemVariants = {
+  hidden: {
+    opacity: 0,
+    y: 100,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: 'spring',
+      mass: 1.5,
+      stiffness: 300,
+      damping: 15,
+    },
+  },
+};
+
+export const Tabs: FC<TabsProps> = ({ activeTab, children, animation }) => {
   const [activeTabValue, setActiveTabValue] = useState(activeTab);
   const index =
     children && Array.isArray(children)
@@ -17,7 +45,7 @@ export const Tabs: FC<TabsProps> = ({ activeTab, children }) => {
   const tab = children[tabIndex];
   return (
     <Wrapper>
-      <List>
+      <List initial='hidden' animate={animation} variants={listVariants}>
         {children &&
           children.map((child, i) => {
             const { title, tabKey, buttonGrow } = child.props;
@@ -29,6 +57,7 @@ export const Tabs: FC<TabsProps> = ({ activeTab, children }) => {
                 active={active}
                 onClick={onListItemClick}
                 grow={buttonGrow}
+                variants={listItemVariants}
               >
                 <ItemImage state={{ active }} />
                 {active && <span>{title}</span>}

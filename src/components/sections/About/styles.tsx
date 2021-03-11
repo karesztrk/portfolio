@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import me from 'assets/pictures/me.webp';
+import { motion } from 'framer-motion';
 
 export const Wrapper = styled.section`
   color: #ffffff;
@@ -20,7 +21,7 @@ export const Details = styled.div`
   `}
 `;
 
-export const Column = styled.div`
+export const Column = styled(motion.div)`
   flex: 1;
   font-size: 1.2rem;
   margin-bottom: 2rem;
@@ -38,7 +39,7 @@ export const Column = styled.div`
   `}
 `;
 
-export const PhotoFrame = styled.div`
+export const PhotoFrame = styled(motion.div)`
   position: relative;
   width: 225px;
   height: 280px;
@@ -70,7 +71,7 @@ export const PhotoFrame = styled.div`
   }
 `;
 
-export const TechContainer = styled.ul`
+export const TechContainer = styled(motion.ul)`
   display: flex;
   flex-wrap: wrap;
   padding-top: 1rem;

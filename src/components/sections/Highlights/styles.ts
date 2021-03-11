@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 export const Wrapper = styled.section`
@@ -12,14 +13,13 @@ export const Wrapper = styled.section`
 export const Details = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: 1rem;
 
   ${({ theme }) => theme.md`
     flex-direction: row;
   `}
 `;
 
-export const Column = styled.div`
+export const Column = styled(motion.div)`
   flex: 1;
   font-size: 1.2rem;
   margin-bottom: 2rem;

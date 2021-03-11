@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -29,7 +30,7 @@ export const Content = styled.div`
   }
 `;
 
-export const Details = styled.div`
+export const Details = styled(motion.div)`
   padding: 0;
 
   ${({ theme }) => theme.md`
