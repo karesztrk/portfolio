@@ -37,8 +37,8 @@ export interface Theme {
   tertiaryColor: string;
   quaternaryColor: string;
   breakpoints: Breakpoints;
-  primaryFont: string;
-  secondaryFont: string;
+  headerFamily: string;
+  textFamily: string;
   onChangeScheme: (name: string) => void;
   schemes: Scheme[];
 }
@@ -88,8 +88,8 @@ export const Layout: FC = ({ children }) => {
     tertiaryColor: '#086972',
     quaternaryColor: '#071a52',
     breakpoints,
-    primaryFont: "'Nunito', Open Sans",
-    secondaryFont: "'Montserrat', Open Sans",
+    headerFamily: "'Barlow', sans-serif",
+    textFamily: "'Inter', sans-serif",
     ...respMin,
     onChangeScheme: (name: string) => setSelectedScheme(name),
     schemes,

@@ -163,13 +163,11 @@ export const Header = styled(motion.h4)`
 export const Time = styled(motion.time)`
   font-size: 1.2rem;
   letter-spacing: 0.25rem;
-  font-family: ${({ theme }) => theme.secondaryFont};
 `;
 
 export const Technologies = styled(motion.ul)`
   margin: 0;
   font-size: 0.8rem;
-  font-family: ${({ theme }) => theme.secondaryFont};
   font-weight: 300;
   max-width: 80%;
   list-style: none;

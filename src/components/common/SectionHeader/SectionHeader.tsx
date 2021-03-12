@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 export const SectionHeader = styled(motion.div)`
+  font-family: ${({ theme }) => theme.headerFamily};
   display: flex;
   align-items: center;
   margin-bottom: 2.5rem;
