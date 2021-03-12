@@ -18,17 +18,6 @@ const header = {
 };
 
 const projectVariants = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.5,
-      ease: 'easeOut',
-      duration: 1,
-    },
-  },
-};
-
-const projectItemVariants = {
   hidden: {
     opacity: 0,
   },
@@ -37,7 +26,7 @@ const projectItemVariants = {
     transition: {
       staggerChildren: 0.5,
       ease: 'easeOut',
-      duration: 0.5,
+      duration: 1,
     },
   },
 };
@@ -61,14 +50,18 @@ export const Projects = () => {
         <h2>Projects</h2>
         <Divider />
       </SectionHeader>
-      <Grid initial='hidden' animate={animation} variants={projectVariants}>
+      <Grid
+        layout
+        initial='hidden'
+        animate={animation}
+        variants={projectVariants}
+      >
         {projects.map((project, index) => (
           <ProjectItem
             key={project.title}
             project={project}
             guide={index === 0 && showGuide}
             onItemClick={onItemClick}
-            variants={projectItemVariants}
           />
         ))}
       </Grid>

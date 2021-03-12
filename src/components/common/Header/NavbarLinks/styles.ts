@@ -35,7 +35,7 @@ const nonDesktopStyle = ({ theme }: ThemeProps<MediaQueryies>) => css`
 
   a {
     color: ${theme.primaryColor};
-    font-family: ${theme.secondaryFont};
+    font-family: ${theme.textFamily};
     font-size: 2rem;
     text-decoration: none;
     margin-bottom: 1rem;

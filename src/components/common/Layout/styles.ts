@@ -23,7 +23,7 @@ export const Global = createGlobalStyle`
   ${scrollbarStyle}
 
   html {
-    font-family: ${({ theme }) => theme.primaryFont};
+    font-family: ${({ theme }) => theme.textFamily};
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
 
@@ -624,7 +624,6 @@ export const Global = createGlobalStyle`
     body {
       margin: 0;
       padding: 0;
-      font-family: ${({ theme }) => theme.primaryFont};
       color: hsla(0, 0%, 0%, 0.8);
       font-weight: normal;
       word-wrap: break-word;

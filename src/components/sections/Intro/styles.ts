@@ -68,16 +68,17 @@ export const Details = styled.div`
   `}
 
   h1 {
+    font-family: ${({ theme }) => theme.headerFamily};
     font-size: 2rem;
     line-height: 3rem;
     max-width: initial;
     font-weight: bold;
     color: #ffffff;
-    text-transform: uppercase;
+    text-transform: capitalize;
     margin: 0;
 
     ${({ theme }) => theme.md`
-      font-size: 4rem;
+      font-size: 5rem;
       line-height: 5rem;
       max-width: 520px;
     `}
