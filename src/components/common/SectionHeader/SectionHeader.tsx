@@ -17,7 +17,7 @@ export const SectionHeader = styled(motion.div)`
   h2 {
     margin: 0;
     font-weight: bold;
-    font-size: 2rem;
+    font-size: 2.5rem;
 
     ${({ theme }) => theme.md`
         font-size: 3rem;

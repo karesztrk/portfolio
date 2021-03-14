@@ -83,18 +83,14 @@ const activeStyle = ({ theme }: ThemeProps<MediaQueryies>) => css`
 
 export const ItemImage = styled(item)`
   position: absolute;
-  transition: color 0.25s ease 0s, width 0.25s ease;
   z-index: -1;
   top: 0;
   left: 0;
   height: 100%;
   color: ${({ theme }) => theme.primaryColor};
-  ${({ state }) =>
-    state &&
-    !state.active &&
-    `
-      width: 0%;
-      `}
+  width: 110px;
 
-  ${({ state }) => state && state.active && activeStyle}
+  ${({ theme }) => theme.md`
+    width: 221px;
+  `}
 `;

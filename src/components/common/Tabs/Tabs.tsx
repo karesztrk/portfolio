@@ -1,10 +1,11 @@
-import { AnimationControls, useAnimation } from 'framer-motion';
-import React, { FC, useState } from 'react';
+import { AnimationControls, motion } from 'framer-motion';
+import React, { FC, ReactNode, ReactNodeArray, useState } from 'react';
 import { Wrapper, List, ListItem, Content, ItemImage } from './styles';
 
 interface TabsProps {
   activeTab: string;
   animation: AnimationControls;
+  children: ReactNodeArray;
 }
 
 const listVariants = {
@@ -33,6 +34,16 @@ const listItemVariants = {
   },
 };
 
+const itemContentVariants = {
+  initial: {},
+  inactive: {
+    opacity: 0.1,
+  },
+  active: {
+    opacity: 1,
+  },
+};
+
 export const Tabs: FC<TabsProps> = ({ activeTab, children, animation }) => {
   const [activeTabValue, setActiveTabValue] = useState(activeTab);
   const index =
@@ -47,25 +58,33 @@ export const Tabs: FC<TabsProps> = ({ activeTab, children, animation }) => {
     <Wrapper>
       <List initial='hidden' animate={animation} variants={listVariants}>
         {children &&
-          children.map((child, i) => {
+          children.map((child: ReactNode, i: number) => {
+            if (!child) {
+              return null;
+            }
             const { title, tabKey, buttonGrow } = child.props;
-            const onListItemClick = () => setActiveTabValue(tabKey);
             const active = tabIndex === i;
             return (
               <ListItem
                 key={tabKey}
                 active={active}
-                onClick={onListItemClick}
+                onClick={() => setActiveTabValue(tabKey)}
                 grow={buttonGrow}
                 variants={listItemVariants}
               >
-                <ItemImage state={{ active }} />
-                {active && <span>{title}</span>}
+                <motion.div
+                  initial='initial'
+                  animate={active ? 'active' : 'inactive'}
+                  variants={itemContentVariants}
+                >
+                  <ItemImage />
+                  <span>{title}</span>
+                </motion.div>
               </ListItem>
             );
           })}
       </List>
-      <Content>{tab.props.children}</Content>
+      {tab && <Content>{tab.props.children}</Content>}
     </Wrapper>
   );
 };

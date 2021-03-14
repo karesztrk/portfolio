@@ -69,7 +69,7 @@ export const Details = styled.div`
 
   h1 {
     font-family: ${({ theme }) => theme.headerFamily};
-    font-size: 2rem;
+    font-size: 3rem;
     line-height: 3rem;
     max-width: initial;
     font-weight: bold;

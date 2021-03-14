@@ -77,12 +77,12 @@ export const TechContainer = styled(motion.ul)`
   padding-top: 1rem;
   list-style: none;
   margin: 0;
+  font-size: 1.75rem;
 
   * {
     color: inherit;
     background: transparent;
     margin: 0.5rem 1rem 0.5rem 0;
-    font-weight: 300;
     box-shadow: inset 0 -4px 0 ${({ theme }) => theme.secondaryColor};
     transition: box-shadow 0.25s ease 0s;
 
