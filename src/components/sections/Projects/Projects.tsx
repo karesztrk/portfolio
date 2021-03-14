@@ -3,8 +3,8 @@ import { Container, SectionHeader, Divider } from 'components/common';
 import { Wrapper, Grid } from './styles';
 import projects from './data.json';
 import { ProjectItem } from './ProjectItem';
-import ProjectPopup from './ProjectPopup';
 import useInViewAnimation from 'hooks/useInViewAnimation';
+import ProjectPopup from './ProjectPopup';
 
 const header = {
   hidden: {
@@ -18,11 +18,8 @@ const header = {
 };
 
 const projectVariants = {
-  hidden: {
-    opacity: 0,
-  },
+  hidden: {},
   show: {
-    opacity: 1,
     transition: {
       staggerChildren: 0.5,
       ease: 'easeOut',
@@ -36,9 +33,11 @@ export const Projects = () => {
   const [selected, setSelected] = useState<string>();
   const [showGuide, setShowGuide] = useState(true);
   const onItemClick = (id: string) => {
-    if (!selected) {
+    setShowGuide(false);
+    if (selected) {
+      setSelected(undefined);
+    } else {
       setSelected(id);
-      setShowGuide(false);
     }
   };
   const selectedProject =
@@ -62,17 +61,16 @@ export const Projects = () => {
             project={project}
             guide={index === 0 && showGuide}
             onItemClick={onItemClick}
+            selected={project.id === selected}
           />
         ))}
       </Grid>
-      <>
-        {selectedProject && (
-          <ProjectPopup
-            project={selectedProject}
-            onClick={() => setSelected(undefined)}
-          />
-        )}
-      </>
+      {selectedProject && (
+        <ProjectPopup
+          project={selectedProject}
+          onClick={() => setSelected(undefined)}
+        />
+      )}
     </Wrapper>
   );
 };

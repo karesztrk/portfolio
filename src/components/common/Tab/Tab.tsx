@@ -1,6 +1,11 @@
 import React, { FC } from 'react';
 
-export const Tab: FC<{ title: string; tabKey: string; buttonGrow: number }> = ({
-  title,
-  tabKey,
-}) => <div key={tabKey}>{title}</div>;
+interface TabProps {
+  title: string;
+  tabKey: string;
+  buttonGrow: number;
+}
+
+export const Tab: FC<TabProps> = ({ title, tabKey }) => (
+  <div key={tabKey}>{title}</div>
+);

@@ -133,7 +133,7 @@ export const Global = createGlobalStyle`
       margin: 0;
     }
     optgroup {
-      font-weight: 700;
+      font-weight: bold;
     }
     button,
     input {

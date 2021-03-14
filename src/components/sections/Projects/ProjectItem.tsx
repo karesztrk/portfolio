@@ -1,4 +1,4 @@
-import React, { FC, useContext, useState } from 'react';
+import React, { FC, useContext } from 'react';
 import { ThemeContext } from 'styled-components';
 import {
   GridItem,
@@ -20,12 +20,23 @@ interface ProjectItemProps {
   };
   guide: boolean;
   onItemClick: (id: string) => void;
+  selected: boolean;
 }
+
+const variants = {
+  hidden: {
+    opacity: 0,
+  },
+  show: {
+    opacity: 1,
+  },
+};
 
 export const ProjectItem: FC<ProjectItemProps> = ({
   project,
   guide,
   onItemClick,
+  selected,
 }) => {
   const { id, title, technologies } = project;
   const theme = useContext(ThemeContext);
@@ -42,7 +53,18 @@ export const ProjectItem: FC<ProjectItemProps> = ({
     quaternaryColor,
   };
   return (
-    <GridItem layoutId={id} onClick={() => onItemClick(id)}>
+    <GridItem
+      layoutId={id}
+      onClick={() => onItemClick(id)}
+      variants={variants}
+      animate={
+        selected
+          ? {
+              opacity: 0,
+            }
+          : { opacity: 1 }
+      }
+    >
       <GridContent
         style={{
           transform: `perspective(600px)`,

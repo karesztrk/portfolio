@@ -146,9 +146,13 @@ export const ProjectContent = styled(motion.div)`
 `;
 
 export const Description = styled(motion.p)`
-  font-size: 1.2rem;
+  font-size: 0.75rem;
   max-width: 60%;
   margin: 0;
+
+  ${({ theme }) => theme.sm`
+      font-size: 1.2rem;
+  `}
 `;
 
 export const Header = styled(motion.h4)`
