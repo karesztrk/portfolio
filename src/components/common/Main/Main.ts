@@ -5,5 +5,4 @@ export const Main = styled.main`
     180deg,
     ${({ theme }) => `${theme.tertiaryColor} 0%, ${theme.quaternaryColor} 100%`}
   );
-  overflow: hidden;
 `;
