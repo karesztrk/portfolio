@@ -34,10 +34,14 @@ export const Separator = styled(separator)`
   position: absolute;
   bottom: -1px;
   left: 0;
-  height: 100%;
+  height: 80vw;
   width: 100%;
   color: ${({ theme }) => theme.tertiaryColor};
   z-index: -1;
+
+  ${({ theme }) => theme.md`
+    height: 100%;
+  `}
 `;
 
 export const IntroWrapper = styled.div`

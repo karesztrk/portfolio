@@ -6,7 +6,7 @@ import { Wrapper, LogoImage } from './styles';
 
 export const Navbar = () => (
   <Wrapper as={Container}>
-    <Link to="/">
+    <Link to='/'>
       <LogoImage />
     </Link>
     <NavbarLinks desktop />
