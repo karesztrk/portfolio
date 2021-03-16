@@ -4,7 +4,6 @@ import styled from 'styled-components';
 export const Wrapper = styled.section`
   color: #ffffff;
   flex-direction: column;
-  overflow: hidden;
 
   ${({ theme }) => theme.md`
     flex-direction: row;
@@ -37,4 +36,8 @@ export const Column = styled(motion.div)`
     line-height: 2.2rem;
     text-align: left;
   `}
+`;
+
+export const Image = styled(motion.img)`
+  position: relative;
 `;

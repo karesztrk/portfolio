@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Container, Divider, SectionHeader } from 'components/common';
-import { Column, Details, Wrapper } from './styles';
+import { Column, Details, Image, Wrapper } from './styles';
 import skodaconnect from 'assets/pictures/skodaconnect.webp';
 import { useInView } from 'react-intersection-observer';
 import { motion, useAnimation, Variants } from 'framer-motion';
@@ -57,7 +57,7 @@ const rightSide = {
 //
 export const Highlights = () => {
   const { ref, animation } = useInViewAnimation();
-  const { ref: imageRef, animation: imageAnimation } = useInViewAnimation(1);
+  const { ref: imageRef, animation: imageAnimation } = useInViewAnimation(0.5);
   return (
     <Wrapper ref={ref} as={Container} id='highlights'>
       <SectionHeader initial='hidden' animate={animation} variants={header}>
@@ -66,9 +66,9 @@ export const Highlights = () => {
       </SectionHeader>
       <Details>
         <Column>
-          <motion.img
+          <Image
             ref={imageRef}
-            initial={'initial'}
+            initial='initial'
             animate={imageAnimation}
             variants={imageMotion}
             alt='Skoda Connect'

@@ -108,7 +108,9 @@ export const Layout: FC = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
       <Global />
-      <AnimateSharedLayout type='crossfade'>{children}</AnimateSharedLayout>
+      <AnimateSharedLayout type='crossfade'>
+        <div style={{ overflow: 'hidden' }}>{children}</div>
+      </AnimateSharedLayout>
     </ThemeProvider>
   );
 };
