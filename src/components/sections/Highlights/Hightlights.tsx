@@ -91,8 +91,8 @@ export const Highlights = () => {
             faded since then .
           </p>
           <p>
-            In this team I learned how professional software if getting
-            released.
+            The team taught me how profession software is getting delivered and
+            how does the true agile development works.
           </p>
         </Column>
       </Details>
