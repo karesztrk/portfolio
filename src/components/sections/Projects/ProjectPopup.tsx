@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import React, { FC, useContext } from 'react';
 import { ThemeContext } from 'styled-components';
 import { ProjectBackground } from './ProjectBackground';
