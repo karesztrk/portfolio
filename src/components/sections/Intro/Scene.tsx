@@ -1,19 +1,14 @@
-import { Theme } from 'components/common/Layout/Layout';
-import React, { FC, useRef } from 'react';
+import React, { FC, useContext, useRef } from 'react';
 import { DirectionalLight } from 'three';
 import Box from './Box';
+import { BridgeContext } from './Bridge';
 
-interface SceneProps {
-  theme: Theme;
-  shiftX: number;
-  mainBoxColor?: string;
-}
+interface SceneProps {}
 
-const Scene: FC<SceneProps> = ({
-  theme: { primaryColor, secondaryColor },
-  shiftX,
-  mainBoxColor = '#242830',
-}) => {
+const Scene: FC<SceneProps> = () => {
+  const shiftX = 3;
+  const mainBoxColor = '#242830';
+  const { theme } = useContext(BridgeContext);
   const light = useRef<DirectionalLight>();
   const sizeBig = Math.floor(Math.random() * 10) + 35;
   const sizeMedium = Math.floor(Math.random() * 5) + 5;
@@ -39,7 +34,7 @@ const Scene: FC<SceneProps> = ({
           z={2}
           delay={delay}
           revealAnimation='major'
-          color={primaryColor}
+          color={theme?.primaryColor}
         />
         <Box
           size={sizeSmall}
@@ -48,7 +43,7 @@ const Scene: FC<SceneProps> = ({
           z={1}
           delay={delay}
           revealAnimation='major'
-          color={primaryColor}
+          color={theme?.primaryColor}
         />
         <Box
           size={Math.floor(Math.random() * 50)}
@@ -57,7 +52,7 @@ const Scene: FC<SceneProps> = ({
           z={-2}
           delay={1.5}
           revealAnimation='minor'
-          color={secondaryColor}
+          color={theme?.secondaryColor}
         />
         <Box
           size={Math.floor(Math.random() * 40)}
@@ -66,7 +61,7 @@ const Scene: FC<SceneProps> = ({
           z={-2}
           delay={1.5}
           revealAnimation='minor'
-          color={secondaryColor}
+          color={theme?.secondaryColor}
         />
         <Box
           size={Math.floor(Math.random() * 30)}
@@ -75,7 +70,7 @@ const Scene: FC<SceneProps> = ({
           z={-2}
           delay={1.5}
           revealAnimation='minor'
-          color={secondaryColor}
+          color={theme?.secondaryColor}
         />
         <Box
           size={Math.floor(Math.random() * 50)}
@@ -84,7 +79,7 @@ const Scene: FC<SceneProps> = ({
           z={-2}
           delay={1.5}
           revealAnimation='minor'
-          color={secondaryColor}
+          color={theme?.secondaryColor}
         />
         <Box
           size={Math.floor(Math.random() * 40)}
@@ -93,7 +88,7 @@ const Scene: FC<SceneProps> = ({
           z={-2}
           delay={1.5}
           revealAnimation='minor'
-          color={secondaryColor}
+          color={theme?.secondaryColor}
         />
         <Box
           size={Math.floor(Math.random() * 30)}
@@ -102,7 +97,7 @@ const Scene: FC<SceneProps> = ({
           z={-2}
           delay={1.5}
           revealAnimation='minor'
-          color={secondaryColor}
+          color={theme?.secondaryColor}
         />
       </group>
     </>
