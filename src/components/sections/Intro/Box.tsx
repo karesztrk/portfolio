@@ -106,7 +106,7 @@ const Box: FC<BoxProps> = ({
   }, []);
   return (
     <mesh ref={mesh} position={[x, y, z]}>
-      <boxGeometry args={[0.05, 0.05, 0.05]} />
+      <icosahedronBufferGeometry args={[0.04, 0]} />
       <meshPhongMaterial color={color} />
     </mesh>
   );
