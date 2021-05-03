@@ -90,6 +90,7 @@ export const About = () => {
             <mark>Java</mark>
             <mark>Spring</mark>
             <mark>OpenAPI</mark>
+            <mark>Three.js</mark>
           </TechContainer>
         </Column>
         <Column initial='hidden' animate={animation} variants={rightSide}>
