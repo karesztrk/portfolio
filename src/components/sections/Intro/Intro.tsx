@@ -1,7 +1,6 @@
 import { Canvas, context } from '@react-three/fiber';
 import { Container, Header, SocialLinksMenu } from 'components/common';
-import { useAnimation } from 'framer-motion';
-import React, { Suspense, useContext, useEffect } from 'react';
+import React, { Suspense, useContext } from 'react';
 import { ThemeContext } from 'styled-components';
 import { Media, MediaContextProvider } from '../../common/Layout/Layout';
 import Bridge from './Bridge';

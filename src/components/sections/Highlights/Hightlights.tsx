@@ -79,20 +79,20 @@ export const Highlights = () => {
           <p>
             Škoda-Connect is a highly interactive Single Page Application that
             gives you the ease of remote vehicle management. Through this web
-            application the users are able to check vehicle status, health or
-            even plan trips ahead. Škoda vehicle monitoring through a
-            web-browser have never been easier before.
+            application, the users are able to check vehicle status, health or
+            even plan trips ahead. Škoda vehicle monitoring through a web
+            browser has never been easier before.
           </p>
           <p>
             By being a full-stack developer for the first time, I really enjoyed
-            the technical challanges that the project gave to me. Day by day,
+            the technical challenges that the project gave to me. Day by day,
             I've got familiar with the top Front-end technologies and soon I've
-            become a passionate Java Script developer. This excitement has not
-            faded since then .
+            become a passionate JavaScript developer. This excitement has not
+            faded since then.
           </p>
           <p>
-            The team taught me how profession software is getting delivered and
-            how does the true agile development works.
+            The team taught me how professional software is getting delivered
+            and how does the true agile development works.
           </p>
         </Column>
       </Details>
