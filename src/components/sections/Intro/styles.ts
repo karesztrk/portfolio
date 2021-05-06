@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import heroBackground from 'assets/pictures/background.webp';
 import separator from 'assets/illustrations/separator.inline.svg';
 import { motion } from 'framer-motion';
+import { Canvas } from '@react-three/fiber';
 
 export const Wrapper = styled.div`
   padding-bottom: 8rem;
@@ -58,6 +59,12 @@ export const IntroWrapper = styled.div`
   ${({ theme }) => theme.lg`
     padding: 10vw 0 30vw 0;
   `}
+
+  canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 `;
 
 export const Details = styled.div`
