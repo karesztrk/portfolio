@@ -1,7 +1,7 @@
 import { useFrame } from '@react-three/fiber';
 import { animate, useMotionValue } from 'framer-motion';
-import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
-import { Material, Mesh, Shader } from 'three';
+import React, { FC, useEffect, useRef, useState } from 'react';
+import { BufferGeometry, Material, Mesh } from 'three';
 
 interface ShapeProps {
   size: number;
@@ -12,7 +12,9 @@ interface ShapeProps {
   revealAnimation: 'major' | 'minor';
   presenceAnimation?: 'pulse';
   color?: string;
-  pulseColor?: string;
+  coreColor?: string;
+  geometry: BufferGeometry;
+  material: Material;
 }
 const Shape: FC<ShapeProps> = ({
   size,
@@ -22,12 +24,12 @@ const Shape: FC<ShapeProps> = ({
   delay,
   revealAnimation,
   presenceAnimation,
-  color,
-  pulseColor,
+  coreColor,
+  geometry,
+  material,
 }) => {
   const mesh = useRef<Mesh>();
   const core = useRef<Mesh>();
-  const material = useRef<Material>();
 
   const [revealFinished, setRevealFinished] = useState(false);
 
@@ -40,45 +42,14 @@ const Shape: FC<ShapeProps> = ({
   const rotateY = useMotionValue(0);
   const rotateZ = useMotionValue(0);
 
-  const onBeforeCompile = useCallback((shader: Shader) => {
-    shader.uniforms = {
-      ...shader.uniforms,
-      time: { value: 0 },
-      displacement: { value: 0.05 },
-      elevation: { value: 20 },
-      elevationFilter: { value: 0.01 },
-      speed: { value: 2 },
-    };
-    shader.vertexShader =
-      `
-      uniform float time;
-      uniform float displacement;
-      uniform float elevation;
-      uniform float elevationFilter;
-      uniform float speed;\n` + shader.vertexShader;
-
-    shader.vertexShader = shader.vertexShader.replace(
-      '#include <begin_vertex>',
-      [
-        'float factor = abs(sin(time)) * displacement;',
-        'vec3 offset = normal * factor;',
-        'float waveY = abs(sin(position.y * elevation + time * speed)) * elevationFilter;',
-        'vec3 transformed = vec3(position + waveY * offset);',
-      ].join('\n'),
-    );
-    if (material.current) {
-      material.current.userData.shader = shader;
-    }
-  }, []);
-
   useFrame(({ clock }) => {
     if (
       revealFinished &&
       presenceAnimation === 'pulse' &&
-      material.current &&
-      material.current.userData.shader
+      material &&
+      material.userData.shader
     ) {
-      material.current.userData.shader.uniforms.time.value = clock.getElapsedTime();
+      material.userData.shader.uniforms.time.value = clock.getElapsedTime();
     }
     if (mesh.current) {
       if (
@@ -183,18 +154,16 @@ const Shape: FC<ShapeProps> = ({
 
   return (
     <>
-      <mesh ref={mesh} position={[x, y, z]}>
-        <icosahedronBufferGeometry args={[0.04]} />
-        <meshPhongMaterial
-          ref={material}
-          color={color}
-          onBeforeCompile={onBeforeCompile}
-        />
-      </mesh>
+      <mesh
+        ref={mesh}
+        position={[x, y, z]}
+        geometry={geometry}
+        material={material}
+      />
       {presenceAnimation === 'pulse' && revealFinished && (
         <mesh ref={core} position={[x, y, z]}>
           <icosahedronBufferGeometry args={[0.04]} />
-          <meshBasicMaterial color={pulseColor} />
+          <meshBasicMaterial color={coreColor} />
         </mesh>
       )}
     </>
