@@ -24,11 +24,11 @@ export const Intro = () => {
           </Details>
           <Media greaterThan='sm'>
             <Canvas
+              orthographic
               camera={{
-                fov: 60,
-                near: 0.1,
-                far: 10,
-                position: [shiftX, 0, 5],
+                zoom: 225,
+                position: [shiftX, 0, 3],
+                far: 300,
               }}
               style={{
                 position: 'absolute',
