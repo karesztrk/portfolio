@@ -16,6 +16,7 @@ interface ShapeProps {
   geometry: BufferGeometry;
   material: Material;
 }
+
 const Shape: FC<ShapeProps> = ({
   size,
   x,
@@ -66,20 +67,6 @@ const Shape: FC<ShapeProps> = ({
       ) {
         mesh.current.rotation.set(rotateX.get(), rotateY.get(), rotateZ.get());
       }
-    }
-
-    if (core.current && mesh.current && revealFinished) {
-      core.current.scale.set(
-        mesh.current.scale.x - 0.5,
-        mesh.current.scale.y - 0.5,
-        mesh.current.scale.z - 0.5,
-      );
-
-      core.current.rotation.set(
-        mesh.current.rotation.x,
-        mesh.current.rotation.y,
-        mesh.current.rotation.z,
-      );
     }
   });
 
@@ -153,20 +140,15 @@ const Shape: FC<ShapeProps> = ({
   }, []);
 
   return (
-    <>
-      <mesh
-        ref={mesh}
-        position={[x, y, z]}
-        geometry={geometry}
-        material={material}
-      />
-      {presenceAnimation === 'pulse' && revealFinished && (
-        <mesh ref={core} position={[x, y, z]}>
-          <icosahedronBufferGeometry args={[0.04]} />
+    <group ref={mesh} position={[x, y, z]}>
+      <mesh geometry={geometry} material={material} />
+      {presenceAnimation === 'pulse' && (
+        <mesh ref={core}>
+          <icosahedronBufferGeometry args={[0.039]} />
           <meshBasicMaterial color={coreColor} />
         </mesh>
       )}
-    </>
+    </group>
   );
 };
 
