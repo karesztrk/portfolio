@@ -26,8 +26,6 @@ const BackgroundShape: FC<BackgroundShapeProps> = ({
 }) => {
   const mesh = useRef<Mesh>();
 
-  const type = 'spring';
-
   const scaleX = useMotionValue(0.05);
   const scaleY = useMotionValue(0.05);
   const scaleZ = useMotionValue(0.05);
@@ -49,6 +47,7 @@ const BackgroundShape: FC<BackgroundShapeProps> = ({
   });
 
   useEffect(() => {
+    const type = 'spring';
     const rotateZTo = Math.random() * 2;
     const control = animate(scaleX, size, {
       type,

@@ -2,6 +2,7 @@ import { useFrame } from '@react-three/fiber';
 import { animate, useMotionValue } from 'framer-motion';
 import React, { FC, useEffect, useRef, useState } from 'react';
 import { BufferGeometry, Material, Mesh } from 'three';
+import Core from './Core';
 
 interface HeroShapeProps {
   size: number;
@@ -9,9 +10,9 @@ interface HeroShapeProps {
   y: number;
   z: number;
   delay?: number;
-  coreColor?: string;
   geometry: BufferGeometry;
   material: Material;
+  coreMaterial: Material;
 }
 
 const HeroShape: FC<HeroShapeProps> = ({
@@ -20,16 +21,13 @@ const HeroShape: FC<HeroShapeProps> = ({
   y,
   z,
   delay,
-  coreColor,
+  coreMaterial,
   geometry,
   material,
 }) => {
   const mesh = useRef<Mesh>();
-  const core = useRef<Mesh>();
 
   const [revealFinished, setRevealFinished] = useState(false);
-
-  const type = 'spring';
 
   const scaleX = useMotionValue(0.05);
   const scaleY = useMotionValue(0.05);
@@ -61,6 +59,7 @@ const HeroShape: FC<HeroShapeProps> = ({
   });
 
   useEffect(() => {
+    const type = 'spring';
     const rotateXTo = Math.random() - Math.PI * 0.25;
     const rotateYTo = Math.PI * 0.25;
     const rotateZTo = Math.random() - Math.PI * 0.25;
@@ -107,11 +106,8 @@ const HeroShape: FC<HeroShapeProps> = ({
 
   return (
     <group ref={mesh} position={[x, y, z]}>
-      <mesh geometry={geometry} material={material} />
-      <mesh ref={core}>
-        <icosahedronBufferGeometry args={[0.039]} />
-        <meshBasicMaterial color={coreColor} />
-      </mesh>
+      <mesh geometry={geometry} material={material} visible={true} />
+      <Core size={0.039} material={coreMaterial} />
     </group>
   );
 };

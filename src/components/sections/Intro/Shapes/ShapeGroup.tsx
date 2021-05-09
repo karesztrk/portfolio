@@ -1,9 +1,13 @@
 import React, { FC, useContext, useMemo } from 'react';
 import {
+  AdditiveBlending,
+  BackSide,
   Color,
   IcosahedronBufferGeometry,
+  MeshBasicMaterial,
   MeshPhongMaterial,
   Shader,
+  ShaderMaterial,
 } from 'three';
 import { BridgeContext } from '../Bridge';
 import HeroShape from './HeroShape';
@@ -16,7 +20,6 @@ const Shapes: FC = () => {
   const sizeMedium = Math.floor(Math.random() * 5) + 5;
   const sizeSmall = Math.floor(Math.random() * 5) + 2.5;
   const delay = Math.random() * 0.1;
-
   const { theme } = useContext(BridgeContext);
   const geometry = useMemo(() => new IcosahedronBufferGeometry(0.04), []);
   const backgroundMaterial = useMemo(
@@ -26,7 +29,6 @@ const Shapes: FC = () => {
       }),
     [theme?.secondaryColor],
   );
-
   const miniMaterial = useMemo(
     () =>
       new MeshPhongMaterial({
@@ -68,6 +70,13 @@ const Shapes: FC = () => {
     };
     return material;
   }, [theme?.primaryColor]);
+  const coreMaterial = useMemo(() => {
+    const coreColor = '#ff1919';
+    const material = new MeshBasicMaterial({
+      color: new Color(coreColor).convertSRGBToLinear(),
+    });
+    return material;
+  }, []);
   const backgroundShapes = useMemo(() => {
     return Array.from(Array(6).keys()).map((i) => {
       const x = Math.random() * -5;
@@ -91,9 +100,9 @@ const Shapes: FC = () => {
         x={0}
         y={0}
         z={0}
-        coreColor='#ff1919'
         geometry={geometry}
         material={heroMaterial}
+        coreMaterial={coreMaterial}
       />
       <MiniShape
         size={sizeMedium}

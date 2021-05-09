@@ -26,8 +26,6 @@ const MiniShape: FC<MiniShapeProps> = ({
 }) => {
   const mesh = useRef<Mesh>();
 
-  const type = 'spring';
-
   const scaleX = useMotionValue(0.05);
   const scaleY = useMotionValue(0.05);
   const scaleZ = useMotionValue(0.05);
@@ -55,6 +53,7 @@ const MiniShape: FC<MiniShapeProps> = ({
   });
 
   useEffect(() => {
+    const type = 'spring';
     const rotateXTo = Math.random() - Math.PI * 0.25;
     const rotateYTo = Math.PI * 0.25;
     const rotateZTo = Math.random() - Math.PI * 0.25;
