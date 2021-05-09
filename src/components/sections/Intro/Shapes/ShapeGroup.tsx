@@ -5,8 +5,10 @@ import {
   MeshPhongMaterial,
   Shader,
 } from 'three';
-import { BridgeContext } from './Bridge';
-import Shape from './Shape';
+import { BridgeContext } from '../Bridge';
+import HeroShape from './HeroShape';
+import BackgroundShape from './BackgroundShape';
+import MiniShape from './MiniShape';
 
 const Shapes: FC = () => {
   const shiftX = 3;
@@ -73,58 +75,51 @@ const Shapes: FC = () => {
       const z = Math.random() * (i % 2 === 0 ? -5 : -3);
       const size = Math.floor(Math.random() * 30);
       const delay = 1.75;
-      const revealAnimation: 'minor' | 'major' = 'minor';
       return {
         x,
         y,
         z,
         delay,
         size,
-        revealAnimation,
       };
     });
   }, []);
   return (
     <group position={[shiftX, 0, 0]}>
-      <Shape
+      <HeroShape
         size={sizeBig}
         x={0}
         y={0}
         z={0}
-        revealAnimation='major'
-        presenceAnimation='pulse'
         coreColor='#ff1919'
         geometry={geometry}
         material={heroMaterial}
       />
-      <Shape
+      <MiniShape
         size={sizeMedium}
         x={-0.5}
         y={-1}
         z={2}
         delay={delay}
-        revealAnimation='major'
         geometry={geometry}
         material={miniMaterial}
       />
-      <Shape
+      <MiniShape
         size={sizeSmall}
         x={-1}
         y={1}
         z={1}
         delay={delay}
-        revealAnimation='major'
         geometry={geometry}
         material={miniMaterial}
       />
       {backgroundShapes.map((shape) => (
-        <Shape
+        <BackgroundShape
           size={shape.size}
           x={shape.x}
           y={shape.y}
           z={shape.z}
           delay={shape.delay}
-          revealAnimation={shape.revealAnimation}
           geometry={geometry}
           material={backgroundMaterial}
         />
