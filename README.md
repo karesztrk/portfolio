@@ -5,6 +5,6 @@
 ## Libraries used
 
 - React
-- Gatsby
+- Astro
 - Styled-components
 - Framer Motion

@@ -1,17 +1,17 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from "react";
 import {
   ThemeProvider,
   css,
   FlattenSimpleInterpolation,
-} from 'styled-components';
-import { loadScheme, saveScheme } from 'data/storage';
-import { Global } from './styles';
-import './fonts.css';
-import schemes from './schemes.json';
-import { createMedia } from '@artsy/fresnel';
-import { AnimateSharedLayout } from 'framer-motion';
+} from "styled-components";
+import { loadScheme, saveScheme } from "data/storage";
+import { Global } from "./styles";
+import "./fonts.css";
+import schemes from "./schemes.json";
+import { createMedia } from "@artsy/fresnel";
+import { AnimateSharedLayout } from "framer-motion";
 
-type BreakPointKey = 'sm' | 'md' | 'lg' | 'xl';
+type BreakPointKey = "sm" | "md" | "lg" | "xl";
 
 interface Breakpoints {
   [key: string]: number;
@@ -67,7 +67,7 @@ const respMin: MediaQueryies = Object.keys(breakpoints).reduce<MediaQueryies>(
     `;
     return accumulator;
   },
-  {},
+  {}
 );
 
 const applyScheme = (theme: Theme, scheme: string | null | undefined) => {
@@ -83,10 +83,10 @@ const applyScheme = (theme: Theme, scheme: string | null | undefined) => {
 export const Layout: FC = ({ children }) => {
   const [selectedScheme, setSelectedScheme] = useState<string>();
   const defaultTheme: Theme = {
-    primaryColor: '#a7ff83',
-    secondaryColor: '#17b978',
-    tertiaryColor: '#086972',
-    quaternaryColor: '#071a52',
+    primaryColor: "#a7ff83",
+    secondaryColor: "#17b978",
+    tertiaryColor: "#086972",
+    quaternaryColor: "#071a52",
     breakpoints,
     headerFamily: "'Barlow', sans-serif",
     textFamily: "'Inter', sans-serif",
@@ -108,8 +108,8 @@ export const Layout: FC = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
       <Global />
-      <AnimateSharedLayout type='crossfade'>
-        <div style={{ overflow: 'hidden' }}>{children}</div>
+      <AnimateSharedLayout type="crossfade">
+        <div style={{ overflow: "hidden" }}>{children}</div>
       </AnimateSharedLayout>
     </ThemeProvider>
   );
