@@ -1,0 +1,18 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer>
+  <div class="copyright">Károly Török &copy; {year}</div>
+</footer>
+
+<style>
+  footer {
+    container-type: inline-size;
+    grid-column: content;
+
+    .copyright {
+      text-align: left;
+    }
+  }
+</style>

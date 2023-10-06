@@ -1,0 +1,48 @@
+---
+import { Image } from "astro:assets";
+import invaderImage from "../assets/images/invader.svg";
+---
+
+<header>
+  <nav>
+    <a href="/">
+      <Image
+        class="logo"
+        src={invaderImage}
+        alt="Space invader alien"
+        height="35"
+      />
+    </a>
+    <ul>
+      <li>
+        <a disabled href="/blog">Blog</a>
+      </li>
+      <li>
+        <a href="/about">About</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<style>
+  header {
+    grid-column: content;
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      ul {
+        display: flex;
+        gap: var(--gap);
+        list-style: none;
+      }
+
+      a[disabled] {
+        color: gray;
+        pointer-events: none;
+      }
+    }
+  }
+</style>

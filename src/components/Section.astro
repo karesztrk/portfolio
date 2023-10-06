@@ -1,0 +1,62 @@
+---
+interface InExpandable {
+  id?: string;
+  expandable: false;
+}
+
+interface Expandable {
+  id: string;
+  title?: string;
+  expandable: true;
+}
+
+type Props = InExpandable | Expandable;
+
+const { id = "", expandable } = Astro.props;
+const readMoreInput = `${id.replace(/\s/gi, "-")}-read-more`;
+---
+
+<>
+  <section>
+    <slot name="title" />
+    {
+      expandable && (
+        <input id={readMoreInput} class="read-more" type="checkbox" hidden />
+      )
+    }
+    <div class:list={["text", { expandable }]}>
+      <slot />
+    </div>
+    {expandable && <label class="read-more-label" for={readMoreInput} />}
+  </section>
+
+  <style>
+    .text.expandable {
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-bottom: var(--p-margin);
+    }
+
+    .read-more {
+      & ~ .read-more-label {
+        cursor: pointer;
+        color: var(--accent);
+      }
+
+      &:checked + .text {
+        display: block;
+        margin-bottom: 0;
+      }
+
+      &:checked ~ .read-more-label::before {
+        content: "less...";
+      }
+
+      & ~ .read-more-label::before {
+        content: "more...";
+      }
+    }
+  </style>
+</>

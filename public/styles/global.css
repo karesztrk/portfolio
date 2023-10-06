@@ -1,0 +1,179 @@
+@import url("/styles/reset.css") layer(reset);
+
+@layer reset, base, typography, theme, components, utilities;
+
+:root {
+  --mono: "MONO" 0;
+  --casl: "CASL" 0;
+  --wght: "wght" 400;
+  --slnt: "slnt" 0;
+  --CRSV: "CRSV" 0.5;
+
+  --gap: clamp(1rem, 1vw, 3rem);
+  --full: minmax(var(--gap), 1fr);
+  --content: min(65ch, 100% - var(--gap) * 2);
+  --popout: minmax(0, 2rem);
+  --feature: minmax(0, 5rem);
+  --pad: 3rem;
+
+  --grid-row-nav: min-content;
+
+  --h1-base: 3.5rem;
+  --h2-base: 2rem;
+  --h3-base: 1.1rem;
+  --h4-base: 1.333rem;
+  --p: 1.25rem;
+  --font-size-fluid: 3cqi;
+
+  --radius: 6px;
+
+  --p-margin: 1.5rem;
+
+  color-scheme: dark light;
+
+  background-color: var(--background);
+  color: var(--text);
+}
+
+@layer typography {
+  body {
+    font-family: "Recursive", sans-serif;
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+
+  p {
+    font-variation-settings: "CASL" 1;
+    font-size: var(--p);
+    margin-block: var(--p-margin, 1.5rem);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-weight: 400;
+    margin-block: 3rem var(--p-margin, 1.5rem);
+    line-height: 1.3;
+  }
+
+  h1 {
+    --font-size-base: var(--h1-base);
+  }
+
+  h2 {
+    --font-size-base: var(--h2-base);
+  }
+
+  h3 {
+    --font-size-base: var(--h3-base);
+  }
+
+  h4 {
+    --font-size-base: var(--h4-base);
+  }
+
+  @supports (font-size: 1cqi) {
+    :is(h1, h2, h3, h4) {
+      font-size: calc(var(--font-size-base) + var(--font-size-fluid, 3cqi));
+    }
+  }
+}
+
+@layer components {
+  details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #f7f7f7;
+    background-color: var(--background-alt);
+    padding: 10px 10px 0;
+    margin: 1em 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+
+    summary {
+      display: list-item;
+      background-color: var(--background-alt);
+      padding: 10px;
+      margin: -10px -10px 0;
+      cursor: pointer;
+      font-size: 1.25rem;
+
+      &:focus-visible,
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  h1 {
+    border-right: 0.15em solid var(--primary);
+  }
+
+  time {
+    color: var(--background);
+    background: var(--secondary);
+    padding: 2.5px 5px;
+    border-radius: var(--radius);
+    font-size: 0.85em;
+  }
+}
+
+@layer base {
+  body {
+    display: grid;
+    grid-template-columns:
+      [full-start] var(--full)
+      [feature-start] var(--feature)
+      [popout-start] var(--popout)
+      [content-start] var(--content) [content-end]
+      var(--popout) [popout-end]
+      var(--feature) [feature-end]
+      var(--full) [full-end];
+    grid-template-rows: var(--grid-row-nav) 1fr;
+    gap: var(--gap);
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--primary);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+@layer theme {
+  @layer light, dark;
+
+  @layer light {
+    :root {
+      --text: hsl(234, 100%, 4%);
+      --background: hsl(207, 80%, 92%);
+      --background-alt: #0c1d2c;
+      --primary: hsl(49, 100%, 50%);
+      --secondary: hsl(4, 29%, 40%);
+      --accent: hsl(57, 100%, 24%);
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  @layer theme.dark {
+    :root {
+      --text: hsl(234, 100%, 96%);
+      --background: hsl(207, 80%, 8%);
+      --background-alt: #0c1d2c;
+      --primary: hsl(49, 100%, 50%);
+      --secondary: hsl(4, 29%, 60%);
+      --accent: hsl(57, 100%, 76%);
+    }
+  }
+}

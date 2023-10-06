@@ -1,0 +1,24 @@
+---
+---
+
+<div class="subsection">
+  <h3>
+    <slot name="title" />
+  </h3>
+  <time>
+    <slot name="date" />
+  </time>
+  <slot />
+</div>
+
+<style>
+  .subsection {
+    h3 {
+      margin-bottom: 0;
+    }
+
+    p {
+      margin-top: 1rem;
+    }
+  }
+</style>

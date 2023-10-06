@@ -1,0 +1,213 @@
+---
+import Layout from "../layouts/Layout.astro";
+import projects from "./data.json";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Main from "../components/Main.astro";
+import Section from "../components/Section.astro";
+import Subsection from "../components/Subsection.astro";
+---
+
+<Layout title="About me">
+  <Header />
+
+  <Main>
+    <h1 slot="title">About me</h1>
+    <Section>
+      <h2 slot="title">Story</h2>
+      <p>
+        Hello there, I'm Károly! 🌟 I call the charming city of
+        <a href="https://goo.gl/maps/iS7ynsLC4MXW1kZJ8">Szeged</a>, Hungary my
+        home. Professionally, I've been a Software Developer since 2009.
+      </p>
+      <p>
+        My educational journey led me to the University of Szeged, where I laid
+        the foundation for my career. I jumped into the world of work soon after
+        graduation. Back then, we were utilizing Server Faces technology to
+        deliver content and functionality, which steered me towards considering
+        myself a Backend developer. Java became my trusty programming companion.
+        However, I'm no stranger to keeping up with the ever-evolving trends.
+        Building pixel-perfect, dynamic, and lightning-fast applications has
+        become my passion, with a simple equation:
+        HTML&nbsp;+&nbsp;CSS&nbsp;+&nbsp;JS&nbsp;=&nbsp;🤟. Creating new things
+        and conquering the challenges they bring is where I thrive.
+      </p>
+      <p>
+        Outside of my professional life, I wholeheartedly dedicate my free time
+        to another obsession: Fitness! 🏃🏋️🏊. My entire life, a little voice in
+        my head has constantly urged me to move forward and strive for
+        self-improvement. This drive to learn and grow is what keeps me eagerly
+        pursuing new knowledge and experiences.
+      </p>
+    </Section>
+    <Section>
+      <h2 slot="title">Experience</h2>
+      <Subsection>
+        <span slot="title">
+          Full-stack developer @
+          <a
+            href="https://chemaxon.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            ChemAxon
+          </a>
+        </span>
+        <span slot="date">2021 - Present</span>
+        <p>
+          My current workplace is ChemAxon. The company is offering several
+          mature products to the Biotechnology and Pharmaceutical industries.
+          Over the years, their products became industry standards. By joining
+          to this family, I'm now a - so called - ChemAxionian 👾.
+        </p>
+        <ul>
+          <li>
+            Opportunity to plan and implement a product Front-End redesign fully
+            autonomously
+          </li>
+          <li>New way of thinking: I'm entering the Chemistry industry</li>
+          <li>
+            Efficient team and business collaboration to serve quality products
+            to the customers
+          </li>
+          <li>Customer and consulting support</li>
+        </ul>
+      </Subsection>
+      <Subsection>
+        <span slot="title">
+          Software developer @
+          <a
+            href="http://www.minero-it.hu/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Minero IT
+          </a>
+        </span>
+        <span slot="date">2015 - 2021</span>
+        <p>
+          Minero holds a specal place in my hearth. It is - my first employer in
+          the private sector - a software consulting company. Here I've learnt a
+          lot. This is not just about about the enormous technical stuff but the
+          way of delivering products to a customer in a mature way.
+        </p>
+        <ul>
+          <li>
+            Worked with several automotive companies as our customer:
+            Volkswagen, ŠKODA, Porsche, BMW, Deloitte.
+          </li>
+          <li>
+            On-site collaboration with developers, managers and product owners
+            from all over the world
+          </li>
+          <li>Agile development, testing and delivering robust applications</li>
+          <li>Backend development using Spring</li>
+          <li>Big Data processing application development</li>
+        </ul>
+      </Subsection>
+      <Subsection>
+        <span slot="title">
+          Lead developer @
+          <a
+            href="https://aensys.hu/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            AENSys
+          </a>
+        </span>
+        <span slot="date">2012 - 2015</span>
+        <p>
+          Working at this company was my first step to build applications to
+          end-users. It taught all things that can occur once the application
+          becomes live.
+        </p>
+        <ul>
+          <li>Lead and coordinated a small (3-4) development team</li>
+          <li>Keeping in touch with the customers and partners</li>
+          <li>Application monitoring and defect handling</li>
+          <li>Release management</li>
+        </ul>
+      </Subsection>
+      <Subsection>
+        <span slot="title">
+          Experienced developer @
+          <a
+            href="https://www.inf.u-szeged.hu/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Institute of Informatics
+          </a>
+        </span>
+        <span slot="date">2009 - 2012</span>
+        <p>
+          I've started to work in the University before my graduation. Working
+          and studying in parallel was not easy way of life. But it certainly
+          shaped and prepared me for life.
+        </p>
+        <ul>
+          <li>Collaboration with other universities</li>
+          <li>Web application development in the e-health sector</li>
+          <li>Comprehensive knowledge of the JBoss stack</li>
+        </ul>
+      </Subsection>
+    </Section>
+    <Section>
+      <h2 slot="title">Highlights</h2>
+      <p>
+        Škoda-Connect is a highly interactive Single Page Application that gives
+        you the ease of remote vehicle management. Through this web application,
+        the users are able to check vehicle status, health or even plan trips
+        ahead. Škoda vehicle monitoring through a web browser has never been
+        easier before.
+      </p>
+      <p>
+        By being a full-stack developer for the first time, I really enjoyed the
+        technical challenges that the project gave to me. Day by day, I've got
+        familiar with the top Front-end technologies and soon I've become a
+        passionate JavaScript developer. This excitement has not faded since
+        then.
+      </p>
+      <p>
+        The team taught me how professional software is getting delivered and
+        how does the true agile development works.
+      </p>
+    </Section>
+    <Section>
+      <h2 slot="title">Projects</h2>
+      {
+        projects.map((project) => (
+          <details>
+            <summary>
+              {project.title} - <time>{project.time}</time>
+            </summary>
+            <p>{project.description}</p>
+          </details>
+        ))
+      }
+    </Section>
+    <Section>
+      <h2 slot="title">What's next?</h2>
+      <p>
+        Are you still here with me? If you'd like to connect, don't hesitate to
+        shoot me an <a href="mailto:karoly.torok.krisztian@gmail.com">email</a>,
+        and I'll get back to you as quickly as I can. And if you're interested
+        in my work or thinking about doing some business together, be sure to
+        grab a copy of my <a href="/doc/Karoly_Torok.pdf" download>resume</a
+        >!📄😊
+      </p>
+    </Section>
+  </Main>
+  <Footer />
+</Layout>
+
+<style>
+  .logo {
+    grid-column: 1;
+    height: 0;
+    position: sticky;
+    top: 32px;
+    left: 32px;
+  }
+</style>

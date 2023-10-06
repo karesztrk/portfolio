@@ -1,226 +1,52 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import projects from './data.json';
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Main from "../components/Main.astro";
+import Section from "../components/Section.astro";
 ---
 
 <Layout title="Károly Török">
-	<main>
-    <h1>Károly Török</h1>
-    <p>Bringing your ideas to life</p>
-    <p>Experienced full-stack web developer</p>
-    <hr />
-    <section>
-      <h2>Story</h2>
-      <p >
-        Hey, this is Károly <span>👋</span> I live in{' '}
-        <a href='https://goo.gl/maps/iS7ynsLC4MXW1kZJ8'>Szeged</a>, Hungary.
-        And I am a Software Developer since 2009.
-      </p>
-      <p >
-        I've finished my study at the University of Szeged. I've started to
-        work here very soon. During that time we were using Server Faces
-        technology to deliver content and functionality. Because of that I
-        always considered myself as a Backend developer. And Java became my
-        primary programming language. But as the trend changes, so I adapt.
-        Building pixel perfect, dynamic and extreme fast applications
-        because my obsession. HTML + CSS + JS =&nbsp;<span>🤟</span>. I
-        enjoy creating new stuff and embrace all the challenges they
-        require.
-      </p>
-      <p >
-        In my free time, I usually obeying to my second obsession: Fitness{' '}
-        <span>🏃‍🏋️🏊‍</span>. During my entire life there was something my
-        mind which was telling me: move out and become better. Probably this
-        is also the reason why I am eager to learn.
-      </p>
+  <Header />
+
+  <Main>
+    <h1 slot="title">Hello!</h1>
+    <Section id="hello" expandable>
       <p>
-        Technologies and languages that I'm actively using:
+        I am Károly Török, a seasoned Full-stack Software Developer with a
+        strong professional focus on web development and UX design. My
+        professional endeavors frequently involve working with technologies such
+        as Java and JavaScript, as I'm deeply dedicated to crafting exceptional
+        web experiences.
+      </p><p>
+        Beyond the professional realm, I maintain a diverse range of interests
+        and activities, including fitness, culinary arts, baking, and, of
+        course, the precious time spent with my family.
       </p>
-      <p>
-        <mark>HTML</mark> -
-        <mark>CSS</mark> -
-        <mark>JavaScript</mark> -
-        <mark>React</mark> - 
-        <mark>CSS</mark> -
-        <mark>Java</mark> -
-        <mark>Spring</mark> -
-        <mark>OpenAPI</mark> -
-        <mark>Three.js</mark>
-      </p>
-    </section>
-    <section>
-      <h2>Experience</h2>
-      <div>
-        <h3>
-          Full-stack developer @&nbsp;
-          <a
-            href="https://chemaxon.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            ChemAxon
-          </a>
-        </h3>
-        <time>2021 - Present</time>
-        <div>
-          <p>
-            My current workplace is ChemAxon. The company is offering
-            several mature products to the Biotechnology and
-            Pharmaceutical industries. Over the years, their products
-            became industry standards. By joining to this family, I'm now
-            a - so called - ChemAxionian 👾.
-          </p>
-          <ul>
-            <li>
-              Opportunity to plan and implement a product Front-End
-              redesign fully autonomously
-            </li>
-            <li>
-              New way of thinking: I'm entering the Chemistry industry
-            </li>
-            <li>
-              Efficient team and business collaboration to serve quality
-              products to the customers
-            </li>
-            <li>Customer and consulting support</li>
-          </ul>
-        </div>
-      </div>
-      <div>
-        <h3>
-          Software developer @&nbsp;
-          <a
-            href="http://www.minero-it.hu/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Minero IT
-          </a>
-        </h3>
-        <time>2015 - 2021</time>
-        <div>
-          <p>
-            Minero holds a specal place in my hearth. It is - my first
-            employer in the private sector - a software consulting
-            company. Here I've learnt a lot. This is not just about about
-            the enormous technical stuff but the way of delivering
-            products to a customer in a mature way.
-          </p>
-          <ul>
-            <li>
-              Worked with several automotive companies as our customer:
-              Volkswagen, ŠKODA, Porsche, BMW, Deloitte.
-            </li>
-            <li>
-              On-site collaboration with developers, managers and product
-              owners from all over the world
-            </li>
-            <li>
-              Agile development, testing and delivering robust
-              applications
-            </li>
-            <li>Backend development using Spring</li>
-            <li>Big Data processing application development</li>
-          </ul>
-        </div>
-      </div>
-      <div>
-        <h3>
-          Lead developer @&nbsp;
-          <a
-            href="https://aensys.hu/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            AENSys
-          </a>
-        </h3>
-        <time>2012 - 2015</time>
-        <div>
-          <p>
-            Working at this company was my first step to build
-            applications to end-users. It taught all things that can occur
-            once the application becomes live.
-          </p>
-          <ul>
-            <li>Lead and coordinated a small (3-4) development team</li>
-            <li>Keeping in touch with the customers and partners</li>
-            <li>Application monitoring and defect handling</li>
-            <li>Release management</li>
-          </ul>
-        </div>
-      </div>
-      <div>
-        <h3>
-          Experienced developer @&nbsp;
-          <a
-            href="https://www.inf.u-szeged.hu/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Institute of Informatics
-          </a>
-        </h3>
-        <time>2009 - 2012</time>
-        <div>
-          <p>
-            I've started to work in the University before my graduation.
-            Working and studying in parallel was not easy way of life. But
-            it certainly shaped and prepared me for life.
-          </p>
-          <ul>
-            <li>Collaboration with other universities</li>
-            <li>Web application development in the e-health sector</li>
-            <li>Comprehensive knowledge of the JBoss stack</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-    <section>
-      <h2>Highlights</h2>
-      <p>
-        Škoda-Connect is a highly interactive Single Page Application that
-        gives you the ease of remote vehicle management. Through this web
-        application, the users are able to check vehicle status, health or
-        even plan trips ahead. Škoda vehicle monitoring through a web
-        browser has never been easier before.
-      </p>
-      <p>
-        By being a full-stack developer for the first time, I really enjoyed
-        the technical challenges that the project gave to me. Day by day,
-        I've got familiar with the top Front-end technologies and soon I've
-        become a passionate JavaScript developer. This excitement has not
-        faded since then.
-      </p>
-      <p>
-        The team taught me how professional software is getting delivered
-        and how does the true agile development works.
-      </p>
-    </section>
-    <section>
-      <h2>Projects</h2>
-      <div>
-        {projects.map((project) => (
-          <details>
-            <summary>{project.title} - <time>{project.time}</time></summary>
-            <p>{project.description}</p>
-          </details>
-        ))}
-      </div>
-    </section>
-    <section>
-    <h2>What's next?</h2>
-    <p>
-      So are you still with me? Maybe you want to get in touch? Just drop me
-      an&nbsp;
-      <a href="mailto:karoly.torok.krisztian@gmail.com">email</a>
-      &nbsp;and I’ll respond as fast as I can. If you are interested about my
-      work or plan to do some business then don't forget to take my&nbsp;
-      <a href="/doc/Karoly_Torok.pdf" download>Resume</a>.
-    </p>
-    </section>
-	</main>
+    </Section>
+  </Main>
+  <Footer/>
+
 </Layout>
 
-<style>
-</style>
+  <style>
+    h1 {
+      position: relative;
+    }
+    <!-- h1::after { -->
+    <!--   content: ""; -->
+    <!--   position: absolute; -->
+    <!--   left: -0.3em; -->
+    <!--   bottom: 0.1em; -->
+    <!--   width: 0.4em; -->
+    <!--   border-bottom: 0.1em solid var(--primary); -->
+    <!-- } -->
+    <!-- h1::before { -->
+    <!--   content: ""; -->
+    <!--   position: absolute; -->
+    <!--   left: -0.15em; -->
+    <!--   bottom: -0.05em; -->
+    <!--   height: 0.4em; -->
+    <!--   border-left: 0.1em solid var(--primary); -->
+    <!-- } -->
+  </style>
