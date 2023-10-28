@@ -15,7 +15,10 @@ import invaderImage from "../assets/images/invader.svg";
     </a>
     <ul>
       <li>
-        <a disabled href="/blog">Blog</a>
+        <a aria-disabled href="/blog">Blog</a>
+      </li>
+      <li>
+        <a href="/mind-map">Mind-map</a>
       </li>
       <li>
         <a href="/about">About</a>
@@ -39,7 +42,7 @@ import invaderImage from "../assets/images/invader.svg";
         list-style: none;
       }
 
-      a[disabled] {
+      a[aria-disabled] {
         color: gray;
         pointer-events: none;
       }

@@ -10,10 +10,11 @@ import Section from "../components/Section.astro";
   <Header />
 
   <Main>
-    <h1 slot="title">Hello!</h1>
+    <h1 slot="title">Hello! <br/> Szia(ˈsijɒ)!</h1>
     <Section id="hello" expandable>
+      <h2 slot="title"></h2>
       <p>
-        I am Károly Török, a seasoned Full-stack Software Developer with a
+        I'm Károly Török. a seasoned Full-stack Software Developer with a
         strong professional focus on web development and UX design. My
         professional endeavors frequently involve working with technologies such
         as Java and JavaScript, as I'm deeply dedicated to crafting exceptional
@@ -29,24 +30,24 @@ import Section from "../components/Section.astro";
 
 </Layout>
 
-  <style>
-    h1 {
-      position: relative;
-    }
-    <!-- h1::after { -->
-    <!--   content: ""; -->
-    <!--   position: absolute; -->
-    <!--   left: -0.3em; -->
-    <!--   bottom: 0.1em; -->
-    <!--   width: 0.4em; -->
-    <!--   border-bottom: 0.1em solid var(--primary); -->
-    <!-- } -->
-    <!-- h1::before { -->
-    <!--   content: ""; -->
-    <!--   position: absolute; -->
-    <!--   left: -0.15em; -->
-    <!--   bottom: -0.05em; -->
-    <!--   height: 0.4em; -->
-    <!--   border-left: 0.1em solid var(--primary); -->
-    <!-- } -->
-  </style>
+<style>
+  h1 {
+    position: relative;
+  }
+  <!-- h1::after { -->
+  <!--   content: ""; -->
+  <!--   position: absolute; -->
+  <!--   left: -0.3em; -->
+  <!--   bottom: 0.1em; -->
+  <!--   width: 0.4em; -->
+  <!--   border-bottom: 0.1em solid var(--primary); -->
+  <!-- } -->
+  <!-- h1::before { -->
+  <!--   content: ""; -->
+  <!--   position: absolute; -->
+  <!--   left: -0.15em; -->
+  <!--   bottom: -0.05em; -->
+  <!--   height: 0.4em; -->
+  <!--   border-left: 0.1em solid var(--primary); -->
+  <!-- } -->
+</style>
