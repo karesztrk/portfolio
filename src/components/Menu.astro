@@ -1,0 +1,39 @@
+---
+
+---
+
+<ul>
+  <li>
+    <a aria-disabled href="/blog">Blog</a>
+  </li>
+  <li>
+    <a href="/mind-map">Mind-map</a>
+  </li>
+  <li>
+    <a href="/about">About</a>
+  </li>
+</ul>
+
+<style>
+  ul {
+    font-family: "Silkscreen";
+    display: flex;
+    gap: var(--gap);
+    list-style: none;
+    li {
+      list-style: none;
+    }
+  }
+
+  a[aria-disabled] {
+    color: gray;
+    pointer-events: none;
+  }
+
+  a {
+    &:hover {
+      text-decoration-style: dashed;
+      text-decoration-thickness: 2px;
+    }
+  }
+</style>

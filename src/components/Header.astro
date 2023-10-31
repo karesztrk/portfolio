@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import invaderImage from "../assets/images/invader.svg";
+import Menu from "./Menu.astro";
 ---
 
 <header>
@@ -13,17 +14,7 @@ import invaderImage from "../assets/images/invader.svg";
         height="35"
       />
     </a>
-    <ul>
-      <li>
-        <a aria-disabled href="/blog">Blog</a>
-      </li>
-      <li>
-        <a href="/mind-map">Mind-map</a>
-      </li>
-      <li>
-        <a href="/about">About</a>
-      </li>
-    </ul>
+    <Menu />
   </nav>
 </header>
 
@@ -35,17 +26,6 @@ import invaderImage from "../assets/images/invader.svg";
       display: flex;
       justify-content: space-between;
       align-items: center;
-
-      ul {
-        display: flex;
-        gap: var(--gap);
-        list-style: none;
-      }
-
-      a[aria-disabled] {
-        color: gray;
-        pointer-events: none;
-      }
     }
   }
 </style>

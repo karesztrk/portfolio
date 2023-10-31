@@ -29,10 +29,17 @@
 
   --p-margin: 1.5rem;
 
+  --button-outline-offset: 2px;
+  --button-outline: 2px dashed var(--tertiary);
+
   color-scheme: dark light;
 
   background-color: var(--background);
   color: var(--text);
+
+  scroll-behavior: smooth;
+  scrollbar-color: var(--primary) var(--background);
+  scrollbar-width: thin;
 }
 
 @layer typography {
@@ -117,7 +124,7 @@
   }
 
   time {
-    color: var(--background);
+    color: var(--text);
     background: var(--secondary);
     padding: 2.5px 5px;
     border-radius: var(--radius);
@@ -137,7 +144,6 @@
       var(--feature) [feature-end]
       var(--full) [full-end];
     grid-template-rows: var(--grid-row-nav) 1fr;
-    gap: var(--gap);
   }
 
   a {
@@ -146,6 +152,17 @@
 
     &:hover {
       text-decoration: underline;
+    }
+  }
+
+  ul {
+    padding-left: 1em;
+
+    li {
+      list-style-type: square;
+      &::marker {
+        color: var(--primary);
+      }
     }
   }
 }
@@ -159,8 +176,9 @@
       --background: hsl(207, 80%, 92%);
       --background-alt: #0c1d2c;
       --primary: hsl(49, 100%, 50%);
-      --secondary: hsl(4, 29%, 40%);
-      --accent: hsl(57, 100%, 24%);
+      --secondary: hsl(32, 100%, 49%);
+      --tertiary: #ffec70;
+      --accent: hsl(241, 80%, 52%);
     }
   }
 }
@@ -172,8 +190,9 @@
       --background: hsl(207, 80%, 8%);
       --background-alt: #0c1d2c;
       --primary: hsl(49, 100%, 50%);
-      --secondary: hsl(4, 29%, 60%);
-      --accent: hsl(57, 100%, 76%);
+      --secondary: #7c3c2d;
+      --tertiary: #ffec70;
+      --accent: hsl(241, 80%, 48%);
     }
   }
 }
