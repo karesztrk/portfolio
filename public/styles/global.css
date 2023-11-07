@@ -12,8 +12,6 @@
   --gap: clamp(1rem, 1vw, 3rem);
   --full: minmax(var(--gap), 1fr);
   --content: min(65ch, 100% - var(--gap) * 2);
-  --popout: minmax(0, 2rem);
-  --feature: minmax(0, 5rem);
   --pad: 3rem;
 
   --grid-row-nav: min-content;
@@ -30,15 +28,14 @@
   --p-margin: 1.5rem;
 
   --button-outline-offset: 2px;
-  --button-outline: 2px dashed var(--tertiary);
 
   color-scheme: dark light;
 
-  background-color: var(--background);
-  color: var(--text);
+  background-color: var(--color-background);
+  color: var(--color-text);
 
   scroll-behavior: smooth;
-  scrollbar-color: var(--primary) var(--background);
+  scrollbar-color: var(--color-primary) var(--color-background);
   scrollbar-width: thin;
 }
 
@@ -60,9 +57,11 @@
   h3,
   h4,
   h5 {
-    font-weight: 400;
+    font-weight: 700;
     margin-block: 3rem var(--p-margin, 1.5rem);
     line-height: 1.3;
+
+    color: var(--color-title);
   }
 
   h1 {
@@ -120,12 +119,43 @@
   }
 
   h1 {
-    border-right: 0.15em solid var(--primary);
+    position: relative;
+    line-height: 110%;
+    &:after {
+      --_colums: 3;
+      --_dot-size: 5px;
+      --_dot-space: 2px;
+      --_edge-end: calc(var(--_dot-size) + 1px);
+      --_gardient-end: calc(var(--_edge-end) + var(--_dot-space));
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: calc(var(--_gardient-end) * var(--_colums) - var(--_dot-space));
+
+      background: repeating-linear-gradient(
+          90deg,
+          transparent 0,
+          transparent var(--_dot-size),
+          var(--color-background) var(--_edge-end),
+          var(--color-background) var(--_gardient-end)
+        ),
+        repeating-linear-gradient(
+          180deg,
+          var(--color-title) 0,
+          var(--color-title) var(--_dot-size),
+          transparent var(--_edge-end),
+          transparent var(--_gardient-end)
+        ),
+        var(--color-background);
+      margin-bottom: 4px;
+    }
   }
 
   time {
     color: var(--text);
-    background: var(--secondary);
+    background: var(--color-secondary);
     padding: 2.5px 5px;
     border-radius: var(--radius);
     font-size: 0.85em;
@@ -137,18 +167,14 @@
     display: grid;
     grid-template-columns:
       [full-start] var(--full)
-      [feature-start] var(--feature)
-      [popout-start] var(--popout)
       [content-start] var(--content) [content-end]
-      var(--popout) [popout-end]
-      var(--feature) [feature-end]
       var(--full) [full-end];
     grid-template-rows: var(--grid-row-nav) 1fr;
   }
 
   a {
     text-decoration: none;
-    color: var(--primary);
+    color: var(--color-link-text);
 
     &:hover {
       text-decoration: underline;
@@ -161,7 +187,7 @@
     li {
       list-style-type: square;
       &::marker {
-        color: var(--primary);
+        color: var(--color-primary);
       }
     }
   }
@@ -171,28 +197,51 @@
   @layer light, dark;
 
   @layer light {
-    :root {
-      --text: hsl(234, 100%, 4%);
-      --background: hsl(207, 80%, 92%);
-      --background-alt: #0c1d2c;
-      --primary: hsl(49, 100%, 50%);
-      --secondary: hsl(32, 100%, 49%);
-      --tertiary: #ffec70;
-      --accent: hsl(241, 80%, 52%);
-    }
   }
 }
 
 @media (prefers-color-scheme: dark) {
   @layer theme.dark {
     :root {
-      --text: hsl(234, 100%, 96%);
-      --background: hsl(207, 80%, 8%);
-      --background-alt: #0c1d2c;
-      --primary: hsl(49, 100%, 50%);
-      --secondary: #7c3c2d;
-      --tertiary: #ffec70;
-      --accent: hsl(241, 80%, 48%);
+      --color-yellow-0: #ffe260;
+      --color-yellow-1: #ffdb37;
+      --color-yellow-2: #ffd100;
+      --color-yellow-3: #c29f00;
+      --color-yellow-4: #947900;
+
+      --color-pink-0: #d34faf;
+      --color-pink-1: #c52b9b;
+      --color-pink-2: #be008a;
+      --color-pink-3: #910069;
+      --color-pink-4: #6e0050;
+
+      --color-teal-0: #49aebc;
+      --color-teal-1: #2697a7;
+      --color-teal-2: #03899c;
+      --color-teal-3: #026877;
+      --color-teal-4: #01505a;
+
+      --color-gray-0: #ebedff;
+      --color-gray-1: #c5c6d3;
+
+      --color-blue-2: #0e304c;
+      --color-blue-3: #031c31;
+      --color-blue-4: #01101c;
+
+      --color-text: var(--color-gray-1);
+      --color-title: var(--color-gray-0);
+      --color-background: var(--color-blue-4);
+
+      --color-button-secondary-text: var(--color-blue-4);
+      --color-button-secondary-bg: var(--color-yellow-0);
+
+      --color-link-text: var(--color-yellow-0);
+      --color-link-shadow: var(--color-pink-2);
+
+      --color-primary: var(--color-yellow-2);
+      --color-secondary: var(--color-pink-2);
+      --color-tertiary: var(--color-teal-2);
+      --color-accent: hsl(241, 80%, 48%);
     }
   }
 }
