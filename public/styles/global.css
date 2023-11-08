@@ -242,6 +242,8 @@
       --color-secondary: var(--color-pink-2);
       --color-tertiary: var(--color-teal-2);
       --color-accent: hsl(241, 80%, 48%);
+
+      --color-footer-divider: var(--color-pink-2);
     }
   }
 }

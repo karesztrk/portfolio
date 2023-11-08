@@ -1,18 +1,115 @@
 ---
+import Icon from "./Icon.astro";
+import Facebook from "../assets/images/icons/Facebook.svg?url";
+import Github from "../assets/images/icons/Github.svg?url";
+import Instagram from "../assets/images/icons/Instagram.svg?url";
+import LinkedIn from "../assets/images/icons/LinkedIn.svg?url";
+import Mail from "../assets/images/icons/Mail.svg?url";
+import Youtube from "../assets/images/icons/Youtube.svg?url";
 const year = new Date().getFullYear();
+
+const socials: Record<string, { icon: string; url: string; title: string }> = {
+  github: {
+    title: "Check me on Github",
+    icon: Github,
+    url: "https://github.com/karesztrk",
+  },
+  email: {
+    title: "Send me a mail",
+    icon: Mail,
+    url: "mailto:torok.karoly.krisztian@gmail.com",
+  },
+  linkedin: {
+    title: "Check my profile on LinkedIn",
+    icon: LinkedIn,
+    url: "https://www.linkedin.com/in/k%C3%A1roly-t%C3%B6r%C3%B6k-17541b80/",
+  },
+  instagram: {
+    title: "My activity on Instagram",
+    icon: Instagram,
+    url: "https://www.instagram.com/karesztrk/",
+  },
+  youtube: {
+    title: "Things i watch on Youtube",
+    icon: Youtube,
+    url: "https://www.youtube.com/user/r0nan87",
+  },
+  facebook: {
+    title: "My Facebook profile",
+    icon: Facebook,
+    url: "https://www.facebook.com/karoly.torok.9/",
+  },
+};
 ---
 
 <footer>
-  <div class="copyright">Károly Török &copy; {year}</div>
+  <svg class="divider" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <line x1="0" y1="0" x2="100%" y2="0" stroke="currentColor"></line>
+  </svg>
+  <div class="socials">
+    {
+      Object.values(socials).map(({ title, icon, url }) => (
+        <a href={url}>
+          <Icon src={icon} title={title} />
+        </a>
+      ))
+    }
+  </div>
+  <p>
+    View the source on <a href="https://github.com/karesztrk/portfolio/"
+      >Github</a
+    >. Hosted on <a href="https://www.netlify.com/">Netlify</a>. Built with <a
+      href="https://astro.build/">Astro</a
+    >.
+  </p>
+  <p class="copyright">Károly Török &copy; {year}</p>
 </footer>
 
 <style>
   footer {
     container-type: inline-size;
     grid-column: content;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin: 8px;
 
-    .copyright {
-      text-align: left;
+    .divider {
+      height: 1px;
+      width: 100%;
+      margin-block: 0.5rem 1rem;
+      color: var(--color-footer-divider);
+      stroke-dasharray: 5;
+      stroke-width: 1px;
+    }
+
+    p {
+      margin: 0;
+      text-align: center;
+      font-size: 0.75rem;
+
+      a {
+        color: var(--color-text);
+        text-decoration: underline;
+      }
+    }
+
+    .socials {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+
+      a {
+        font-size: 1.5rem;
+        line-height: 1;
+      }
+
+      .icon {
+        vertical-align: middle;
+        text-align: center;
+        color: var(--color-title);
+      }
     }
   }
 </style>
