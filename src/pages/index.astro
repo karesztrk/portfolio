@@ -10,7 +10,7 @@ import Section from "../components/Section.astro";
   <Header />
 
   <Main>
-    <h1 slot="title">Hello! <br /> Szia(ˈsijɒ)!</h1>
+    <h1 slot="title">Hello <br /> Szia(ˈsijɒ)!</h1>
     <Section id="hello" expandable>
       <h2 slot="title"></h2>
       <p>
@@ -26,9 +26,7 @@ import Section from "../components/Section.astro";
       </p>
     </Section>
     <div class="grid">
-      <a href="#"> My ideas</a>
-      <a href="#"> Things that i like</a>
-      <a href="#"> More about me</a>
+      <a href="/blog"> More about me</a>
     </div>
   </Main>
   <Footer />
@@ -44,7 +42,7 @@ import Section from "../components/Section.astro";
     margin-block: 3rem;
     display: grid;
     gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
 
     & > a {
       padding: 2rem;
@@ -53,7 +51,6 @@ import Section from "../components/Section.astro";
       text-decoration: none;
       border-radius: var(--radius);
 
-      &:focus-visible,
       &:hover {
         outline-offset: var(--button-outline-offset);
         outline-color: var(--color-button-secondary-bg);

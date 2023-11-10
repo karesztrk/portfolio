@@ -1,4 +1,6 @@
 ---
+import Icon from "../components/Icon.astro";
+import Separator from "../assets/images/icons/Separator.svg?url";
 import Layout from "../layouts/Layout.astro";
 import projects from "./data.json";
 import Header from "../components/Header.astro";
@@ -6,6 +8,8 @@ import Footer from "../components/Footer.astro";
 import Main from "../components/Main.astro";
 import Section from "../components/Section.astro";
 import Subsection from "../components/Subsection.astro";
+import { Image } from "astro:assets";
+import SkodaConnect from "../assets/images/skodaconnect.webp";
 ---
 
 <Layout title="About me">
@@ -13,7 +17,7 @@ import Subsection from "../components/Subsection.astro";
 
   <Main>
     <h1 slot="title">About me</h1>
-    <Section>
+    <Section id="story" expandable={false}>
       <h2 slot="title">Story</h2>
       <p>
         Hello there, I'm Károly! 🌟 I call the charming city of
@@ -40,7 +44,10 @@ import Subsection from "../components/Subsection.astro";
         pursuing new knowledge and experiences.
       </p>
     </Section>
-    <Section>
+
+    <Icon class="separator" src={Separator} viewBox="0 0 25 16" />
+
+    <Section id="experience" expandable={false}>
       <h2 slot="title">Experience</h2>
       <Subsection>
         <span slot="title">
@@ -153,7 +160,10 @@ import Subsection from "../components/Subsection.astro";
         </ul>
       </Subsection>
     </Section>
-    <Section>
+
+    <Icon class="separator" src={Separator} viewBox="0 0 25 16" />
+
+    <Section id="highlights" expandable={false}>
       <h2 slot="title">Highlights</h2>
       <p>
         Škoda-Connect is a highly interactive Single Page Application that gives
@@ -173,8 +183,16 @@ import Subsection from "../components/Subsection.astro";
         The team taught me how professional software is getting delivered and
         how does the true agile development works.
       </p>
+
+      <figure>
+        <Image src={SkodaConnect} alt="Skoda Connect login page" />
+        <figcaption>Skoda Connect</figcaption>
+      </figure>
     </Section>
-    <Section>
+
+    <Icon class="separator" src={Separator} viewBox="0 0 25 16" />
+
+    <Section id="projects" expandable={false}>
       <h2 slot="title">Projects</h2>
       {
         projects.map((project) => (
@@ -187,7 +205,10 @@ import Subsection from "../components/Subsection.astro";
         ))
       }
     </Section>
-    <Section>
+
+    <Icon class="separator" src={Separator} viewBox="0 0 25 16" />
+
+    <Section id="next" expandable={false}>
       <h2 slot="title">What's next?</h2>
       <p>
         Are you still here with me? If you'd like to connect, don't hesitate to
@@ -209,5 +230,13 @@ import Subsection from "../components/Subsection.astro";
     position: sticky;
     top: 32px;
     left: 32px;
+  }
+
+  .separator {
+    display: block;
+    color: var(--color-logo);
+    margin-block: 6rem;
+    text-align: center;
+    width: 100%;
   }
 </style>

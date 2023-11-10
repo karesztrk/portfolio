@@ -1,16 +1,12 @@
 ---
-
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1);
 ---
 
 <ul>
   <li>
-    <a aria-disabled href="/blog">Blog</a>
-  </li>
-  <li>
-    <a href="/mind-map">Mind-map</a>
-  </li>
-  <li>
-    <a href="/about">About</a>
+    <a class:list={[{ active: currentPath === "about" }]} href="/about">About</a
+    >
   </li>
 </ul>
 
@@ -25,16 +21,15 @@
     }
   }
 
-  a[aria-disabled] {
-    color: gray;
-    pointer-events: none;
-  }
-
   a {
     text-shadow: 1px 1px 0px var(--color-link-shadow);
-    &:hover {
+    &:hover:not(.active) {
       text-decoration-style: dashed;
-      text-decoration-thickness: 2px;
+    }
+    &.active {
+      text-decoration-style: solid;
+      text-decoration-line: underline;
+      text-decoration-thickness: var(--link-hover-decoration-thickness);
     }
   }
 </style>

@@ -1,4 +1,5 @@
 ---
+import type { HTMLAttributes } from "astro/types";
 interface InExpandable {
   id?: string;
   expandable: false;
@@ -27,7 +28,11 @@ const readMoreInput = `${id.replace(/\s/gi, "-")}-read-more`;
   <div class:list={["text", { expandable }]}>
     <slot />
   </div>
-  {expandable && <label class="read-more-label" for={readMoreInput} />}
+  {
+    expandable && (
+      <label tabindex="0" class="read-more-label" for={readMoreInput} />
+    )
+  }
 </section>
 
 <style>
@@ -36,14 +41,20 @@ const readMoreInput = `${id.replace(/\s/gi, "-")}-read-more`;
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    margin-bottom: var(--p-margin);
+    margin-bottom: calc(var(--p-margin) * 0.5);
   }
 
   .read-more {
     & ~ .read-more-label {
       font-family: "Silkscreen";
       cursor: pointer;
-      color: var(--tertiary);
+      color: var(--color-link-secondary-text);
+
+      &:hover {
+        text-decoration: underline;
+        text-decoration-style: dashed;
+        text-decoration-thickness: 2px;
+      }
     }
 
     &:checked + .text {
