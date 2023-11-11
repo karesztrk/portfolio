@@ -1,14 +1,10 @@
 ---
-import Temporal from "./Temporal.astro";
+
 ---
 
 <div class="subsection">
-  <h3>
-    <slot name="title" />
-  </h3>
-  <Temporal>
-    <slot name="date" />
-  </Temporal>
+  <slot name="title" />
+  <slot name="date" />
   <slot />
 </div>
 

@@ -1,11 +1,12 @@
 ---
-const pathname = new URL(Astro.request.url).pathname;
-const currentPath = pathname.slice(1);
+const currentPath = Astro.url.pathname;
+console.log(currentPath);
 ---
 
 <ul>
   <li>
-    <a class:list={[{ active: currentPath === "about" }]} href="/about">About</a
+    <a class:list={[{ active: currentPath === "/about" }]} href="/about"
+      >About</a
     >
   </li>
 </ul>

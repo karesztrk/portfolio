@@ -10,6 +10,8 @@ import Section from "../components/Section.astro";
 import Subsection from "../components/Subsection.astro";
 import { Image } from "astro:assets";
 import SkodaConnect from "../assets/images/skodaconnect.webp";
+import CompReg from "../assets/images/compreg.webp";
+import Temporal from "../components/Temporal.astro";
 ---
 
 <Layout title="About me">
@@ -50,7 +52,7 @@ import SkodaConnect from "../assets/images/skodaconnect.webp";
     <Section id="experience" expandable={false}>
       <h2 slot="title">Experience</h2>
       <Subsection>
-        <span slot="title">
+        <h3 slot="title">
           Full-stack developer @
           <a
             href="https://chemaxon.com/"
@@ -59,8 +61,8 @@ import SkodaConnect from "../assets/images/skodaconnect.webp";
           >
             ChemAxon
           </a>
-        </span>
-        <span slot="date">2021 - Present</span>
+        </h3>
+        <Temporal slot="date">2021 - Present</Temporal>
         <p>
           My current workplace is ChemAxon. The company is offering several
           mature products to the Biotechnology and Pharmaceutical industries.
@@ -81,7 +83,7 @@ import SkodaConnect from "../assets/images/skodaconnect.webp";
         </ul>
       </Subsection>
       <Subsection>
-        <span slot="title">
+        <h3 slot="title">
           Software developer @
           <a
             href="http://www.minero-it.hu/"
@@ -90,8 +92,8 @@ import SkodaConnect from "../assets/images/skodaconnect.webp";
           >
             Minero IT
           </a>
-        </span>
-        <span slot="date">2015 - 2021</span>
+        </h3>
+        <Temporal slot="date">2015 - 2021</Temporal>
         <p>
           Minero holds a specal place in my hearth. It is - my first employer in
           the private sector - a software consulting company. Here I've learnt a
@@ -113,7 +115,7 @@ import SkodaConnect from "../assets/images/skodaconnect.webp";
         </ul>
       </Subsection>
       <Subsection>
-        <span slot="title">
+        <h3 slot="title">
           Lead developer @
           <a
             href="https://aensys.hu/"
@@ -122,8 +124,8 @@ import SkodaConnect from "../assets/images/skodaconnect.webp";
           >
             AENSys
           </a>
-        </span>
-        <span slot="date">2012 - 2015</span>
+        </h3>
+        <Temporal slot="date">2012 - 2015</Temporal>
         <p>
           Working at this company was my first step to build applications to
           end-users. It taught all things that can occur once the application
@@ -137,7 +139,7 @@ import SkodaConnect from "../assets/images/skodaconnect.webp";
         </ul>
       </Subsection>
       <Subsection>
-        <span slot="title">
+        <h3 slot="title">
           Experienced developer @
           <a
             href="https://www.inf.u-szeged.hu/"
@@ -146,8 +148,8 @@ import SkodaConnect from "../assets/images/skodaconnect.webp";
           >
             Institute of Informatics
           </a>
-        </span>
-        <span slot="date">2009 - 2012</span>
+        </h3>
+        <Temporal slot="date">2009 - 2012</Temporal>
         <p>
           I've started to work in the University before my graduation. Working
           and studying in parallel was not easy way of life. But it certainly
@@ -165,29 +167,67 @@ import SkodaConnect from "../assets/images/skodaconnect.webp";
 
     <Section id="highlights" expandable={false}>
       <h2 slot="title">Highlights</h2>
-      <p>
-        Škoda-Connect is a highly interactive Single Page Application that gives
-        you the ease of remote vehicle management. Through this web application,
-        the users are able to check vehicle status, health or even plan trips
-        ahead. Škoda vehicle monitoring through a web browser has never been
-        easier before.
-      </p>
-      <p>
-        By being a full-stack developer for the first time, I really enjoyed the
-        technical challenges that the project gave to me. Day by day, I've got
-        familiar with the top Front-end technologies and soon I've become a
-        passionate JavaScript developer. This excitement has not faded since
-        then.
-      </p>
-      <p>
-        The team taught me how professional software is getting delivered and
-        how does the true agile development works.
-      </p>
+      <Subsection>
+        <h3 slot="title">Compound Registation</h3>
+        <p>
+          Compound Registration—an extraordinary application that meticulously
+          catalogs the very essence of small molecules! Picture this: molecules
+          embark on an exhilarating journey, traversing a three-level hierarchy,
+          undergoing the thrilling stages of normalization, validation, and a
+          quality check before earning their prestigious spot in the registry.
+        </p>
+        <p>
+          I've been entrusted with the monumental task of transforming this
+          legendary 🐉 application into the realm of modern JavaScript. A
+          colossal undertaking, indeed! My strategy? A masterful, granular
+          rewrite that not only brings the technology up to date but also
+          preserves the cherished business value. The challenge was titanic, and
+          I embraced it with gusto.
+        </p>
+        <p>
+          But wait, the real heroes in this saga are none other than my
+          exceptional team—the unsung champions who unlocked the secrets of the
+          application and revealed its unique features. Their wisdom, guidance,
+          and unwavering support were the true catalysts for success. Without
+          this dream team, the triumph would have remained an elusive quest.
+          Together, we've turned a seemingly impossible task into a triumphant
+          journey!
+        </p>
 
-      <figure>
-        <Image src={SkodaConnect} alt="Skoda Connect login page" />
-        <figcaption>Skoda Connect</figcaption>
-      </figure>
+        <figure>
+          <Image
+            src={CompReg}
+            alt="A molecule submission inside Compound Registation"
+          />
+          <figcaption>Compound Registation</figcaption>
+        </figure>
+      </Subsection>
+      <Subsection>
+        <h3 slot="title">Škoda-Connect</h3>
+        <p>
+          Škoda-Connect is a highly interactive Single Page Application that
+          gives you the ease of remote vehicle management. Through this web
+          application, the users are able to check vehicle status, health or
+          even plan trips ahead. Škoda vehicle monitoring through a web browser
+          has never been easier before.
+        </p>
+        <p>
+          By being a full-stack developer for the first time, I really enjoyed
+          the technical challenges that the project gave to me. Day by day, I've
+          got familiar with the top Front-end technologies and soon I've become
+          a passionate JavaScript developer. This excitement has not faded since
+          then.
+        </p>
+        <p>
+          The team taught me how professional software is getting delivered and
+          how does the true agile development works.
+        </p>
+
+        <figure>
+          <Image src={SkodaConnect} alt="Skoda Connect login page" />
+          <figcaption>Skoda Connect</figcaption>
+        </figure>
+      </Subsection>
     </Section>
 
     <Icon class="separator" src={Separator} viewBox="0 0 25 16" />
