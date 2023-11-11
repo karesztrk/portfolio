@@ -1,0 +1,16 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Main from "../components/Main.astro";
+import { getCollection, getEntry } from "astro:content";
+const allBlogPosts = await getCollection("mind-map");
+
+console.log(allBlogPosts);
+---
+
+<Layout title="Blog">
+  <Header />
+  <Main>
+    <h1 slot="title">Blog</h1>
+  </Main>
+</Layout>
