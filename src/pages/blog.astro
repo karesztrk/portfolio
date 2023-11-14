@@ -1,16 +1,40 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import Main from "../components/Main.astro";
-import { getCollection, getEntry } from "astro:content";
-const allBlogPosts = await getCollection("mind-map");
+import { getCollection } from "astro:content";
 
-console.log(allBlogPosts);
+import Layout from "../layouts/Layout.astro";
+import Temporal from "../components/Temporal.astro";
+import { formatTitle, formatExcerpt, formatDate } from "../util/blog.util.ts";
+
+const blog = await getCollection("Blog");
+
+const sortedPosts = blog.sort(
+  (left, right) => right.data.date - left.data.date,
+);
 ---
 
 <Layout title="Blog">
-  <Header />
-  <Main>
-    <h1 slot="title">Blog</h1>
-  </Main>
+  <h1>Blog</h1>
+  {
+    sortedPosts.map((post) => (
+      <article>
+        <a href={`/blog/${post.slug}`}>
+          <h2>{formatTitle(post.id)}</h2>
+        </a>
+        <Temporal type="text" icon={true}>
+          {formatDate(post.data.date)}
+        </Temporal>
+        <p>{formatExcerpt(post.body)}</p>
+      </article>
+    ))
+  }
 </Layout>
+
+<style>
+  a {
+    text-decoration-thickness: 20%;
+
+    h2 {
+      margin-bottom: 0;
+    }
+  }
+</style>

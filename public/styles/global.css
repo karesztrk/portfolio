@@ -49,6 +49,12 @@
     line-height: 1.75;
   }
 
+  pre,
+  code {
+    font-family: "Recursive", sans-serif;
+    font-variation-settings: "MONO" 1;
+  }
+
   p,
   ol,
   ul {
@@ -98,7 +104,12 @@
 }
 
 @layer components {
-  img {
+  pre {
+    padding: 6px 8px;
+  }
+
+  img,
+  pre {
     border-radius: var(--radius);
     border: 2px solid var(--color-summary-border);
 
@@ -262,6 +273,10 @@
       --color-summary-bg: var(--color-blue-3);
       --color-summary-border: var(--color-teal-3);
       --color-hover-summary-border: var(--color-teal-2);
+
+      --color-time-contained-bg: var(--color-tertiary);
+      --color-time-contained-text: var(--color-background);
+      --color-time-text: var(--color-tertiary);
 
       --color-logo: var(--color-pink-2);
     }

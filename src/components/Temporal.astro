@@ -1,27 +1,47 @@
 ---
+import Icon from "./Icon.astro";
+import Calendar from "../assets/images/icons/Calendar.svg?url";
+
 interface Props {
   type?: "contained" | "text";
+  icon?: boolean;
 }
 
-const { type = "contained" } = Astro.props;
+const { type = "contained", icon } = Astro.props;
 ---
 
-<time class:list={[type]}>
+<time class:list={[type, icon && "middle"]}>
+  {icon && <Icon src={Calendar} viewBox="0 0 14 14" />}
   <slot />
 </time>
 
 <style>
   time {
     color: var(--text);
-    background: var(--color-secondary);
     padding: 6px;
     border-radius: var(--radius);
-    font-size: 0.85em;
     font-variation-settings: "MONO" 1;
+    vertical-align: middle;
+
+    &.middle {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 8px;
+    }
 
     &.contained {
-      color: var(--color-background);
-      background: var(--color-tertiary);
+      font-size: 0.85em;
+      background: var(--color-time-contained-bg);
+      color: var(--color-time-contained-text);
+    }
+
+    &.text {
+      color: var(--color-tertiary);
+    }
+
+    .icon {
+      color: var(--color-text);
     }
   }
 </style>

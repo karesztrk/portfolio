@@ -1,16 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
 import Main from "../components/Main.astro";
 import Section from "../components/Section.astro";
 ---
 
 <Layout title="Károly Török">
-  <Header />
-
   <Main>
-    <h1 slot="title">Hello <br /> Szia(ˈsijɒ)!</h1>
+    <h1>Hello <br /> Szia(ˈsijɒ)!</h1>
     <Section id="hello" expandable>
       <h2 slot="title"></h2>
       <p>
@@ -30,7 +26,6 @@ import Section from "../components/Section.astro";
       <a href="/about">More about me</a>
     </div>
   </Main>
-  <Footer />
 </Layout>
 
 <style>
