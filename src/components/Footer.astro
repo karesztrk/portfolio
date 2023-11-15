@@ -8,36 +8,45 @@ import Mail from "../assets/images/icons/Mail.svg?url";
 import Youtube from "../assets/images/icons/Youtube.svg?url";
 const year = new Date().getFullYear();
 
-const socials: Record<string, { icon: string; url: string; title: string }> = {
+const socials: Record<
+  string,
+  { icon: string; url: string; title: string; viewBox: string }
+> = {
   github: {
     title: "Check me on Github",
     icon: Github,
     url: "https://github.com/karesztrk",
+    viewBox: "0 0 19 18",
   },
   email: {
     title: "Send me a mail",
     icon: Mail,
     url: "mailto:torok.karoly.krisztian@gmail.com",
+    viewBox: "0 0 23 16",
   },
   linkedin: {
     title: "Check my profile on LinkedIn",
     icon: LinkedIn,
     url: "https://www.linkedin.com/in/k%C3%A1roly-t%C3%B6r%C3%B6k-17541b80/",
+    viewBox: "0 0 19 19",
   },
   instagram: {
     title: "My activity on Instagram",
     icon: Instagram,
     url: "https://www.instagram.com/karesztrk/",
+    viewBox: "0 0 19 18",
   },
   youtube: {
     title: "Things i watch on Youtube",
     icon: Youtube,
     url: "https://www.youtube.com/user/r0nan87",
+    viewBox: "0 0 21 16",
   },
   facebook: {
     title: "My Facebook profile",
     icon: Facebook,
     url: "https://www.facebook.com/karoly.torok.9/",
+    viewBox: "0 0 19 18",
   },
 };
 ---
@@ -48,9 +57,9 @@ const socials: Record<string, { icon: string; url: string; title: string }> = {
   </svg>
   <div class="socials">
     {
-      Object.values(socials).map(({ title, icon, url }) => (
+      Object.values(socials).map(({ title, icon, url, viewBox }) => (
         <a href={url}>
-          <Icon src={icon} title={title} />
+          <Icon src={icon} title={title} viewBox={viewBox} />
         </a>
       ))
     }
@@ -72,7 +81,7 @@ const socials: Record<string, { icon: string; url: string; title: string }> = {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
-    margin: 8px;
+    margin-block: 8px;
 
     .divider {
       height: 1px;
@@ -99,9 +108,10 @@ const socials: Record<string, { icon: string; url: string; title: string }> = {
       justify-content: center;
       align-items: center;
       gap: 0.5rem;
+      margin-block: 0.5rem;
 
       a {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         line-height: 1;
       }
 

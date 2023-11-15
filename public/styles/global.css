@@ -49,10 +49,35 @@
     line-height: 1.75;
   }
 
+  .dotted {
+    background: repeating-linear-gradient(
+        90deg,
+        transparent 0,
+        transparent var(--_dot-size),
+        var(--color-background) var(--_edge-end),
+        var(--color-background) var(--_gardient-end)
+      ),
+      repeating-linear-gradient(
+        180deg,
+        var(--color-title) 0,
+        var(--color-title) var(--_dot-size),
+        transparent var(--_edge-end),
+        transparent var(--_gardient-end)
+      ),
+      var(--color-background);
+  }
+
   pre,
   code {
+    font-size: 0.875rem;
     font-family: "Recursive", sans-serif;
     font-variation-settings: "MONO" 1;
+  }
+
+  h2 {
+    code {
+      font-size: revert;
+    }
   }
 
   p,

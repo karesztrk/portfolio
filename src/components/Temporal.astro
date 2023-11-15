@@ -10,25 +10,20 @@ interface Props {
 const { type = "contained", icon } = Astro.props;
 ---
 
-<time class:list={[type, icon && "middle"]}>
+<div class:list={["temporal", type, icon && "adorned"]}>
   {icon && <Icon src={Calendar} viewBox="0 0 14 14" />}
-  <slot />
-</time>
+  <time>
+    <slot />
+  </time>
+</div>
 
 <style>
-  time {
-    color: var(--text);
-    padding: 6px;
+  .temporal {
     border-radius: var(--radius);
+    color: var(--text);
     font-variation-settings: "MONO" 1;
-    vertical-align: middle;
-
-    &.middle {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 8px;
-    }
+    display: inline;
+    padding: 6px;
 
     &.contained {
       font-size: 0.85em;
@@ -37,11 +32,16 @@ const { type = "contained", icon } = Astro.props;
     }
 
     &.text {
-      color: var(--color-tertiary);
+      time {
+        color: var(--color-tertiary);
+      }
     }
 
-    .icon {
-      color: var(--color-text);
+    &.adorned {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 8px;
     }
   }
 </style>

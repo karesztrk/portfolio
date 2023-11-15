@@ -4,6 +4,7 @@ import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import Temporal from "../components/Temporal.astro";
 import { formatTitle, formatExcerpt, formatDate } from "../util/blog.util.ts";
+import Tags from "../components/Tags.astro";
 
 const blog = await getCollection("Blog");
 

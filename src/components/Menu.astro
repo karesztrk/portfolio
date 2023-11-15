@@ -3,7 +3,7 @@ const currentPath = Astro.url.pathname;
 console.log(currentPath);
 ---
 
-<ul>
+<menu>
   <li>
     <a class:list={[{ active: currentPath === "/blog" }]} href="/blog">Blog</a>
   </li>
@@ -12,10 +12,12 @@ console.log(currentPath);
       >About</a
     >
   </li>
-</ul>
+</menu>
 
 <style>
-  ul {
+  menu {
+    font-variation-settings: "CASL" 1;
+    font-size: var(--p);
     font-family: "Silkscreen";
     display: flex;
     gap: var(--gap);
