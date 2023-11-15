@@ -4,7 +4,7 @@ import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import Temporal from "../components/Temporal.astro";
 import { formatTitle, formatExcerpt, formatDate } from "../util/blog.util.ts";
-import Tags from "../components/Tags.astro";
+import Divider from "../components/Divider.astro";
 
 const blog = await getCollection("Blog");
 
@@ -16,17 +16,22 @@ const sortedPosts = blog.sort(
 <Layout title="Blog">
   <h1>Blog</h1>
   {
-    sortedPosts.map((post) => (
-      <article>
-        <a href={`/blog/${post.slug}`}>
-          <h2>{formatTitle(post.id)}</h2>
-        </a>
-        <Temporal type="text" icon={true}>
-          {formatDate(post.data.date)}
-        </Temporal>
-        <p>{formatExcerpt(post.body)}</p>
-      </article>
-    ))
+    sortedPosts.map((post, index) => {
+      return (
+        <>
+          <article>
+            <a href={`/blog/${post.slug}`}>
+              <h2>{formatTitle(post.id)}</h2>
+            </a>
+            <Temporal type="text" icon={true}>
+              {formatDate(post.data.date)}
+            </Temporal>
+            <p>{formatExcerpt(post.body)}</p>
+          </article>
+          {index < sortedPosts.length - 1 && <Divider />}
+        </>
+      );
+    })
   }
 </Layout>
 
@@ -35,7 +40,11 @@ const sortedPosts = blog.sort(
     text-decoration-thickness: 20%;
 
     h2 {
-      margin-bottom: 0;
+      margin: 0;
     }
+  }
+
+  .divider {
+    margin-block: 3rem;
   }
 </style>

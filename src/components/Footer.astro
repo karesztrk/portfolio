@@ -1,5 +1,6 @@
 ---
 import Icon from "./Icon.astro";
+import Divider from "./Divider.astro";
 import Facebook from "../assets/images/icons/Facebook.svg?url";
 import Github from "../assets/images/icons/Github.svg?url";
 import Instagram from "../assets/images/icons/Instagram.svg?url";
@@ -52,9 +53,7 @@ const socials: Record<
 ---
 
 <footer>
-  <svg class="divider" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <line x1="0" y1="0" x2="100%" y2="0" stroke="currentColor"></line>
-  </svg>
+  <Divider />
   <div class="socials">
     {
       Object.values(socials).map(({ title, icon, url, viewBox }) => (
@@ -84,12 +83,7 @@ const socials: Record<
     margin-block: 8px;
 
     .divider {
-      height: 1px;
-      width: 100%;
       margin-block: 0.5rem 1rem;
-      color: var(--color-footer-divider);
-      stroke-dasharray: 5;
-      stroke-width: 1px;
     }
 
     p {
