@@ -21,9 +21,11 @@ import Icon from "./Icon.astro";
 <style>
   header {
     grid-column: content;
+    container: header / inline-size;
 
     > nav {
       display: flex;
+      gap: var(--gap);
       justify-content: space-between;
       align-items: center;
     }

@@ -21,15 +21,24 @@ const currentPath = Astro.url.pathname;
     font-size: var(--p);
     font-family: "Silkscreen";
     display: flex;
+    flex-direction: column;
     gap: var(--gap);
+    padding: 0;
     list-style: none;
-    li {
+    > li {
       list-style: none;
+    }
+  }
+
+  @container header (width > 45ch) {
+    menu {
+      flex-direction: row;
     }
   }
 
   a {
     text-shadow: 1px 1px 0px var(--color-link-shadow);
+    white-space: nowrap;
     &:hover:not(.active) {
       text-decoration-style: dashed;
     }
