@@ -4,6 +4,7 @@ import Layout from "../../layouts/Layout.astro";
 import { formatTitle, formatDate } from "../../util/blog.util.ts";
 import Temporal from "../../components/Temporal.astro";
 import Tags from "../../components/Tags.astro";
+import Fields from "../../components/Fields.astro";
 
 export async function getStaticPaths() {
   const blog = await getCollection("Blog");
@@ -20,10 +21,15 @@ const title = formatTitle(entry.id);
 <Layout title={title}>
   <article>
     <h1>{title}</h1>
-    <Tags list={entry.data.tags} />
-    <Temporal type="text" icon={true}>
-      {formatDate(entry.data.date)}
-    </Temporal>
+
+    <Fields>
+      <Tags>
+        {entry.data.tags.map((tag: string) => <li>{tag}</li>)}
+      </Tags>
+      <Temporal type="text" icon={true}>
+        {formatDate(entry.data.date)}
+      </Temporal>
+    </Fields>
     <Content />
   </article>
 </Layout>

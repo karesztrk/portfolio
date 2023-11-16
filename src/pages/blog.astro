@@ -5,6 +5,7 @@ import Layout from "../layouts/Layout.astro";
 import Temporal from "../components/Temporal.astro";
 import { formatTitle, formatExcerpt, formatDate } from "../util/blog.util.ts";
 import Divider from "../components/Divider.astro";
+import Fields from "../components/Fields.astro";
 
 const blog = await getCollection("Blog");
 
@@ -23,9 +24,11 @@ const sortedPosts = blog.sort(
             <a href={`/blog/${post.slug}`}>
               <h2>{formatTitle(post.id)}</h2>
             </a>
-            <Temporal type="text" icon={true}>
-              {formatDate(post.data.date)}
-            </Temporal>
+            <Fields>
+              <Temporal type="text" icon={true}>
+                {formatDate(post.data.date)}
+              </Temporal>
+            </Fields>
             <p>{formatExcerpt(post.body)}</p>
           </article>
           {index < sortedPosts.length - 1 && <Divider />}

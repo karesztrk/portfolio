@@ -23,9 +23,9 @@ const { type = "contained", icon } = Astro.props;
     color: var(--text);
     font-variation-settings: "MONO" 1;
     display: inline;
-    padding: 6px;
 
     &.contained {
+      padding: 6px;
       font-size: 0.85em;
       background: var(--color-time-contained-bg);
       color: var(--color-time-contained-text);
@@ -38,10 +38,10 @@ const { type = "contained", icon } = Astro.props;
     }
 
     &.adorned {
-      display: flex;
-      flex-direction: row;
+      grid-column: span 2;
+      display: grid;
+      grid-template-columns: subgrid;
       align-items: center;
-      gap: 8px;
     }
   }
 </style>
