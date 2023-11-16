@@ -9,7 +9,7 @@ const currentPath = Astro.url.pathname;
     >
   </li>
   <li>
-    <a class:list={[{ active: currentPath === "/about" }]} href="/about"
+    <a class:list={[{ active: currentPath.startsWith("/about") }]} href="/about"
       >About</a
     >
   </li>
