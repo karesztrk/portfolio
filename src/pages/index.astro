@@ -24,6 +24,7 @@ import Section from "../components/Section.astro";
     <div class="grid">
       <a href="/blog">My ideas</a>
       <a href="/about">More about me</a>
+      <!-- <a href="/mind-map">Things that i like</a> -->
     </div>
   </Main>
 </Layout>
@@ -41,11 +42,29 @@ import Section from "../components/Section.astro";
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
 
     > a {
+      position: relative;
       padding: 2rem;
       background: var(--color-button-secondary-bg);
       color: var(--color-button-secondary-text);
       text-decoration: none;
-      border-radius: var(--radius);
+
+      &:before,
+      &::after {
+        position: absolute;
+        content: "";
+        z-index: -1;
+        background: var(--color-button-secondary-bg);
+      }
+
+      &:before {
+        inset-block: -2px;
+        inset-inline: 4px;
+      }
+
+      &:after {
+        inset-block: 4px;
+        inset-inline: -2px;
+      }
 
       &:hover {
         outline-offset: var(--button-outline-offset);

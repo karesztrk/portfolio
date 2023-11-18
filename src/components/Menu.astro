@@ -8,6 +8,12 @@ const currentPath = Astro.url.pathname;
       >Blog</a
     >
   </li>
+  <!-- <li> -->
+  <!--   <a -->
+  <!--     class:list={[{ active: currentPath.startsWith("/mind-map") }]} -->
+  <!--     href="/mind-map">Mind-map</a -->
+  <!--   > -->
+  <!-- </li> -->
   <li>
     <a class:list={[{ active: currentPath.startsWith("/about") }]} href="/about"
       >About</a
@@ -25,8 +31,10 @@ const currentPath = Astro.url.pathname;
     gap: var(--gap);
     padding: 0;
     list-style: none;
+    margin-block: 2.25rem;
     > li {
       list-style: none;
+      margin: 0;
     }
   }
 

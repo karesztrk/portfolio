@@ -1,0 +1,67 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"input">;
+
+const props = Astro.props;
+---
+
+<div class="input">
+  <slot />
+  <input {...props} />
+</div>
+
+<style>
+  .input {
+    --_border-color: var(--color-input-border);
+    --_text-color: var(--color-input-text);
+    position: relative;
+    font-family: "Silkscreen";
+    border: var(--input-border-size) solid var(--_border-color);
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    background: var(--color-input-bg);
+    padding-inline: var(--space-xs);
+    gap: var(--space-xs);
+
+    &:focus-within {
+      outline-style: auto;
+    }
+
+    > .icon {
+      color: var(--_border-color);
+    }
+
+    > input {
+      height: 30px;
+      flex: 1;
+      background: var(--color-input-bg);
+      border: 0;
+      outline: none;
+    }
+
+    &:before,
+    &::after {
+      position: absolute;
+      content: "";
+      background: var(--_border-color);
+      z-index: -1;
+    }
+
+    &:before {
+      inset-block: calc(var(--input-border-size) * -1 - 1px);
+      inset-inline: 0px;
+    }
+
+    &:after {
+      inset-block: 0px;
+      inset-inline: calc(var(--input-border-size) * -1 - 2px);
+    }
+
+    &:hover {
+      --_border-color: var(--color-teal-1);
+      --_text-color: var(--color-title);
+    }
+  }
+</style>
