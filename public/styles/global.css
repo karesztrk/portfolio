@@ -49,7 +49,7 @@
 
 @layer typography {
   body {
-    font-family: "Recursive", sans-serif;
+    font-family: "Recursive", monospace;
     font-size: 1rem;
     line-height: 1.75;
   }
@@ -75,7 +75,7 @@
   pre,
   code {
     font-size: 0.875rem;
-    font-family: "Recursive", sans-serif;
+    font-family: "Recursive", monospace;
     font-variation-settings: "MONO" 1;
   }
 
