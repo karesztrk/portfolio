@@ -15,14 +15,18 @@ import TagIcon from "../assets/images/icons/Tag.svg?url";
     grid-column: span 2;
     display: grid;
     grid-template-columns: subgrid;
-    align-items: center;
+    align-items: baseline;
+
+    .icon {
+      height: calc(1rem * 1.7);
+    }
 
     > ul {
       display: flex;
       flex-wrap: wrap;
       list-style: none;
       text-transform: uppercase;
-      gap: 12px;
+      gap: 0.75em;
       padding: 0;
       margin: 0;
 

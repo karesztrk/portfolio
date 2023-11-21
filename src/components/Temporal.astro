@@ -25,8 +25,8 @@ const { type = "contained", icon } = Astro.props;
     display: inline;
 
     &.contained {
-      padding: 6px;
       font-size: 0.85em;
+      padding: 6px;
       background: var(--color-time-contained-bg);
       color: var(--color-time-contained-text);
     }
@@ -41,7 +41,11 @@ const { type = "contained", icon } = Astro.props;
       grid-column: span 2;
       display: grid;
       grid-template-columns: subgrid;
-      align-items: center;
+      align-items: baseline;
+
+      .icon {
+        height: calc(1rem * 1.7);
+      }
     }
   }
 </style>

@@ -1,23 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { formatTitle } from "../util/blog.util.ts";
-import { getCollection } from "astro:content";
-import type { CollectionEntry } from "astro:content";
 import Icon from "../components/Icon.astro";
 import Search from "../assets/images/icons/Search.svg?url";
-import Input from "../components/Input.astro";
 import InputButton from "../components/InputButton.astro";
-
-const collectionNames = [
-  "Articles",
-  "Codepens",
-  "Libraries",
-  "Snippets",
-  "Stack",
-  "Tools",
-] as const;
-
-type CollectionType = (typeof collectionNames)[number];
+import SearchDialog from "../components/SearchDialog.astro";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import { collectionNames } from "../util/collections.util.ts";
+import type { CollectionType } from "../util/collections.util.ts";
 
 const resolvedCollections = await Promise.all(
   collectionNames.map((c) =>
@@ -37,107 +27,44 @@ const collections = resolvedCollections.reduce(
 
 <Layout title="Mind-map">
   <h1>Mind-map</h1>
-  <p>Beta version</p>
   <InputButton id="search-button">
     <Icon src={Search} viewBox="0 0 18 18" />Search
   </InputButton>
-  <article></article>
-
-  <dialog id="search-dialog">
-    <header>This is a sample dialog</header>
-    <form method="dialog">
-      <list-filter>
-        <Input type="search">
-          <Icon src={Search} viewBox="0 0 18 18" />
-        </Input>
-
-        {
-          Object.keys(collections).map((collection) => (
-            <menu>
-              <li class="collection">
-                {collection}
-                <ul>
-                  {collections[collection as CollectionType].map((entry) => (
-                    <li class="entry" data-body={entry.body}>
-                      <button id={entry.id} name="document" value={entry.body}>
-                        {formatTitle(entry.id)}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </li>
-            </menu>
-          ))
-        }
-      </list-filter>
-    </form>
-  </dialog>
+  <article>
+    <output></output>
+  </article>
 </Layout>
+<SearchDialog id="search-dialog" collections={collections} />
 
 <script>
   const searchButton = document.getElementById("search-button");
-  const searchDialog = document.getElementById("search-dialog");
-  const entries = document.querySelectorAll(".entry");
-  const article = document.querySelector("article");
+  const searchDialog = document.getElementById(
+    "search-dialog",
+  ) as HTMLDialogElement | null;
 
   if (searchButton && searchDialog) {
     searchButton.addEventListener("click", () => {
-      (searchDialog as HTMLDialogElement).showModal();
+      searchDialog.showModal();
     });
   }
 
   if (searchDialog) {
-    searchDialog.addEventListener("close", () => {
-      article.innerHTML = searchDialog.returnValue;
+    searchDialog.addEventListener("close", (e) => {
+      console.log(e);
+      const { returnValue } = searchDialog;
+      const output = document.querySelector("output");
+      if (returnValue && output) {
+        output.value = returnValue;
+      }
     });
   }
-
-  class ListFilter extends HTMLElement {
-    constructor() {
-      super();
-      const input = this.querySelector("input");
-
-      if (input) {
-        input.addEventListener("input", (e: Event) => {
-          if (e.target instanceof HTMLInputElement) {
-            const value = e.target.value;
-
-            const entries = this.querySelectorAll(".entry");
-            entries.forEach((entry) => {
-              if (entry && entry.textContent !== null) {
-                console.log(entry.textContent);
-                (entry as HTMLElement).style.display = entry.textContent
-                  .toLowerCase()
-                  .includes(value.toLowerCase())
-                  ? "list-item"
-                  : "none";
-              }
-            });
-          }
-        });
-      }
-    }
-  }
-
-  customElements.define("list-filter", ListFilter);
 </script>
 
 <style>
-  tree-view {
-    display: grid;
-    grid-template-columns: 140px 1fr;
-
-    > aside {
-      & li {
-        white-space: nowrap;
-      }
-    }
-  }
-
   #search-button {
     width: 300px;
     display: block;
-    margin-block: 48px;
+    margin-block: 4rem;
     margin-inline: auto;
   }
 </style>

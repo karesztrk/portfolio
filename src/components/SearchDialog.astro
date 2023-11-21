@@ -1,0 +1,155 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { formatTitle } from "../util/blog.util.ts";
+import Icon from "../components/Icon.astro";
+import Search from "../assets/images/icons/Search.svg?url";
+import Markdown from "../assets/images/icons/Markdown.svg?url";
+import Input from "../components/Input.astro";
+import type { CollectionEntry } from "astro:content";
+import type { CollectionType } from "../util/collections.util.ts";
+
+interface Props extends HTMLAttributes<"dialog"> {
+  collections: Record<CollectionType, CollectionEntry<CollectionType>[]>;
+}
+
+const { collections, ...rest } = Astro.props;
+---
+
+<dialog {...rest}>
+  <form method="dialog">
+    <collection-filter>
+      <div class="search-header">
+        <Input id="search-input" type="search" autofocus>
+          <Icon src={Search} viewBox="0 0 18 18" />
+        </Input>
+
+        <button
+          id="close-button"
+          value=""
+          formmethod="dialog"
+          aria-label="Close dialog">X</button
+        >
+      </div>
+
+      <menu tabindex={-1}>
+        {
+          Object.keys(collections).map((collection) => (
+            <li class="collection">
+              {collection}
+              <ul>
+                {collections[collection as CollectionType].map((entry) => (
+                  <li class="entry">
+                    <button
+                      class="entry-button"
+                      name="document"
+                      value={entry.body}
+                    >
+                      <Icon src={Markdown} viewBox="0 0 15 16" />
+                      {formatTitle(entry.id)}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))
+        }
+      </menu>
+    </collection-filter>
+  </form>
+</dialog>
+
+<script>
+  class CollectionFilter extends HTMLElement {
+    constructor() {
+      super();
+      const input = this.querySelector("#search-input");
+
+      const onChange = (e: Event) => {
+        if (e.target instanceof HTMLInputElement) {
+          const value = e.target.value;
+
+          const entries = this.querySelectorAll(".entry");
+          entries.forEach((entry) => {
+            if (entry && entry.textContent !== null) {
+              (entry as HTMLElement).style.display = entry.textContent
+                .toLowerCase()
+                .includes(value.toLowerCase())
+                ? "list-item"
+                : "none";
+            }
+          });
+        }
+      };
+
+      if (input) {
+        input.addEventListener("input", onChange);
+      }
+    }
+  }
+
+  customElements.define("collection-filter", CollectionFilter);
+</script>
+
+<style>
+  dialog {
+    & .search-header {
+      display: flex;
+      flex-flow: row wrap;
+      gap: var(--space-xs);
+      > .input {
+        flex: 1;
+      }
+      > #close-button {
+        flex: 0;
+        font-family: "Silkscreen", monospace;
+        color: var(--color-text);
+        background: none;
+        border: 0;
+      }
+    }
+    & collection-filter {
+      & menu,
+      ul,
+      li {
+        list-style: none;
+        padding: 0;
+      }
+
+      & ul {
+        margin: 0;
+        > li:first-child {
+          margin-block-start: 0;
+        }
+      }
+
+      > menu {
+        overflow: auto;
+        max-height: 450px;
+        > li {
+          color: var(--color-pink-1);
+          font-family: "Silkscreen", monospace;
+        }
+      }
+
+      & button.entry-button {
+        font-family: "Recursive", monospace;
+        color: var(--color-text);
+        background: var(--color-background);
+        border: 0;
+        width: 100%;
+        text-align: left;
+        font-size: 1rem;
+        padding: 0.375em 0.5em;
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+
+        &:hover,
+        &[aria-selected] {
+          background: var(--color-teal-2);
+          color: var(--color-background);
+        }
+      }
+    }
+  }
+</style>
