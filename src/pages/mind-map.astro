@@ -8,6 +8,7 @@ import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import { collectionNames } from "../util/collections.util.ts";
 import type { CollectionType } from "../util/collections.util.ts";
+import { formatTitle } from "../util/blog.util.ts";
 
 const resolvedCollections = await Promise.all(
   collectionNames.map((c) =>
@@ -23,6 +24,15 @@ const collections = resolvedCollections.reduce(
   },
   {} as Record<CollectionType, CollectionEntry<CollectionType>[]>,
 );
+
+const collectionRenders = resolvedCollections
+  .flat()
+  .map(({ id, slug, body, collection }) => ({
+    title: formatTitle(id),
+    slug,
+    body,
+    collection,
+  }));
 ---
 
 <Layout title="Mind-map">
@@ -33,8 +43,8 @@ const collections = resolvedCollections.reduce(
   <article>
     <output></output>
   </article>
+  <SearchDialog id="search-dialog" collections={collections} />
 </Layout>
-<SearchDialog id="search-dialog" collections={collections} />
 
 <script>
   const searchButton = document.getElementById("search-button");
@@ -47,14 +57,21 @@ const collections = resolvedCollections.reduce(
       searchDialog.showModal();
     });
   }
+</script>
+
+<script define:vars={{ collectionRenders }}>
+  const searchDialog = document.getElementById("search-dialog");
 
   if (searchDialog) {
-    searchDialog.addEventListener("close", (e) => {
-      console.log(e);
+    searchDialog.addEventListener("close", () => {
       const { returnValue } = searchDialog;
-      const output = document.querySelector("output");
+      const output = document.querySelector("article");
       if (returnValue && output) {
-        output.value = returnValue;
+        const [collection, slug] = returnValue.split("/");
+        const entry = collectionRenders.find(
+          (c) => c.collection === collection && c.slug === slug,
+        );
+        output.innerHTML = `<p>${entry.title}</p><pre>${entry.body}</pre>`;
       }
     });
   }

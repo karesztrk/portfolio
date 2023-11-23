@@ -138,6 +138,7 @@
 @layer components {
   pre {
     padding: var(--space-xs) var(--space-sm);
+    overflow: auto;
   }
 
   img,

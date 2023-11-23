@@ -38,11 +38,11 @@ const { collections, ...rest } = Astro.props;
               {collection}
               <ul>
                 {collections[collection as CollectionType].map((entry) => (
-                  <li class="entry">
+                  <li class="entry" data-tags={entry.data.tags}>
                     <button
                       class="entry-button"
                       name="document"
-                      value={entry.body}
+                      value={`${entry.collection}/${entry.slug}`}
                     >
                       <Icon src={Markdown} viewBox="0 0 15 16" />
                       {formatTitle(entry.id)}
@@ -63,17 +63,23 @@ const { collections, ...rest } = Astro.props;
     constructor() {
       super();
       const input = this.querySelector("#search-input");
-
       const onChange = (e: Event) => {
         if (e.target instanceof HTMLInputElement) {
           const value = e.target.value;
 
           const entries = this.querySelectorAll(".entry");
+
           entries.forEach((entry) => {
-            if (entry && entry.textContent !== null) {
-              (entry as HTMLElement).style.display = entry.textContent
-                .toLowerCase()
-                .includes(value.toLowerCase())
+            if (entry instanceof HTMLElement && entry.textContent !== null) {
+              const tags = entry.dataset.tags
+                ? entry.dataset.tags.split(",")
+                : [];
+              const show =
+                entry.textContent.toLowerCase().includes(value.toLowerCase()) ||
+                tags.includes(value.toLowerCase());
+              console.log(tags.includes(value));
+
+              (entry as HTMLElement).style.display = show
                 ? "list-item"
                 : "none";
             }
