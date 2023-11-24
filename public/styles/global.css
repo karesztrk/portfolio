@@ -162,6 +162,7 @@
     border-radius: var(--radius);
     overflow: hidden;
     border: 2px solid var(--color-summary-border);
+    color: var(--color-summary-text);
 
     > summary {
       display: list-item;
@@ -273,74 +274,138 @@
 }
 
 @layer theme {
-  @layer light, dark;
+  @layer dark, light;
 
-  @layer light {
+  @layer dark {
+    :root {
+      --color-yellow-0: #ffe260;
+      --color-yellow-1: #ffdb37;
+      --color-yellow-2: #ffd100;
+      --color-yellow-3: #c29f00;
+      --color-yellow-4: #947900;
+
+      --color-pink-0: #d34faf;
+      --color-pink-1: #c52b9b;
+      --color-pink-2: #be008a;
+      --color-pink-3: #910069;
+      --color-pink-4: #6e0050;
+
+      --color-teal-0: #49aebc;
+      --color-teal-1: #2697a7;
+      --color-teal-2: #03899c;
+      --color-teal-3: #026877;
+      --color-teal-4: #01505a;
+
+      --color-dark-0: #ebedff;
+      --color-dark-1: #c5c6d3;
+      --color-dark-2: #0e304c;
+      --color-dark-3: #031c31;
+      --color-dark-4: #01101c;
+      --color-text: var(--color-dark-1);
+      --color-title: var(--color-dark-0);
+      --color-background: var(--color-dark-4);
+
+      --color-button-secondary-text: var(--color-dark-4);
+      --color-button-secondary-bg: var(--color-yellow-0);
+
+      --color-link-text: var(--color-yellow-0);
+      --color-link-shadow: var(--color-pink-2);
+
+      --color-primary: var(--color-yellow-2);
+      --color-secondary: var(--color-pink-2);
+      --color-tertiary: var(--color-teal-2);
+
+      --color-footer-divider: var(--color-pink-2);
+
+      --color-summary-text: var(--color-text);
+      --color-summary-bg: var(--color-dark-3);
+      --color-summary-border: var(--color-teal-3);
+      --color-hover-summary-border: var(--color-teal-2);
+
+      --color-time-contained-bg: var(--color-tertiary);
+      --color-time-contained-text: var(--color-background);
+      --color-time-text: var(--color-tertiary);
+
+      --color-input-text: var(--color-text);
+      --color-input-bg: var(--color-dark-3);
+      --color-input-border: var(--color-teal-2);
+      --color-input-border-hl: var(--color-teal-1);
+
+      --color-logo: var(--color-pink-2);
+
+      --colog-dialog-bg: var(--color-dark-3);
+      --colog-dialog-border: var(--color-dark-2);
+
+      --color-li-group-text: var(--color-pink-1);
+      --color-li-bg-hl: var(--color-teal-2);
+    }
   }
 }
 
-/* @media (prefers-color-scheme: dark) { */
-@layer theme.dark {
-  :root {
-    --color-yellow-0: #ffe260;
-    --color-yellow-1: #ffdb37;
-    --color-yellow-2: #ffd100;
-    --color-yellow-3: #c29f00;
-    --color-yellow-4: #947900;
+@media (prefers-color-scheme: light) {
+  @layer theme.light {
+    :root {
+      --color-yellow-0: #ffe877;
+      --color-yellow-1: #e7cd49;
+      --color-yellow-2: #d6b71e;
+      --color-yellow-3: #aa900e;
+      --color-yellow-4: #836d00;
 
-    --color-pink-0: #d34faf;
-    --color-pink-1: #c52b9b;
-    --color-pink-2: #be008a;
-    --color-pink-3: #910069;
-    --color-pink-4: #6e0050;
+      --color-pink-0: #ce61a1;
+      --color-pink-1: #b83a84;
+      --color-pink-2: #aa186e;
+      --color-pink-3: #870b54;
+      --color-pink-4: #68003d;
 
-    --color-teal-0: #49aebc;
-    --color-teal-1: #2697a7;
-    --color-teal-2: #03899c;
-    --color-teal-3: #026877;
-    --color-teal-4: #01505a;
+      --color-teal-0: #4da59c;
+      --color-teal-1: #2d8f85;
+      --color-teal-2: #138579;
+      --color-teal-3: #096a60;
+      --color-teal-4: #005148;
 
-    --color-gray-0: #ebedff;
-    --color-gray-1: #c5c6d3;
+      --color-dark-0: #fffcfa;
+      --color-dark-1: #c5c6d3;
+      --color-dark-2: #0e304c;
+      --color-dark-3: #031c31;
+      --color-dark-4: #01101c;
 
-    --color-blue-2: #0e304c;
-    --color-blue-3: #031c31;
-    --color-blue-4: #01101c;
+      --color-text: var(--color-dark-3);
+      --color-title: var(--color-dark-4);
+      --color-background: var(--color-dark-0);
 
-    --color-text: var(--color-gray-1);
-    --color-title: var(--color-gray-0);
-    --color-background: var(--color-blue-4);
+      --color-button-secondary-text: var(--color-dark-0);
+      --color-button-secondary-bg: var(--color-pink-2);
 
-    --color-button-secondary-text: var(--color-blue-4);
-    --color-button-secondary-bg: var(--color-yellow-0);
+      --color-link-text: var(--color-pink-1);
+      --color-link-shadow: var(--color-yellow-2);
 
-    --color-link-secondary-text: var(--color-yellow-0);
+      --color-primary: var(--color-pink-2);
+      --color-secondary: var(--color-yellow-2);
+      --color-tertiary: var(--color-teal-3);
 
-    --color-link-text: var(--color-yellow-0);
-    --color-link-shadow: var(--color-pink-2);
+      --color-footer-divider: var(--color-yellow-4);
 
-    --color-primary: var(--color-yellow-2);
-    --color-secondary: var(--color-pink-2);
-    --color-tertiary: var(--color-teal-2);
-    --color-accent: hsl(241, 80%, 48%);
+      --color-summary-text: var(--color-dark-3);
+      --color-summary-bg: var(--color-dark-0);
+      --color-summary-border: var(--color-teal-4);
+      --color-hover-summary-border: var(--color-teal-3);
 
-    --color-footer-divider: var(--color-pink-2);
+      --color-time-contained-bg: var(--color-tertiary);
+      --color-time-contained-text: var(--color-background);
+      --color-time-text: var(--color-tertiary);
 
-    --color-summary-bg: var(--color-blue-3);
-    --color-summary-border: var(--color-teal-3);
-    --color-hover-summary-border: var(--color-teal-2);
+      --color-input-text: var(--color-text);
+      --color-input-bg: var(--color-dark-0);
+      --color-input-border: var(--color-teal-4);
+      --color-input-border-hl: var(--color-teal-3);
 
-    --color-time-contained-bg: var(--color-tertiary);
-    --color-time-contained-text: var(--color-background);
-    --color-time-text: var(--color-tertiary);
+      --color-logo: var(--color-pink-1);
 
-    --color-input-text: var(--color-text);
-    --color-input-bg: var(--color-blue-3);
-    --color-input-border: var(--color-teal-2);
+      --colog-dialog-bg: var(--color-dark-1);
+      --colog-dialog-border: var(--color-dark-4);
 
-    --color-logo: var(--color-pink-2);
-
-    --colog-dialog-bg: var(--color-blue-3);
-    --colog-dialog-border: var(--color-blue-2);
+      --color-li-group-text: var(--color-pink-3);
+      --color-li-bg-hl: var(--color-teal-4);
+    }
   }
 }
