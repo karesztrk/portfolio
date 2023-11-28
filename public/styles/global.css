@@ -51,7 +51,7 @@
 
 @layer typography {
   body {
-    font-family: "Recursive", monospace;
+    font-family: "Recursive", system-ui;
     font-size: 1rem;
     line-height: 1.75;
   }
@@ -182,21 +182,23 @@
   }
 
   h1 {
+    --_colums: 3;
+    --_dot-size: 5px;
+    --_dot-space: 2px;
+    --_edge-end: calc(var(--_dot-size) + 1px);
+    --_gardient-end: calc(var(--_edge-end) + var(--_dot-space));
+    --_width: calc(var(--_gardient-end) * var(--_colums) - var(--_dot-space));
     position: relative;
     line-height: 110%;
+    padding-inline-end: var(--_width);
 
     &:after {
-      --_colums: 3;
-      --_dot-size: 5px;
-      --_dot-space: 2px;
-      --_edge-end: calc(var(--_dot-size) + 1px);
-      --_gardient-end: calc(var(--_edge-end) + var(--_dot-space));
       content: "";
       position: absolute;
       top: 0;
       right: 0;
       bottom: 0;
-      width: calc(var(--_gardient-end) * var(--_colums) - var(--_dot-space));
+      width: var(--_width);
 
       background: repeating-linear-gradient(
           90deg,
@@ -213,7 +215,7 @@
           transparent var(--_gardient-end)
         ),
         var(--color-background);
-      margin-bottom: 4px;
+      margin-bottom: 5px;
     }
   }
 
