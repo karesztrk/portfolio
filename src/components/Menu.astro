@@ -1,8 +1,16 @@
 ---
+import MenuButton from "./MenuButton.astro";
 const currentPath = Astro.url.pathname;
 ---
 
-<menu>
+<MenuButton
+  id="menu-button"
+  aria-haspopup="menu"
+  aria-controls="main-menu"
+  aria-expanded="false"
+  title="Toggle menu"
+/>
+<menu id="main-menu">
   <li>
     <a class:list={[{ active: currentPath.startsWith("/blog") }]} href="/blog"
       >Blog</a
@@ -21,25 +29,42 @@ const currentPath = Astro.url.pathname;
   </li>
 </menu>
 
+<script>
+  const button = document.querySelector("#menu-button");
+
+  if (button) {
+    const onChange = () => {
+      const current =
+        button.getAttribute("aria-expanded") === "true" ? true : false;
+      button.setAttribute("aria-expanded", String(!current));
+    };
+    button.addEventListener("click", onChange);
+  }
+</script>
+
 <style>
   menu {
+    flex: 1 0 100%;
+    display: none;
+    flex-flow: column wrap;
     font-variation-settings: "CASL" 1;
     font-family: "Silkscreen", monospace;
-    display: flex;
-    flex-direction: column;
     gap: 1.5em;
     padding: 0;
+    margin-block: 2rem 0;
     list-style: none;
-    margin-block: 2.25rem;
+    text-align: center;
     > li {
       list-style: none;
       margin: 0;
     }
   }
 
-  @container header (width > 30ch) {
-    menu {
-      flex-direction: row;
+  #menu-button {
+    &[aria-expanded="true"] {
+      ~ menu {
+        display: flex;
+      }
     }
   }
 
@@ -53,6 +78,15 @@ const currentPath = Astro.url.pathname;
       text-decoration-style: solid;
       text-decoration-line: underline;
       text-decoration-thickness: var(--link-hover-decoration-thickness);
+    }
+  }
+
+  @container header (width > 40ch) {
+    menu {
+      display: flex;
+      flex-flow: row nowrap;
+      flex: 0 0 auto;
+      margin: 0;
     }
   }
 </style>

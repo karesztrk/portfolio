@@ -191,6 +191,8 @@
     position: relative;
     line-height: 110%;
     padding-inline-end: var(--_width);
+    word-break: break-word;
+    hyphens: auto;
 
     &:after {
       content: "";
@@ -340,7 +342,23 @@
 
       --color-li-group-text: var(--color-pink-1);
       --color-li-bg-hl: var(--color-teal-2);
+
+      --color-button-menu: var(--color-title);
     }
+  }
+}
+
+@layer utilities {
+  .visually-hidden {
+    display: inline-block;
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1;
+    width: 1;
+    margin: -1;
+    padding: 0;
+    border: 0;
   }
 }
 
@@ -408,6 +426,8 @@
 
       --color-li-group-text: var(--color-pink-3);
       --color-li-bg-hl: var(--color-teal-4);
+
+      --color-button-menu: var(--color-title);
     }
   }
 }

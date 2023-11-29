@@ -11,7 +11,7 @@ import Icon from "./Icon.astro";
         class="logo"
         src={invaderImage}
         title="Space invader alien"
-        viewBox="0 0 30 15"
+        viewBox="0 0 27 19"
       />
     </a>
     <Menu />
@@ -22,9 +22,11 @@ import Icon from "./Icon.astro";
   header {
     grid-column: content;
     container: header / inline-size;
+    margin-block: 2.25rem;
 
     > nav {
       display: flex;
+      flex-flow: row wrap;
       gap: var(--gap);
       justify-content: space-between;
       align-items: center;
@@ -32,8 +34,8 @@ import Icon from "./Icon.astro";
 
     & .logo {
       color: var(--color-logo);
-      width: 2rem;
-      height: auto;
+      height: 2rem;
+      width: auto;
       vertical-align: middle;
     }
   }
