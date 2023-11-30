@@ -7,13 +7,15 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "e2e": "playwright test"
   },
   "dependencies": {
     "astro": "^3.2.2",
     "sharp": "^0.32.6"
   },
   "devDependencies": {
+    "playwright": "^1.40.1",
     "prettier": "^3.0.3",
     "prettier-plugin-astro": "^0.12.0"
   }

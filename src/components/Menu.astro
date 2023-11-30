@@ -81,12 +81,18 @@ const currentPath = Astro.url.pathname;
     }
   }
 
-  @container header (width > 40ch) {
+  @container header (width > 50ch) {
     menu {
       display: flex;
       flex-flow: row nowrap;
       flex: 0 0 auto;
       margin: 0;
+    }
+
+    #menu-button {
+      &[aria-expanded] {
+        display: none;
+      }
     }
   }
 </style>
