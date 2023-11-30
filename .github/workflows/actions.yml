@@ -1,0 +1,44 @@
+name: Portfolio
+run-name: Running actions by @${{ github.actor }}
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  e2e:
+    name: "End-to-End Tests"
+    runs-on: ubuntu-latest
+    environment: production
+    container:
+      image: mcr.microsoft.com/playwright:v1.40.0-jammy
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: "recursive"
+      - name: Mark Github workspace as safe
+        run: |
+          git config --global --add safe.directory $PWD
+      - name: Fetch Submodules
+        run: git submodule update --init --recursive
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          run_install: false
+      - name: Install dependencies
+        run: pnpm i
+      - name: Build
+        run: pnpm build
+      - name: Run Playwright tests
+        run: pnpm e2e
+  deploy:
+    name: "Deploy"
+    needs: e2e
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Call build hook
+        shell: bash
+        env:
+          BUILD_TOKEN: ${{ secrets.BUILD_TOKEN }}
+        run: curl -X POST -d {} https://api.netlify.com/build_hooks/$BUILD_TOKEN
