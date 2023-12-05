@@ -1,0 +1,110 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"canvas">;
+
+const props = Astro.props;
+---
+
+<three-gltf>
+  <canvas {...props}></canvas>
+</three-gltf>
+
+<style>
+  three-gltf {
+    display: block;
+  }
+</style>
+
+<script>
+  import {
+    Scene,
+    PerspectiveCamera,
+    WebGLRenderer,
+    Clock,
+    HemisphereLight,
+  } from "https://unpkg.com/three@0.159.0/build/three.module.min.js";
+  import { GLTFLoader } from "https://unpkg.com/three@0.159.0/examples/jsm/loaders/GLTFLoader.js";
+
+  class ThreeGLTF extends HTMLElement {
+    constructor() {
+      super();
+      const container = this;
+      const canvas = this.querySelector("canvas");
+
+      const sizes = {
+        width: container?.clientWidth || 0,
+        height: canvas?.clientHeight || 0,
+      };
+
+      const ratio = sizes.width / sizes.height;
+
+      window.addEventListener("resize", () => {
+        sizes.width = container?.clientWidth || 0;
+        sizes.height = canvas?.clientHeight || 0;
+
+        camera.aspect = ratio;
+        camera.updateProjectionMatrix();
+        renderer.setSize(sizes.width, sizes.height);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      });
+
+      const setBackground = (scheme: "light" | "dark") => {
+        renderer.setClearColor(scheme === "dark" ? 0x000000 : 0xffffff, 1);
+      };
+
+      const colorSchemeMediaQuery = window.matchMedia(
+        "(prefers-color-scheme: dark)",
+      );
+      colorSchemeMediaQuery.addEventListener("change", (e) => {
+        setBackground(e.matches ? "dark" : "light");
+      });
+
+      const scene = new Scene();
+
+      let obj;
+      const loader = new GLTFLoader().setPath("/model/space-invader/");
+      loader.load("scene.gltf", (gltf) => {
+        obj = gltf.scene.children[0];
+        scene.add(obj);
+      });
+
+      const camera = new PerspectiveCamera(75, ratio, 0.1, 100);
+      camera.position.set(0, 5, 25);
+      scene.add(camera);
+
+      const light = new HemisphereLight(0x00ffff, 0x000000, 3);
+      scene.add(light);
+
+      const renderer = new WebGLRenderer({
+        canvas,
+        antialias: true,
+        alpha: true,
+      });
+
+      renderer.setSize(sizes.width, sizes.height);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+      setBackground(
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light",
+      );
+
+      const clock = new Clock();
+      const animate = () => {
+        const elapsedTime = clock.getElapsedTime();
+        renderer.render(scene, camera);
+        requestAnimationFrame(animate);
+        if (obj) {
+          obj.position.x += Math.sin(elapsedTime) * 0.05;
+          obj.position.y += Math.cos(elapsedTime) * 0.1;
+        }
+      };
+
+      animate();
+    }
+  }
+
+  customElements.define("three-gltf", ThreeGLTF);
+</script>

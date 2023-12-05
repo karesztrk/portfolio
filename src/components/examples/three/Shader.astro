@@ -1,0 +1,155 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"canvas">;
+
+const props = Astro.props;
+---
+
+<three-shader>
+  <canvas {...props}></canvas>
+</three-shader>
+
+<style>
+  three-shader {
+    display: block;
+  }
+</style>
+
+<script id="vertexShader" type="x-shader/x-vertex" src="/shader/displacer.glsl"
+></script>
+
+<script>
+  import {
+    Scene,
+    PerspectiveCamera,
+    WebGLRenderer,
+    Clock,
+    MeshNormalMaterial,
+    Mesh,
+    IcosahedronGeometry,
+  } from "https://unpkg.com/three@0.159.0/build/three.module.min.js";
+  import vertexShader from "./displacer.glsl?raw";
+
+  class ThreeShader extends HTMLElement {
+    constructor() {
+      super();
+      const container = this;
+      const canvas = this.querySelector("canvas");
+
+      const sizes = {
+        width: container?.clientWidth || 0,
+        height: canvas?.clientHeight || 0,
+      };
+
+      const ratio = sizes.width / sizes.height;
+
+      const setBackground = (scheme: "light" | "dark") => {
+        renderer.setClearColor(scheme === "dark" ? 0x000000 : 0xffffff, 1);
+      };
+
+      const colorSchemeMediaQuery = window.matchMedia(
+        "(prefers-color-scheme: dark)",
+      );
+      colorSchemeMediaQuery.addEventListener("change", (e) => {
+        setBackground(e.matches ? "dark" : "light");
+      });
+
+      window.addEventListener("resize", () => {
+        sizes.width = container?.clientWidth || 0;
+        sizes.height = canvas?.clientHeight || 0;
+
+        camera.aspect = ratio;
+        camera.updateProjectionMatrix();
+        renderer.setSize(sizes.width, sizes.height);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      });
+
+      const scene = new Scene();
+
+      const settings = {
+        displacement: 0.1,
+        elevation: 20,
+        elevationFilter: 0.01,
+        speed: 2,
+      };
+
+      const material = new MeshNormalMaterial({ wireframe: true });
+      const geometry = new IcosahedronGeometry(0.05, 0);
+
+      // Parse the shader code ...
+      const [imports, transformFunc] = vertexShader.split("vec3 transform() {");
+
+      material.onBeforeCompile = function (shader) {
+        shader.uniforms.time = {
+          value: 0.0,
+        };
+        shader.uniforms.displacement = {
+          value: settings.displacement,
+        };
+        shader.uniforms.elevationFilter = {
+          value: settings.elevationFilter,
+        };
+        shader.uniforms.elevation = {
+          value: settings.elevation,
+        };
+        shader.uniforms.speed = {
+          value: settings.speed,
+        };
+
+        transformFunc
+          .substring(0, transformFunc.indexOf("return transformed"))
+          .trim();
+
+        // ... add the imports to the built-in shader logic ...
+        shader.vertexShader = imports + shader.vertexShader;
+        // ... add the displacement logic to the built-in logic ...
+        shader.vertexShader = shader.vertexShader.replace(
+          "#include <begin_vertex>",
+          transformFunc
+            .substring(0, transformFunc.indexOf("return transformed"))
+            .trim(),
+        );
+
+        material.userData.shader = shader;
+      };
+      const mesh = new Mesh(geometry, material);
+
+      mesh.rotation.x += 0.25;
+      mesh.rotation.y += 0.25;
+      scene.add(mesh);
+      mesh.scale.set(20, 20, 20);
+
+      const camera = new PerspectiveCamera(75, ratio, 0.1, 100);
+      camera.position.set(0, 0, 2);
+      scene.add(camera);
+
+      const renderer = new WebGLRenderer({
+        canvas,
+        antialias: true,
+      });
+
+      setBackground(
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light",
+      );
+      renderer.setSize(sizes.width, sizes.height);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      const clock = new Clock();
+      const animate = () => {
+        const elapsedTime = clock.getElapsedTime();
+        // material.uniforms.time.value = elapsedTime;
+        if (material.userData.shader) {
+          material.userData.shader.uniforms.time.value = elapsedTime;
+        }
+        renderer.render(scene, camera);
+        requestAnimationFrame(animate);
+      };
+
+      animate();
+    }
+  }
+
+  customElements.define("three-shader", ThreeShader);
+</script>

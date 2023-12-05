@@ -1,0 +1,102 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"canvas">;
+
+const props = Astro.props;
+---
+
+<three-torus>
+  <canvas {...props}></canvas>
+</three-torus>
+
+<style>
+  three-torus {
+    display: block;
+  }
+</style>
+
+<script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.159.0/build/three.module.min.js",
+      "three/addons/": "https://unpkg.com/three@0.159.0/examples/jsm/"
+    }
+  }
+</script>
+
+<script>
+  import {
+    Scene,
+    PerspectiveCamera,
+    WebGLRenderer,
+    TorusGeometry,
+    MeshNormalMaterial,
+    Mesh,
+  } from "https://unpkg.com/three@0.159.0/build/three.module.min.js";
+
+  class ThreeTorus extends HTMLElement {
+    constructor() {
+      super();
+      const scene = new Scene();
+
+      const canvas = this.querySelector("canvas");
+      const container = this;
+
+      const camera = new PerspectiveCamera(
+        75,
+        canvas.clientWidth / canvas.clientHeight,
+        0.1,
+        1000,
+      );
+      camera.position.z = 5;
+
+      const setBackground = (scheme: "light" | "dark") => {
+        renderer.setClearColor(scheme === "dark" ? 0x000000 : 0xffffff, 1);
+      };
+
+      const colorSchemeMediaQuery = window.matchMedia(
+        "(prefers-color-scheme: dark)",
+      );
+      colorSchemeMediaQuery.addEventListener("change", (e) => {
+        setBackground(e.matches ? "dark" : "light");
+      });
+
+      const renderer = new WebGLRenderer({ canvas });
+      renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+      const geometry = new TorusGeometry(1, 0.4, 16, 32);
+      const material = new MeshNormalMaterial({ wireframe: true });
+      const torus = new Mesh(geometry, material);
+      scene.add(torus);
+
+      setBackground(
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light",
+      );
+
+      const animate = () => {
+        requestAnimationFrame(animate);
+
+        torus.rotation.x += 0.005;
+        torus.rotation.y += 0.005;
+
+        renderer.render(scene, camera);
+      };
+
+      window.addEventListener("resize", () => {
+        camera.aspect = container.clientWidth / canvas.clientHeight;
+        camera.updateProjectionMatrix();
+
+        renderer.setSize(container.clientWidth, canvas.clientHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      });
+
+      animate();
+    }
+  }
+
+  customElements.define("three-torus", ThreeTorus);
+</script>
