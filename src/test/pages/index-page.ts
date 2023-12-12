@@ -10,7 +10,9 @@ export class IndexPage {
   constructor(public readonly page: Page) {}
 
   logo() {
-    return this.page.getByRole("link", { name: "Space invader alien" });
+    return this.page.getByRole("link", {
+      name: "Profile of Károly in a pixelated character universe",
+    });
   }
 
   async goto() {
@@ -22,6 +24,6 @@ export class IndexPage {
   }
 
   title() {
-    return this.page.getByRole("heading", { name: "Hello Szia /ˈsijɒ/" });
+    return this.page.getByRole("heading", { name: "Hello Szia [ˈsijɒ]" });
   }
 }
