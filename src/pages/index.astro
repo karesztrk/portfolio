@@ -3,9 +3,9 @@ import Layout from "../layouts/Layout.astro";
 import Section from "../components/Section.astro";
 ---
 
-<Layout title="Károly Török">
+<Layout title="Károly-Török { developer: full-stack; }">
   <h1>
-    Hello <br /> Szia<wbr /> /<span class="phonetic">&#712;sij&#594;</span>/
+    Hello<br />Szia<wbr/> <span class="phonetic">[&#712;sij&#594;]</span>
   </h1>
   <Section id="hello" expandable>
     <h2 slot="title"></h2>
@@ -34,7 +34,8 @@ import Section from "../components/Section.astro";
   }
 
   .phonetic {
-    font-family: system-ui, sans-serif;
+    /* https://github.com/system-fonts/modern-font-stacks#transitional */
+    font-family: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif; 
   }
 
   .grid {
