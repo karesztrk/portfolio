@@ -1,6 +1,5 @@
 ---
-import invaderImage from "../assets/images/icons/Invader.svg?url";
-import Me from "../assets/images/icons/Me.svg?url";
+import Me from "../assets/images/icons/Me.svg";
 import Menu from "./Menu.astro";
 import Icon from "./Icon.astro";
 ---
@@ -10,9 +9,9 @@ import Icon from "./Icon.astro";
     <a href="/">
       <Icon
         class="logo"
-        src={Me}
+        src={Me.src}
         title="Profile of Károly in a pixelated character universe"
-        viewBox="0 0 51 68"
+        viewBox={`0 0 ${Me.width} ${Me.height}`}
       />
     </a>
     <Menu />

@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Icon from "../components/Icon.astro";
-import Search from "../assets/images/icons/Search.svg?url";
+import Search from "../assets/images/icons/Search.svg";
 import InputButton from "../components/InputButton.astro";
 import SearchDialog from "../components/SearchDialog.astro";
 import { getCollection } from "astro:content";
@@ -38,7 +38,10 @@ const collectionRenders = resolvedCollections
 <Layout title="Mind-map">
   <h1>Mind-map</h1>
   <InputButton id="search-button">
-    <Icon src={Search} viewBox="0 0 18 18" />Search
+    <Icon
+      src={Search.src}
+      viewBox={`0 0 ${Search.width} ${Search.height}`}
+    />Search
   </InputButton>
   <article>
     <output></output>

@@ -1,6 +1,6 @@
 ---
 import Icon from "../components/Icon.astro";
-import Separator from "../assets/images/icons/Separator.svg?url";
+import Separator from "../assets/images/icons/Separator.svg";
 import Layout from "../layouts/Layout.astro";
 import projects from "../data/projects.json";
 import Section from "../components/Section.astro";
@@ -41,7 +41,11 @@ import Temporal from "../components/Temporal.astro";
     </p>
   </Section>
 
-  <Icon class="separator" src={Separator} viewBox="0 0 25 16" />
+  <Icon
+    class="separator"
+    src={Separator.src}
+    viewBox={`0 0 ${Separator.width} ${Separator.height}`}
+  />
 
   <Section id="experience" expandable={false}>
     <h2 slot="title">Experience</h2>
@@ -153,7 +157,11 @@ import Temporal from "../components/Temporal.astro";
     </Subsection>
   </Section>
 
-  <Icon class="separator" src={Separator} viewBox="0 0 25 16" />
+  <Icon
+    class="separator"
+    src={Separator.src}
+    viewBox={`0 0 ${Separator.width} ${Separator.height}`}
+  />
 
   <Section id="highlights" expandable={false}>
     <h2 slot="title">Highlights</h2>
@@ -218,7 +226,11 @@ import Temporal from "../components/Temporal.astro";
     </Subsection>
   </Section>
 
-  <Icon class="separator" src={Separator} viewBox="0 0 25 16" />
+  <Icon
+    class="separator"
+    src={Separator.src}
+    viewBox={`0 0 ${Separator.width} ${Separator.height}`}
+  />
 
   <Section id="projects" expandable={false}>
     <h2 slot="title">Projects</h2>
@@ -234,7 +246,11 @@ import Temporal from "../components/Temporal.astro";
     }
   </Section>
 
-  <Icon class="separator" src={Separator} viewBox="0 0 25 16" />
+  <Icon
+    class="separator"
+    src={Separator.src}
+    viewBox={`0 0 ${Separator.width} ${Separator.height}`}
+  />
 
   <Section id="next" expandable={false}>
     <h2 slot="title">What's next?</h2>

@@ -1,12 +1,12 @@
 ---
 import Icon from "./Icon.astro";
 import Divider from "./Divider.astro";
-import Facebook from "../assets/images/icons/Facebook.svg?url";
-import Github from "../assets/images/icons/Github.svg?url";
-import Instagram from "../assets/images/icons/Instagram.svg?url";
-import LinkedIn from "../assets/images/icons/LinkedIn.svg?url";
-import Mail from "../assets/images/icons/Mail.svg?url";
-import Youtube from "../assets/images/icons/Youtube.svg?url";
+import Facebook from "../assets/images/icons/Facebook.svg";
+import Github from "../assets/images/icons/Github.svg";
+import Instagram from "../assets/images/icons/Instagram.svg";
+import LinkedIn from "../assets/images/icons/LinkedIn.svg";
+import Mail from "../assets/images/icons/Mail.svg";
+import Youtube from "../assets/images/icons/Youtube.svg";
 const year = new Date().getFullYear();
 
 const socials: Record<
@@ -15,39 +15,39 @@ const socials: Record<
 > = {
   github: {
     title: "Check me on Github",
-    icon: Github,
+    icon: Github.src,
     url: "https://github.com/karesztrk",
-    viewBox: "0 0 19 18",
+    viewBox: `0 0 ${Github.width} ${Github.height}`,
   },
   email: {
     title: "Send me a mail",
-    icon: Mail,
+    icon: Mail.src,
     url: "mailto:torok.karoly.krisztian@gmail.com",
-    viewBox: "0 0 23 16",
+    viewBox: `0 0 ${Mail.width} ${Mail.height}`,
   },
   linkedin: {
     title: "Check my profile on LinkedIn",
-    icon: LinkedIn,
+    icon: LinkedIn.src,
     url: "https://www.linkedin.com/in/k%C3%A1roly-t%C3%B6r%C3%B6k-17541b80/",
-    viewBox: "0 0 19 19",
+    viewBox: `0 0 ${LinkedIn.width} ${LinkedIn.height}`,
   },
   instagram: {
     title: "My activity on Instagram",
-    icon: Instagram,
+    icon: Instagram.src,
     url: "https://www.instagram.com/karesztrk/",
-    viewBox: "0 0 19 18",
+    viewBox: `0 0 ${Instagram.width} ${Instagram.height}`,
   },
   youtube: {
     title: "Things i watch on Youtube",
-    icon: Youtube,
+    icon: Youtube.src,
     url: "https://www.youtube.com/user/r0nan87",
-    viewBox: "0 0 21 16",
+    viewBox: `0 0 ${Youtube.width} ${Youtube.height}`,
   },
   facebook: {
     title: "My Facebook profile",
-    icon: Facebook,
+    icon: Facebook.src,
     url: "https://www.facebook.com/karoly.torok.9/",
-    viewBox: "0 0 19 18",
+    viewBox: `0 0 ${Facebook.width} ${Facebook.height}`,
   },
 };
 ---

@@ -1,6 +1,6 @@
 ---
 import Icon from "./Icon.astro";
-import Calendar from "../assets/images/icons/Calendar.svg?url";
+import Calendar from "../assets/images/icons/Calendar.svg";
 
 interface Props {
   type?: "contained" | "text";
@@ -11,7 +11,14 @@ const { type = "contained", icon } = Astro.props;
 ---
 
 <div class:list={["temporal", type, icon && "adorned"]}>
-  {icon && <Icon src={Calendar} viewBox="0 0 14 14" />}
+  {
+    icon && (
+      <Icon
+        src={Calendar.src}
+        viewBox={`0 0 ${Calendar.width} ${Calendar.height}`}
+      />
+    )
+  }
   <time>
     <slot />
   </time>

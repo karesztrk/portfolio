@@ -2,8 +2,8 @@
 import type { HTMLAttributes } from "astro/types";
 import { formatTitle } from "../util/blog.util.ts";
 import Icon from "../components/Icon.astro";
-import Search from "../assets/images/icons/Search.svg?url";
-import Markdown from "../assets/images/icons/Markdown.svg?url";
+import Search from "../assets/images/icons/Search.svg";
+import Markdown from "../assets/images/icons/Markdown.svg";
 import Input from "../components/Input.astro";
 import type { CollectionEntry } from "astro:content";
 import type { CollectionType } from "../util/collections.util.ts";
@@ -20,7 +20,10 @@ const { collections, ...rest } = Astro.props;
     <collection-filter>
       <div class="search-header">
         <Input id="search-input" type="search" autofocus>
-          <Icon src={Search} viewBox="0 0 18 18" />
+          <Icon
+            src={Search.src}
+            viewBox={`0 0 ${Search.width} ${Search.height}`}
+          />
         </Input>
 
         <button
@@ -44,7 +47,10 @@ const { collections, ...rest } = Astro.props;
                       name="document"
                       value={`${entry.collection}/${entry.slug}`}
                     >
-                      <Icon src={Markdown} viewBox="0 0 15 16" />
+                      <Icon
+                        src={Markdown.src}
+                        viewBox={`0 0 ${Markdown.width} ${Markdown.height}`}
+                      />
                       {formatTitle(entry.id)}
                     </button>
                   </li>
