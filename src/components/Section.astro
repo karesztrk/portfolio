@@ -21,17 +21,18 @@ const readMoreInput = `${id.replace(/\s/gi, "-")}-read-more`;
   <slot name="title" />
   {
     expandable && (
-      <input id={readMoreInput} class="read-more" type="checkbox" hidden />
+      <input
+        id={readMoreInput}
+        class="read-more visually-hidden"
+        type="checkbox"
+        aria-hidden="true"
+      />
     )
   }
   <div class:list={["text", { expandable }]}>
     <slot />
   </div>
-  {
-    expandable && (
-      <label tabindex="0" class="read-more-label" for={readMoreInput} />
-    )
-  }
+  {expandable && <label class="read-more-label" for={readMoreInput} />}
 </section>
 
 <style>
@@ -67,6 +68,12 @@ const readMoreInput = `${id.replace(/\s/gi, "-")}-read-more`;
 
     & ~ .read-more-label::before {
       content: "more...";
+    }
+
+    &:focus ~ .read-more-label::before {
+      text-decoration: underline;
+      text-decoration-style: var(--link-hover-decoration);
+      text-decoration-thickness: var(--link-hover-decoration-thickness);
     }
   }
 </style>
