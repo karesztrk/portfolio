@@ -1,0 +1,35 @@
+---
+
+---
+
+<wasm-hello></wasm-hello>
+
+<script>
+  import init from "./pkg/fibonacci.js";
+  import wasm from "./pkg/fibonacci_bg.wasm?url";
+
+  class WasmHello extends HTMLElement {
+    constructor() {
+      super();
+      this.runWasm();
+    }
+
+    async runWasm() {
+      const module = await init(wasm);
+
+      const list = document.createElement("ul");
+
+      for (let i = 0; i < 11; i++) {
+        const element = document.createElement("li");
+        const addResult = module.fibonacci(i);
+
+        element.textContent = `#${i}: ${addResult}`;
+        list.appendChild(element);
+      }
+
+      this.appendChild(list);
+    }
+  }
+
+  customElements.define("wasm-hello", WasmHello);
+</script>

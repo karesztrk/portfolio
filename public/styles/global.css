@@ -555,8 +555,11 @@
       --color-title: var(--color-dark-4);
       --color-background: var(--color-dark-0);
 
+      --color-button-default-text: var(--color-dark-4);
+      --color-button-default-bg: var(--color-dark-1);
+
       --color-button-primary-text: var(--color-dark-0);
-      --color-button-primary-bg: var(--color-pink-2);
+      --color-button-primary-bg: var(--color-pink-4);
 
       --color-button-secondary-text: var(--color-dark-0);
       --color-button-secondary-bg: var(--color-pink-2);

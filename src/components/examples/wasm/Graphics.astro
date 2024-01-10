@@ -1,0 +1,127 @@
+---
+
+---
+
+<wasm-graphics>
+  <canvas
+    width="11"
+    height="8"
+    style="image-rendering: pixelated; image-rendering: crisp-edges; width: 100%; display: none;"
+  ></canvas>
+  <p id="button-desc">
+    The canvas will flash rapidly, which may be disturbing for individuals with
+    epilepsy. Viewer discretion is advised.
+  </p>
+  <button
+    style="display: block; margin: 0 auto;"
+    aria-label="Show canvas"
+    aria-describedby="button-desc">I understand, let's reveal it</button
+  >
+</wasm-graphics>
+
+<script>
+  import init from "./pkg/graphics.js";
+  import wasm from "./pkg/graphics_bg.wasm?url";
+
+  class WasmGraphics extends HTMLElement {
+    constructor() {
+      super();
+
+      this.runWasm();
+
+      const canvas = this.querySelector("canvas");
+      const button = this.querySelector("button");
+      if (button) {
+        button.addEventListener("click", (e) => {
+          if (canvas) {
+            if (canvas.style.display == "none") {
+              canvas.style.display = "block";
+              (e.target as HTMLButtonElement).innerText = "Hide";
+            } else {
+              canvas.style.display = "none";
+              (e.target as HTMLButtonElement).innerText = "Show";
+            }
+          }
+        });
+      }
+    }
+
+    async runWasm() {
+      // Instantiate our wasm module
+      const module = await init(wasm);
+
+      // Get our canvas element from our index.html
+      const canvasElement = this.querySelector("canvas");
+
+      // Set up Context and ImageData on the canvas
+      const canvasContext = canvasElement?.getContext("2d");
+      if (!canvasElement || !canvasContext) {
+        return;
+      }
+
+      const canvasImageData = canvasContext.createImageData(
+        canvasElement.width,
+        canvasElement.height,
+      );
+
+      // Clear the canvas
+      canvasContext.clearRect(0, 0, canvasElement.width, canvasElement.height);
+
+      // Write some functions to get a color value
+      // for either the darker squares and lighter squares
+      const getDarkValue = () => {
+        return Math.floor(Math.random() * 100);
+      };
+      const getLightValue = () => {
+        return Math.floor(Math.random() * 127) + 127;
+      };
+
+      const drawCanvas = () => {
+        const width = 11;
+        const height = 8;
+
+        // Generate a new board in wasm
+        module.generate_canvas(
+          getDarkValue(),
+          getDarkValue(),
+          getDarkValue(),
+          getLightValue(),
+          getLightValue(),
+          getLightValue(),
+        );
+
+        // Create a Uint8Array to give us access to Wasm Memory
+        const wasmByteMemoryArray = new Uint8Array(module.memory.buffer);
+
+        // Pull out the RGBA values from Wasm memory
+        // Starting at the memory index of out output buffer (given by our pointer)
+        const outputPointer = module.get_output_buffer_pointer();
+        const imageDataArray = wasmByteMemoryArray.slice(
+          outputPointer,
+          outputPointer + width * height * 4,
+        );
+
+        // Set the values to the canvas image data
+        canvasImageData.data.set(imageDataArray);
+
+        // Clear the canvas
+        canvasContext.clearRect(
+          0,
+          0,
+          canvasElement.width,
+          canvasElement.height,
+        );
+
+        // Place the new generated board onto the canvas
+        canvasContext.putImageData(canvasImageData, 0, 0);
+      };
+
+      drawCanvas();
+      setInterval(() => {
+        drawCanvas();
+      }, 1000);
+    }
+  }
+
+  customElements.define("wasm-graphics", WasmGraphics);
+</script>

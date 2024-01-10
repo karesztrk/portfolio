@@ -1,0 +1,155 @@
+---
+import Input from "../../../components/Input.astro";
+import Select from "../../../components/Select.astro";
+---
+
+<wasm-path-finder>
+  <h3>Grid</h3>
+  <form id="grid">
+    <label for="size">Size</label>
+    <Input
+      id="size"
+      name="size"
+      type="text"
+      inputmode="numeric"
+      pattern="[0-9]+"
+      placeholder="20"
+      required
+    />
+    <div class="actions">
+      <button type="submit" class="primary">Create maze</button>
+      <button id="clean" class="secondary" type="button" style="display: none;"
+        >Clean</button
+      >
+    </div>
+  </form>
+
+  <div id="path_wrapper" style="display: none;">
+    <h3>Path</h3>
+    <p>
+      Select a <em>start</em> and <em>goal</em> point either by using the form
+      below or by clicking into the maze.
+    </p>
+    <form id="path">
+      <label for=" start">Start</label>
+      <Input
+        id="start"
+        name="start"
+        type="text"
+        inputmode="numeric"
+        pattern="[0-9]+,[0-9]+"
+        placeholder="1,1"
+        required
+      />
+      <label for="goal">Goal</label>
+      <Input
+        id="goal"
+        name="goal"
+        type="text"
+        inputmode="numeric"
+        pattern="[0-9]+,[0-9]+"
+        placeholder="19,19"
+        required
+      />
+      <label for="size">Algorithm</label>
+      <Select id="algorithm" name="algorithm">
+        <option value="Bfs">Bfs</option>
+        <option value="Dfs">Dfs</option>
+        <option value="Dijkstra">Dijkstra</option>
+      </Select>
+
+      <div class="actions">
+        <button type="submit">Find path</button>
+      </div>
+    </form>
+  </div>
+
+  <p role="region" id="info" aria-live="polite"></p>
+
+  <canvas id="canvas" height="500" width="500" style="display: none;"></canvas>
+
+  <script>
+    import init, {
+      draw_maze,
+      draw_path,
+      Algorithm,
+      clean,
+      add_listeners,
+      Point,
+    } from "./pkg/pathfinder.js";
+    import wasm from "./pkg/pathfinder_bg.wasm?url";
+
+    class WasmPathFinder extends HTMLElement {
+      constructor() {
+        super();
+        this.runWasm();
+      }
+
+      async runWasm() {
+        await init(wasm);
+
+        const canvas = document.getElementById("canvas");
+        const gridForm = document.getElementById("grid");
+        const pathWrapper = document.getElementById("path_wrapper");
+        const pathForm = document.getElementById("path");
+        const info = document.getElementById("info");
+        const cleanMaze = document.getElementById("clean");
+
+        if (gridForm) {
+          gridForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const data = new FormData(e.target as HTMLFormElement);
+
+            const size = Number(data.get("size")) + 1;
+            const maze = draw_maze(size);
+            add_listeners(maze);
+
+            reveal();
+
+            if (pathForm) {
+              pathForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                const data = new FormData(e.target as HTMLFormElement);
+                const alg = data.get("algorithm") as keyof typeof Algorithm;
+                const [start_x, start_y] = (data.get("start") as string).split(
+                  ",",
+                );
+                const [goal_x, goal_y] = (data.get("goal") as string).split(
+                  ",",
+                );
+                const start = new Point(Number(start_x), Number(start_y));
+                const goal = new Point(Number(goal_x), Number(goal_y));
+
+                const t0 = performance.now();
+                draw_path(maze, start, goal, Algorithm[alg]);
+                const t1 = performance.now();
+                if (info) {
+                  info.innerText = `Path found in ${t1 - t0}ms`;
+                }
+              });
+            }
+            if (cleanMaze) {
+              cleanMaze.addEventListener("click", () => {
+                clean(maze);
+              });
+            }
+          });
+        }
+
+        function reveal() {
+          if (canvas) {
+            canvas.style.display = "block";
+          }
+          if (pathWrapper) {
+            pathWrapper.style.display = "block";
+          }
+          if (cleanMaze) {
+            cleanMaze.style.display = "block";
+          }
+        }
+      }
+    }
+
+    customElements.define("wasm-path-finder", WasmPathFinder);
+  </script>
+</wasm-path-finder>
