@@ -1,12 +1,13 @@
 ---
 import type { HTMLAttributes } from "astro/types";
 
-type Props = HTMLAttributes<"input">;
+type Props = HTMLAttributes<"select">;
 
 const props = Astro.props;
 ---
 
 <div class="input-wrapper">
-  <slot />
-  <input {...props} />
+  <select {...props}>
+    <slot />
+  </select>
 </div>

@@ -29,6 +29,7 @@
 
   --p-margin: 1.5rem;
 
+  --button-min-width: 122px;
   --button-outline-offset: 2px;
 
   --link-hover-decoration: dashed;
@@ -38,6 +39,8 @@
   --space-sm: 8px;
 
   --input-border-size: 3px;
+  --input-height: 38px;
+  --input-padding: 2px 4px;
 
   color-scheme: dark light;
 
@@ -89,9 +92,15 @@
 
   p,
   ol,
+  ul,
+  label {
+    font-size: var(--p);
+  }
+
+  p,
+  ol,
   ul {
     font-variation-settings: "CASL" 1;
-    font-size: var(--p);
     margin-block: var(--p-margin, 1.5rem);
   }
 
@@ -132,6 +141,16 @@
     :is(h1, h2, h3, h4) {
       font-size: calc(var(--font-size-base) + var(--font-size-fluid, 3cqi));
     }
+  }
+
+  input,
+  select {
+    font-family: "Silkscreen", monospace;
+  }
+
+  button,
+  a.button {
+    font-family: "Silkscreen", monospace;
   }
 }
 
@@ -241,6 +260,126 @@
       margin-block-start: 5rem;
     }
   }
+
+  .separator {
+    display: block;
+    color: var(--color-logo);
+    margin-block: 6rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  .input-wrapper {
+    --_border-color: var(--color-input-border);
+    --_text-color: var(--color-input-text);
+    position: relative;
+    border: var(--input-border-size) solid var(--_border-color);
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    background: var(--color-input-bg);
+    gap: var(--space-xs);
+
+    &:focus-within {
+      outline-style: auto;
+    }
+
+    > .icon {
+      color: var(--_border-color);
+      margin-inline-start: var(--space-xs);
+    }
+
+    > input {
+      width: 100%;
+      height: calc(var(--input-height) - 8px);
+      flex: 1;
+      background: var(--color-input-bg);
+      border: 0;
+      outline: none;
+      padding-inline: var(--space-xs);
+    }
+
+    > select {
+      width: 100%;
+      height: calc(var(--input-height) - 8px);
+      border: 0;
+      background: none;
+    }
+
+    &:before,
+    &:after {
+      position: absolute;
+      content: "";
+      background: var(--_border-color);
+      z-index: -1;
+    }
+
+    &:before {
+      inset-block: calc(var(--input-border-size) * -1 - 1px);
+      inset-inline: 0px;
+    }
+
+    &:after {
+      inset-block: 0px;
+      inset-inline: calc(var(--input-border-size) * -1 - 2px);
+    }
+
+    &:hover {
+      text-decoration: none;
+      --_border-color: var(--color-teal-1);
+      --_text-color: var(--color-title);
+    }
+  }
+
+  button,
+  a.button {
+    --_color-button-bg: var(--color-button-default-bg);
+    --_color-button-text: var(--color-button-default-text);
+
+    border: 0;
+    position: relative;
+    min-block-size: var(--input-height);
+    min-inline-size: var(--button-min-width);
+    padding: 0 1rem;
+
+    &:before,
+    &::after {
+      position: absolute;
+      content: "";
+      z-index: -1;
+      background: inherit;
+    }
+
+    &:before {
+      inset-block: -2px;
+      inset-inline: 4px;
+    }
+
+    &:after {
+      inset-block: 4px;
+      inset-inline: -2px;
+    }
+
+    &.primary,
+    &[type="submit"] {
+      --_color-button-bg: var(--color-button-primary-bg);
+      --_color-button-text: var(--color-button-primary-text);
+    }
+
+    &.secondary {
+      --_color-button-bg: var(--color-button-secondary-bg);
+      --_color-button-text: var(--color-button-secondary-text);
+    }
+
+    background-color: var(--_color-button-bg, revert);
+    color: var(--_color-button-text, revert);
+
+    &:hover {
+      outline-offset: var(--button-outline-offset);
+      outline-color: var(--_color-button-bg);
+      outline-style: dashed;
+    }
+  }
 }
 
 @layer base {
@@ -276,6 +415,22 @@
       }
     }
   }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    > label:not(:first-of-type) {
+      margin-block-start: 1rem;
+    }
+
+    > .actions {
+      margin-block-start: 2rem;
+      display: flex;
+      gap: 30px;
+    }
+  }
 }
 
 @layer theme {
@@ -309,6 +464,12 @@
       --color-text: var(--color-dark-1);
       --color-title: var(--color-dark-0);
       --color-background: var(--color-dark-4);
+
+      --color-button-default-text: var(--color-dark-4);
+      --color-button-default-bg: var(--color-dark-1);
+
+      --color-button-primary-text: var(--color-dark-4);
+      --color-button-primary-bg: var(--color-yellow-2);
 
       --color-button-secondary-text: var(--color-dark-4);
       --color-button-secondary-bg: var(--color-yellow-0);
@@ -393,6 +554,9 @@
       --color-text: var(--color-dark-3);
       --color-title: var(--color-dark-4);
       --color-background: var(--color-dark-0);
+
+      --color-button-primary-text: var(--color-dark-0);
+      --color-button-primary-bg: var(--color-pink-2);
 
       --color-button-secondary-text: var(--color-dark-0);
       --color-button-secondary-bg: var(--color-pink-2);

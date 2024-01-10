@@ -108,7 +108,7 @@ const { collections, ...rest } = Astro.props;
       display: flex;
       flex-flow: row wrap;
       gap: var(--space-xs);
-      > .input {
+      > .input-wrapper {
         flex: 1;
       }
       > #close-button {
@@ -117,6 +117,8 @@ const { collections, ...rest } = Astro.props;
         color: var(--color-text);
         background: none;
         border: 0;
+        min-block-size: revert;
+        min-inline-size: revert;
       }
     }
     & collection-filter {
@@ -158,8 +160,14 @@ const { collections, ...rest } = Astro.props;
 
         &:hover,
         &[aria-selected] {
+          outline: none;
           background: var(--color-li-bg-hl);
           color: var(--color-background);
+        }
+
+        &:before,
+        &:after {
+          content: none;
         }
       }
     }

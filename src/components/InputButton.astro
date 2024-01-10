@@ -15,14 +15,14 @@ const { class: className, ...rest } = Astro.props;
     --_border-color: var(--color-input-border);
     --_text-color: var(--color-input-text);
     position: relative;
-    height: 38px;
+    height: var(--input-height);
     font-family: "Silkscreen", monospace;
     color: var(--_text-color);
     border: var(--input-border-size) solid var(--_border-color);
     background: var(--color-input-bg);
     line-height: 1;
     text-align: left;
-    padding: 2px 4px;
+    padding: var(--input-padding);
 
     > .icon {
       color: var(--_border-color);
@@ -31,7 +31,7 @@ const { class: className, ...rest } = Astro.props;
     }
 
     &:before,
-    &::after {
+    &:after {
       position: absolute;
       content: "";
       background: var(--_border-color);

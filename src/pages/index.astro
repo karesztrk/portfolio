@@ -5,7 +5,8 @@ import Section from "../components/Section.astro";
 
 <Layout title="Károly-Török { developer: full-stack; }">
   <h1>
-    Hello<br />Szia<wbr/> <span class="phonetic">[&#712;sij&#594;]</span>
+    Hello<br />Szia<wbr />
+    <span class="phonetic">[&#712;sij&#594;]</span>
   </h1>
   <Section id="hello" expandable>
     <h2 slot="title"></h2>
@@ -22,9 +23,9 @@ import Section from "../components/Section.astro";
     </p>
   </Section>
   <div class="grid">
-    <a href="/blog">Learnt recently</a>
-    <a href="/about">More about me</a>
-    <a href="/mind-map">Things that i like</a>
+    <a class="button secondary" href="/blog">Learnt recently</a>
+    <a class="button secondary" href="/about">More about me</a>
+    <a class="button secondary" href="/mind-map">Things that i like</a>
   </div>
 </Layout>
 
@@ -35,7 +36,7 @@ import Section from "../components/Section.astro";
 
   .phonetic {
     /* https://github.com/system-fonts/modern-font-stacks#transitional */
-    font-family: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif; 
+    font-family: Charter, "Bitstream Charter", "Sitka Text", Cambria, serif;
   }
 
   .grid {
@@ -46,35 +47,8 @@ import Section from "../components/Section.astro";
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
 
     > a {
-      position: relative;
       padding: 2em;
-      background: var(--color-button-secondary-bg);
-      color: var(--color-button-secondary-text);
       text-decoration: none;
-
-      &:before,
-      &::after {
-        position: absolute;
-        content: "";
-        z-index: -1;
-        background: inherit;
-      }
-
-      &:before {
-        inset-block: -2px;
-        inset-inline: 4px;
-      }
-
-      &:after {
-        inset-block: 4px;
-        inset-inline: -2px;
-      }
-
-      &:hover {
-        outline-offset: var(--button-outline-offset);
-        outline-color: var(--color-button-secondary-bg);
-        outline-style: dashed;
-      }
     }
   }
 </style>
