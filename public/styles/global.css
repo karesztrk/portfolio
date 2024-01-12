@@ -272,13 +272,19 @@
   .input-wrapper {
     --_border-color: var(--color-input-border);
     --_text-color: var(--color-input-text);
+    --_offset: 2px;
+    --_radius: 2;
     position: relative;
     border: var(--input-border-size) solid var(--_border-color);
-    display: flex;
-    justify-content: start;
-    align-items: center;
     background: var(--color-input-bg);
-    gap: var(--space-xs);
+    margin: var(--input-border-size);
+
+    &:has(.icon) {
+      display: flex;
+      gap: var(--space-xs);
+      justify-content: start;
+      align-items: center;
+    }
 
     &:focus-within {
       outline-style: auto;
@@ -292,7 +298,6 @@
     > input {
       width: 100%;
       height: calc(var(--input-height) - 8px);
-      flex: 1;
       background: var(--color-input-bg);
       border: 0;
       outline: none;
@@ -316,11 +321,11 @@
 
     &:before {
       inset-block: calc(var(--input-border-size) * -1 - 1px);
-      inset-inline: 0px;
+      inset-inline: 0;
     }
 
     &:after {
-      inset-block: 0px;
+      inset-block: 0;
       inset-inline: calc(var(--input-border-size) * -1 - 2px);
     }
 
@@ -335,12 +340,15 @@
   a.button {
     --_color-button-bg: var(--color-button-default-bg);
     --_color-button-text: var(--color-button-default-text);
+    --_offset: 2px;
+    --_radius: 2;
 
     border: 0;
     position: relative;
     min-block-size: var(--input-height);
     min-inline-size: var(--button-min-width);
     padding: 0 1rem;
+    margin: var(--_offset);
 
     &:before,
     &::after {
@@ -351,13 +359,13 @@
     }
 
     &:before {
-      inset-block: -2px;
-      inset-inline: 4px;
+      inset-block: calc(-1 * var(--_offset));
+      inset-inline: calc(var(--_radius) * var(--_offset));
     }
 
     &:after {
-      inset-block: 4px;
-      inset-inline: -2px;
+      inset-block: calc(var(--_radius) * var(--_offset));
+      inset-inline: calc(-1 * var(--_offset));
     }
 
     &.primary,
