@@ -9,7 +9,6 @@ import Section from "../components/Section.astro";
     <span class="phonetic">[&#712;sij&#594;]</span>
   </h1>
   <Section id="hello" expandable>
-    <h2 slot="title"></h2>
     <p>
       My name is Károly Török. I'm a seasoned Full-stack Software Developer with
       a strong professional focus on web development and UX design. My
@@ -32,6 +31,7 @@ import Section from "../components/Section.astro";
 <style>
   h1 {
     position: relative;
+    margin-block-end: 3rem;
   }
 
   .phonetic {

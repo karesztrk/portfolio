@@ -58,7 +58,8 @@ const socials: Record<
     {
       Object.values(socials).map(({ title, icon, url, viewBox }) => (
         <a href={url}>
-          <Icon src={icon} title={title} viewBox={viewBox} />
+          <span class="visually-hidden">{title}</span>
+          <Icon src={icon} viewBox={viewBox} />
         </a>
       ))
     }
