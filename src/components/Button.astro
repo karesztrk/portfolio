@@ -1,0 +1,15 @@
+---
+import type { Polymorphic } from "astro/types";
+
+type Button = "button" | "a";
+
+type Props<Tag extends Button> = Polymorphic<{
+  as: Tag;
+}>;
+
+const { as: Tag, class: className, ...props } = Astro.props;
+---
+
+<Tag class:list={["button", className]} {...props}>
+  <span class="front"><slot /></span>
+</Tag>

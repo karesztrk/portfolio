@@ -30,7 +30,8 @@
   --p-margin: 1.5rem;
 
   --button-min-width: 122px;
-  --button-outline-offset: 2px;
+  --button-outline-offset: 4px;
+  --button-transition: transform 600ms cubic-bezier(0.33, 1, 0.68, 1);
 
   --link-hover-decoration: dashed;
   --link-hover-decoration-thickness: 8%;
@@ -339,16 +340,60 @@
   button,
   a.button {
     --_color-button-bg: var(--color-button-default-bg);
+    --_color-button-shadow: var(--color-button-default-shadow);
     --_color-button-text: var(--color-button-default-text);
     --_offset: 2px;
     --_radius: 2;
+    --_elevation: -4px;
+
+    &.primary,
+    &[type="submit"] {
+      --_color-button-bg: var(--color-button-primary-bg);
+      --_color-button-text: var(--color-button-primary-text);
+      --_color-button-shadow: var(--color-button-primary-shadow);
+    }
+
+    &.secondary {
+      --_color-button-bg: var(--color-button-secondary-bg);
+      --_color-button-text: var(--color-button-secondary-text);
+      --_color-button-shadow: var(--color-button-secondary-shadow);
+    }
 
     border: 0;
     position: relative;
     min-block-size: var(--input-height);
     min-inline-size: var(--button-min-width);
-    padding: 0 1rem;
+    padding: 0;
     margin: var(--_offset);
+    background-color: var(--_color-button-shadow);
+
+    outline-offset: var(--button-outline-offset);
+
+    > span.front {
+      padding: 0.5rem 1rem;
+      transition: var(--button-transition);
+      display: block;
+      translate: 0 var(--_elevation);
+      background-color: var(--_color-button-bg, revert);
+      color: var(--_color-button-text, revert);
+      &:before,
+      &::after {
+        position: absolute;
+        content: "";
+        z-index: -1;
+        background: inherit;
+      }
+
+      &:before {
+        inset-block: calc(-1 * var(--_offset));
+        inset-inline: calc(var(--_radius) * var(--_offset));
+      }
+
+      &:after {
+        inset-block: calc(var(--_radius) * var(--_offset));
+        inset-inline: calc(-1 * var(--_offset));
+      }
+    }
 
     &:before,
     &::after {
@@ -368,24 +413,10 @@
       inset-inline: calc(-1 * var(--_offset));
     }
 
-    &.primary,
-    &[type="submit"] {
-      --_color-button-bg: var(--color-button-primary-bg);
-      --_color-button-text: var(--color-button-primary-text);
-    }
-
-    &.secondary {
-      --_color-button-bg: var(--color-button-secondary-bg);
-      --_color-button-text: var(--color-button-secondary-text);
-    }
-
-    background-color: var(--_color-button-bg, revert);
-    color: var(--_color-button-text, revert);
-
-    &:hover {
-      outline-offset: var(--button-outline-offset);
-      outline-color: var(--_color-button-bg);
-      outline-style: dashed;
+    &:active {
+      > span.front {
+        translate: 0 0;
+      }
     }
   }
 }
@@ -475,12 +506,15 @@
 
       --color-button-default-text: var(--color-dark-4);
       --color-button-default-bg: var(--color-dark-1);
+      --color-button-default-shadow: var(--color-dark-2);
 
       --color-button-primary-text: var(--color-dark-4);
       --color-button-primary-bg: var(--color-yellow-2);
+      --color-button-primary-shadow: var(--color-yellow-4);
 
       --color-button-secondary-text: var(--color-dark-4);
       --color-button-secondary-bg: var(--color-yellow-0);
+      --color-button-secondary-shadow: var(--color-yellow-4);
 
       --color-link-text: var(--color-yellow-0);
       --color-link-shadow: var(--color-pink-2);

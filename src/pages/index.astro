@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Section from "../components/Section.astro";
+import Button from "../components/Button.astro";
 ---
 
 <Layout title="Károly-Török { developer: full-stack; }">
@@ -22,9 +23,11 @@ import Section from "../components/Section.astro";
     </p>
   </Section>
   <div class="grid">
-    <a class="button secondary" href="/blog">Learnt recently</a>
-    <a class="button secondary" href="/about">More about me</a>
-    <a class="button secondary" href="/mind-map">Things that i like</a>
+    <Button as="a" class="secondary" href="/blog">Learnt recently</Button>
+    <Button as="a" class="secondary" href="/about">More about me</Button>
+    <Button as="a" class="secondary" href="/mind-map">
+      Things that i like
+    </Button>
   </div>
 </Layout>
 
@@ -47,7 +50,9 @@ import Section from "../components/Section.astro";
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
 
     > a {
-      padding: 2em;
+      span {
+        padding: 2em;
+      }
       text-decoration: none;
     }
   }

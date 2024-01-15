@@ -1,5 +1,5 @@
 ---
-
+import Button from "../../../components/Button.astro";
 ---
 
 <wasm-graphics>
@@ -12,11 +12,14 @@
     The canvas will flash rapidly, which may be disturbing for individuals with
     epilepsy. Viewer discretion is advised.
   </p>
-  <button
+  <Button
+    as="button"
     style="display: block; margin: 0 auto;"
     aria-label="Show canvas"
-    aria-describedby="button-desc">I understand, let's reveal it</button
+    aria-describedby="button-desc"
   >
+    I understand, let's reveal it
+  </Button>
 </wasm-graphics>
 
 <script>

@@ -1,6 +1,7 @@
 ---
 import Input from "../../../components/Input.astro";
 import Select from "../../../components/Select.astro";
+import Button from "../../../components/Button.astro";
 ---
 
 <wasm-path-finder>
@@ -17,18 +18,24 @@ import Select from "../../../components/Select.astro";
       required
     />
     <div class="actions">
-      <button type="submit" class="primary">Create maze</button>
-      <button id="clean" class="secondary" type="button" style="display: none;"
-        >Clean</button
+      <Button as="button" type="submit" class="primary">Create maze</Button>
+      <Button
+        as="button"
+        id="clean"
+        class="secondary"
+        type="button"
+        style="display: none;"
       >
+        Clean
+      </Button>
     </div>
   </form>
 
   <div id="path_wrapper" style="display: none;">
     <h3>Path</h3>
     <p>
-      Select a <em>start</em> and <em>goal</em> point either by using the form
-      below or by clicking into the maze.
+      Select a <em>start</em> and <em>goal</em> point either by using the form below
+      or by clicking into the maze.
     </p>
     <form id="path">
       <label for=" start">Start</label>
@@ -59,7 +66,7 @@ import Select from "../../../components/Select.astro";
       </Select>
 
       <div class="actions">
-        <button type="submit">Find path</button>
+        <Button as="button" type="submit">Find path</Button>
       </div>
     </form>
   </div>
