@@ -1,4 +1,4 @@
-@import url("/styles/reset.css") layer(reset);
+@import url("./reset.css") layer(reset);
 
 @layer reset, base, typography, theme, components, utilities;
 
@@ -516,8 +516,10 @@
       --color-button-secondary-bg: var(--color-yellow-0);
       --color-button-secondary-shadow: var(--color-yellow-4);
 
+      --color-menu: var(--color-yellow-0);
+      --color-menu-shadow: var(--color-pink-2);
+
       --color-link-text: var(--color-yellow-0);
-      --color-link-shadow: var(--color-pink-2);
 
       --color-primary: var(--color-yellow-2);
       --color-secondary: var(--color-pink-2);
@@ -599,15 +601,20 @@
 
       --color-button-default-text: var(--color-dark-4);
       --color-button-default-bg: var(--color-dark-1);
+      --color-button-default-shadow: var(--color-dark-2);
 
       --color-button-primary-text: var(--color-dark-0);
-      --color-button-primary-bg: var(--color-pink-4);
+      --color-button-primary-bg: var(--color-pink-3);
+      --color-button-primary-shadow: var(--color-dark-4);
 
       --color-button-secondary-text: var(--color-dark-0);
       --color-button-secondary-bg: var(--color-pink-2);
+      --color-button-secondary-shadow: var(--color-pink-4);
+
+      --color-menu: var(--color-pink-2);
+      --color-menu-shadow: var(--color-pink-0);
 
       --color-link-text: var(--color-pink-1);
-      --color-link-shadow: var(--color-yellow-2);
 
       --color-primary: var(--color-pink-2);
       --color-secondary: var(--color-yellow-2);
