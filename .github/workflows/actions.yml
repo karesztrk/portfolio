@@ -28,7 +28,19 @@ jobs:
       - name: Install dependencies
         run: pnpm i
       - name: Build
-        run: pnpm build
+        run: pnpm netlify build --offline
+      - name: Deploy
+        id: deploy
+        run: |
+          NETLIFY_PREVIEW_URL=$(pnpm netlify deploy \
+            --site ${{ secrets.NETLIFY_SITE_ID }} \
+            --auth ${{ secrets.NETLIFY_AUTH_TOKEN }} \
+            --json \
+          | jq ".deploy_url")
+          echo Preview is deployed @ $NETLIFY_PREVIEW_URL
+          echo "NETLIFY_PREVIEW_URL=$NETLIFY_PREVIEW_URL" >> "$GITHUB_OUTPUT"
+      - name: Print
+        run: echo ${{ steps.deploy.outputs.NETLIFY_PREVIEW_URL }}
       - name: Run Playwright tests
         run: pnpm e2e
   deploy:
