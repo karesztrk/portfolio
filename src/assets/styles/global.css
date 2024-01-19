@@ -31,7 +31,7 @@
 
   --button-min-width: 122px;
   --button-outline-offset: 4px;
-  --button-transition: transform 600ms cubic-bezier(0.33, 1, 0.68, 1);
+  --button-transition: translate 60ms cubic-bezier(0.33, 1, 0.68, 1);
 
   --link-hover-decoration: dashed;
   --link-hover-decoration-thickness: 8%;
