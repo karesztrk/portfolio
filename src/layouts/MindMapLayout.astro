@@ -1,0 +1,77 @@
+---
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import { collectionNames } from "../util/collections.util.ts";
+import type { CollectionType } from "../util/collections.util.ts";
+import Layout from "./Layout.astro";
+import Icon from "../components/Icon.astro";
+import Search from "../assets/images/icons/Search.svg";
+import InputButton from "../components/InputButton.astro";
+import SearchDialog from "../components/SearchDialog.astro";
+
+const resolvedCollections = await Promise.all(
+  collectionNames.map((c) =>
+    getCollection<CollectionType, CollectionEntry<CollectionType>>(c),
+  ),
+);
+
+const collections = resolvedCollections.reduce(
+  (acc, curr, index) => {
+    const key = collectionNames[index];
+    acc[key] = curr;
+    return acc;
+  },
+  {} as Record<CollectionType, CollectionEntry<CollectionType>[]>,
+);
+---
+
+<Layout title="Mind-map">
+  <h1>Mind-map</h1>
+  <InputButton id="search-button">
+    <Icon
+      src={Search.src}
+      viewBox={`0 0 ${Search.width} ${Search.height}`}
+    />Search
+  </InputButton>
+  <SearchDialog id="search-dialog" collections={collections} />
+  <slot />
+</Layout>
+
+<script>
+  const searchButton = document.getElementById("search-button");
+  const searchDialog = document.getElementById(
+    "search-dialog",
+  ) as HTMLDialogElement | null;
+
+  if (searchButton && searchDialog) {
+    searchButton.addEventListener("click", () => {
+      searchDialog.showModal();
+    });
+  }
+</script>
+
+<script>
+  const searchDialog = document.getElementById("search-dialog");
+
+  if (searchDialog) {
+    searchDialog.addEventListener("close", () => {
+      const { returnValue } = searchDialog as HTMLDialogElement;
+      if (returnValue) {
+        window.location.href = returnValue;
+      }
+    });
+  }
+</script>
+
+<style>
+  #search-button {
+    width: 300px;
+    display: block;
+    margin-block: 4rem 7rem;
+    margin-inline: auto;
+
+    &:hover {
+      outline: auto;
+    }
+  }
+</style>

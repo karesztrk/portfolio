@@ -44,8 +44,7 @@ const { collections, ...rest } = Astro.props;
                   <li class="entry" data-tags={entry.data.tags}>
                     <button
                       class="entry-button"
-                      name="document"
-                      value={`${entry.collection}/${entry.slug}`}
+                      value={`/mind-map/${entry.collection.toLocaleLowerCase()}/${entry.slug.toLocaleLowerCase()}`}
                     >
                       <Icon
                         src={Markdown.src}
@@ -83,7 +82,6 @@ const { collections, ...rest } = Astro.props;
               const show =
                 entry.textContent.toLowerCase().includes(value.toLowerCase()) ||
                 tags.includes(value.toLowerCase());
-              console.log(tags.includes(value));
 
               (entry as HTMLElement).style.display = show
                 ? "list-item"
@@ -145,7 +143,7 @@ const { collections, ...rest } = Astro.props;
         }
       }
 
-      & button.entry-button {
+      & .entry-button {
         font-family: "Recursive", monospace;
         color: var(--color-text);
         background: var(--color-background);
@@ -158,6 +156,7 @@ const { collections, ...rest } = Astro.props;
         align-items: center;
         gap: 0.5em;
         margin: 0;
+        text-decoration: none;
 
         &:hover,
         &[aria-selected] {

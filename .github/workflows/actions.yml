@@ -13,18 +13,24 @@ jobs:
     container:
       image: mcr.microsoft.com/playwright:v1.41.0-jammy
     steps:
+      - name: Install jq
+        run: |
+          apt-get update
+          apt-get -y install jq
       - uses: actions/checkout@v3
         with:
           submodules: "recursive"
       - name: Mark Github workspace as safe
         run: |
           git config --global --add safe.directory $PWD
-      - name: Fetch Submodules
+      - name: Fetch submodules
         run: git submodule update --init --recursive
       - uses: pnpm/action-setup@v2
         with:
           version: 8
           run_install: false
+      - name: Install deploy cli
+        run: pnpm install netlify-cli
       - name: Install dependencies
         run: pnpm i
       - name: Build
@@ -36,21 +42,10 @@ jobs:
             --site ${{ secrets.NETLIFY_SITE_ID }} \
             --auth ${{ secrets.NETLIFY_AUTH_TOKEN }} \
             --json \
-          | jq ".deploy_url")
+          | jq -r ".deploy_url")
           echo Preview is deployed @ $NETLIFY_PREVIEW_URL
           echo "NETLIFY_PREVIEW_URL=$NETLIFY_PREVIEW_URL" >> "$GITHUB_OUTPUT"
-      - name: Print
-        run: echo ${{ steps.deploy.outputs.NETLIFY_PREVIEW_URL }}
       - name: Run Playwright tests
         run: pnpm e2e
-  deploy:
-    name: "Deploy"
-    needs: e2e
-    runs-on: ubuntu-latest
-    environment: production
-    steps:
-      - name: Call build hook
-        shell: bash
         env:
-          BUILD_TOKEN: ${{ secrets.BUILD_TOKEN }}
-        run: curl -X POST -d {} https://api.netlify.com/build_hooks/$BUILD_TOKEN
+          PLAYWRIGHT_BASE_URL: ${{ steps.deploy.outputs.NETLIFY_PREVIEW_URL }}

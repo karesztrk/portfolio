@@ -1,0 +1,63 @@
+---
+export const prerender = false;
+
+import MindMapLayout from "../../../layouts/MindMapLayout.astro";
+import Fields from "../../../components/Fields.astro";
+import Tags from "../../../components/Tags.astro";
+import { getEntry } from "astro:content";
+import { collectionNames } from "../../../util/collections.util.ts";
+import { formatTitle } from "../../../util/blog.util.ts";
+
+const { collection: collectionParam, id: idParam } = Astro.params;
+
+if (!collectionParam) {
+  return Astro.redirect("/not-found");
+}
+
+const collection = collectionNames.find(
+  (c) => c.toLocaleLowerCase() === collectionParam.toLocaleLowerCase(),
+);
+
+if (!collection || !idParam) {
+  return Astro.redirect("/not-found");
+}
+
+const entry = await getEntry(collection, idParam);
+
+const mockEntry = {
+  title: "",
+  tags: [],
+  render: async () => ({ Content: undefined }),
+};
+
+const article = entry
+  ? {
+      title: formatTitle(entry.id),
+      tags: entry.data.tags,
+      render: entry.render,
+    }
+  : mockEntry;
+
+const { Content } = await article.render();
+---
+
+<MindMapLayout>
+  {
+    article !== mockEntry && (
+      <article>
+        <h2>{article.title}</h2>
+
+        <Fields>
+          {article.tags.length > 0 && (
+            <Tags>
+              {article.tags.map((tag: string) => (
+                <li>{tag}</li>
+              ))}
+            </Tags>
+          )}
+        </Fields>
+        {Content && <Content />}
+      </article>
+    )
+  }
+</MindMapLayout>
