@@ -1,12 +1,12 @@
 ---
 export const prerender = false;
 
-import MindMapLayout from "../../../layouts/MindMapLayout.astro";
-import Fields from "../../../components/Fields.astro";
-import Tags from "../../../components/Tags.astro";
+import MindMapLayout from "@/layouts/MindMapLayout.astro";
+import Fields from "@components/Fields.astro";
+import Tags from "@components/Tags.astro";
 import { getEntry } from "astro:content";
-import { collectionNames } from "../../../util/collections.util.ts";
-import { formatTitle } from "../../../util/blog.util.ts";
+import { collectionNames } from "@/util/collections.util.ts";
+import { formatTitle } from "@/util/blog.util.ts";
 
 const { collection: collectionParam, id: idParam } = Astro.params;
 

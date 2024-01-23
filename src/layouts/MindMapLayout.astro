@@ -1,13 +1,13 @@
 ---
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
-import { collectionNames } from "../util/collections.util.ts";
-import type { CollectionType } from "../util/collections.util.ts";
+import { collectionNames } from "@/util/collections.util.ts";
+import type { CollectionType } from "@/util/collections.util.ts";
 import Layout from "./Layout.astro";
-import Icon from "../components/Icon.astro";
-import Search from "../assets/images/icons/Search.svg";
-import InputButton from "../components/InputButton.astro";
-import SearchDialog from "../components/SearchDialog.astro";
+import Icon from "@components/Icon.astro";
+import Search from "@/assets/images/icons/Search.svg";
+import InputButton from "@components/InputButton.astro";
+import SearchDialog from "@components/SearchDialog.astro";
 
 const resolvedCollections = await Promise.all(
   collectionNames.map((c) =>

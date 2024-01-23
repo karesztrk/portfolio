@@ -1,11 +1,11 @@
 ---
 import { getCollection } from "astro:content";
-import Layout from "../../layouts/Layout.astro";
-import { formatTitle, formatDate } from "../../util/blog.util.ts";
-import Temporal from "../../components/Temporal.astro";
-import Tags from "../../components/Tags.astro";
-import Fields from "../../components/Fields.astro";
-import ReadTime from "../../components/ReadTime.astro";
+import Layout from "@/layouts/Layout.astro";
+import { formatTitle, formatDate } from "@/util/blog.util.ts";
+import Temporal from "@components/Temporal.astro";
+import Tags from "@components/Tags.astro";
+import Fields from "@components/Fields.astro";
+import ReadTime from "@components/ReadTime.astro";
 
 export async function getStaticPaths() {
   const blog = await getCollection("Blog");

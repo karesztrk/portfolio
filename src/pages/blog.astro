@@ -1,11 +1,11 @@
 ---
 import { getCollection } from "astro:content";
 
-import Layout from "../layouts/Layout.astro";
-import Temporal from "../components/Temporal.astro";
-import { formatTitle, formatExcerpt, formatDate } from "../util/blog.util.ts";
-import Divider from "../components/Divider.astro";
-import Fields from "../components/Fields.astro";
+import Layout from "@/layouts/Layout.astro";
+import Temporal from "@components/Temporal.astro";
+import { formatTitle, formatExcerpt, formatDate } from "@/util/blog.util.ts";
+import Divider from "@components/Divider.astro";
+import Fields from "@components/Fields.astro";
 
 const blog = await getCollection("Blog");
 

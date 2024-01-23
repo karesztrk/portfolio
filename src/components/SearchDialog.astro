@@ -1,12 +1,12 @@
 ---
 import type { HTMLAttributes } from "astro/types";
-import { formatTitle } from "../util/blog.util.ts";
-import Icon from "../components/Icon.astro";
-import Search from "../assets/images/icons/Search.svg";
-import Markdown from "../assets/images/icons/Markdown.svg";
-import Input from "../components/Input.astro";
+import { formatTitle } from "@/util/blog.util.ts";
+import Icon from "@components/Icon.astro";
+import Search from "@/assets/images/icons/Search.svg";
+import Markdown from "@/assets/images/icons/Markdown.svg";
+import Input from "@components/Input.astro";
 import type { CollectionEntry } from "astro:content";
-import type { CollectionType } from "../util/collections.util.ts";
+import type { CollectionType } from "@/util/collections.util.ts";
 
 interface Props extends HTMLAttributes<"dialog"> {
   collections: Record<CollectionType, CollectionEntry<CollectionType>[]>;
