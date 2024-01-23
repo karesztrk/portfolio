@@ -1,0 +1,25 @@
+---
+import Icon from "./Icon.astro";
+import Watch from "../assets/images/icons/Watch.svg";
+---
+
+<div class="read-time">
+  <Icon src={Watch.src} viewBox={`0 0 ${Watch.width} ${Watch.height}`} />
+  <span>
+    <slot />
+  </span>
+</div>
+
+<style>
+  .read-time {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: subgrid;
+
+    span {
+      color: var(--color-tertiary);
+      font-size: 1rem;
+      font-variation-settings: "MONO" 1;
+    }
+  }
+</style>

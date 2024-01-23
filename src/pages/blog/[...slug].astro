@@ -5,6 +5,7 @@ import { formatTitle, formatDate } from "../../util/blog.util.ts";
 import Temporal from "../../components/Temporal.astro";
 import Tags from "../../components/Tags.astro";
 import Fields from "../../components/Fields.astro";
+import ReadTime from "../../components/ReadTime.astro";
 
 export async function getStaticPaths() {
   const blog = await getCollection("Blog");
@@ -14,7 +15,7 @@ export async function getStaticPaths() {
   }));
 }
 const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { Content, remarkPluginFrontmatter } = await entry.render();
 const title = formatTitle(entry.id);
 ---
 
@@ -29,6 +30,9 @@ const title = formatTitle(entry.id);
       <Temporal type="text" icon={true}>
         {formatDate(entry.data.date)}
       </Temporal>
+      <ReadTime>
+        {remarkPluginFrontmatter.minutesRead}
+      </ReadTime>
     </Fields>
     <Content />
   </article>
