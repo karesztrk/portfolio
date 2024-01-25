@@ -5,9 +5,10 @@ import Calendar from "@/assets/images/icons/Calendar.svg";
 interface Props {
   type?: "contained" | "text";
   icon?: boolean;
+  "aria-label"?: string;
 }
 
-const { type = "contained", icon } = Astro.props;
+const { type = "contained", icon, "aria-label": ariaLabel } = Astro.props;
 ---
 
 <div class:list={["temporal", type, icon && "adorned"]}>
@@ -19,6 +20,7 @@ const { type = "contained", icon } = Astro.props;
       />
     )
   }
+  {ariaLabel && <span class="visually-hidden">{ariaLabel}</span>}
   <time>
     <slot />
   </time>

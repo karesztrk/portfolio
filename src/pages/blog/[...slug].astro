@@ -24,13 +24,13 @@ const title = formatTitle(entry.id);
     <h1>{title}</h1>
 
     <Fields>
-      <Tags>
+      <Tags aria-label="Tags">
         {entry.data.tags.map((tag: string) => <li>{tag}</li>)}
       </Tags>
-      <Temporal type="text" icon={true}>
+      <Temporal type="text" icon={true} aria-label="Publish date">
         {formatDate(entry.data.date)}
       </Temporal>
-      <ReadTime>
+      <ReadTime aria-label="Read time">
         {remarkPluginFrontmatter.minutesRead}
       </ReadTime>
     </Fields>

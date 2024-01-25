@@ -25,7 +25,7 @@ const sortedPosts = blog.sort(
               <h2>{formatTitle(post.id)}</h2>
             </a>
             <Fields>
-              <Temporal type="text" icon={true}>
+              <Temporal type="text" icon={true} aria-label="Publish date">
                 {formatDate(post.data.date)}
               </Temporal>
             </Fields>

@@ -6,7 +6,6 @@ interface Props extends HTMLAttributes<"svg"> {
   src: string;
   reference?: string;
   inline?: boolean;
-  title?: string;
 }
 
 const baseClass = "icon";
@@ -16,7 +15,6 @@ const {
   height = "1em",
   class: className,
   role = "presentation",
-  title,
   src,
   reference,
   inline,
@@ -34,6 +32,5 @@ const href = `${src}#${reference || getFileName(src)}`;
   role={role}
   {...rest}
 >
-  {title && <title>{title}</title>}
   <use href={href}></use>
 </svg>

@@ -1,10 +1,17 @@
 ---
 import Icon from "./Icon.astro";
 import Watch from "@/assets/images/icons/Watch.svg";
+
+interface Props {
+  "aria-label"?: string;
+}
+
+const { "aria-label": ariaLabel } = Astro.props;
 ---
 
 <div class="read-time">
   <Icon src={Watch.src} viewBox={`0 0 ${Watch.width} ${Watch.height}`} />
+  {ariaLabel && <span class="visually-hidden">{ariaLabel}</span>}
   <span>
     <slot />
   </span>
