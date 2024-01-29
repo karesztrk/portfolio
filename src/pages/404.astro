@@ -1,0 +1,64 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Icon from "@components/Icon.astro";
+import Invader from "@/assets/images/icons/Invader.svg";
+import Button from "@/components/Button.astro";
+import Ballon from "@/components/Ballon.astro";
+
+const quotes = [
+  "These are not the droids you are looking for ...",
+  "I used to be an adventurer like you. Then I took an arrow in the knee...",
+];
+
+const quote = quotes[Math.floor(Math.random() * quotes.length)];
+
+const title = "Not found";
+---
+
+<BaseLayout title={title}>
+  <h1>Uhm...</h1>
+  <h2>{title}</h2>
+
+  <Ballon>{quote}</Ballon>
+  <Icon src={Invader.src} viewBox={`0 0 ${Invader.width} ${Invader.height}`} />
+
+  <div class="actions">
+    <Button as="a" href="/" class="primary">Go back</Button>
+  </div>
+</BaseLayout>
+
+<style>
+  h1 {
+    text-align: center;
+    margin-block: 9rem 0.5rem;
+
+    &::after {
+      content: none;
+    }
+  }
+
+  h2 {
+    font-size: 2.35rem;
+    text-align: center;
+    margin-block: 0.75rem 6rem;
+    color: var(--color-teal-3);
+    font-variation-settings: "MONO" 1;
+  }
+
+  .icon {
+    height: auto;
+    width: 142px;
+    color: var(--color-pink-2);
+  }
+
+  .actions {
+    margin-block-start: 8rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+    > a {
+      text-decoration: none;
+    }
+  }
+</style>

@@ -1,0 +1,36 @@
+---
+import Main from "@components/Main.astro";
+import "@/assets/styles/fonts.css";
+import "@/assets/styles/global.css";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Károly Török portfolio" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <!-- Prioritizing the hero font loading -->
+    <link
+      rel="preload"
+      href="/fonts/Recursive-Normal-Var.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Main>
+      <slot />
+    </Main>
+  </body>
+</html>

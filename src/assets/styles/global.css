@@ -560,6 +560,9 @@
       --color-li-bg-hl: var(--color-teal-2);
 
       --color-button-menu: var(--color-title);
+
+      --color-balloon-bg: var(--color-dark-0);
+      --color-balloon-text: var(--color-dark-4);
     }
   }
 }
@@ -655,6 +658,9 @@
       --color-li-bg-hl: var(--color-teal-4);
 
       --color-button-menu: var(--color-title);
+
+      --color-balloon-bg: var(--color-dark-2);
+      --color-balloon-text: var(--color-dark-0);
     }
   }
 }
