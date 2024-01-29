@@ -1,6 +1,6 @@
 import { test, expect } from "./fixtures";
 
-test.describe.only("Blog entry page", () => {
+test.describe("Blog entry page", () => {
   test("Page elements present", async ({ blog, page }) => {
     await expect(
       page

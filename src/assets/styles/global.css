@@ -1,6 +1,6 @@
 @import url("./reset.css") layer(reset);
 
-@layer reset, base, typography, theme, components, utilities;
+@layer reset, base, typography, theme, components, utilities, animations;
 
 :root {
   --mono: "MONO" 0;
@@ -560,6 +560,9 @@
       --color-li-bg-hl: var(--color-teal-2);
 
       --color-button-menu: var(--color-title);
+
+      --color-balloon-bg: var(--color-dark-0);
+      --color-balloon-text: var(--color-dark-4);
     }
   }
 }
@@ -575,6 +578,17 @@
     margin: -1;
     padding: 0;
     border: 0;
+  }
+}
+
+@layer animations {
+  @keyframes float-up {
+    from {
+      transform: translateY(-10px);
+    }
+    to {
+      transform: translateY(0);
+    }
   }
 }
 
@@ -655,6 +669,9 @@
       --color-li-bg-hl: var(--color-teal-4);
 
       --color-button-menu: var(--color-title);
+
+      --color-balloon-bg: var(--color-dark-2);
+      --color-balloon-text: var(--color-dark-0);
     }
   }
 }

@@ -1,14 +1,27 @@
 <svg id="Invader" width="27" height="19" viewBox="0 0 27 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_77_1054)">
-<path d="M7.36363 0H4.90909V2.375H7.36363V0Z" fill="currentColor"/>
+<path d="M7.36363 0H4.90909V2.375H7.36363V0Z" fill="currentColor">
+  <animateTransform
+      attributeName="transform"
+      attributeType="XML"
+      type="rotate"
+      from="0 60 70"
+      to="360 60 70"
+      dur="10s"
+      repeatCount="indefinite" />
+</path>
 <path d="M22.0909 0H19.6364V2.375H22.0909V0Z" fill="currentColor"/>
 <path d="M9.81819 19H12.2727V16.625H9.81819H7.36365V19H9.81819Z" fill="currentColor"/>
 <path d="M14.7273 16.625V19H17.1818H19.6364V16.625H17.1818H14.7273Z" fill="currentColor"/>
-<path d="M24.5455 9.5V7.125H22.0909V4.75H19.6364V2.375H17.1818V4.75H9.81818V2.375H7.36364V4.75H4.90909V7.125H2.45455V9.5H0V16.625H2.45455V11.875H4.90909V16.625H7.36364V14.25H19.6364V16.625H22.0909V11.875H24.5455V16.625H27V9.5H24.5455ZM19.6364 7.125V9.5H17.1818V7.125H19.6364ZM9.81818 7.125V9.5H7.36364V7.125H9.81818Z" fill="currentColor"/>
-</g>
-<defs>
-<clipPath id="clip0_77_1054">
-<rect width="27" height="19" fill="white"/>
-</clipPath>
-</defs>
+<path d="M24.5455 9.5V7.125H22.0909V4.75H19.6364V2.375H17.1818V4.75H9.81818V2.375H7.36364V4.75H4.90909V7.125H2.45455V9.5H0V16.625H2.45455V11.875H4.90909V16.625H7.36364V14.25H19.6364V16.625H22.0909V11.875H24.5455V16.625H27V9.5H24.5455ZM19.6364 7.125V9.5H17.1818V7.125H19.6364ZM9.81818 7.125V9.5H7.36364V7.125H9.81818Z" fill="currentColor">
+ <polygon points="60,30 90,90 30,90">
+    <animateTransform
+      attributeName="transform"
+      attributeType="XML"
+      type="rotate"
+      from="0 60 70"
+      to="360 60 70"
+      dur="10s"
+      repeatCount="indefinite" />
+  </polygon>
+</path>
 </svg>

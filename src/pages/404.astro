@@ -1,0 +1,73 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Icon from "@components/Icon.astro";
+import Invader from "@/assets/images/icons/Invader.svg";
+import Button from "@/components/Button.astro";
+import Balloon from "@/components/Balloon.astro";
+
+const quotes = [
+  "These are not the droids you are looking for ...",
+  "I used to be an adventurer like you. Then I took an arrow in the knee...",
+];
+
+const title = "Not found";
+---
+
+<BaseLayout title={title}>
+  <h1>Uhm...Not found</h1>
+  <!-- Set the first quote in case JS is disabled -->
+  <Balloon><random-quote>{quotes[0]}</random-quote></Balloon>
+  <Icon src={Invader.src} viewBox={`0 0 ${Invader.width} ${Invader.height}`} />
+
+  <div class="actions">
+    <Button as="a" href="/" class="primary">Go back</Button>
+  </div>
+</BaseLayout>
+
+<script define:vars={{ quotes }}>
+  class RandomQuote extends HTMLElement {
+    constructor() {
+      super();
+      const quote =
+        Array.isArray(quotes) && quotes.length > 0
+          ? quotes[Math.floor(Math.random() * quotes.length)]
+          : "";
+      this.innerText = quote;
+    }
+  }
+
+  customElements.define("random-quote", RandomQuote);
+</script>
+
+<style>
+  h1 {
+    text-align: center;
+    margin-block: 9rem 7rem;
+
+    &::after {
+      content: none;
+    }
+  }
+
+  .icon {
+    height: auto;
+    width: 142px;
+    color: var(--color-pink-2);
+    animation: 1s steps(3) 0s infinite alternate float-up;
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+  }
+
+  .actions {
+    margin-block-start: 8rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+    > a {
+      text-decoration: none;
+    }
+  }
+</style>

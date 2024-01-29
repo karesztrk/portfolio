@@ -1,0 +1,58 @@
+---
+import Icon from "@components/Icon.astro";
+import Arrow from "@/assets/images/icons/Arrow.svg";
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"p"> {}
+
+const props = Astro.props;
+---
+
+<p class="balloon" {...props}>
+  <slot />
+  <Icon src={Arrow.src} viewBox={`0 0 ${Arrow.width} ${Arrow.height}`} />
+</p>
+
+<style>
+  p {
+    --_offset: 5px;
+    --_radius: 2;
+    --_bottom-offset: 1.75rem;
+
+    container-type: inline-size;
+    position: relative;
+    padding: 0.5rem 1rem;
+    margin: var(--_offset) var(--_offset) var(--_bottom-offset);
+
+    font-family: "Silkscreen", monospace;
+    color: var(--color-balloon-text);
+    background-color: var(--color-balloon-bg);
+
+    &:before,
+    &::after {
+      position: absolute;
+      content: "";
+      z-index: -1;
+      background: inherit;
+    }
+
+    &:before {
+      inset-block: calc(-1 * var(--_offset));
+      inset-inline: calc(var(--_radius) * var(--_offset));
+    }
+
+    &:after {
+      inset-block: calc(var(--_radius) * var(--_offset));
+      inset-inline: calc(-1 * var(--_offset));
+    }
+
+    .icon {
+      position: absolute;
+      bottom: -2.1em;
+      left: 25%;
+      height: 2.2em;
+      width: auto;
+      color: var(--color-balloon-bg);
+    }
+  }
+</style>
