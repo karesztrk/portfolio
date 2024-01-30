@@ -563,6 +563,8 @@
 
       --color-balloon-bg: var(--color-dark-0);
       --color-balloon-text: var(--color-dark-4);
+
+      --click-spark-color: var(--color-pink-2);
     }
   }
 }
