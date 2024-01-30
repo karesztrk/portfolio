@@ -366,8 +366,9 @@
     padding: 0;
     margin: var(--_offset);
     background-color: var(--_color-button-shadow);
-
     outline-offset: var(--button-outline-offset);
+
+    text-decoration: none;
 
     > span.front {
       padding: 0.5rem 1rem;
@@ -428,6 +429,13 @@
         transition: translate 50ms cubic-bezier(0.22, 1, 0.36, 1);
       }
     }
+  }
+
+  .actions {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-block: 1rem 2rem;
   }
 }
 
@@ -563,6 +571,8 @@
 
       --color-balloon-bg: var(--color-dark-0);
       --color-balloon-text: var(--color-dark-4);
+
+      --click-spark-color: var(--color-pink-0);
     }
   }
 }

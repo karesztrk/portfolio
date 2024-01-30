@@ -17,7 +17,7 @@ const { id = "", expandable } = Astro.props;
 const readMoreInput = `${id.replace(/\s/gi, "-")}-read-more`;
 ---
 
-<section>
+<section id={id}>
   <slot name="title" />
   {
     expandable && (
@@ -32,7 +32,13 @@ const readMoreInput = `${id.replace(/\s/gi, "-")}-read-more`;
   <div class:list={["text", { expandable }]}>
     <slot />
   </div>
-  {expandable && <label class="read-more-label" for={readMoreInput}><span class='visually-hidden'>Toggle section</span></label>}
+  {
+    expandable && (
+      <label class="read-more-label" for={readMoreInput}>
+        <span class="visually-hidden">Toggle section</span>
+      </label>
+    )
+  }
 </section>
 
 <style>
