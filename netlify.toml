@@ -2,11 +2,6 @@
 command = "pnpm run build"
 publish = "dist"
 
-[[redirects]]
-  from = "/*"
-  to = "/404.html"
-  status = 502
-
 [[headers]]
   for = "/*.woff2"
   [headers.values]

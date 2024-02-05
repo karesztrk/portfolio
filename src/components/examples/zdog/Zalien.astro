@@ -1,0 +1,99 @@
+---
+
+---
+
+<script>
+  import Zdog from "https://esm.sh/zdog@1.1.1";
+
+  type Position = { x: number; y: number };
+
+  const size = [11, 8];
+  const shiftX = size[0];
+  const shiftY = Math.floor(size[1] / 2);
+  const color = "#03899c";
+  const backface = "#01505a";
+
+  const model = `
+      --x-----x--
+      ---x---x---
+      --xxxxxxx--
+      -xx-xxx-xx-
+      xxxxxxxxxxx
+      x-xxxxxxx-x
+      x-x-----x-x
+      ---xx-xx---`;
+
+  const selector = "zalien";
+  const canvases = document.getElementsByClassName(selector);
+
+  class ZAlien {
+    canvas: Element;
+
+    constructor(canvas: Element) {
+      this.canvas = canvas;
+
+      canvas.setAttribute(
+        "width",
+        canvas.getBoundingClientRect().width.toString(),
+      );
+      canvas.setAttribute(
+        "height",
+        canvas.getBoundingClientRect().height.toString(),
+      );
+
+      const scene = this.createScene(canvas);
+
+      this.getPositions().map((pos) => this.createVoxel(scene, pos));
+
+      const animate = () => {
+        const timestamp = Date.now();
+        let y = Math.cos(timestamp * 0.001);
+        scene.updateRenderGraph();
+        scene.translate.set({
+          x: 0,
+          y,
+          z: 0,
+        });
+        requestAnimationFrame(animate);
+      };
+
+      animate();
+    }
+
+    createScene(canvas: Element) {
+      return new Zdog.Illustration({
+        element: canvas,
+        dragRotate: true,
+        zoom: 20,
+        rotate: { x: 0.15, y: -0.35 },
+      });
+    }
+
+    createVoxel(scene: Zdog.Illustration, { x, y }: Position) {
+      return new Zdog.Box({
+        addTo: scene,
+        stroke: false,
+        color,
+        translate: { x: x - shiftX, y: y - shiftY },
+        backface,
+      });
+    }
+
+    getPositions(): Position[] {
+      return model.split("\n").flatMap((line, y) =>
+        line.split("").reduce<Position[]>((acc, curr, x) => {
+          if (curr === "x") {
+            acc.push({ x, y });
+          }
+          return acc;
+        }, []),
+      );
+    }
+  }
+
+  // For every occurrence of the canvas create a new scene
+  for (let i = 0; i < canvases.length; i++) {
+    const canvas = canvases[i];
+    new ZAlien(canvas);
+  }
+</script>
