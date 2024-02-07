@@ -19,7 +19,7 @@ const { collections, ...rest } = Astro.props;
   <form method="dialog">
     <collection-filter>
       <div class="search-header">
-        <Input id="search-input" type="search" autofocus>
+        <Input id="search-input" wrapper-class="flex-1" type="search" autofocus>
           <Icon
             src={Search.src}
             viewBox={`0 0 ${Search.width} ${Search.height}`}
@@ -104,11 +104,8 @@ const { collections, ...rest } = Astro.props;
   dialog {
     & .search-header {
       display: flex;
-      flex-flow: row wrap;
+      flex-flow: row nowrap;
       gap: var(--space-xs);
-      > .input-wrapper {
-        flex: 1;
-      }
       > #close-button {
         flex: 0;
         font-family: "Silkscreen", monospace;
