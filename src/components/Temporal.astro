@@ -1,17 +1,23 @@
 ---
 import Icon from "./Icon.astro";
 import Calendar from "@/assets/images/icons/Calendar.svg";
+import type { HTMLAttributes } from "astro/types";
 
-interface Props {
+interface Props extends HTMLAttributes<"div"> {
   type?: "contained" | "text";
   icon?: boolean;
-  "aria-label"?: string;
 }
 
-const { type = "contained", icon, "aria-label": ariaLabel } = Astro.props;
+const {
+  type = "contained",
+  icon,
+  "aria-label": ariaLabel,
+  class: className,
+  ...props
+} = Astro.props;
 ---
 
-<div class:list={["temporal", type, icon && "adorned"]}>
+<div class:list={["temporal", type, icon && "adorned", className]} {...props}>
   {
     icon && (
       <Icon
@@ -32,6 +38,10 @@ const { type = "contained", icon, "aria-label": ariaLabel } = Astro.props;
     color: var(--text);
     font-variation-settings: "MONO" 1;
     display: inline;
+
+    .icon {
+      height: 1lh;
+    }
 
     &.contained {
       font-size: 0.85em;

@@ -1,8 +1,8 @@
 ---
-
+const { class: className, ...props } = Astro.props;
 ---
 
-<div class="fields">
+<div class:list={["fields"]} {...props}>
   <slot />
 </div>
 
@@ -13,9 +13,5 @@
     gap: 0.5em;
     margin-block: var(--space-xs);
     padding-inline: var(--space-xs);
-
-    .icon {
-      height: 1lh;
-    }
   }
 </style>

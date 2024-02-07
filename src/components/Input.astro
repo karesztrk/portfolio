@@ -1,12 +1,14 @@
 ---
 import type { HTMLAttributes } from "astro/types";
 
-type Props = HTMLAttributes<"input">;
+interface Props extends HTMLAttributes<"input"> {
+  "wrapper-class"?: string;
+}
 
-const props = Astro.props;
+const { "wrapper-class": wrapperClass, ...props } = Astro.props;
 ---
 
-<div class="input-wrapper">
+<div class:list={["input-wrapper", wrapperClass]}>
   <slot />
   <input {...props} />
 </div>

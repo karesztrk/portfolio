@@ -1,19 +1,25 @@
 ---
+import type { HTMLAttributes } from "astro/types";
 import Icon from "./Icon.astro";
 import TagIcon from "@/assets/images/icons/Tag.svg";
 
-interface Props {
-  "aria-label"?: string;
+interface Props extends HTMLAttributes<"div"> {
+  data?: string[];
 }
 
-const { "aria-label": ariaLabel } = Astro.props;
+const {
+  "aria-label": ariaLabel,
+  class: className,
+  data = [],
+  ...props
+} = Astro.props;
 ---
 
-<div class="tags">
+<div class:list={["tags", className]} {...props}>
   <Icon src={TagIcon.src} viewBox={`0 0 ${TagIcon.width} ${TagIcon.height}`} />
   {ariaLabel && <span class="visually-hidden">{ariaLabel}</span>}
   <ul>
-    <slot />
+    {data.map((entry) => <li>{entry}</li>)}
   </ul>
 </div>
 
@@ -22,6 +28,10 @@ const { "aria-label": ariaLabel } = Astro.props;
     grid-column: span 2;
     display: grid;
     grid-template-columns: subgrid;
+
+    .icon {
+      height: 1lh;
+    }
 
     > ul {
       display: flex;

@@ -433,7 +433,6 @@
 
   .actions {
     display: flex;
-    justify-content: center;
     text-align: center;
     margin-block: 1rem 2rem;
   }
@@ -588,6 +587,10 @@
     margin: -1;
     padding: 0;
     border: 0;
+  }
+
+  .flex-1 {
+    flex: 1;
   }
 }
 

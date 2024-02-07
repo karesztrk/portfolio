@@ -13,3 +13,11 @@ const { as: Tag, class: className, ...props } = Astro.props;
 <Tag class:list={["button", className]} {...props}>
   <span class="front"><slot /></span>
 </Tag>
+
+<style>
+  .button.large {
+    > span.front {
+      padding: 2em;
+    }
+  }
+</style>

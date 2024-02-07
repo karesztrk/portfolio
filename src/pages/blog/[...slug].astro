@@ -24,9 +24,7 @@ const title = formatTitle(entry.id);
     <h1>{title}</h1>
 
     <Fields>
-      <Tags aria-label="Tags">
-        {entry.data.tags.map((tag: string) => <li>{tag}</li>)}
-      </Tags>
+      <Tags aria-label="Tags" data={entry.data.tags} />
       <Temporal type="text" icon={true} aria-label="Publish date">
         {formatDate(entry.data.date)}
       </Temporal>

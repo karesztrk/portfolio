@@ -48,13 +48,7 @@ const { Content } = await article.render();
         <h2>{article.title}</h2>
 
         <Fields>
-          {article.tags.length > 0 && (
-            <Tags>
-              {article.tags.map((tag: string) => (
-                <li>{tag}</li>
-              ))}
-            </Tags>
-          )}
+          {article.tags.length > 0 && <Tags data={article.tags}></Tags>}
         </Fields>
         {Content && <Content />}
       </article>
