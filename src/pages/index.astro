@@ -23,9 +23,9 @@ import Button from "@components/Button.astro";
     </p>
   </Section>
   <div class="grid">
-    <Button as="a" class="secondary" href="/blog">Learnt recently</Button>
-    <Button as="a" class="secondary" href="/about">More about me</Button>
-    <Button as="a" class="secondary" href="/mind-map">
+    <Button as="a" class="secondary large" href="/blog">Learnt recently</Button>
+    <Button as="a" class="secondary large" href="/about">More about me</Button>
+    <Button as="a" class="secondary large" href="/mind-map">
       Things that i like
     </Button>
   </div>
@@ -49,10 +49,7 @@ import Button from "@components/Button.astro";
     gap: 1rem;
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
 
-    > a {
-      span {
-        padding: 2em;
-      }
+    > .secondary {
       text-decoration: none;
     }
   }

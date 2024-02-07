@@ -2,8 +2,8 @@ name: Portfolio
 run-name: Running actions by @${{ github.actor }}
 
 on:
-  push:
-    branches: [master]
+  pull_request:
+    types: [opened, reopened]
 
 jobs:
   e2e:
