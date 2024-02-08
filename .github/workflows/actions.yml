@@ -2,12 +2,14 @@ name: Portfolio
 run-name: Running actions by @${{ github.actor }}
 
 on:
-  push:
-    branches: [master]
+  pull_request:
+    types: [opened, reopened, synchronize]
+    branches:
+      - master
 
 jobs:
   e2e:
-    name: "End-to-End Tests"
+    name: "Deploy"
     runs-on: ubuntu-latest
     environment: production
     container:
