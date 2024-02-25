@@ -8,6 +8,8 @@ import Icon from "@components/Icon.astro";
 import Search from "@/assets/images/icons/Search.svg";
 import InputButton from "@components/InputButton.astro";
 import SearchDialog from "@components/SearchDialog.astro";
+import Fields from "@/components/Fields.astro";
+import Tags from "@/components/Tags.astro";
 
 const resolvedCollections = await Promise.all(
   collectionNames.map((c) =>
@@ -33,9 +35,20 @@ const collections = resolvedCollections.reduce(
       viewBox={`0 0 ${Search.width} ${Search.height}`}
     />Search
   </InputButton>
-  <SearchDialog id="search-dialog" collections={collections} />
-  <slot />
+  <mm-view>
+    <SearchDialog id="search-dialog" collections={collections} />
+  </mm-view>
 </Layout>
+
+<template id="mm-article-template">
+  <article>
+    <h2 id="title"></h2>
+    <Fields>
+      <Tags data={["tag"]} />
+    </Fields>
+    <div id="content"></div>
+  </article>
+</template>
 
 <script>
   const searchButton = document.getElementById("search-button");
@@ -51,16 +64,100 @@ const collections = resolvedCollections.reduce(
 </script>
 
 <script>
-  const searchDialog = document.getElementById("search-dialog");
+  import type { CollectionType } from "@/util/collections.util.ts";
+  import type { CollectionEntry } from "astro:content";
+  import { init, mdToHtml } from "md4w";
+  import { formatTitle } from "@/util/blog.util";
+  import wasm from "/node_modules/md4w/js/md4w-small.wasm?url";
 
-  if (searchDialog) {
-    searchDialog.addEventListener("close", () => {
-      const { returnValue } = searchDialog as HTMLDialogElement;
-      if (returnValue) {
-        window.location.href = returnValue;
+  class MindMapView extends HTMLElement {
+    loaded = false;
+
+    constructor() {
+      super();
+      const searchDialog = document.getElementById("search-dialog");
+      this.init();
+
+      if (searchDialog) {
+        const onClose = async () => {
+          await this.init();
+          const { returnValue } = searchDialog as HTMLDialogElement;
+          if (returnValue) {
+            const template = this.getTemplate();
+            const collectionEntry = this.toCollectionEntry(returnValue);
+            this.fillTemplate(template, collectionEntry);
+            this.querySelector("article")?.remove();
+            this.appendChild(template);
+          }
+        };
+        searchDialog.addEventListener("close", onClose);
       }
-    });
+    }
+
+    async init() {
+      if (!this.loaded) {
+        await init(wasm);
+        this.loaded = true;
+      }
+    }
+
+    toCollectionEntry(returnValue: string): CollectionEntry<CollectionType> {
+      return JSON.parse(returnValue);
+    }
+
+    getTemplate() {
+      const template = document.getElementById(
+        "mm-article-template",
+      ) as HTMLTemplateElement | null;
+      return template?.content.cloneNode(true) as HTMLElement;
+    }
+
+    fillTemplate(
+      template: HTMLElement,
+      collectionEntry: CollectionEntry<CollectionType>,
+    ) {
+      this.setTitle(template, collectionEntry);
+      this.setContent(template, collectionEntry);
+      this.setTags(template, collectionEntry);
+    }
+
+    setTitle(
+      template: HTMLElement,
+      collectionEntry: CollectionEntry<CollectionType>,
+    ) {
+      const title = template.querySelector("#title");
+      if (title) {
+        title.textContent = formatTitle(collectionEntry.id);
+      }
+    }
+
+    setContent(
+      template: HTMLElement,
+      collectionEntry: CollectionEntry<CollectionType>,
+    ) {
+      const content = template.querySelector("#content");
+      if (content) {
+        content.innerHTML = mdToHtml(collectionEntry.body);
+      }
+    }
+
+    setTags(
+      template: HTMLElement,
+      collectionEntry: CollectionEntry<CollectionType>,
+    ) {
+      const tags = template.querySelector("ul");
+      const tagItem = template.querySelector("li");
+      if (tags && tagItem) {
+        for (const tag of collectionEntry.data.tags) {
+          const li = tagItem.cloneNode();
+          li.textContent = tag;
+          tags.appendChild(li);
+        }
+      }
+    }
   }
+
+  customElements.define("mm-view", MindMapView);
 </script>
 
 <style>

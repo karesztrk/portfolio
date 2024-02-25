@@ -8,6 +8,9 @@ dependencies:
   astro:
     specifier: ^4.2.0
     version: 4.3.5(lightningcss@1.23.0)
+  md4w:
+    specifier: ^0.2.4
+    version: 0.2.4
   sharp:
     specifier: ^0.33.2
     version: 0.33.2
@@ -16,9 +19,6 @@ devDependencies:
   '@astrojs/mdx':
     specifier: ^2.0.5
     version: 2.1.1(astro@4.3.5)
-  '@astrojs/netlify':
-    specifier: ^4.1.1
-    version: 4.1.1(astro@4.3.5)
   '@playwright/test':
     specifier: ^1.41.0
     version: 1.41.2
@@ -109,17 +109,6 @@ packages:
       - supports-color
     dev: true
 
-  /@astrojs/netlify@4.1.1(astro@4.3.5):
-    resolution: {integrity: sha512-ynCldf0BafT0s/E6hOed8YqrxyD48iukxtPBTatQytg/XsSr16cQ6em8HbMMV3pe4sE5xImdXtQcI1Xg01rUHw==}
-    peerDependencies:
-      astro: ^3.0.0 || ^4.0.0
-    dependencies:
-      '@astrojs/underscore-redirects': 0.3.3
-      '@netlify/functions': 2.5.1
-      astro: 4.3.5(lightningcss@1.23.0)
-      esbuild: 0.19.12
-    dev: true
-
   /@astrojs/prism@3.0.0:
     resolution: {integrity: sha512-g61lZupWq1bYbcBnYZqdjndShr/J3l/oFobBKPA3+qMat146zce3nz2kdO4giGbhYDt4gYdhmoBz0vZJ4sIurQ==}
     engines: {node: '>=18.14.1'}
@@ -139,10 +128,6 @@ packages:
       which-pm-runs: 1.1.0
     transitivePeerDependencies:
       - supports-color
-
-  /@astrojs/underscore-redirects@0.3.3:
-    resolution: {integrity: sha512-qDAKhFO4M1KzP7mxoJfiehf8oyf3EB158MxAa6z10NeD2pR3o4K3LlOQI8CfJgXE+BDBQcnaLvVCg/Mz/Gkg4Q==}
-    dev: true
 
   /@babel/code-frame@7.23.5:
     resolution: {integrity: sha512-CgH3s1a96LipHCmSUmYFPwY7MNx8C3avkq7i4Wl3cfa662ldtUe4VM1TPXX70pfmrlWTb6jLqTYrZyT2ZTJBgA==}
@@ -779,27 +764,6 @@ packages:
       vfile: 6.0.1
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /@netlify/functions@2.5.1:
-    resolution: {integrity: sha512-7//hmiFHXGusAzuzEuXvRT9ItaeRjRs5lRs6lYUkaAXO1jnTWYDB2XdqFq5X4yMRX+/A96nrQ2HwCE+Pd0YMwg==}
-    engines: {node: '>=14.0.0'}
-    dependencies:
-      '@netlify/serverless-functions-api': 1.13.0
-      is-promise: 4.0.0
-    dev: true
-
-  /@netlify/node-cookies@0.1.0:
-    resolution: {integrity: sha512-OAs1xG+FfLX0LoRASpqzVntVV/RpYkgpI0VrUnw2u0Q1qiZUzcPffxRK8HF3gc4GjuhG5ahOEMJ9bswBiZPq0g==}
-    engines: {node: ^14.16.0 || >=16.0.0}
-    dev: true
-
-  /@netlify/serverless-functions-api@1.13.0:
-    resolution: {integrity: sha512-H3SMpHw24jWjnEMqbXgILWdo3/Iv/2DRzOZZevqqEswRTOWcQJGlU35Dth72VAOxhPyWXjulogG1zJNRw8m2sQ==}
-    engines: {node: ^14.18.0 || >=16.0.0}
-    dependencies:
-      '@netlify/node-cookies': 0.1.0
-      urlpattern-polyfill: 8.0.2
     dev: true
 
   /@nodelib/fs.scandir@2.1.5:
@@ -1973,10 +1937,6 @@ packages:
     resolution: {integrity: sha512-+Pgi+vMuUNkJyExiMBt5IlFoMyKnr5zhJ4Uspz58WOhBF5QoIZkFyNHIbBAtHwzVAgk5RtndVNsDRN61/mmDqg==}
     engines: {node: '>=12'}
 
-  /is-promise@4.0.0:
-    resolution: {integrity: sha512-hvpoI6korhJMnej285dSg6nu1+e6uxs7zG3BYAm5byqDsgJNWwxzM6z6iZiAgQR4TJ30JmBTOwqZUw3WlyH3AQ==}
-    dev: true
-
   /is-reference@3.0.2:
     resolution: {integrity: sha512-v3rht/LgVcsdZa3O2Nqs+NMowLOxeOm7Ay9+/ARQ2F+qEoANRcqrjAZKGN0v8ymUetZGgkp26LTnGT7H0Qo9Pg==}
     dependencies:
@@ -2184,6 +2144,10 @@ packages:
 
   /markdown-table@3.0.3:
     resolution: {integrity: sha512-Z1NL3Tb1M9wH4XESsCDEksWoKTdlUafKc4pt0GRwjUyXaCFZ+dc3g2erqB6zm3szA2IUSi7VnPI+o/9jnxh9hw==}
+
+  /md4w@0.2.4:
+    resolution: {integrity: sha512-pqycPBtk1FfBrVkrMFkGF4BH9YzZCpqwy4zUv2wCtX+cfaf7z96sQk7GX1fGZZStdkr8dUbkwQu+0z/0nvQzow==}
+    dev: false
 
   /mdast-util-definitions@6.0.0:
     resolution: {integrity: sha512-scTllyX6pnYNZH/AIp/0ePz6s4cZtARxImwoPJ7kS42n+MnVsI4XbnG6d4ibehRIldYMWM2LD7ImQblVhUejVQ==}
@@ -3701,10 +3665,6 @@ packages:
       browserslist: 4.22.3
       escalade: 3.1.2
       picocolors: 1.0.0
-
-  /urlpattern-polyfill@8.0.2:
-    resolution: {integrity: sha512-Qp95D4TPJl1kC9SKigDcqgyM2VDVO4RiJc2d4qe5GrYm+zbIQCWWKAFaJNQ4BhdFeDGwBmAxqJBwWSJDb9T3BQ==}
-    dev: true
 
   /util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
