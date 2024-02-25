@@ -44,7 +44,7 @@ const { collections, ...rest } = Astro.props;
                   <li class="entry" data-tags={entry.data.tags}>
                     <button
                       class="entry-button"
-                      value={`/mind-map/${entry.collection.toLocaleLowerCase()}/${entry.slug.toLocaleLowerCase()}`}
+                      value={`${JSON.stringify(entry)}`}
                     >
                       <Icon
                         src={Markdown.src}

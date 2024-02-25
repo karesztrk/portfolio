@@ -11,11 +11,11 @@
   },
   "dependencies": {
     "astro": "^4.2.0",
+    "md4w": "^0.2.4",
     "sharp": "^0.33.2"
   },
   "devDependencies": {
     "@astrojs/mdx": "^2.0.5",
-    "@astrojs/netlify": "^4.1.1",
     "@playwright/test": "^1.41.0",
     "browserslist": "^4.22.3",
     "lightningcss": "^1.23.0",

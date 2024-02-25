@@ -1,6 +1,5 @@
 import { defineConfig } from "astro/config";
 import nuDiscoTheme from "./nu-disco-dark.color-theme.json";
-import netlify from "@astrojs/netlify";
 import { remarkReadingTime } from "./remark-reading-time.mjs";
 import { browserslistToTargets } from "lightningcss";
 import browserslist from "browserslist";
@@ -15,8 +14,6 @@ export default defineConfig({
     remarkPlugins: [remarkReadingTime],
   },
   integrations: [mdx()],
-  output: "hybrid",
-  adapter: netlify(),
   vite: {
     css: {
       transformer: "lightningcss",
