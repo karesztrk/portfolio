@@ -14,9 +14,19 @@ const { title } = Astro.props;
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Order of the head elements matters -->
     <meta charset="UTF-8" />
-    <meta name="description" content="Károly Török portfolio" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Károly Török portfolio" />
+    <title>{title}</title>
+    <!-- Prioritizing the hero font loading -->
+    <link
+      rel="preload"
+      href="/fonts/Recursive-Normal-Var.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <link
       rel="icon"
       href={`/favicon${import.meta.env.DEV ? "-dev" : ""}.ico`}
@@ -30,15 +40,6 @@ const { title } = Astro.props;
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
     <meta name="generator" content={Astro.generator} />
-    <!-- Prioritizing the hero font loading -->
-    <link
-      rel="preload"
-      href="/fonts/Recursive-Normal-Var.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <title>{title}</title>
   </head>
   <body>
     <Main>
