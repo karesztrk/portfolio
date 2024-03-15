@@ -4,9 +4,11 @@ import type { HTMLAttributes } from "astro/types";
 type Props = HTMLAttributes<"svg">;
 
 const { class: className, ...rest } = Astro.props;
+//"separator" role is not permitted due to the interactivity
 ---
 
 <svg
+  role="presentation"
   class:list={["divider", className]}
   fill="none"
   xmlns="http://www.w3.org/2000/svg"

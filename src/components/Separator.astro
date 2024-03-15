@@ -1,0 +1,17 @@
+---
+import Icon from "@components/Icon.astro";
+import { type ImageMetadata } from "astro";
+
+interface Props {
+  icon: ImageMetadata;
+}
+
+const { icon } = Astro.props;
+---
+
+<Icon
+  role="presentation"
+  class="separator"
+  src={icon.src}
+  viewBox={`0 0 ${icon.width} ${icon.height}`}
+/>

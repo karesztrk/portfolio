@@ -27,17 +27,23 @@ const collections = resolvedCollections.reduce(
 );
 ---
 
-<Layout title="Mind-map">
-  <h1>Mind-map</h1>
-  <InputButton id="search-button">
-    <Icon
-      src={Search.src}
-      viewBox={`0 0 ${Search.width} ${Search.height}`}
-    />Search
-  </InputButton>
-  <mm-view>
-    <SearchDialog id="search-dialog" collections={collections} />
-  </mm-view>
+<Layout title="Mind map">
+  <h1>Mind map</h1>
+  <article>
+    <section>
+      <InputButton id="search-button">
+        <Icon
+          src={Search.src}
+          viewBox={`0 0 ${Search.width} ${Search.height}`}
+        />Search
+      </InputButton>
+    </section>
+    <section>
+      <mm-view>
+        <SearchDialog id="search-dialog" collections={collections} />
+      </mm-view>
+    </section>
+  </article>
 </Layout>
 
 <template id="mm-article-template">

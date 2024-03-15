@@ -5,36 +5,47 @@ import Button from "@components/Button.astro";
 ---
 
 <Layout title="Károly-Török { developer: full-stack; }">
-  <h1>
-    Hello<br />Szia<wbr />
-    <span class="phonetic">[&#712;sij&#594;]</span>
-  </h1>
-  <Section id="hello" expandable>
-    <p>
-      My name is Károly Török. I'm a seasoned Full-stack Software Developer with
-      a strong professional focus on web development and UX design. My
-      professional endeavors frequently involve working with technologies such
-      as Java and JavaScript, as I'm deeply dedicated to crafting exceptional
-      web experiences.
-    </p><p>
-      Beyond the professional realm, I maintain a diverse range of interests and
-      activities, including fitness, culinary arts, baking, and, of course, the
-      precious time spent with my family.
-    </p>
-  </Section>
-  <div class="grid">
-    <Button as="a" class="secondary large" href="/blog">Learnt recently</Button>
-    <Button as="a" class="secondary large" href="/about">More about me</Button>
-    <Button as="a" class="secondary large" href="/mind-map">
-      Things that i like
-    </Button>
-  </div>
+  <hgroup>
+    <h1>
+      Hello<br />Szia<wbr />
+      <span class="phonetic">[&#712;sij&#594;]</span>
+    </h1>
+    <Section id="hello" expandable>
+      <p>
+        My name is Károly Török. I'm a seasoned Full-stack Software Developer
+        with a strong professional focus on web development and UX design. My
+        professional endeavors frequently involve working with technologies such
+        as Java and JavaScript, as I'm deeply dedicated to crafting exceptional
+        web experiences.
+      </p><p>
+        Beyond the professional realm, I maintain a diverse range of interests
+        and activities, including fitness, culinary arts, baking, and, of
+        course, the precious time spent with my family.
+      </p>
+    </Section>
+  </hgroup>
+
+  <article>
+    <section class="grid">
+      <Button as="a" class="secondary large" href="/blog">
+        Learnt recently
+      </Button>
+      <Button as="a" class="secondary large" href="/mind-map">
+        Things that i like
+      </Button>
+      <Button as="a" class="secondary large" href="/daily-drivers">
+        How i work
+      </Button>
+      <Button as="a" class="secondary large" href="/about">
+        More about me
+      </Button>
+    </section>
+  </article>
 </Layout>
 
 <style>
   h1 {
-    position: relative;
-    margin-block-end: 3rem;
+    margin-block-end: 0;
   }
 
   .phonetic {

@@ -3,12 +3,14 @@ import { IndexPage } from "./pages/index-page";
 import { AboutPage } from "./pages/about-page";
 import { MindMapPage } from "./pages/mindmap-page";
 import { BlogPage } from "./pages/blog-page";
+import { DailyDriversPage } from "./pages/dailydrivers-page";
 
 interface Fixtures {
   index: IndexPage;
   about: AboutPage;
   mindMap: MindMapPage;
   blog: BlogPage;
+  dailyDrivers: DailyDriversPage;
 }
 
 export const test = base.extend<Fixtures>({
@@ -31,6 +33,11 @@ export const test = base.extend<Fixtures>({
     const blogPage = new BlogPage(page);
     await blogPage.goto();
     await use(blogPage);
+  },
+  dailyDrivers: async ({ page }, use) => {
+    const dailyPage = new DailyDriversPage(page);
+    await dailyPage.goto();
+    await use(dailyPage);
   },
 });
 
