@@ -1,8 +1,8 @@
 import { test, expect } from "./fixtures";
 
-test.describe("Mind-map page", () => {
+test.describe("Mind map page", () => {
   test("Page elements present", async ({ mindMap, page }) => {
-    await expect(page.getByRole("heading", { name: "Mind-map" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Mind map" })).toBeVisible();
     await expect(page.getByRole("button", { name: "Search" })).toBeVisible();
   });
 
@@ -23,7 +23,7 @@ test.describe("Mind-map page", () => {
     await expect(mindMap.searchDialog()).not.toBeVisible();
     if (entryText) {
       await expect(
-        page.getByRole("article").getByText(entryText),
+        page.getByRole("article").getByRole("article").getByText(entryText),
       ).toBeVisible();
     }
   });

@@ -1,23 +1,25 @@
 ---
 interface InExpandable {
   id?: string;
-  expandable: false;
+  expandable?: false;
+  class?: string;
 }
 
 interface Expandable {
   id: string;
   title?: string;
   expandable: true;
+  class?: string;
 }
 
 type Props = InExpandable | Expandable;
 
 // Yes, its only CSS
-const { id = "", expandable } = Astro.props;
+const { id = "", expandable, ...rest } = Astro.props;
 const readMoreInput = `${id.replace(/\s/gi, "-")}-read-more`;
 ---
 
-<section id={id}>
+<section id={id} {...rest}>
   <slot name="title" />
   {
     expandable && (

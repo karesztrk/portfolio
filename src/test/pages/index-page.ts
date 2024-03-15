@@ -3,8 +3,9 @@ import type { Page } from "@playwright/test";
 export class IndexPage {
   menuItems = [
     { title: "Blog", path: "/blog" },
-    { title: "Mind-map", path: "/mind-map" },
+    { title: "Mind", path: "/mind-map" },
     { title: "About", path: "/about" },
+    { title: "Daily", path: "/daily" },
   ] as const;
 
   constructor(public readonly page: Page) {}

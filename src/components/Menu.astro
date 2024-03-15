@@ -19,7 +19,13 @@ const currentPath = Astro.url.pathname;
   <li>
     <a
       class:list={[{ active: currentPath.startsWith("/mind-map") }]}
-      href="/mind-map">Mind-map</a
+      href="/mind-map">Mind</a
+    >
+  </li>
+  <li>
+    <a
+      class:list={[{ active: currentPath.startsWith("/daily-drivers") }]}
+      href="/daily-drivers">Daily</a
     >
   </li>
   <li>

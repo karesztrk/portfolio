@@ -14,7 +14,6 @@
   --content: min(65ch, 100% - var(--gap) * 2);
   --popout-max: 2rem;
   --popout: minmax(0, var(--popout-max));
-  --pad: 3rem;
 
   --grid-row-nav: min-content;
 
@@ -27,6 +26,7 @@
 
   --radius: 6px;
 
+  --h-margin: 0.75em;
   --p-margin: 1.5rem;
 
   --button-min-width: 122px;
@@ -115,10 +115,9 @@
   h4,
   h5 {
     font-weight: 400;
-    margin-block: 3rem var(--p-margin, 1.5rem);
     line-height: 1.1;
-
     color: var(--color-title);
+    margin-block: var(--h-margin, 0.75em);
   }
 
   h1 {

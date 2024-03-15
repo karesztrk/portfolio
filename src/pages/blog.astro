@@ -16,33 +16,33 @@ const sortedPosts = blog.sort(
 
 <Layout title="Blog">
   <h1>Blog</h1>
-  {
-    sortedPosts.map((post, index) => {
-      return (
-        <>
-          <article>
-            <a href={`/blog/${post.slug}`}>
-              <h2>{formatTitle(post.id)}</h2>
-            </a>
-            <Fields>
-              <Temporal type="text" icon={true} aria-label="Publish date">
-                {formatDate(post.data.date)}
-              </Temporal>
-            </Fields>
-            <p>{formatExcerpt(post.body)}</p>
-          </article>
-          {index < sortedPosts.length - 1 && <Divider />}
-        </>
-      );
-    })
-  }
+  <article>
+    {
+      sortedPosts.map((post, index) => {
+        return (
+          <>
+            <article>
+              <a href={`/blog/${post.slug}`}>
+                <h2>{formatTitle(post.id)}</h2>
+              </a>
+              <Fields>
+                <Temporal type="text" icon={true} aria-label="Publish date">
+                  {formatDate(post.data.date)}
+                </Temporal>
+              </Fields>
+              <p>{formatExcerpt(post.body)}</p>
+            </article>
+            {index < sortedPosts.length - 1 && <Divider />}
+          </>
+        );
+      })
+    }
+  </article>
 </Layout>
 
 <style>
-  a {
-    > h2 {
-      margin: 0;
-    }
+  h2 {
+    margin: 0;
   }
 
   .divider {

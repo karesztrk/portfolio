@@ -1,0 +1,343 @@
+---
+import SeparatorComponent from "@components/Separator.astro";
+import Section from "@/components/Section.astro";
+import Layout from "@/layouts/Layout.astro";
+import Separator from "@/assets/images/icons/Separator.svg";
+---
+
+<Layout title="Daily drivers">
+  <h1>Daily drivers</h1>
+
+  <article>
+    <h2>Software</h2>
+
+    <Section id="languages" class="section" expandable>
+      <h3 slot="title">Languages</h3>
+      <p>
+        I used to be a backend developer back in the day, with
+        <a href="https://dev.java/">Java</a> as my go-to language on a daily basis.
+        Despite developing web applications, the industry always felt like an exciting
+        new frontier. Although the basics were the same, the industry was totally
+        different.
+      </p>
+      <p>
+        As time passed and I delved into various projects and companies, I
+        encountered a plethora of JVM-based languages such as <a
+          href="https://groovy-lang.org/"
+          >Groovy
+        </a> or <a href="https://www.scala-lang.org/">Scala</a>.
+      </p>
+      <p>
+        Transitioning to front-end development required me to deepen my
+        understanding of <a
+          href="https://developer.mozilla.org/en-US/docs/Web/javascript"
+          >JavaScript
+        </a> and its vast ecosystem. This journey provided me with a solid grasp
+        of how the web operates, making it easier to adopt and leverage JavaScript
+        libraries and frameworks like React, Solid, Vue, Angular, or the thrilling
+        newcomer, Svelte.
+      </p>
+      <p>
+        I absolutely love <a
+          href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a
+        >; it's been evolving in fascinating ways. Recent advancements in CSS
+        are simply mind-blowing, and I've found myself fully embracing these
+        innovations. Whenever possible, I prefer to craft my own CSS rather than
+        relying on frameworks. While I'm familiar with <a
+          href="https://tailwindcss.com/">Tailwind</a
+        >, it's not my go-to choice.
+      </p>
+      <p>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a> is the
+        cornerstone for all web developers. Crafting well-architected and semantically
+        correct HTML can be challenging, but it's a cornerstone of my application
+        design philosophy. This includes prioritizing <a
+          href="https://developer.mozilla.org/en-US/docs/Web/Accessibility"
+          >accessibility</a
+        >, as I firmly believe that everyone should have equal access to the
+        web, regardless of physical capabilities.
+      </p>
+      <p>
+        I also have junior-level experience with <a
+          href="https://www.rust-lang.org/">Rust</a
+        >, and I must say, I'm quite comfortable with it. It's my language of
+        choice when working with <a href="https://webassembly.org/"
+          >WebAssembly</a
+        >, a realm that excites me to no end.
+      </p>
+    </Section>
+
+    <Section id="frameworks" expandable>
+      <h3 slot="title">Frameworks</h3>
+      <p>
+        Diving into web technologies can be a vast and exhilarating journey,
+        especially with several years of experience under your belt. In my Java
+        days, <a href="https://spring.io/">Spring</a> was my trusty companion, but
+        I'm also well-versed in older constructs like <a
+          href="https://www.oracle.com/java/technologies/java-ee-glance.html"
+          >JavaEE
+        </a> and <a href="https://openjfx.io/">JavaFX</a>. Taking it a step
+        further, I seamlessly integrate with <a href="https://hibernate.org/"
+          >Hibernate
+        </a> and <a
+          href="https://www.oracle.com/java/technologies/persistence-jsp.html"
+          >JPA
+        </a> to connect my relational database management systems (RDBMS).
+      </p>
+      <p>
+        Venturing into the realm of Big Data, I've delved into <a
+          href="https://spark.apache.org/">Spark</a
+        >, <a href="https://hadoop.apache.org/">Hadoop</a>, and <a
+          href="https://kafka.apache.org/">Kafka</a
+        >. These technologies have opened up a world of possibilities and
+        challenges that keep me on the edge of my seat.
+      </p>
+      <p>
+        On the front-end side, I've accumulated several years of experience with
+        <a href="https://react.dev/">React</a>, using it extensively in my daily
+        work. However, when it comes to my personal projects, I'm drawn to the
+        likes of <a href="https://svelte.dev/">Svelte</a>, <a
+          href="https://www.solidjs.com/">Solid</a
+        >, or <a href="https://astro.build/">Astro</a>. Despite the allure of
+        these frameworks, vanilla JavaScript and <a
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Components"
+          >Web Components</a
+        > hold a special place in my heart. There's something deeply satisfying about
+        crafting elegant solutions using the fundamentals of the Web Platform.
+      </p>
+      <p>
+        Another favorite of mine is working on 3D projects. This has led me to
+        learn and use <a href="https://threejs.org/">Three.js</a>, which is a
+        primary framework for building immersive web applications. These days, I
+        cannot wait to get my hands dirty with <a
+          href="https://developer.mozilla.org/en-US/docs/Web/API/WebGPU_API"
+          >WebGPU</a
+        >.
+      </p>
+    </Section>
+
+    <Section id="editors" expandable>
+      <h3 slot="title">Editors</h3>
+      <p>
+        In the early days of my career, <a href="https://www.eclipse.org/"
+          >Eclipse
+        </a> was the go-to IDE for developing Java applications. Its robust features
+        and extensive plugin ecosystem made it indispensable. However, as the industry
+        evolved, <a href="https://www.jetbrains.com/idea/">IntelliJ</a> emerged as
+        a more advanced and powerful IDE, quickly becoming my preferred choice.
+      </p>
+      <p>
+        Transitioning to front-end development also meant a shift in my editor
+        preferences. Enter <a href="https://code.visualstudio.com/">VS Code</a> -
+        a versatile and feature-rich editor that captured my heart for a long time.
+        Its ease of use, extensive ecosystem of extensions, and seamless integration
+        with front-end tools made it the perfect companion for web development projects.
+        Then the performance issues came with it.
+      </p>
+      <p>
+        However, my journey took an unexpected turn when I discovered the power
+        of the Terminal and ventured into the world of <a
+          href="https://www.vim.org/">Vim</a
+        >. At first, grappling with Vim's modal editing and cryptic commands was
+        daunting, and I'll admit, I didn't even know how to <a
+          href="https://cdn.thenewstack.io/media/2022/08/0ae25624-exit-vim-the-arrival-way-6n632sipjag61-1024x692.jpg"
+          >exit Vim</a
+        >! But as I delved deeper, I began to appreciate its efficiency and
+        versatility.
+      </p>
+      <p>
+        Today, <a href="https://neovim.io/">NeoVim</a> has become my editor of choice.
+        Its modern take on Vim, combined with its extensibility and performance,
+        makes it a joy to use. However, I'm too lazy to maintain my own configuration.
+        That's where <a href="https://www.lazyvim.org/">LazyVim</a> comes in. With
+        LazyVim, I can enjoy the power of NeoVim without the hassle of configuring
+        every little detail. Check my <a
+          href="https://github.com/karesztrk/nvim">.nvm</a
+        >
+      </p>
+    </Section>
+
+    <Section id="terminal">
+      <h3 slot="title">Terminal</h3>
+      <p>
+        When it comes to terminal emulators, <a href="https://alacritty.org/"
+          >Alacritty
+        </a> stands out as my favorite. Despite being one of the oldest players in
+        the game, Alacritty continues to impress with its performance and reliability.
+      </p>
+      <p>
+        As for the shell, <a href="https://fishshell.com/">Fish</a> has won me over
+        with its intuitive syntax highlighting, powerful auto-completion, and extensive
+        set of features. Its user-friendly interface and modern approach to shell
+        scripting make it a pleasure to work with. Reach my <a
+          href="https://github.com/karesztrk/dotfiles">dotfiles</a
+        >
+      </p>
+    </Section>
+
+    <Section id="browser">
+      <h3 slot="title">Browser</h3>
+      <p>
+        While <a href="https://www.google.com/chrome/">Chrome</a> may be the go-to
+        browser for many in the web development community, I've remained loyal to
+        <a href="https://www.mozilla.org/hu/firefox/new/">Firefox</a>.
+        Additionally, I use <a href="https://brave.com/">Brave</a>. In a
+        landscape dominated by Chrome, I'm proud to stand by Firefox and Brave
+        as my browsers of choice for browsing and development.
+      </p>
+    </Section>
+
+    <Section id="os">
+      <h3 slot="title">Operating system</h3>
+      <p>
+        Having spent a significant portion of my career on <a
+          href="https://www.microsoft.com/hu-hu/windows">Windows</a
+        >, I eventually reached a breaking point with performance issues and
+        made the switch to <a href="https://www.linux.org/">Linux</a> a few years
+        ago. It was a decision I haven't looked back on since. I use <a
+          href="https://archlinux.org/"
+          >Arch
+        </a> btw. Its minimalist approach and rolling-release model align perfectly
+        with my preferences, empowering me to customize my environment to suit my
+        exact needs.
+      </p>
+    </Section>
+
+    <Section id="fonts">
+      <h3>Fonts</h3>
+      <p>
+        As a font nerd, I take font selection seriously, and when it comes to
+        programming fonts, I'm no exception. I've delved deep into the world of
+        typography to find the perfect fonts for my coding adventures, and a few
+        have emerged as my absolute favorites.
+      </p>
+      <ul>
+        <li><a href="https://www.recursive.design/">Recursive</a></li>
+        <li><a href="https://github.com/0xType/0xProto">0xProto</a></li>
+        <li><a href="https://www.jetbrains.com/lp/mono/">JetBrains Mono</a></li>
+      </ul>
+    </Section>
+
+    <SeparatorComponent icon={Separator} />
+
+    <h2>Hardware</h2>
+
+    <Section id="computer">
+      <h3 slot="title">Computer</h3>
+      <p>
+        Back in the day, LAN parties with friends were a highlight of my gaming
+        adventures. One thing that always fueled our excitement was getting our
+        hands on more advanced hardware to play cooler games. However, as time
+        has passed, my understanding of hardware has become more basic. I no
+        longer obsess over the latest VGA, CPU, or motherboard releases.
+        Instead, I find myself content with the hardware provided by my company
+        laptop. It may not be cutting-edge, but it gets the job done, allowing
+        me to focus on what truly matters.
+      </p>
+    </Section>
+
+    <Section id="peripherals">
+      <h3 slot="title">Pheripherals</h3>
+      <p>
+        When the COVID-19 pandemic forced us into remote work, I saw it as an
+        opportunity to create the ultimate ergonomic workstation. With long
+        hours spent in front of a computer, I wanted to ensure that my setup is
+        comfortable for a long term.
+      </p>
+      <p>
+        That's when I stumbled upon the world of ergonomic keyboards, and I was
+        instantly intrigued. After much research and deliberation, I decided to
+        invest in a <a href="https://www.zsa.io/moonlander/">ZSA Moonlander</a>.
+        Its split design, customizable layout, and ergonomic features promised
+        to revolutionize my typing experience. I crafted <a
+          href="https://configure.zsa.io/moonlander/layouts/Q5Elg/latest/0"
+          >my layout</a
+        > to suit my preferences and workflow, optimizing efficiency while minimizing
+        strain on my wrists and hands.
+      </p>
+      <p>
+        I also incorporated an <a
+          href="https://connectit-europe.com/produkty/do-kancelare/mysi/for-health-cmo-2500-bk"
+          >old vertical mouse</a
+        > into my setup. Its ergonomic design helps to keep my wrist in a natural
+        position, reducing discomfort and fatigue during long hours of use.
+      </p>
+    </Section>
+
+    <SeparatorComponent icon={Separator} />
+
+    <h2>Education</h2>
+
+    <Section id="podcasts">
+      <h3 slot="title">Podcasts</h3>
+      <ul>
+        <li><a href="https://syntax.fm/">Syntax.</a></li>
+        <li><a href="https://changelog.com/jsparty">JS Party</a></li>
+        <li><a href="https://changelog.com/podcast">The Changelog</a></li>
+        <li><a href="https://www.devtools.fm/">devtool.fm</a></li>
+      </ul>
+    </Section>
+
+    <Section id="youtube">
+      <h3 slot="title">Youtube</h3>
+      <ul>
+        <li><a href="https://www.kevinpowell.co/">Kevin Powell</a></li>
+        <li><a href="https://fireship.io/">Fireship</a></li>
+        <li>
+          <a href="https://www.youtube.com/@dreamsofcode">Dreams of Code</a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/@devopstoolbox">DevOps Toolbox</a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/@codetothemoon">Coding to the Moon</a
+          >
+        </li>
+        <li><a href="https://www.mattpocock.com/">Mat Pocock</a></li>
+        <li>
+          <a href="https://www.youtube.com/@ThePrimeTimeagen">The Primeagen</a>
+        </li>
+        <li><a href="https://designcourse.com/">Design Course</a></li>
+        <li><a href="https://www.youtube.com/@Hyperplexed">Hyperplexed</a></li>
+        <li><a href="https://www.youtube.com/@NetNinja">Net Ninja</a></li>
+        <li>
+          <a href="https://www.youtube.com/@ifcodingwerenatural"
+            >If Coding Were Natural</a
+          >
+        </li>
+      </ul>
+    </Section>
+
+    <Section id="newsletters">
+      <h3 slot="title">Newsletters</h3>
+      <ul>
+        <li>
+          <a href="https://changelog.com/news/">The Changelog Newsletter</a>
+        </li>
+        <li><a href="https://ui.dev/">ui.dev</a></li>
+        <li><a href="https://webweekly.email/">Web Weekly</a></li>
+        <li><a href="https://codepen.io/spark">CodePen Spark</a></li>
+      </ul>
+    </Section>
+
+    <Section id="blogs">
+      <h3 slot="title">Blogs</h3>
+      <ul>
+        <li><a href="https://www.stefanjudis.com/blog/">Stefan Judis</a></li>
+        <li><a href="https://chriscoyier.net/">Chris Coyier</a></li>
+        <li><a href="https://www.joshwcomeau.com/latest/">Josh Comeau</a></li>
+        <li>
+          <a href="https://joshcollinsworth.com/blog">Josh Collinsworth</a>
+        </li>
+        <li><a href="https://ryanmulligan.dev/blog/">Ryan Mulligan</a></li>
+        <li><a href="https://nerdy.dev/">Adam Argyle</a></li>
+      </ul>
+    </Section>
+  </article>
+
+  <style>
+    section {
+      margin-block-end: 4rem;
+    }
+  </style>
+</Layout>
