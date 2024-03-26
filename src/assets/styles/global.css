@@ -94,7 +94,8 @@
   p,
   ol,
   ul,
-  label {
+  label,
+  summary {
     font-size: var(--p);
   }
 
@@ -188,7 +189,6 @@
       display: list-item;
       background-color: var(--color-summary-bg);
       cursor: pointer;
-      font-size: 1.25rem;
     }
 
     > p {
@@ -434,6 +434,40 @@
     display: flex;
     text-align: center;
     margin-block: 1rem 2rem;
+  }
+
+  details-tabs {
+    position: relative;
+    display: flex;
+    gap: var(--gap);
+    flex-wrap: wrap;
+
+    details {
+      display: contents;
+      &[open] {
+        & > summary {
+          box-shadow: inset 0 -4px 0 var(--color-primary);
+        }
+      }
+
+      > summary {
+        outline-offset: var(--button-outline-offset);
+        padding: 0.5rem 1rem;
+        display: block;
+        order: 0;
+        cursor: pointer;
+        background: transparent;
+      }
+
+      > *:nth-child(2) {
+        order: 1;
+        width: 100%;
+
+        p {
+          font-size: 1rem;
+        }
+      }
+    }
   }
 }
 
