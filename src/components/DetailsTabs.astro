@@ -1,0 +1,49 @@
+---
+
+---
+
+<details-tabs role="tablist">
+  <slot />
+</details-tabs>
+
+<script>
+  class DetailsTabs extends HTMLElement {
+    constructor() {
+      super();
+
+      const elements = this.getElementsByTagName(
+        "details",
+      ) as HTMLCollectionOf<HTMLDetailsElement>;
+
+      for (let i = 0; i < elements.length; i++) {
+        const details = elements[i];
+
+        details.addEventListener("toggle", (e) => {
+          const target = e.target as HTMLDetailsElement | null;
+
+          if (target?.open) {
+            target.setAttribute("aria-selected", "true");
+            for (let j = 0; j < elements.length; j++) {
+              const otherDetails = elements[j];
+
+              if (this.isOpen(target, otherDetails)) {
+                this.close(otherDetails);
+              }
+            }
+          }
+        });
+      }
+    }
+
+    isOpen(current: HTMLDetailsElement, other: HTMLDetailsElement) {
+      return other !== current && other.open;
+    }
+
+    close(details: HTMLDetailsElement) {
+      details.open = false;
+      details.setAttribute("aria-selected", "false");
+    }
+  }
+
+  customElements.define("details-tabs", DetailsTabs);
+</script>
