@@ -19,10 +19,11 @@ const { class: className, ...rest } = Astro.props;
 
 <style>
   .divider {
-    height: 1px;
+    --_dash-height: 2px;
+    height: var(--_dash-height);
     width: 100%;
     color: var(--color-footer-divider);
     stroke-dasharray: 5;
-    stroke-width: 1px;
+    stroke-width: var(--_dash-height);
   }
 </style>
