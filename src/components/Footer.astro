@@ -58,7 +58,7 @@ const socials: Record<
   <div class="socials">
     {
       Object.values(socials).map(({ title, icon, url, viewBox }) => (
-        <a href={url}>
+        <a href={url} rel="me">
           <span class="visually-hidden">{title}</span>
           <Icon src={icon} viewBox={viewBox} />
         </a>
