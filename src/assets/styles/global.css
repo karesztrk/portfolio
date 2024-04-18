@@ -523,114 +523,154 @@
 }
 
 @layer theme {
-  @layer dark, light;
+  :root {
+    --color-yellow-hue: 92.68;
+    --color-pink-hue: 345.06;
+    --color-teal-hue: 211.8;
 
-  @layer dark {
-    :root {
-      --color-yellow-hue: 92.68;
-      --color-pink-hue: 345.06;
-      --color-teal-hue: 211.8;
+    /* #ffd100 */
+    --color-yellow-0: oklch(97% 0.04 var(--color-yellow-hue));
+    --color-yellow-1: oklch(95% 0.06 var(--color-yellow-hue));
+    --color-yellow-2: oklch(93.3% 0.09 var(--color-yellow-hue));
+    --color-yellow-3: oklch(91.2% 0.12 var(--color-yellow-hue));
+    --color-yellow-4: oklch(89.4% 0.15 var(--color-yellow-hue));
+    --color-yellow-5: oklch(87.5% 0.17 var(--color-yellow-hue));
+    --color-yellow-6: oklch(74.1% 0.15 var(--color-yellow-hue));
+    --color-yellow-7: oklch(56.4% 0.11 var(--color-yellow-hue));
+    --color-yellow-8: oklch(37.8% 0.07 var(--color-yellow-hue));
+    --color-yellow-9: oklch(20.9% 0.04 var(--color-yellow-hue));
 
-      /* #ffd100 */
-      --color-yellow-0: oklch(97% 0.04 var(--color-yellow-hue));
-      --color-yellow-1: oklch(95% 0.06 var(--color-yellow-hue));
-      --color-yellow-2: oklch(93.3% 0.09 var(--color-yellow-hue));
-      --color-yellow-3: oklch(91.2% 0.12 var(--color-yellow-hue));
-      --color-yellow-4: oklch(89.4% 0.15 var(--color-yellow-hue));
-      --color-yellow-5: oklch(87.5% 0.17 var(--color-yellow-hue));
-      --color-yellow-6: oklch(74.1% 0.15 var(--color-yellow-hue));
-      --color-yellow-7: oklch(56.4% 0.11 var(--color-yellow-hue));
-      --color-yellow-8: oklch(37.8% 0.07 var(--color-yellow-hue));
-      --color-yellow-9: oklch(20.9% 0.04 var(--color-yellow-hue));
+    /* #be008a */
+    --color-pink-0: oklch(97% 0.019 var(--color-pink-hue));
+    --color-pink-1: oklch(88% 0.078 var(--color-pink-hue));
+    --color-pink-2: oklch(79.5% 0.14 var(--color-pink-hue));
+    --color-pink-3: oklch(71% 0.22 var(--color-pink-hue));
+    --color-pink-4: oklch(62% 0.22 var(--color-pink-hue));
+    --color-pink-5: oklch(53.5% 0.22 var(--color-pink-hue));
+    --color-pink-6: oklch(47% 0.19 var(--color-pink-hue));
+    --color-pink-7: oklch(38% 0.16 var(--color-pink-hue));
+    --color-pink-8: oklch(29% 0.12 var(--color-pink-hue));
+    --color-pink-9: oklch(20.9% 0.088 var(--color-pink-hue));
 
-      /* #be008a */
-      --color-pink-0: oklch(97% 0.019 var(--color-pink-hue));
-      --color-pink-1: oklch(88% 0.078 var(--color-pink-hue));
-      --color-pink-2: oklch(79.5% 0.14 var(--color-pink-hue));
-      --color-pink-3: oklch(71% 0.22 var(--color-pink-hue));
-      --color-pink-4: oklch(62% 0.22 var(--color-pink-hue));
-      --color-pink-5: oklch(53.5% 0.22 var(--color-pink-hue));
-      --color-pink-6: oklch(47% 0.19 var(--color-pink-hue));
-      --color-pink-7: oklch(38% 0.16 var(--color-pink-hue));
-      --color-pink-8: oklch(29% 0.12 var(--color-pink-hue));
-      --color-pink-9: oklch(20.9% 0.088 var(--color-pink-hue));
+    /* #03899c */
+    --color-teal-0: oklch(97% 0.024 var(--color-teal-hue));
+    --color-teal-1: oklch(89.1% 0.092 var(--color-teal-hue));
+    --color-teal-2: oklch(81.4% 0.097 var(--color-teal-hue));
+    --color-teal-3: oklch(73.4% 0.096 var(--color-teal-hue));
+    --color-teal-4: oklch(65.8% 0.096 var(--color-teal-hue));
+    --color-teal-5: oklch(57.85% 0.1 var(--color-teal-hue));
+    --color-teal-6: oklch(50.4% 0.08 var(--color-teal-hue));
+    --color-teal-7: oklch(40.6% 0.07 var(--color-teal-hue));
+    --color-teal-8: oklch(30.2% 0.05 var(--color-teal-hue));
+    --color-teal-9: oklch(21.2% 0.036 var(--color-teal-hue));
 
-      /* #03899c */
-      --color-teal-0: oklch(97% 0.024 var(--color-teal-hue));
-      --color-teal-1: oklch(89.1% 0.092 var(--color-teal-hue));
-      --color-teal-2: oklch(81.4% 0.097 var(--color-teal-hue));
-      --color-teal-3: oklch(73.4% 0.096 var(--color-teal-hue));
-      --color-teal-4: oklch(65.8% 0.096 var(--color-teal-hue));
-      --color-teal-5: oklch(57.85% 0.1 var(--color-teal-hue));
-      --color-teal-6: oklch(50.4% 0.08 var(--color-teal-hue));
-      --color-teal-7: oklch(40.6% 0.07 var(--color-teal-hue));
-      --color-teal-8: oklch(30.2% 0.05 var(--color-teal-hue));
-      --color-teal-9: oklch(21.2% 0.036 var(--color-teal-hue));
+    /* The reapeating gradient doesnt oklch & color-mix  */
+    --color-dark-0: hsl(234, 100%, 96%);
+    --color-dark-1: hsl(236, 14%, 80%);
+    --color-dark-2: hsl(207, 69%, 18%);
+    --color-dark-3: hsl(207, 88%, 10%);
+    --color-dark-4: hsl(207, 93%, 6%);
 
-      /* #0e304c */
-      --color-dark-base: oklch(30.02% 0.064 247.06);
-      --color-dark-0: color-mix(in oklch, var(--color-dark-base), white 95%);
-      --color-dark-1: color-mix(in oklch, var(--color-dark-base), white 70%);
-      --color-dark-2: var(--color-dark-base);
-      --color-dark-3: color-mix(in oklch, var(--color-dark-base), black 25%);
-      --color-dark-4: color-mix(in oklch, var(--color-dark-base), black 45%);
+    --color-text: light-dark(var(--color-dark-3), var(--color-dark-1));
+    --color-title: light-dark(var(--color-dark-4), var(--color-dark-0));
+    --color-background: light-dark(var(--color-dark-0), var(--color-dark-4));
 
-      --color-text: var(--color-dark-1);
-      --color-title: var(--color-dark-0);
-      --color-background: var(--color-dark-4);
+    --color-button-default-text: light-dark(
+      var(--color-dark-4),
+      var(--color-dark-4)
+    );
+    --color-button-default-bg: light-dark(
+      var(--color-dark-1),
+      var(--color-dark-1)
+    );
+    --color-button-default-shadow: light-dark(
+      var(--color-dark-3),
+      var(--color-dark-2)
+    );
 
-      --color-button-default-text: var(--color-dark-4);
-      --color-button-default-bg: var(--color-dark-1);
-      --color-button-default-shadow: var(--color-dark-2);
+    --color-button-primary-text: light-dark(
+      var(--color-dark-0),
+      var(--color-dark-4)
+    );
+    --color-button-primary-bg: light-dark(
+      var(--color-pink-5),
+      var(--color-yellow-5)
+    );
+    --color-button-primary-shadow: light-dark(
+      var(--color-pink-8),
+      var(--color-yellow-7)
+    );
 
-      --color-button-primary-text: var(--color-dark-4);
-      --color-button-primary-bg: var(--color-yellow-5);
-      --color-button-primary-shadow: var(--color-yellow-7);
+    --color-button-secondary-text: light-dark(
+      var(--color-dark-0),
+      var(--color-dark-4)
+    );
+    --color-button-secondary-bg: light-dark(
+      var(--color-pink-6),
+      var(--color-yellow-3)
+    );
+    --color-button-secondary-shadow: light-dark(
+      var(--color-pink-8),
+      var(--color-yellow-7)
+    );
 
-      --color-button-secondary-text: var(--color-dark-4);
-      --color-button-secondary-bg: var(--color-yellow-3);
-      --color-button-secondary-shadow: var(--color-yellow-7);
+    --color-menu: light-dark(var(--color-pink-6), var(--color-yellow-5));
+    --color-menu-shadow: light-dark(var(--color-pink-1), var(--color-pink-5));
 
-      --color-menu: var(--color-yellow-5);
-      --color-menu-shadow: var(--color-pink-5);
+    --color-link-text: light-dark(var(--color-pink-5), var(--color-yellow-4));
 
-      --color-link-text: var(--color-yellow-4);
+    --color-primary: light-dark(var(--color-pink-5), var(--color-yellow-5));
+    --color-secondary: light-dark(var(--color-yellow-5), var(--color-pink-5));
+    --color-tertiary: light-dark(var(--color-teal-7), var(--color-teal-5));
 
-      --color-primary: var(--color-yellow-5);
-      --color-secondary: var(--color-pink-5);
-      --color-tertiary: var(--color-teal-5);
+    --color-footer-divider: light-dark(
+      var(--color-yellow-8),
+      var(--color-pink-5)
+    );
 
-      --color-footer-divider: var(--color-pink-5);
+    --color-summary-text: light-dark(var(--color-dark-3), var(--color-text));
+    --color-summary-bg: light-dark(var(--color-dark-0), var(--color-dark-3));
+    --color-summary-border: light-dark(
+      var(--color-teal-8),
+      var(--color-teal-6)
+    );
+    --color-hover-summary-border: light-dark(
+      var(--color-teal-6),
+      var(--color-teal-3)
+    );
 
-      --color-summary-text: var(--color-text);
-      --color-summary-bg: var(--color-dark-3);
-      --color-summary-border: var(--color-teal-6);
-      --color-hover-summary-border: var(--color-teal-3);
+    --color-time-contained-bg: light-dark(
+      var(--color-tertiary),
+      var(--color-tertiary)
+    );
+    --color-time-contained-text: light-dark(
+      var(--color-background),
+      var(--color-background)
+    );
+    --color-time-text: light-dark(var(--color-tertiary), var(--color-tertiary));
 
-      --color-time-contained-bg: var(--color-tertiary);
-      --color-time-contained-text: var(--color-background);
-      --color-time-text: var(--color-tertiary);
+    --color-input-text: light-dark(var(--color-text), var(--color-text));
+    --color-input-bg: light-dark(var(--color-dark-0), var(--color-dark-3));
+    --color-input-border: light-dark(var(--color-teal-7), var(--color-teal-5));
+    --color-input-border-hl: light-dark(
+      var(--color-teal-5),
+      var(--color-teal-4)
+    );
 
-      --color-input-text: var(--color-text);
-      --color-input-bg: var(--color-dark-3);
-      --color-input-border: var(--color-teal-5);
-      --color-input-border-hl: var(--color-teal-4);
+    --color-logo: light-dark(var(--color-pink-5), var(--color-pink-5));
 
-      --color-logo: var(--color-pink-5);
+    --colog-dialog-bg: light-dark(var(--color-dark-1), var(--color-dark-3));
+    --colog-dialog-border: light-dark(var(--color-dark-4), var(--color-dark-5));
 
-      --colog-dialog-bg: var(--color-dark-3);
-      --colog-dialog-border: var(--color-dark-5);
+    --color-li-group-text: light-dark(var(--color-pink-7), var(--color-pink-4));
+    --color-li-bg-hl: light-dark(var(--color-teal-8), var(--color-teal-5));
 
-      --color-li-group-text: var(--color-pink-4);
-      --color-li-bg-hl: var(--color-teal-5);
+    --color-button-menu: light-dark(var(--color-title), var(--color-title));
 
-      --color-button-menu: var(--color-title);
+    --color-balloon-bg: light-dark(var(--color-dark-2), var(--color-dark-0));
+    --color-balloon-text: light-dark(var(--color-dark-0), var(--color-dark-4));
 
-      --color-balloon-bg: var(--color-dark-0);
-      --color-balloon-text: var(--color-dark-4);
-
-      --click-spark-color: var(--color-pink-3);
-    }
+    --click-spark-color: var(--color-pink-3);
   }
 }
 
@@ -659,66 +699,6 @@
     }
     to {
       transform: translateY(0);
-    }
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  @layer theme.light {
-    :root {
-      --color-text: var(--color-dark-3);
-      --color-title: var(--color-dark-4);
-      --color-background: var(--color-dark-0);
-
-      --color-button-default-text: var(--color-dark-4);
-      --color-button-default-bg: var(--color-dark-1);
-      --color-button-default-shadow: var(--color-dark-3);
-
-      --color-button-primary-text: var(--color-dark-0);
-      --color-button-primary-bg: var(--color-pink-5);
-      --color-button-primary-shadow: var(--color-pink-8);
-
-      --color-button-secondary-text: var(--color-dark-0);
-      --color-button-secondary-bg: var(--color-pink-6);
-      --color-button-secondary-shadow: var(--color-pink-8);
-
-      --color-menu: var(--color-pink-6);
-      --color-menu-shadow: var(--color-pink-1);
-
-      --color-link-text: var(--color-pink-5);
-
-      --color-primary: var(--color-pink-5);
-      --color-secondary: var(--color-yellow-5);
-      --color-tertiary: var(--color-teal-7);
-
-      --color-footer-divider: var(--color-yellow-8);
-
-      --color-summary-text: var(--color-dark-3);
-      --color-summary-bg: var(--color-dark-0);
-      --color-summary-border: var(--color-teal-8);
-      --color-hover-summary-border: var(--color-teal-6);
-
-      --color-time-contained-bg: var(--color-tertiary);
-      --color-time-contained-text: var(--color-background);
-      --color-time-text: var(--color-tertiary);
-
-      --color-input-text: var(--color-text);
-      --color-input-bg: var(--color-dark-0);
-      --color-input-border: var(--color-teal-7);
-      --color-input-border-hl: var(--color-teal-5);
-
-      --color-logo: var(--color-pink-5);
-
-      --colog-dialog-bg: var(--color-dark-1);
-      --colog-dialog-border: var(--color-dark-4);
-
-      --color-li-group-text: var(--color-pink-7);
-      --color-li-bg-hl: var(--color-teal-8);
-
-      --color-button-menu: var(--color-title);
-
-      --color-balloon-bg: var(--color-dark-2);
-      --color-balloon-text: var(--color-dark-0);
     }
   }
 }
