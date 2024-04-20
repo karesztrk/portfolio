@@ -81,7 +81,9 @@ const { collections, ...rest } = Astro.props;
                 : [];
               const show =
                 entry.textContent.toLowerCase().includes(value.toLowerCase()) ||
-                tags.includes(value.toLowerCase());
+                tags.some((tag) =>
+                  tag.toLowerCase().includes(value.toLowerCase()),
+                );
 
               (entry as HTMLElement).style.display = show
                 ? "list-item"
