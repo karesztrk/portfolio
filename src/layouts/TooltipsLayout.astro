@@ -27,8 +27,8 @@ const collections = resolvedCollections.reduce(
 );
 ---
 
-<Layout title="Mind map">
-  <h1>Mind map</h1>
+<Layout title="Tooltips">
+  <h1>Tooltips</h1>
   <article>
     <section>
       <InputButton id="search-button">
@@ -39,9 +39,9 @@ const collections = resolvedCollections.reduce(
       </InputButton>
     </section>
     <section>
-      <mm-view>
+      <tt-view>
         <SearchDialog id="search-dialog" collections={collections} />
-      </mm-view>
+      </tt-view>
     </section>
   </article>
 </Layout>
@@ -76,7 +76,7 @@ const collections = resolvedCollections.reduce(
   import { formatTitle } from "@/util/blog.util";
   import wasm from "/node_modules/md4w/js/md4w-small.wasm?url";
 
-  class MindMapView extends HTMLElement {
+  class TooltipsView extends HTMLElement {
     loaded = false;
 
     constructor() {
@@ -163,7 +163,7 @@ const collections = resolvedCollections.reduce(
     }
   }
 
-  customElements.define("mm-view", MindMapView);
+  customElements.define("tt-view", TooltipsView);
 </script>
 
 <style>

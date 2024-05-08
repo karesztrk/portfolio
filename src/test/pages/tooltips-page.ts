@@ -1,10 +1,10 @@
 import type { Page } from "@playwright/test";
 
-export class MindMapPage {
+export class TooltipsPage {
   constructor(public readonly page: Page) {}
 
   async goto() {
-    await this.page.goto("./mind-map");
+    await this.page.goto("./tooltips");
   }
 
   async openSearch() {

@@ -1,14 +1,14 @@
 import { test as base } from "@playwright/test";
 import { IndexPage } from "./pages/index-page";
 import { AboutPage } from "./pages/about-page";
-import { MindMapPage } from "./pages/mindmap-page";
+import { TooltipsPage } from "./pages/tooltips-page";
 import { BlogPage } from "./pages/blog-page";
 import { DailyDriversPage } from "./pages/dailydrivers-page";
 
 interface Fixtures {
   index: IndexPage;
   about: AboutPage;
-  mindMap: MindMapPage;
+  tooltips: TooltipsPage;
   blog: BlogPage;
   dailyDrivers: DailyDriversPage;
 }
@@ -24,10 +24,10 @@ export const test = base.extend<Fixtures>({
     await aboutPage.goto();
     await use(aboutPage);
   },
-  mindMap: async ({ page }, use) => {
-    const mindMapPage = new MindMapPage(page);
-    await mindMapPage.goto();
-    await use(mindMapPage);
+  tooltips: async ({ page }, use) => {
+    const tooltipsPage = new TooltipsPage(page);
+    await tooltipsPage.goto();
+    await use(tooltipsPage);
   },
   blog: async ({ page }, use) => {
     const blogPage = new BlogPage(page);
