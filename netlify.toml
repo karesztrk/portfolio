@@ -29,7 +29,7 @@ publish = "dist"
     Content-Security-Policy = "default-src 'self'; base-uri 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; form-action 'self'; font-src 'self'; connect-src 'self'; frame-src 'self'; frame-ancestors 'none'; object-src 'none'"
 
 [[headers]]
-  for = "/mind-map/"
+  for = "/tooltips/"
   [headers.values]
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
@@ -43,3 +43,9 @@ publish = "dist"
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Content-Security-Policy = "default-src 'self'; base-uri 'self'; script-src 'self' 'unsafe-inline' https://esm.sh 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' https://*.githubusercontent.com; form-action 'self'; font-src 'self'; connect-src 'self' data:; frame-src 'self'; frame-ancestors 'none'; object-src 'none'"
+
+[[redirects]]
+  from = "/mind-map"
+  to = "/tooltips"
+  status = 301
+  force = false
