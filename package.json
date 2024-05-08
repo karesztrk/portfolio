@@ -16,11 +16,11 @@
   },
   "devDependencies": {
     "@astrojs/mdx": "^2.2.1",
-    "@playwright/test": "^1.42.1",
+    "@playwright/test": "^1.44.0",
     "browserslist": "^4.23.0",
     "lightningcss": "^1.24.1",
     "mdast-util-to-string": "^4.0.0",
-    "playwright": "^1.42.1",
+    "playwright": "^1.44.0",
     "prettier": "^3.2.4",
     "prettier-plugin-astro": "^0.12.3",
     "reading-time": "^1.5.0"

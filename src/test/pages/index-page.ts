@@ -12,7 +12,7 @@ export class IndexPage {
 
   logo() {
     return this.page.getByRole("link", {
-      name: "Profile of Károly in a pixelated character universe",
+      name: "Navigate to Home",
     });
   }
 
