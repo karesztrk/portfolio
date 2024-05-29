@@ -10,12 +10,12 @@
     "e2e": "playwright test"
   },
   "dependencies": {
-    "astro": "^4.8.3",
+    "astro": "^4.9.2",
     "md4w": "^0.2.6",
     "sharp": "^0.33.2"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^3.0.0",
+    "@astrojs/mdx": "^3.0.1",
     "@playwright/test": "^1.44.0",
     "browserslist": "^4.23.0",
     "lightningcss": "^1.24.1",
