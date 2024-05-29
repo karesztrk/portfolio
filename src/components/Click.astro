@@ -1,0 +1,37 @@
+---
+import buttonSound from "@/assets/sounds/button-3.mp3";
+---
+
+<audio src={buttonSound} controls></audio>
+
+<style>
+  audio {
+    display: none;
+  }
+</style>
+
+<script>
+  const play =
+    (button: HTMLButtonElement, audio: HTMLAudioElement) => async () => {
+      if (!button.dataset.finished || button.dataset.finished === "true") {
+        audio.play();
+        audio.addEventListener("ended", () => {
+          button.dataset.finished = "true";
+        });
+      }
+    };
+
+  const audioElement = document.querySelector("audio");
+  if (audioElement) {
+    const buttons = document.getElementsByClassName(
+      "button",
+    ) as HTMLCollectionOf<HTMLButtonElement>;
+
+    for (const button of buttons) {
+      const player = play(button, audioElement);
+      button.addEventListener("pointerdown", player);
+      button.addEventListener("pointerup", player);
+      button.addEventListener("pointercancel", player);
+    }
+  }
+</script>

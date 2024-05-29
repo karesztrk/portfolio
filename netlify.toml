@@ -9,7 +9,7 @@ publish = "dist"
     Cache-Control = "public, max-age=31536000"
 
 [[headers]]
-  for = "/*.(svg|webp|png|avif|png|jpeg)"
+  for = "/*.(svg|webp|png|avif|png|jpeg|mp3)"
   [headers.values]
     # Store cache-busted assets for one year
     Cache-Control = "public, max-age=31536000, immutable"
