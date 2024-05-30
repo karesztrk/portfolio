@@ -21,6 +21,9 @@ importers:
       '@astrojs/mdx':
         specifier: ^3.0.1
         version: 3.0.1(astro@4.9.2(lightningcss@1.24.1))
+      '@benjc/rehype-scroll-to-top':
+        specifier: ^0.1.5
+        version: 0.1.5(rehype@13.0.1)(unified@11.0.4)
       '@playwright/test':
         specifier: ^1.44.0
         version: 1.44.0
@@ -184,6 +187,13 @@ packages:
   '@babel/types@7.24.5':
     resolution: {integrity: sha512-6mQNsaLeXTw0nxYUYu+NSa4Hx4BlF1x1x8/PMFbiR+GBSr+2DkECc69b8hgy2frEodNcvPffeH8YfWd3LI6jhQ==}
     engines: {node: '>=6.9.0'}
+
+  '@benjc/rehype-scroll-to-top@0.1.5':
+    resolution: {integrity: sha512-xvTAJa1BpZN6lhuwA1MuxWxdNmu7FozQRfGfAJFiG64jPADhAmNzRf/NegXjOFRhe3CnXWz5VRAW3xLvCbSr/g==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      rehype: ^13.0.0
+      unified: ^11.0.0
 
   '@emnapi/runtime@0.45.0':
     resolution: {integrity: sha512-Txumi3td7J4A/xTTwlssKieHKTGl3j4A1tglBx72auZ49YK7ePY6XZricgIg9mnZT4xPfA+UPCUdnhRuEFDL+w==}
@@ -2486,6 +2496,11 @@ snapshots:
       '@babel/helper-string-parser': 7.24.1
       '@babel/helper-validator-identifier': 7.24.5
       to-fast-properties: 2.0.0
+
+  '@benjc/rehype-scroll-to-top@0.1.5(rehype@13.0.1)(unified@11.0.4)':
+    dependencies:
+      rehype: 13.0.1
+      unified: 11.0.4
 
   '@emnapi/runtime@0.45.0':
     dependencies:

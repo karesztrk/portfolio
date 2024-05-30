@@ -43,6 +43,10 @@
   --input-height: 38px;
   --input-padding: 2px 4px;
 
+  --menu-font: "Silkscreen", monospace;
+  --menu-decoration-transition-duration: 250ms;
+  --menu-decoration-transition-easing: cubic-bezier(0.65, 0, 0.35, 1);
+
   color-scheme: dark light;
 
   background-color: var(--color-background);
@@ -467,6 +471,24 @@
         p {
           font-size: 1rem;
         }
+      }
+    }
+  }
+
+  .scroll-to-wrapper {
+    margin-block-start: calc(var(--p-margin) * 1.5);
+
+    a {
+      font-family: var(--menu-font);
+      color: var(--color-menu);
+      text-shadow: 1px 1px 0px var(--color-menu-shadow);
+      transition: text-decoration-color
+        var(--menu-decoration-transition-duration)
+        var(--menu-decoration-transition-easing);
+      text-decoration-color: transparent;
+      &:hover {
+        text-decoration-style: dashed;
+        text-decoration-color: currentColor;
       }
     }
   }

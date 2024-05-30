@@ -2,6 +2,7 @@
 import Footer from "@components/Footer.astro";
 import Header from "@components/Header.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Main from "@/components/Main.astro";
 
 interface Props {
   title: string;
@@ -12,6 +13,8 @@ const { title } = Astro.props;
 
 <BaseLayout title={title}>
   <Header />
-  <slot />
+  <Main>
+    <slot />
+  </Main>
   <Footer />
 </BaseLayout>

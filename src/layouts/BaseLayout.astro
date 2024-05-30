@@ -1,5 +1,4 @@
 ---
-import Main from "@components/Main.astro";
 import Spark from "@components/Spark.astro";
 import Click from "@components/Click.astro";
 import "@/assets/styles/fonts.css";
@@ -44,9 +43,7 @@ const { title } = Astro.props;
   </head>
 
   <body>
-    <Main>
-      <slot />
-    </Main>
+    <slot />
     <Spark />
     <Click />
   </body>
