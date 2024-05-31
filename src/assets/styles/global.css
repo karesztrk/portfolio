@@ -413,7 +413,8 @@
       inset-inline: calc(-1 * var(--_offset));
     }
 
-    &:hover {
+    &:hover,
+    &:focus-within {
       > span.front {
         translate: 0 -6px;
         transition: translate 50ms linear;
@@ -690,6 +691,14 @@
   .flex-1 {
     flex: 1;
   }
+
+  .popout-content {
+    text-align: right;
+    grid-column: popout-end;
+    grid-row: -1 / 1;
+    height: 100%;
+    align-content: end;
+  }
 }
 
 @layer animations {
@@ -699,6 +708,35 @@
     }
     to {
       transform: translateY(0);
+    }
+  }
+
+  @keyframes explode {
+    0% {
+      color: var(--color-dark-4);
+      background: var(--color-yellow-7);
+    }
+    25% {
+      color: var(--color-yellow-2);
+      background: var(--color-yellow-5);
+    }
+    50% {
+      color: var(--color-yellow-2);
+    }
+    100% {
+      color: var(--color-yellow-2);
+      background: var(--color-dark-4);
+    }
+  }
+
+  @keyframes explode-reverse {
+    0% {
+      color: var(--color-yellow-2);
+      background: var(--color-dark-4);
+    }
+    100% {
+      color: var(--color-dark-4);
+      background: var(--color-yellow-7);
     }
   }
 }
