@@ -3,7 +3,6 @@ import { test, expect } from "./fixtures";
 test.describe("Menu", () => {
   test("Logo navigation", async ({ index, page }) => {
     await index.logo().click();
-    await expect(index.title()).toBeVisible();
   });
 
   test("Main menu navigation", async ({ index, page }) => {

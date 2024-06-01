@@ -9,7 +9,7 @@ export default defineConfig({
   ...(!process.env.CI && {
     webServer: {
       command: "pnpm dev",
-      url: "http://localhost:4321/",
+      url: "http://localhost:4321/hello",
       timeout: 120 * 1000,
       reuseExistingServer: !process.env.CI,
     },

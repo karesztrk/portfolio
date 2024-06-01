@@ -7,6 +7,9 @@ import rehypeScrollToTop from "@benjc/rehype-scroll-to-top";
 import mdx from "@astrojs/mdx";
 
 export default defineConfig({
+  routes: {
+    "/": "/hello",
+  },
   markdown: {
     shikiConfig: {
       theme: nuDiscoTheme,
