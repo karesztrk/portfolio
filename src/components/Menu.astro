@@ -12,7 +12,7 @@ const currentPath = Astro.url.pathname;
 />
 <menu id="main-menu">
   <li>
-    <a class:list={[{ active: currentPath.startsWith("/blog") }]} href="/blog"
+    <a class:list={[{ active: currentPath.endsWith("/blog") }]} href="/blog"
       >Blog</a
     >
   </li>
@@ -23,9 +23,8 @@ const currentPath = Astro.url.pathname;
     >
   </li>
   <li>
-    <a
-      class:list={[{ active: currentPath.startsWith("/daily-drivers") }]}
-      href="/daily-drivers">Daily</a
+    <a class:list={[{ active: currentPath.startsWith("/uses") }]} href="/uses"
+      >Uses</a
     >
   </li>
   <li>

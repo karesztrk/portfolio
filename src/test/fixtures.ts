@@ -3,14 +3,16 @@ import { IndexPage } from "./pages/index-page";
 import { AboutPage } from "./pages/about-page";
 import { TooltipsPage } from "./pages/tooltips-page";
 import { BlogPage } from "./pages/blog-page";
-import { DailyDriversPage } from "./pages/dailydrivers-page";
+import { UsesPage } from "./pages/uses-page";
+import { HelloPage } from "./pages/hello-page";
 
 interface Fixtures {
   index: IndexPage;
+  hello: HelloPage;
   about: AboutPage;
   tooltips: TooltipsPage;
   blog: BlogPage;
-  dailyDrivers: DailyDriversPage;
+  uses: UsesPage;
 }
 
 export const test = base.extend<Fixtures>({
@@ -18,6 +20,11 @@ export const test = base.extend<Fixtures>({
     const indexPage = new IndexPage(page);
     await indexPage.goto();
     await use(indexPage);
+  },
+  hello: async ({ page }, use) => {
+    const helloPage = new HelloPage(page);
+    await helloPage.goto();
+    await use(helloPage);
   },
   about: async ({ page }, use) => {
     const aboutPage = new AboutPage(page);
@@ -34,10 +41,10 @@ export const test = base.extend<Fixtures>({
     await blogPage.goto();
     await use(blogPage);
   },
-  dailyDrivers: async ({ page }, use) => {
-    const dailyPage = new DailyDriversPage(page);
-    await dailyPage.goto();
-    await use(dailyPage);
+  uses: async ({ page }, use) => {
+    const usesPage = new UsesPage(page);
+    await usesPage.goto();
+    await use(usesPage);
   },
 });
 

@@ -45,7 +45,19 @@ publish = "dist"
     Content-Security-Policy = "default-src 'self'; base-uri 'self'; script-src 'self' 'unsafe-inline' https://esm.sh 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' https://*.githubusercontent.com; form-action 'self'; font-src 'self'; connect-src 'self' data:; frame-src 'self'; frame-ancestors 'none'; object-src 'none'"
 
 [[redirects]]
+  from = "/"
+  to = "/hello/"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/mind-map"
-  to = "/tooltips"
+  to = "/tooltips/"
+  status = 301
+  force = false
+
+[[redirects]]
+  from = "/daily-drivers/"
+  to = "/uses"
   status = 301
   force = false

@@ -1,6 +1,6 @@
 import type { Page } from "@playwright/test";
 
-export class DailyDriversPage {
+export class UsesPage {
   headings = {
     Software: [
       "Languages",
@@ -12,12 +12,13 @@ export class DailyDriversPage {
       "Fonts",
     ],
     Hardware: ["Computer", "Pheripherals"],
-    Education: ["Podcasts", "Youtube", "Newsletters", "Podcasts"],
+    Blogroll: ["Newsletters", "Podcasts"],
+    Podroll: ["Podcasts", "Youtube"],
   } as const;
 
   constructor(public readonly page: Page) {}
 
   async goto() {
-    await this.page.goto("./daily-drivers");
+    await this.page.goto("./uses");
   }
 }

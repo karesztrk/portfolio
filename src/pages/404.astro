@@ -1,9 +1,9 @@
 ---
-import BaseLayout from "@/layouts/BaseLayout.astro";
 import Icon from "@components/Icon.astro";
 import Invader from "@/assets/images/icons/Invader.svg";
 import Button from "@/components/Button.astro";
 import Balloon from "@/components/Balloon.astro";
+import Layout from "@/layouts/Layout.astro";
 
 const quotes = [
   "These are not the droids you are looking for ...",
@@ -13,7 +13,7 @@ const quotes = [
 const title = "Not found";
 ---
 
-<BaseLayout title={title}>
+<Layout title={title}>
   <h1>Uhm...Not found</h1>
   <!-- Set the first quote in case JS is disabled -->
   <Balloon><random-quote>{quotes[0]}</random-quote></Balloon>
@@ -22,7 +22,7 @@ const title = "Not found";
   <div class="actions">
     <Button as="a" href="/" class="primary">Go back</Button>
   </div>
-</BaseLayout>
+</Layout>
 
 <script define:vars={{ quotes }}>
   class RandomQuote extends HTMLElement {
