@@ -5,12 +5,15 @@
 <wasm-hello></wasm-hello>
 
 <script>
+  import LightElement from "@/webcomponents/LightElement";
   import init from "./pkg/fibonacci.js";
   import wasm from "./pkg/fibonacci_bg.wasm?url";
 
-  class WasmHello extends HTMLElement {
-    constructor() {
-      super();
+  export class WasmHello extends LightElement {
+    static {
+      this.register("wasm-hello", WasmHello);
+    }
+    render() {
       this.runWasm();
     }
 
@@ -30,6 +33,4 @@
       this.appendChild(list);
     }
   }
-
-  customElements.define("wasm-hello", WasmHello);
 </script>

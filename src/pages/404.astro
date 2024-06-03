@@ -5,18 +5,13 @@ import Button from "@/components/Button.astro";
 import Balloon from "@/components/Balloon.astro";
 import Layout from "@/layouts/Layout.astro";
 
-const quotes = [
-  "These are not the droids you are looking for ...",
-  "I used to be an adventurer like you. Then I took an arrow in the knee...",
-];
-
 const title = "Not found";
 ---
 
 <Layout title={title}>
   <h1>Uhm...Not found</h1>
   <!-- Set the first quote in case JS is disabled -->
-  <Balloon><random-quote>{quotes[0]}</random-quote></Balloon>
+  <Balloon><random-quote></random-quote></Balloon>
   <Icon src={Invader.src} viewBox={`0 0 ${Invader.width} ${Invader.height}`} />
 
   <div class="actions">
@@ -24,19 +19,8 @@ const title = "Not found";
   </div>
 </Layout>
 
-<script define:vars={{ quotes }}>
-  class RandomQuote extends HTMLElement {
-    constructor() {
-      super();
-      const quote =
-        Array.isArray(quotes) && quotes.length > 0
-          ? quotes[Math.floor(Math.random() * quotes.length)]
-          : "";
-      this.innerText = quote;
-    }
-  }
-
-  customElements.define("random-quote", RandomQuote);
+<script>
+  import "@/webcomponents/RandomQuote";
 </script>
 
 <style>

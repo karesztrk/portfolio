@@ -23,13 +23,15 @@ import Button from "@components/Button.astro";
 </wasm-graphics>
 
 <script>
+  import LightElement from "@/webcomponents/LightElement";
   import init from "./pkg/graphics.js";
   import wasm from "./pkg/graphics_bg.wasm?url";
 
-  class WasmGraphics extends HTMLElement {
-    constructor() {
-      super();
-
+  export class WasmGraphics extends LightElement {
+    static {
+      this.register("wasm-graphics", WasmGraphics);
+    }
+    render() {
       this.runWasm();
 
       const canvas = this.querySelector("canvas");
@@ -125,6 +127,4 @@ import Button from "@components/Button.astro";
       }, 1000);
     }
   }
-
-  customElements.define("wasm-graphics", WasmGraphics);
 </script>
