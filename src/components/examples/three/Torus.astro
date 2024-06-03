@@ -17,6 +17,7 @@ const props = Astro.props;
 </style>
 
 <script>
+  import LightElement from "@/webcomponents/LightElement";
   import {
     Scene,
     PerspectiveCamera,
@@ -26,9 +27,11 @@ const props = Astro.props;
     Mesh,
   } from "https://esm.sh/three@0.159.0";
 
-  class ThreeTorus extends HTMLElement {
-    constructor() {
-      super();
+  export class ThreeTorus extends LightElement {
+    static {
+      this.register("three-torus", ThreeTorus);
+    }
+    render() {
       const scene = new Scene();
 
       const canvas = this.querySelector("canvas");
@@ -88,6 +91,4 @@ const props = Astro.props;
       animate();
     }
   }
-
-  customElements.define("three-torus", ThreeTorus);
 </script>
