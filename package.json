@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "astro": "^4.9.2",
+    "astro-svg-icon": "^1.0.1",
     "md4w": "^0.2.6",
     "sharp": "^0.33.2"
   },
