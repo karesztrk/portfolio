@@ -10,6 +10,9 @@ export default defineConfig({
   routes: {
     "/": "/hello",
   },
+  redirects: {
+    "/": "/hello",
+  },
   markdown: {
     shikiConfig: {
       theme: nuDiscoTheme,
