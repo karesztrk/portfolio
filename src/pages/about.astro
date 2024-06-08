@@ -10,13 +10,14 @@ import SkodaConnect from "@/assets/images/skodaconnect.webp";
 import CompReg from "@/assets/images/compreg.webp";
 import Temporal from "@components/Temporal.astro";
 import Button from "@/components/Button.astro";
+import Title from "@/components/Title.astro";
 ---
 
 <Layout title="About me">
   <h1>About me</h1>
   <article>
-    <Section id="story" expandable={false}>
-      <h2 slot="title">Story</h2>
+    <Section>
+      <Title id="story" slot="title" as="h2" anchorHref="#story">Story</Title>
       <p>
         Hello there, I'm Károly! 🌟 I call the charming city of
         <a href="https://goo.gl/maps/iS7ynsLC4MXW1kZJ8">Szeged</a>, Hungary my
@@ -45,8 +46,10 @@ import Button from "@/components/Button.astro";
 
     <SeparatorComponent icon={Separator} />
 
-    <Section id="experience" expandable={false}>
-      <h2 slot="title">Experience</h2>
+    <Section>
+      <Title id="experience" slot="title" as="h2" anchorHref="#experience">
+        Experience
+      </Title>
 
       <Subsection>
         <h3 slot="title">
@@ -167,8 +170,10 @@ import Button from "@/components/Button.astro";
 
     <SeparatorComponent icon={Separator} />
 
-    <Section id="highlights" expandable={false}>
-      <h2 slot="title">Highlights</h2>
+    <Section>
+      <Title id="highlights" slot="title" as="h2" anchorHref="#highlights">
+        Highlights
+      </Title>
 
       <Subsection>
         <h3 slot="title">Compound Registation</h3>
@@ -236,8 +241,10 @@ import Button from "@/components/Button.astro";
 
     <SeparatorComponent icon={Separator} />
 
-    <Section id="projects" expandable={false}>
-      <h2 slot="title">Projects</h2>
+    <Section>
+      <Title id="projects" slot="title" as="h2" anchorHref="#projects">
+        Projects
+      </Title>
       {
         projects.map((project) => (
           <details>
@@ -253,7 +260,7 @@ import Button from "@/components/Button.astro";
     <SeparatorComponent icon={Separator} />
 
     <Section id="next" expandable={false} data-sparks>
-      <h2 slot="title" data-sparks>What's next?</h2>
+      <Title slot="title" as="h2" anchorHref="#next"> What's next? </Title>
       <p data-sparks>
         Are you still here with me? If you'd like to connect, don't hesitate to
         shoot me an <a href="mailto:karoly.torok.krisztian@gmail.com">email</a>,
