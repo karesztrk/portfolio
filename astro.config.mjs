@@ -5,6 +5,12 @@ import { browserslistToTargets } from "lightningcss";
 import browserslist from "browserslist";
 import rehypeScrollToTop from "@benjc/rehype-scroll-to-top";
 import mdx from "@astrojs/mdx";
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import Anchor from "./src/assets/images/icons/Anchor.svg?raw";
+import { fromHtml } from 'hast-util-from-html'
+import { h } from 'hastscript'
+import { toString } from 'hast-util-to-string'
 
 export default defineConfig({
   routes: {
@@ -29,6 +35,18 @@ export default defineConfig({
           },
         },
       ],
+      rehypeSlug,
+      [rehypeAutolinkHeadings, {
+        content: (node) => {
+          return [
+            h('span.visually-hidden', 'Navigate to "', toString(node)),
+            fromHtml(Anchor),
+          ]
+        },
+        properties: {
+          class: "anchor-link"
+        }
+      }]
     ],
   },
   integrations: [mdx()],

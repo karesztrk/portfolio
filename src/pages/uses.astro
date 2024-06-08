@@ -3,16 +3,18 @@ import SeparatorComponent from "@components/Separator.astro";
 import Section from "@/components/Section.astro";
 import Layout from "@/layouts/Layout.astro";
 import Separator from "@/assets/images/icons/Separator.svg";
+import Title from "@/components/Title.astro";
 ---
 
 <Layout title="Uses">
   <h1>Uses</h1>
 
   <article>
-    <h2>Software</h2>
-
-    <Section id="languages" class="section" expandable>
-      <h3 slot="title">Languages</h3>
+    <Title id="software" as="h2" anchorHref="#software">Software</Title>
+    <Section id="languages-section" class="section" expandable>
+      <Title id="languages" slot="title" as="h3" anchorHref="#languages"
+        >Languages</Title
+      >
       <p>
         I used to be a backend developer back in the day, with
         <a href="https://dev.java/">Java</a> as my go-to language on a daily basis.
@@ -67,8 +69,11 @@ import Separator from "@/assets/images/icons/Separator.svg";
       </p>
     </Section>
 
-    <Section id="frameworks" expandable>
-      <h3 slot="title">Frameworks</h3>
+    <Section id="frameworks-section" expandable>
+      <h3 slot="title"></h3>
+      <Title id="frameworks" slot="title" as="h3" anchorHref="#frameworks"
+        >Frameworks</Title
+      >
       <p>
         Diving into web technologies can be a vast and exhilarating journey,
         especially with several years of experience under your belt. In my Java
@@ -118,8 +123,10 @@ import Separator from "@/assets/images/icons/Separator.svg";
       </p>
     </Section>
 
-    <Section id="editors" expandable>
-      <h3 slot="title">Editors</h3>
+    <Section id="editors-section" expandable>
+      <Title id="editors" slot="title" as="h3" anchorHref="#editors"
+        >Editors</Title
+      >
       <p>
         In the early days of my career, <a href="https://www.eclipse.org/"
           >Eclipse
@@ -159,8 +166,10 @@ import Separator from "@/assets/images/icons/Separator.svg";
       </p>
     </Section>
 
-    <Section id="terminal">
-      <h3 slot="title">Terminal</h3>
+    <Section id="terminal-section">
+      <Title id="terminal" slot="title" as="h3" anchorHref="#terminal"
+        >Terminal</Title
+      >
       <p>
         When it comes to terminal emulators, <a href="https://alacritty.org/"
           >Alacritty
@@ -177,8 +186,10 @@ import Separator from "@/assets/images/icons/Separator.svg";
       </p>
     </Section>
 
-    <Section id="browser">
-      <h3 slot="title">Browser</h3>
+    <Section id="browser-section">
+      <Title id="browser" slot="title" as="h3" anchorHref="#browser"
+        >Browser</Title
+      >
       <p>
         While <a href="https://www.google.com/chrome/">Chrome</a> may be the go-to
         browser for many in the web development community, I've remained loyal to
@@ -189,8 +200,10 @@ import Separator from "@/assets/images/icons/Separator.svg";
       </p>
     </Section>
 
-    <Section id="os">
-      <h3 slot="title">Operating system</h3>
+    <Section id="os-section">
+      <Title id="os" slot="title" as="h3" anchorHref="#os"
+        >Operating system</Title
+      >
       <p>
         Having spent a significant portion of my career on <a
           href="https://www.microsoft.com/hu-hu/windows">Windows</a
@@ -205,8 +218,8 @@ import Separator from "@/assets/images/icons/Separator.svg";
       </p>
     </Section>
 
-    <Section id="fonts">
-      <h3>Fonts</h3>
+    <Section id="fonts-section">
+      <Title id="fonts" slot="title" as="h3" anchorHref="#fonts">Fonts</Title>
       <p>
         As a font nerd, I take font selection seriously, and when it comes to
         programming fonts, I'm no exception. I've delved deep into the world of
@@ -222,10 +235,12 @@ import Separator from "@/assets/images/icons/Separator.svg";
 
     <SeparatorComponent icon={Separator} />
 
-    <h2>Hardware</h2>
+    <Title id="hardware" as="h2" anchorHref="#hardware">Hardware</Title>
 
-    <Section id="computer">
-      <h3 slot="title">Computer</h3>
+    <Section id="computer-section">
+      <Title id="computer" slot="title" as="h3" anchorHref="#computer"
+        >Computer</Title
+      >
       <p>
         Back in the day, LAN parties with friends were a highlight of my gaming
         adventures. One thing that always fueled our excitement was getting our
@@ -238,8 +253,10 @@ import Separator from "@/assets/images/icons/Separator.svg";
       </p>
     </Section>
 
-    <Section id="peripherals">
-      <h3 slot="title">Pheripherals</h3>
+    <Section id="peripherals-section">
+      <Title id="peripherals" slot="title" as="h3" anchorHref="#peripherals"
+        >Pheripherals</Title
+      >
       <p>
         When the COVID-19 pandemic forced us into remote work, I saw it as an
         opportunity to create the ultimate ergonomic workstation. With long
@@ -268,10 +285,12 @@ import Separator from "@/assets/images/icons/Separator.svg";
 
     <SeparatorComponent icon={Separator} />
 
-    <h2>Podroll</h2>
+    <Title id="podroll" as="h2" anchorHref="#podroll">Podroll</Title>
 
-    <Section id="podcasts">
-      <h3 slot="title">Podcasts</h3>
+    <Section id="podcasts-section">
+      <Title id="podcasts" slot="title" as="h3" anchorHref="#podcasts"
+        >Podcasts</Title
+      >
       <ul>
         <li><a href="https://syntax.fm/">Syntax.</a></li>
         <li><a href="https://changelog.com/jsparty">JS Party</a></li>
@@ -280,8 +299,10 @@ import Separator from "@/assets/images/icons/Separator.svg";
       </ul>
     </Section>
 
-    <Section id="youtube">
-      <h3 slot="title">Youtube</h3>
+    <Section id="youtube-section">
+      <Title id="youtube" slot="title" as="h3" anchorHref="#youtube"
+        >Youtube</Title
+      >
       <ul>
         <li><a href="https://www.kevinpowell.co/">Kevin Powell</a></li>
         <li><a href="https://fireship.io/">Fireship</a></li>
@@ -315,10 +336,12 @@ import Separator from "@/assets/images/icons/Separator.svg";
 
     <SeparatorComponent icon={Separator} />
 
-    <h2>Blogroll</h2>
+    <Title id="blogroll" as="h2" anchorHref="#blogroll">Blogroll</Title>
 
-    <Section id="newsletters">
-      <h3 slot="title">Newsletters</h3>
+    <Section id="newsletters-section">
+      <Title id="newsletters" slot="title" as="h3" anchorHref="#newsletters"
+        >Newsletters</Title
+      >
       <ul>
         <li>
           <a href="https://changelog.com/news/">The Changelog Newsletter</a>
@@ -329,8 +352,8 @@ import Separator from "@/assets/images/icons/Separator.svg";
       </ul>
     </Section>
 
-    <Section id="blogs">
-      <h3 slot="title">Blogs</h3>
+    <Section id="blogs-section">
+      <Title id="blogs" slot="title" as="h3" anchorHref="#blogs">Blogs</Title>
       <ul>
         <li><a href="https://www.stefanjudis.com/blog/">Stefan Judis</a></li>
         <li><a href="https://chriscoyier.net/">Chris Coyier</a></li>
