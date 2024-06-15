@@ -12,8 +12,8 @@ importers:
         specifier: ^4.9.2
         version: 4.9.2(lightningcss@1.24.1)(typescript@5.4.5)
       astro-svg-icon:
-        specifier: ^1.0.1
-        version: 1.0.1(astro@4.9.2(lightningcss@1.24.1)(typescript@5.4.5))(prettier-plugin-astro@0.13.0)(prettier@3.2.5)
+        specifier: ^1.1.0
+        version: 1.1.0(astro@4.9.2(lightningcss@1.24.1)(typescript@5.4.5))(prettier-plugin-astro@0.13.0)(prettier@3.2.5)
       md4w:
         specifier: ^0.2.6
         version: 0.2.6
@@ -1008,8 +1008,8 @@ packages:
     resolution: {integrity: sha512-ISvCdHdlTDlH5IpxQJIex7BWBywFWgjJSVdwst+/iQCoEYnyOaQ95+X1JGshuBjGp6nxKUy1jMgE3zPqN7fQdg==}
     hasBin: true
 
-  astro-svg-icon@1.0.1:
-    resolution: {integrity: sha512-mSU+96THV9dPE06LFVPHRHQ5hnYVgemEX2vb5TOyffsdO6BBIqocNCuX55aM4tBbDWp1I7QHLbWD9ko0Oy2G9w==}
+  astro-svg-icon@1.1.0:
+    resolution: {integrity: sha512-TdTJAUmStySANtHIn62fsmcbLficYO3J4QGrI0DhRIQjNVWnNGWkVa8kLZb9yxRVVctAz4XR+yVUfy10bP3pOA==}
     peerDependencies:
       astro: ^4.0.0
 
@@ -3383,7 +3383,7 @@ snapshots:
 
   astring@1.8.6: {}
 
-  astro-svg-icon@1.0.1(astro@4.9.2(lightningcss@1.24.1)(typescript@5.4.5))(prettier-plugin-astro@0.13.0)(prettier@3.2.5):
+  astro-svg-icon@1.1.0(astro@4.9.2(lightningcss@1.24.1)(typescript@5.4.5))(prettier-plugin-astro@0.13.0)(prettier@3.2.5):
     dependencies:
       '@astrojs/check': 0.7.0(prettier-plugin-astro@0.13.0)(prettier@3.2.5)(typescript@5.4.5)
       astro: 4.9.2(lightningcss@1.24.1)(typescript@5.4.5)
