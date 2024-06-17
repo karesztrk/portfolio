@@ -7,13 +7,17 @@ test.describe("Uses page", () => {
     ).toBeVisible();
 
     for (const [title, entries] of Object.entries(uses.headings)) {
+      const heading = page.getByRole("heading", { name: title, level: 2 });
+      await expect(heading).toBeVisible();
       await expect(
-        page.getByRole("heading", { name: title, level: 2 }),
+        heading.getByRole("link", { name: `Navigate to ${title}` }),
       ).toBeVisible();
 
       for (const entry of entries) {
+        const subHeading = page.getByRole("heading", { name: entry, level: 3 });
+        await expect(subHeading).toBeVisible();
         await expect(
-          page.getByRole("heading", { name: entry, level: 3 }),
+          subHeading.getByRole("link", { name: `Navigate to ${entry}` }),
         ).toBeVisible();
       }
     }

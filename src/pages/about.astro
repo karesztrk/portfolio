@@ -17,7 +17,13 @@ import Title from "@/components/Title.astro";
   <h1>About me</h1>
   <article>
     <Section>
-      <Title id="story" slot="title" as="h2" anchorHref="#story">Story</Title>
+      <Title
+        id="story"
+        slot="title"
+        as="h2"
+        anchorHref="#story"
+        anchorLabel="Story">Story</Title
+      >
       <p>
         Hello there, I'm Károly! 🌟 I call the charming city of
         <a href="https://goo.gl/maps/iS7ynsLC4MXW1kZJ8">Szeged</a>, Hungary my
@@ -47,7 +53,13 @@ import Title from "@/components/Title.astro";
     <SeparatorComponent icon={Separator} />
 
     <Section>
-      <Title id="experience" slot="title" as="h2" anchorHref="#experience">
+      <Title
+        id="experience"
+        slot="title"
+        as="h2"
+        anchorHref="#experience"
+        anchorLabel="Experience"
+      >
         Experience
       </Title>
 
@@ -171,7 +183,13 @@ import Title from "@/components/Title.astro";
     <SeparatorComponent icon={Separator} />
 
     <Section>
-      <Title id="highlights" slot="title" as="h2" anchorHref="#highlights">
+      <Title
+        id="highlights"
+        slot="title"
+        as="h2"
+        anchorHref="#highlights"
+        anchorLabel="Highlights"
+      >
         Highlights
       </Title>
 
@@ -242,7 +260,13 @@ import Title from "@/components/Title.astro";
     <SeparatorComponent icon={Separator} />
 
     <Section>
-      <Title id="projects" slot="title" as="h2" anchorHref="#projects">
+      <Title
+        id="projects"
+        slot="title"
+        as="h2"
+        anchorHref="#projects"
+        anchorLabel="Projects"
+      >
         Projects
       </Title>
       {
@@ -260,7 +284,9 @@ import Title from "@/components/Title.astro";
     <SeparatorComponent icon={Separator} />
 
     <Section id="next" expandable={false} data-sparks>
-      <Title slot="title" as="h2" anchorHref="#next"> What's next? </Title>
+      <Title slot="title" as="h2" anchorHref="#next" anchorLabel="Next">
+        What's next?
+      </Title>
       <p data-sparks>
         Are you still here with me? If you'd like to connect, don't hesitate to
         shoot me an <a href="mailto:karoly.torok.krisztian@gmail.com">email</a>,

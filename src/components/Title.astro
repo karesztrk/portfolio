@@ -3,19 +3,23 @@ import type { Polymorphic } from "astro/types";
 import Icon from "astro-svg-icon";
 import Anchor from "@/assets/images/icons/Anchor.svg";
 
-type Button = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+type Heading = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
-type Props<Tag extends Button> = Polymorphic<{
+type Props<Tag extends Heading> = Polymorphic<{
   as: Tag;
   anchorHref?: string;
+  anchorLabel?: string;
 }>;
 
-const { as: Tag, anchorHref: href, ...props } = Astro.props;
+const { as: Tag, anchorHref: href, anchorLabel, ...props } = Astro.props;
 ---
 
 <Tag {...props}
   ><slot />
   <a class="anchor-link" href={href}>
+    <span class="visually-hidden">
+      Navigate to {anchorLabel || "this chapter"}
+    </span>
     <Icon src={Anchor.src} viewBox={`0 0 ${Anchor.width} ${Anchor.height}`} />
   </a>
 </Tag>

@@ -15,7 +15,7 @@ export class IndexPage {
     "My activity on Instagram",
     "Things i watch on Youtube",
     "My Facebook profile",
-  ];
+  ] as const;
 
   constructor(public readonly page: Page) {}
 

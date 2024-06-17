@@ -10,10 +10,16 @@ import Title from "@/components/Title.astro";
   <h1>Uses</h1>
 
   <article>
-    <Title id="software" as="h2" anchorHref="#software">Software</Title>
+    <Title id="software" as="h2" anchorHref="#software" anchorLabel="Software"
+      >Software</Title
+    >
     <Section id="languages-section" class="section" expandable>
-      <Title id="languages" slot="title" as="h3" anchorHref="#languages"
-        >Languages</Title
+      <Title
+        id="languages"
+        slot="title"
+        as="h3"
+        anchorHref="#languages"
+        anchorLabel="Languages">Languages</Title
       >
       <p>
         I used to be a backend developer back in the day, with
@@ -71,8 +77,12 @@ import Title from "@/components/Title.astro";
 
     <Section id="frameworks-section" expandable>
       <h3 slot="title"></h3>
-      <Title id="frameworks" slot="title" as="h3" anchorHref="#frameworks"
-        >Frameworks</Title
+      <Title
+        id="frameworks"
+        slot="title"
+        as="h3"
+        anchorHref="#frameworks"
+        anchorLabel="Frameworks">Frameworks</Title
       >
       <p>
         Diving into web technologies can be a vast and exhilarating journey,
@@ -124,8 +134,12 @@ import Title from "@/components/Title.astro";
     </Section>
 
     <Section id="editors-section" expandable>
-      <Title id="editors" slot="title" as="h3" anchorHref="#editors"
-        >Editors</Title
+      <Title
+        id="editors"
+        slot="title"
+        as="h3"
+        anchorHref="#editors"
+        anchorLabel="Editors">Editors</Title
       >
       <p>
         In the early days of my career, <a href="https://www.eclipse.org/"
@@ -167,8 +181,12 @@ import Title from "@/components/Title.astro";
     </Section>
 
     <Section id="terminal-section">
-      <Title id="terminal" slot="title" as="h3" anchorHref="#terminal"
-        >Terminal</Title
+      <Title
+        id="terminal"
+        slot="title"
+        as="h3"
+        anchorHref="#terminal"
+        anchorLabel="Terminal">Terminal</Title
       >
       <p>
         When it comes to terminal emulators, <a href="https://alacritty.org/"
@@ -187,8 +205,12 @@ import Title from "@/components/Title.astro";
     </Section>
 
     <Section id="browser-section">
-      <Title id="browser" slot="title" as="h3" anchorHref="#browser"
-        >Browser</Title
+      <Title
+        id="browser"
+        slot="title"
+        as="h3"
+        anchorHref="#browser"
+        anchorLabel="Browser">Browser</Title
       >
       <p>
         While <a href="https://www.google.com/chrome/">Chrome</a> may be the go-to
@@ -201,8 +223,12 @@ import Title from "@/components/Title.astro";
     </Section>
 
     <Section id="os-section">
-      <Title id="os" slot="title" as="h3" anchorHref="#os"
-        >Operating system</Title
+      <Title
+        id="os"
+        slot="title"
+        as="h3"
+        anchorHref="#os"
+        anchorLabel="Operating system">Operating system</Title
       >
       <p>
         Having spent a significant portion of my career on <a
@@ -219,7 +245,13 @@ import Title from "@/components/Title.astro";
     </Section>
 
     <Section id="fonts-section">
-      <Title id="fonts" slot="title" as="h3" anchorHref="#fonts">Fonts</Title>
+      <Title
+        id="fonts"
+        slot="title"
+        as="h3"
+        anchorHref="#fonts"
+        anchorLabel="Fonts">Fonts</Title
+      >
       <p>
         As a font nerd, I take font selection seriously, and when it comes to
         programming fonts, I'm no exception. I've delved deep into the world of
@@ -235,11 +267,17 @@ import Title from "@/components/Title.astro";
 
     <SeparatorComponent icon={Separator} />
 
-    <Title id="hardware" as="h2" anchorHref="#hardware">Hardware</Title>
+    <Title id="hardware" as="h2" anchorHref="#hardware" anchorLabel="Hardware"
+      >Hardware</Title
+    >
 
     <Section id="computer-section">
-      <Title id="computer" slot="title" as="h3" anchorHref="#computer"
-        >Computer</Title
+      <Title
+        id="computer"
+        slot="title"
+        as="h3"
+        anchorHref="#computer"
+        anchorLabel="Computer">Computer</Title
       >
       <p>
         Back in the day, LAN parties with friends were a highlight of my gaming
@@ -254,8 +292,12 @@ import Title from "@/components/Title.astro";
     </Section>
 
     <Section id="peripherals-section">
-      <Title id="peripherals" slot="title" as="h3" anchorHref="#peripherals"
-        >Pheripherals</Title
+      <Title
+        id="peripherals"
+        slot="title"
+        as="h3"
+        anchorHref="#peripherals"
+        anchorLabel="Pheripherals">Pheripherals</Title
       >
       <p>
         When the COVID-19 pandemic forced us into remote work, I saw it as an
@@ -285,11 +327,17 @@ import Title from "@/components/Title.astro";
 
     <SeparatorComponent icon={Separator} />
 
-    <Title id="podroll" as="h2" anchorHref="#podroll">Podroll</Title>
+    <Title id="podroll" as="h2" anchorHref="#podroll" anchorLabel="Podroll"
+      >Podroll</Title
+    >
 
     <Section id="podcasts-section">
-      <Title id="podcasts" slot="title" as="h3" anchorHref="#podcasts"
-        >Podcasts</Title
+      <Title
+        id="podcasts"
+        slot="title"
+        as="h3"
+        anchorHref="#podcasts"
+        anchorLabel="Podcasts">Podcasts</Title
       >
       <ul>
         <li><a href="https://syntax.fm/">Syntax.</a></li>
@@ -300,8 +348,12 @@ import Title from "@/components/Title.astro";
     </Section>
 
     <Section id="youtube-section">
-      <Title id="youtube" slot="title" as="h3" anchorHref="#youtube"
-        >Youtube</Title
+      <Title
+        id="youtube"
+        slot="title"
+        as="h3"
+        anchorHref="#youtube"
+        anchorLabel="Youtube">Youtube</Title
       >
       <ul>
         <li><a href="https://www.kevinpowell.co/">Kevin Powell</a></li>
@@ -336,11 +388,17 @@ import Title from "@/components/Title.astro";
 
     <SeparatorComponent icon={Separator} />
 
-    <Title id="blogroll" as="h2" anchorHref="#blogroll">Blogroll</Title>
+    <Title id="blogroll" as="h2" anchorHref="#blogroll" anchorLabel="Blogroll"
+      >Blogroll</Title
+    >
 
     <Section id="newsletters-section">
-      <Title id="newsletters" slot="title" as="h3" anchorHref="#newsletters"
-        >Newsletters</Title
+      <Title
+        id="newsletters"
+        slot="title"
+        as="h3"
+        anchorHref="#newsletters"
+        anchorLabel="Newsletters">Newsletters</Title
       >
       <ul>
         <li>
