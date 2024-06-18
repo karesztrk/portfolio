@@ -12,6 +12,7 @@ const blog = await getCollection("Blog");
 const sortedPosts = blog.sort(
   (left, right) => right.data.date - left.data.date,
 );
+const basePath = "/blog/";
 ---
 
 <Layout title="Blog">
@@ -22,8 +23,8 @@ const sortedPosts = blog.sort(
         return (
           <>
             <article>
-              <a href={`/blog/${post.slug}`}>
-                <h2>{formatTitle(post.id)}</h2>
+              <a href={`${basePath}${post.slug}`}>
+                <h2 id={post.slug}>{formatTitle(post.id)}</h2>
               </a>
               <Fields>
                 <Temporal type="text" icon={true} aria-label="Publish date">
@@ -39,6 +40,23 @@ const sortedPosts = blog.sort(
     }
   </article>
 </Layout>
+
+<script is:inline define:vars={{ basePath }}>
+  const handlePageSwap = async (e) => {
+    if (e.viewTransition) {
+      const target = new URL(e.activation.entry.url);
+      const path = target.pathname;
+      const id = path.replace(basePath, "");
+      console.log(id);
+      document.querySelector(`h2#${id}`).style.viewTransitionName = "name";
+
+      await e.viewTransition.finished;
+      document.querySelector(`h2#${id}`).style.viewTransitionName = "none";
+    }
+  };
+
+  window.addEventListener("pageswap", handlePageSwap);
+</script>
 
 <style>
   h2 {

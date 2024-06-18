@@ -1,6 +1,6 @@
 @import url("./reset.css") layer(reset);
 
-@layer reset, base, typography, theme, components, utilities, animations;
+@layer reset, base, typography, theme, components, utilities, animations, viewtransition;
 
 :root {
   --mono: "MONO" 0;
@@ -862,6 +862,113 @@
 
     to {
       transform: translateY(0);
+    }
+  }
+
+  @keyframes slide-in {
+    from {
+      translate: 0 20px;
+    }
+
+    to {
+      translate: 0 0;
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+}
+
+@layer viewtransition {
+  @media (prefers-reduced-motion: no-preference) {
+    @view-transition {
+      navigation: auto;
+    }
+
+    :root {
+      --view-transition-exit-duration: 250ms;
+      --view-transition-entry-duration: 350ms;
+      --view-transition-stagger-delay: calc(
+        var(--view-transition-entry-duration) / 2
+      );
+      --view-transition-entry-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    main > h1,
+    main > hgroup {
+      view-transition-name: title;
+    }
+
+    main {
+      view-transition-name: content;
+    }
+
+    ::view-transition-old(name),
+    ::view-transition-new(name) {
+      /* Fill the whole height in the group */
+      height: 100%;
+      /* Maintain image aspect ratio */
+      width: auto;
+    }
+
+    ::view-transition-old(title) {
+      animation-duration: var(--view-transition-exit-duration);
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-name: fade-out;
+    }
+
+    ::view-transition-new(title) {
+      animation-duration: var(--view-transition-entry-duration);
+      animation-delay: var(--view-transition-exit-duration);
+      animation-timing-function: var(--view-transition-entry-function);
+      animation-fill-mode: both;
+      animation-name: fade-in, slide-in;
+    }
+
+    ::view-transition-old(content),
+    ::view-transition-new(content) {
+      /* Maintain image aspect ratio */
+      width: auto;
+    }
+
+    ::view-transition-group(name),
+    ::view-transition-group(content) {
+      /* Clip the any overflow as its transitioning between states */
+      overflow: clip;
+    }
+
+    ::view-transition-old(content) {
+      animation-duration: var(--view-transition-exit-duration);
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-name: fade-out;
+    }
+
+    ::view-transition-new(content) {
+      animation-duration: var(--view-transition-entry-duration);
+      animation-delay: calc(
+        var(--view-transition-stagger-delay) +
+          var(--view-transition-exit-duration)
+      );
+      animation-timing-function: var(--view-transition-entry-function);
+      animation-fill-mode: both;
+      animation-name: fade-in, slide-in;
     }
   }
 }
