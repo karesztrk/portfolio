@@ -246,16 +246,66 @@
   }
 
   dialog {
+    --entry-easing: cubic-bezier(0.33, 1, 0.68, 1);
+    --transition-time: 500ms;
     background: var(--colog-dialog-bg);
     border: 1px solid var(--colog-dialog-border);
     width: calc(var(--content) + 2 * var(--popout-max));
-
+    opacity: 0;
+    transform: scale(0);
     margin-block-start: 1rem;
 
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+
     &::backdrop {
+      opacity: 0;
+      transition: opacity var(--transition-time) display var(--transition-time)
+        allow-discrete;
       background: rgba(0, 0, 0, 0.61);
-      -webkit-backdrop-filter: blur(4px);
       backdrop-filter: blur(4px);
+
+      @media (prefers-reduced-motion: reduce) {
+        transition: none;
+      }
+    }
+
+    &[open] {
+      transform: scale(1);
+      opacity: 1;
+      transition:
+        transform var(--transition-time) var(--entry-easing),
+        opacity var(--transition-time) var(--entry-easing),
+        overlay var(--transition-time) var(--entry-easing),
+        display var(--transition-time) var(--entry-easing) allow-discrete;
+
+      @media (prefers-reduced-motion: reduce) {
+        transition: none;
+      }
+    }
+  }
+
+  dialog[open]::backdrop {
+    opacity: 1;
+    transition:
+      opacity var(--transition-time) var(--entry-easing),
+      overlay var(--transition-time) var(--entry-easing),
+      display var(--transition-time) var(--entry-easing) allow-discrete;
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+  }
+
+  @starting-style {
+    dialog[open],
+    dialog[open]::backdrop {
+      opacity: 0;
+    }
+
+    dialog[open] {
+      transform: scale(0.25);
     }
   }
 
