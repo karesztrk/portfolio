@@ -46,8 +46,7 @@ const basePath = "/blog/";
     if (e.viewTransition) {
       const target = new URL(e.activation.entry.url);
       const path = target.pathname;
-      const id = path.replace(basePath, "");
-      console.log(id);
+      const id = path.replace(basePath, "").replace("/", "");
       document.querySelector(`h2#${id}`).style.viewTransitionName = "name";
 
       await e.viewTransition.finished;
