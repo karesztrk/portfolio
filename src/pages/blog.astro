@@ -41,22 +41,6 @@ const basePath = "/blog/";
   </article>
 </Layout>
 
-<script is:inline define:vars={{ basePath }}>
-  const handlePageSwap = async (e) => {
-    if (e.viewTransition) {
-      const target = new URL(e.activation.entry.url);
-      const path = target.pathname;
-      const id = path.replace(basePath, "").replace("/", "");
-      document.querySelector(`h2#${id}`).style.viewTransitionName = "name";
-
-      await e.viewTransition.finished;
-      document.querySelector(`h2#${id}`).style.viewTransitionName = "none";
-    }
-  };
-
-  window.addEventListener("pageswap", handlePageSwap);
-</script>
-
 <style>
   h2 {
     margin: 0;

@@ -36,19 +36,6 @@ const title = formatTitle(entry.id);
   </article>
 </Layout>
 
-<script is:inline>
-  const handlePageReveal = async (e) => {
-    if (e.viewTransition) {
-      document.querySelector(`h1`).style.viewTransitionName = "name";
-
-      await e.viewTransition.ready;
-      document.querySelector(`h1`).style.viewTransitionName = "none";
-    }
-  };
-
-  window.addEventListener("pagereveal", handlePageReveal);
-</script>
-
 <style>
   h1 {
     margin-block-end: 1rem;
