@@ -14,28 +14,28 @@ const currentPath = Astro.url.pathname;
   <li>
     <a
       class:list={[{ active: currentPath.endsWith("/blog/") }]}
-      href="/blog"
+      href="/blog/"
       data-astro-prefetch>Blog</a
     >
   </li>
   <li>
     <a
       class:list={[{ active: currentPath.startsWith("/tooltips/") }]}
-      href="/tooltips"
+      href="/tooltips/"
       data-astro-prefetch>Tips</a
     >
   </li>
   <li>
     <a
       class:list={[{ active: currentPath.startsWith("/uses/") }]}
-      href="/uses"
+      href="/uses/"
       data-astro-prefetch>Uses</a
     >
   </li>
   <li>
     <a
       class:list={[{ active: currentPath.startsWith("/about/") }]}
-      href="/about"
+      href="/about/"
       data-astro-prefetch>About</a
     >
   </li>

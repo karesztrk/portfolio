@@ -23,7 +23,7 @@ const basePath = "/blog/";
         return (
           <>
             <article>
-              <a href={`${basePath}${post.slug}`}>
+              <a href={`${basePath}${post.slug}`} data-astro-prefetch>
                 <h2 id={post.slug}>{formatTitle(post.id)}</h2>
               </a>
               <Fields>
