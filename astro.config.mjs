@@ -13,6 +13,10 @@ import { h } from "hastscript";
 import { toString } from "hast-util-to-string";
 
 export default defineConfig({
+  prefetch: true,
+  experimental: {
+    clientPrerender: true,
+  },
   routes: {
     "/": "/hello",
   },
