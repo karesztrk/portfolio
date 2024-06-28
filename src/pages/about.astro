@@ -11,6 +11,7 @@ import CompReg from "@/assets/images/compreg.webp";
 import Temporal from "@components/Temporal.astro";
 import Button from "@/components/Button.astro";
 import Title from "@/components/Title.astro";
+import MarvinPro from "@/assets/images/marvinpro.webp";
 ---
 
 <Layout title="About me">
@@ -194,6 +195,34 @@ import Title from "@/components/Title.astro";
       </Title>
 
       <Subsection>
+        <h3 slot="title">Marvin Pro</h3>
+
+        <p>
+          Marvin Pro is a nifty drawing tool that blends our smart chemistry
+          tech with a sleek, user-friendly interface. Perfect for chemists,
+          researchers, and students, it lets you turn your ideas into top-notch
+          visuals in no time. Marvin Pro can handle a bunch of different
+          elements—chemical structures, arrows, text, you name it—all on one
+          canvas, and it lines them up just right.
+        </p>
+
+        <p>
+          I had the opportunity to implement several primitives, shapes, and
+          behaviors into this feature-rich application. Throughout the course of
+          development, I acquired various trigonometry techniques and understood
+          how they can be applied in chemical engineering.
+        </p>
+
+        <figure>
+          <Image
+            src={MarvinPro}
+            alt="A molecule submission inside Compound Registation"
+          />
+          <figcaption>Marvin Pro</figcaption>
+        </figure>
+      </Subsection>
+
+      <Subsection>
         <h3 slot="title">Compound Registation</h3>
         <p>
           Compound Registration—an extraordinary application that meticulously
@@ -207,8 +236,7 @@ import Title from "@/components/Title.astro";
           legendary 🐉 application into the realm of modern JavaScript. A
           colossal undertaking, indeed! My strategy? A masterful, granular
           rewrite that not only brings the technology up to date but also
-          preserves the cherished business value. The challenge was titanic, and
-          I embraced it with gusto.
+          preserves the cherished business value.
         </p>
         <p>
           But wait, the real heroes in this saga are none other than my
