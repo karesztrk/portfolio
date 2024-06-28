@@ -1,11 +1,27 @@
 [
   {
+    "id": "marvinpro",
+    "time": 2024,
+    "title": "Marvin Pro",
+    "description": "Marvin Pro is a drawing tool that combines our chemically intelligent technology with a clean user interface.",
+    "type": "Web",
+    "technologies": ["React", "Jest", "Typescript"]
+  },
+  {
     "id": "compreg",
     "time": 2021,
     "title": "Compound Registation",
     "description": "Compound Registration compares the uniqueness of new small molecules against those already stored in your database. It then kickstarts a decision workflow based on your configured business logic.",
     "type": "Web",
-    "technologies": ["React", "Jest", "Playwright", "D3", "Spring", "AngularJS"]
+    "technologies": [
+      "React",
+      "Jest",
+      "Playwright",
+      "D3",
+      "Spring",
+      "AngularJS",
+      "Typescript"
+    ]
   },
   {
     "id": "skoda-connect",
@@ -13,7 +29,7 @@
     "title": "ŠKODA Connect",
     "description": "Automated remote vehicle management. The users can comfortably check their vehicle status, health or even plan trips ahead.",
     "type": "Web",
-    "technologies": ["React", "Node.js", "Spring Cloud", "Gradle"]
+    "technologies": ["React", "Node.js", "Spring Cloud", "Gradle", "Typescript"]
   },
   {
     "id": "trustee",
@@ -120,4 +136,3 @@
     "technologies": ["JavaEE", "JBoss", "Seam", "JSF", "Hibernate"]
   }
 ]
-
