@@ -157,6 +157,10 @@
   a.button {
     font-family: "Silkscreen", monospace;
   }
+
+  mark {
+    font-variation-settings: "MONO" 1;
+  }
 }
 
 @layer components {
@@ -619,6 +623,39 @@
       }
     }
   }
+
+  mark {
+    --_inline-padding: 0.25em;
+    --_deg: 90deg;
+    transition: 0.4s ease;
+    line-height: 1.3em;
+    padding: 0.05em var(--_inline-padding);
+    box-decoration-break: clone;
+    color: var(--color-background);
+    background: linear-gradient(
+        in oklch var(--_deg),
+        var(--color-mark-1),
+        var(--color-mark-2)
+      )
+      center;
+    background-size: calc(100% - var(--_inline-padding)) calc(100% - 0.15em);
+
+    background-repeat: no-repeat;
+    transform-origin: center calc(100% - 0.18em);
+  }
+
+  mark:hover {
+    color: var(--color-title);
+    background-size: calc(100% - var(--_inline-padding)) max(0.1em, 2px);
+    background-position-y: calc(100% - 0.1em);
+    text-shadow:
+      0 -0.05em 0 var(--color-background),
+      -0.05em -0.05em 0 var(--color-background),
+      -0.05em 0 0 var(--color-background),
+      0 0.05em 0 var(--color-background),
+      0.05em 0.05em 0 var(--color-background),
+      0.05em 0 0 var(--color-background);
+  }
 }
 
 @layer base {
@@ -825,6 +862,9 @@
     --color-anchor: var(--color-text);
     --color-anchor-hl: light-dark(var(--color-teal-5), var(--color-teal-3));
     --color-anchor-locked: light-dark(var(--color-teal-7), var(--color-teal-5));
+
+    --color-mark-1: light-dark(var(--color-pink-6), var(--color-pink-4));
+    --color-mark-2: light-dark(var(--color-teal-6), var(--color-teal-4));
   }
 }
 
