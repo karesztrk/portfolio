@@ -50,6 +50,15 @@ const readMoreInput = `${id.replace(/\s/gi, "-")}-read-more`;
     -webkit-box-orient: vertical;
     overflow: hidden;
     margin-bottom: calc(var(--p-margin) * 0.5);
+
+    &:focus-within {
+      display: block;
+      margin-bottom: 0;
+
+      ~ .read-more-label::before {
+        content: "less...";
+      }
+    }
   }
 
   .read-more {
