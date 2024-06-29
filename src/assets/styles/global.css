@@ -863,8 +863,8 @@
     --color-anchor-hl: light-dark(var(--color-teal-5), var(--color-teal-3));
     --color-anchor-locked: light-dark(var(--color-teal-7), var(--color-teal-5));
 
-    --color-mark-1: light-dark(var(--color-pink-6), var(--color-pink-4));
-    --color-mark-2: light-dark(var(--color-teal-6), var(--color-teal-4));
+    --color-mark-1: light-dark(var(--color-pink-6), var(--color-pink-5));
+    --color-mark-2: light-dark(var(--color-teal-6), var(--color-teal-5));
   }
 }
 
