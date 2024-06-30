@@ -1,6 +1,6 @@
 @import url("./reset.css") layer(reset);
 
-@layer reset, base, typography, theme, components, utilities, animations, viewtransition;
+@layer reset, base, typography, theme, components, utilities, animations, viewtransition, customproperty;
 
 :root {
   --mono: "MONO" 0;
@@ -159,7 +159,7 @@
   }
 
   mark {
-    font-variation-settings: "MONO" 1;
+    font-variation-settings: "CRSV" 0;
   }
 }
 
@@ -625,36 +625,51 @@
   }
 
   mark {
-    --_inline-padding: 0.25em;
+    --_inline-padding: 0.4em;
+    --_block-padding: 0.1em;
+    --_inline-cut: 0.4em;
     --_deg: 90deg;
-    transition: 0.4s ease;
+    --_hover-easing: cubic-bezier(0.65, 0, 0.35, 1);
+    --_reveal-easing: cubic-bezier(0.85, 0, 0.15, 1);
+    transition: 250ms var(--_hover-easing);
     line-height: 1.3em;
-    padding: 0.05em var(--_inline-padding);
+    padding: var(--_block-padding) var(--_inline-padding);
     box-decoration-break: clone;
     color: var(--color-background);
-    background: linear-gradient(
-        in oklch var(--_deg),
-        var(--color-mark-1),
-        var(--color-mark-2)
-      )
-      center;
-    background-size: calc(100% - var(--_inline-padding)) calc(100% - 0.15em);
-
+    background:
+      linear-gradient(
+          in oklch var(--_deg),
+          var(--color-mark-1),
+          var(--color-mark-2)
+        )
+        center,
+      linear-gradient(
+          in oklch var(--_deg),
+          var(--color-mark-1),
+          var(--color-mark-2)
+        )
+        center;
+    background-size:
+      calc(100% - var(--_inline-padding)) var(--mark-height),
+      100% calc(var(--mark-height) - var(--_inline-cut));
     background-repeat: no-repeat;
-    transform-origin: center calc(100% - 0.18em);
-  }
+    animation-duration: 750ms;
+    animation-name: mark-reveal;
+    animation-timing-function: var(--_reveal-easing);
 
-  mark:hover {
-    color: var(--color-title);
-    background-size: calc(100% - var(--_inline-padding)) max(0.1em, 2px);
-    background-position-y: calc(100% - 0.1em);
-    text-shadow:
-      0 -0.05em 0 var(--color-background),
-      -0.05em -0.05em 0 var(--color-background),
-      -0.05em 0 0 var(--color-background),
-      0 0.05em 0 var(--color-background),
-      0.05em 0.05em 0 var(--color-background),
-      0.05em 0 0 var(--color-background);
+    &:hover {
+      --mark-height: 10%;
+      --_inline-cut: 0.2em;
+      color: var(--color-title);
+      background-position-y: calc(100% - 0.1em);
+      text-shadow:
+        0 -0.05em 0 var(--color-background),
+        -0.05em -0.05em 0 var(--color-background),
+        -0.05em 0 0 var(--color-background),
+        0 0.05em 0 var(--color-background),
+        0.05em 0.05em 0 var(--color-background),
+        0.05em 0 0 var(--color-background);
+    }
   }
 }
 
@@ -932,6 +947,15 @@
       opacity: 0;
     }
   }
+
+  @keyframes mark-reveal {
+    from {
+      --mark-height: 0%;
+    }
+    to {
+      --mark-height: 100%;
+    }
+  }
 }
 
 @layer viewtransition {
@@ -1010,5 +1034,13 @@
       animation-fill-mode: both;
       animation-name: fade-in, slide-in;
     }
+  }
+}
+
+@layer customproperty {
+  @property --mark-height {
+    syntax: "<percentage>";
+    inherits: true;
+    initial-value: 100%;
   }
 }
