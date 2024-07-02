@@ -69,16 +69,21 @@ picture {
   max-width: 100%;
   height: auto;
   vertical-align: middle;
-  text-align: center;
   font-style: italic;
   background-repeat: no-repeat;
   background-size: cover;
   shape-margin: 0.75rem;
 }
 
+img,
+figure,
+figcaption,
+picture {
+  text-align: center;
+}
+
 figcaption {
   font-style: italic;
-  text-align: center;
   padding-block: 6px;
 }
 
