@@ -11,6 +11,7 @@ import Anchor from "./src/assets/images/icons/Anchor.svg?raw";
 import { fromHtml } from "hast-util-from-html";
 import { h } from "hastscript";
 import { toString } from "hast-util-to-string";
+import rehypeFigure from "rehype-figure";
 
 export default defineConfig({
   prefetch: true,
@@ -54,6 +55,7 @@ export default defineConfig({
           },
         },
       ],
+      rehypeFigure,
     ],
   },
   integrations: [mdx()],
