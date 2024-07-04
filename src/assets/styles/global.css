@@ -627,7 +627,7 @@
   mark {
     --_inline-padding: 0.4em;
     --_block-padding: 0.1em;
-    --_inline-cut: 0.4em;
+    --_inline-cut: 30%;
     --_deg: 90deg;
     --_hover-easing: cubic-bezier(0.65, 0, 0.35, 1);
     --_reveal-easing: cubic-bezier(0.85, 0, 0.15, 1);
@@ -650,16 +650,15 @@
         )
         center;
     background-size:
-      calc(100% - var(--_inline-padding)) var(--mark-height),
-      100% calc(var(--mark-height) - var(--_inline-cut));
+      calc(100% - var(--_inline-padding)) var(--mark-size),
+      100% calc(var(--mark-size) - var(--_inline-cut));
     background-repeat: no-repeat;
     animation-duration: 750ms;
     animation-name: mark-reveal;
     animation-timing-function: var(--_reveal-easing);
 
     &:hover {
-      --mark-height: 10%;
-      --_inline-cut: 0.2em;
+      --mark-size: 10%;
       color: var(--color-title);
       background-position-y: calc(100% - 0.1em);
       text-shadow:
@@ -950,10 +949,10 @@
 
   @keyframes mark-reveal {
     from {
-      --mark-height: 0%;
+      --mark-size: 0%;
     }
     to {
-      --mark-height: 100%;
+      --mark-size: 100%;
     }
   }
 }
@@ -1038,7 +1037,7 @@
 }
 
 @layer customproperty {
-  @property --mark-height {
+  @property --mark-size {
     syntax: "<percentage>";
     inherits: true;
     initial-value: 100%;
