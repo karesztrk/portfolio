@@ -1,4 +1,7 @@
-export const collectionNames = [
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+
+export const tooltipCollectionNames = [
   "Articles",
   "Codepens",
   "Libraries",
@@ -7,4 +10,26 @@ export const collectionNames = [
   "Tools",
 ] as const;
 
-export type CollectionType = (typeof collectionNames)[number];
+export type TooltipCollectionType = (typeof tooltipCollectionNames)[number];
+
+export const findTooltips = () =>
+  Promise.all(
+    tooltipCollectionNames.map((c) =>
+      getCollection<
+        TooltipCollectionType,
+        CollectionEntry<TooltipCollectionType>
+      >(c),
+    ),
+  ).then((collections) => {
+    return collections.reduce(
+      (acc, curr, index) => {
+        const key = tooltipCollectionNames[index];
+        acc[key] = curr;
+        return acc;
+      },
+      {} as Record<
+        TooltipCollectionType,
+        CollectionEntry<TooltipCollectionType>[]
+      >,
+    );
+  });

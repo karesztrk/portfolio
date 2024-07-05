@@ -6,10 +6,13 @@ import Search from "@/assets/images/icons/Search.svg";
 import Markdown from "@/assets/images/icons/Markdown.svg";
 import Input from "@components/Input.astro";
 import type { CollectionEntry } from "astro:content";
-import type { CollectionType } from "@/util/collections.util.ts";
+import type { TooltipCollectionType } from "@/util/collections.util.ts";
 
 interface Props extends HTMLAttributes<"dialog"> {
-  collections: Record<CollectionType, CollectionEntry<CollectionType>[]>;
+  collections: Record<
+    TooltipCollectionType,
+    CollectionEntry<TooltipCollectionType>[]
+  >;
 }
 
 const { collections, ...rest } = Astro.props;
@@ -40,20 +43,19 @@ const { collections, ...rest } = Astro.props;
             <li class="collection">
               {collection}
               <ul>
-                {collections[collection as CollectionType].map((entry) => (
-                  <li class="entry" data-tags={entry.data.tags}>
-                    <button
-                      class="entry-button"
-                      value={`${JSON.stringify(entry)}`}
-                    >
-                      <Icon
-                        src={Markdown.src}
-                        viewBox={`0 0 ${Markdown.width} ${Markdown.height}`}
-                      />
-                      {formatTitle(entry.id)}
-                    </button>
-                  </li>
-                ))}
+                {collections[collection as TooltipCollectionType].map(
+                  (entry) => (
+                    <li class="entry" data-tags={entry.data.tags}>
+                      <button class="entry-button" value={entry.slug}>
+                        <Icon
+                          src={Markdown.src}
+                          viewBox={`0 0 ${Markdown.width} ${Markdown.height}`}
+                        />
+                        {formatTitle(entry.id)}
+                      </button>
+                    </li>
+                  ),
+                )}
               </ul>
             </li>
           ))

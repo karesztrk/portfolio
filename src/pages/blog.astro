@@ -10,7 +10,7 @@ import Fields from "@components/Fields.astro";
 const blog = await getCollection("Blog");
 
 const sortedPosts = blog.sort(
-  (left, right) => right.data.date - left.data.date,
+  (left, right) => right.data.date.getTime() - left.data.date.getTime(),
 );
 const basePath = "/blog/";
 ---
