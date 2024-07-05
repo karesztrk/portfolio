@@ -1,8 +1,9 @@
 ---
-import { getCollection } from "astro:content";
-import type { CollectionEntry } from "astro:content";
-import { collectionNames } from "@/util/collections.util.ts";
-import type { CollectionType } from "@/util/collections.util.ts";
+import {
+  tooltipCollectionNames,
+  findTooltips,
+} from "@/util/collections.util.ts";
+import { formatTitle } from "@/util/blog.util";
 import Layout from "./Layout.astro";
 import Icon from "astro-svg-icon";
 import Search from "@/assets/images/icons/Search.svg";
@@ -11,42 +12,55 @@ import SearchDialog from "@components/SearchDialog.astro";
 import Fields from "@/components/Fields.astro";
 import Tags from "@/components/Tags.astro";
 
-const resolvedCollections = await Promise.all(
-  collectionNames.map((c) =>
-    getCollection<CollectionType, CollectionEntry<CollectionType>>(c),
-  ),
-);
-
-const collections = resolvedCollections.reduce(
-  (acc, curr, index) => {
-    const key = collectionNames[index];
-    acc[key] = curr;
-    return acc;
-  },
-  {} as Record<CollectionType, CollectionEntry<CollectionType>[]>,
-);
+const collections = await findTooltips();
 ---
 
 <Layout title="Tooltips">
+  <link
+    slot="head"
+    rel="preload"
+    href="/tooltips/collections.json"
+    as="fetch"
+    crossorigin
+  />
   <h1>Tooltips</h1>
   <article>
-    <section>
-      <InputButton id="search-button">
-        <Icon
-          src={Search.src}
-          viewBox={`0 0 ${Search.width} ${Search.height}`}
-        />Search
-      </InputButton>
-    </section>
-    <section>
-      <tt-view>
-        <SearchDialog id="search-dialog" collections={collections} />
-      </tt-view>
-    </section>
+    <InputButton id="search-button">
+      <Icon
+        src={Search.src}
+        viewBox={`0 0 ${Search.width} ${Search.height}`}
+      />Search
+    </InputButton>
+    <input checked class="toggle" type="checkbox" />
+    <tt-view>
+      <SearchDialog id="search-dialog" collections={collections} />
+      <form id="tt-tree">
+        <ul>
+          {
+            tooltipCollectionNames.map((name) => (
+              <li>
+                <details>
+                  <summary>{name}</summary>
+                  <ul>
+                    {collections[name].map((entry) => (
+                      <li>
+                        <button name="slug" value={entry.slug}>
+                          {formatTitle(entry.id)}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </details>
+              </li>
+            ))
+          }
+        </ul>
+      </form>
+    </tt-view>
   </article>
 </Layout>
 
-<template id="mm-article-template">
+<template id="tt-article-template">
   <article>
     <h2 id="title"></h2>
     <Fields>
@@ -55,6 +69,14 @@ const collections = resolvedCollections.reduce(
     <div id="content"></div>
   </article>
 </template>
+
+<script is:inline>
+  fetch("/tooltips/collections.json")
+    .then((resp) => resp.json())
+    .then((resp) => {
+      globalThis.collections = resp;
+    });
+</script>
 
 <script>
   const searchButton = document.getElementById("search-button");
@@ -88,6 +110,84 @@ const collections = resolvedCollections.reduce(
       color: var(--_border-color);
       vertical-align: middle;
       margin-inline-end: 6px;
+    }
+  }
+
+  details {
+    background: none;
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+
+  summary {
+    background: none;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  .toggle {
+    &:checked ~ tt-view {
+      animation-duration: 400ms;
+      animation-name: show-tree;
+      animation-fill-mode: forwards;
+    }
+    &:not(:checked) ~ tt-view {
+      animation-duration: 400ms;
+      animation-name: hide-tree;
+      animation-fill-mode: forwards;
+    }
+  }
+
+  @keyframes hide-tree {
+    0% {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+    100% {
+      grid-template-columns: 0fr 0fr 1fr 1fr 1fr;
+    }
+  }
+
+  @keyframes show-tree {
+    0% {
+      grid-template-columns: 0fr 0fr 1fr 1fr 1fr;
+    }
+    100% {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  tt-view {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-areas: "tree tree content content content";
+
+    #tt-tree {
+      grid-area: tree;
+    }
+
+    article {
+      grid-area: content;
     }
   }
 </style>

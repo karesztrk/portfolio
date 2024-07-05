@@ -1,4 +1,4 @@
-import type { CollectionType } from "@/util/collections.util.ts";
+import type { TooltipCollectionType } from "@/util/collections.util.ts";
 import type { CollectionEntry } from "astro:content";
 import { init, mdToHtml } from "md4w";
 import { formatTitle } from "@/util/blog.util";
@@ -10,25 +10,65 @@ export class TooltipsView extends LightElement {
     this.register("tt-view", TooltipsView);
   }
 
+  collections: Record<
+    TooltipCollectionType,
+    CollectionEntry<TooltipCollectionType>[]
+  >;
+
+  constructor() {
+    super();
+    this.collections = globalThis.collections || {};
+  }
+
   loaded = false;
 
-  render() {
-    const searchDialog = document.getElementById("search-dialog");
-    this.init();
+  onDialogClose(searchDialog: HTMLDialogElement) {
+    return async () => {
+      const { returnValue } = searchDialog;
 
-    if (searchDialog) {
-      const onClose = async () => {
-        await this.init();
-        const { returnValue } = searchDialog as HTMLDialogElement;
-        if (returnValue) {
-          const template = this.getTemplate();
-          const collectionEntry = this.toCollectionEntry(returnValue);
+      await this.init();
+      if (returnValue) {
+        const template = this.getTemplate();
+        const collectionEntry = this.toCollectionEntry(returnValue);
+        if (collectionEntry) {
           this.fillTemplate(template, collectionEntry);
           this.querySelector("article")?.remove();
           this.appendChild(template);
         }
-      };
-      searchDialog.addEventListener("close", onClose);
+      }
+    };
+  }
+
+  onTreeLeafClick() {
+    return async (e: SubmitEvent) => {
+      e.preventDefault();
+      const values = new FormData(e.target as HTMLFormElement, e.submitter);
+      const slug = values.get("slug");
+      if (slug && typeof slug === "string") {
+        const template = this.getTemplate();
+        const collectionEntry = this.toCollectionEntry(slug);
+        if (collectionEntry) {
+          this.fillTemplate(template, collectionEntry);
+          this.querySelector("article")?.remove();
+          this.appendChild(template);
+        }
+      }
+    };
+  }
+
+  registerTreeSubmitHandler() {
+    const form = document.getElementById("tt-tree") as HTMLFormElement | null;
+    if (form) {
+      form.addEventListener("submit", this.onTreeLeafClick());
+    }
+  }
+
+  registerDialogSubmitHandler() {
+    const searchDialog = document.getElementById(
+      "search-dialog",
+    ) as HTMLDialogElement | null;
+    if (searchDialog) {
+      searchDialog.addEventListener("close", this.onDialogClose(searchDialog));
     }
   }
 
@@ -39,20 +79,34 @@ export class TooltipsView extends LightElement {
     }
   }
 
-  toCollectionEntry(returnValue: string): CollectionEntry<CollectionType> {
-    return JSON.parse(returnValue);
+  render() {
+    this.init();
+    this.registerTreeSubmitHandler();
+    this.registerDialogSubmitHandler();
+  }
+
+  toCollectionEntry(
+    slug: string,
+  ): CollectionEntry<TooltipCollectionType> | undefined {
+    for (const collection of Object.values(this.collections)) {
+      for (const entry of collection) {
+        if (entry.slug === slug) {
+          return entry;
+        }
+      }
+    }
   }
 
   getTemplate() {
     const template = document.getElementById(
-      "mm-article-template",
+      "tt-article-template",
     ) as HTMLTemplateElement | null;
     return template?.content.cloneNode(true) as HTMLElement;
   }
 
   fillTemplate(
     template: HTMLElement,
-    collectionEntry: CollectionEntry<CollectionType>,
+    collectionEntry: CollectionEntry<TooltipCollectionType>,
   ) {
     this.setTitle(template, collectionEntry);
     this.setContent(template, collectionEntry);
@@ -61,7 +115,7 @@ export class TooltipsView extends LightElement {
 
   setTitle(
     template: HTMLElement,
-    collectionEntry: CollectionEntry<CollectionType>,
+    collectionEntry: CollectionEntry<TooltipCollectionType>,
   ) {
     const title = template.querySelector("#title");
     if (title) {
@@ -71,7 +125,7 @@ export class TooltipsView extends LightElement {
 
   setContent(
     template: HTMLElement,
-    collectionEntry: CollectionEntry<CollectionType>,
+    collectionEntry: CollectionEntry<TooltipCollectionType>,
   ) {
     const content = template.querySelector("#content");
     if (content) {
@@ -81,7 +135,7 @@ export class TooltipsView extends LightElement {
 
   setTags(
     template: HTMLElement,
-    collectionEntry: CollectionEntry<CollectionType>,
+    collectionEntry: CollectionEntry<TooltipCollectionType>,
   ) {
     const tags = template.querySelector("ul");
     const tagItem = template.querySelector("li");

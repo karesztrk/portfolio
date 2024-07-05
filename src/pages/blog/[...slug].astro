@@ -14,6 +14,7 @@ export async function getStaticPaths() {
     props: { entry: post },
   }));
 }
+
 const { entry } = Astro.props;
 const { Content, remarkPluginFrontmatter } = await entry.render();
 const title = formatTitle(entry.id);
