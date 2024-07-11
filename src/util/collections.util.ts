@@ -12,6 +12,11 @@ export const tooltipCollectionNames = [
 
 export type TooltipCollectionType = (typeof tooltipCollectionNames)[number];
 
+export const findTooltip = (c: TooltipCollectionType) =>
+  getCollection<TooltipCollectionType, CollectionEntry<TooltipCollectionType>>(
+    c,
+  );
+
 export const findTooltips = () =>
   Promise.all(
     tooltipCollectionNames.map((c) =>

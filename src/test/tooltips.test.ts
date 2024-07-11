@@ -2,7 +2,9 @@ import { test, expect } from "./fixtures";
 
 test.describe("Tooltips page", () => {
   test("Page elements present", async ({ tooltips, page }) => {
-    await expect(page.getByRole("heading", { name: "Tooltips" })).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: tooltips.title }),
+    ).toBeVisible();
     await expect(page.getByRole("button", { name: "Search" })).toBeVisible();
   });
 
@@ -25,6 +27,7 @@ test.describe("Tooltips page", () => {
       await expect(
         page.getByRole("article").getByRole("article").getByText(entryText),
       ).toBeVisible();
+      await tooltips.expectBreadcrumbContent("Articles");
     }
   });
 
@@ -38,5 +41,31 @@ test.describe("Tooltips page", () => {
     await page.locator("id=search-dialog").press("Escape");
 
     await expect(tooltips.searchDialog()).not.toBeVisible();
+  });
+
+  test("Select entry from the sidebar", async ({ tooltips, page }) => {
+    await page.getByRole("button", { name: "Toggle tree view" }).click();
+
+    for (const category of tooltips.categories) {
+      await expect(page.getByText(category, { exact: true })).toBeVisible();
+    }
+
+    const selectedCategory = tooltips.categories[0];
+
+    await page.getByText(selectedCategory, { exact: true }).click();
+    const entryButton = page.locator("form button").locator("nth=0");
+    const entryText = await entryButton.textContent();
+    await entryButton.click();
+
+    await expect(
+      page.getByLabel(tooltips.breadcrumb).getByText(tooltips.title),
+    ).toBeVisible();
+
+    if (entryText) {
+      await expect(
+        page.getByRole("heading", { name: entryText }),
+      ).toBeVisible();
+      await tooltips.expectBreadcrumbContent(selectedCategory);
+    }
   });
 });

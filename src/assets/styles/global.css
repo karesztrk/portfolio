@@ -36,6 +36,8 @@
   --link-hover-decoration: dashed;
   --link-hover-decoration-thickness: 2px;
 
+  --inline-gap: 0.5rem;
+
   --space-xs: 6px;
   --space-sm: 8px;
 
@@ -159,7 +161,7 @@
   }
 
   mark {
-    font-variation-settings: "CRSV" 0;
+    font-variation-settings: "CASL" 0;
   }
 }
 
@@ -829,6 +831,11 @@
       var(--color-pink-5)
     );
 
+    --color-breadcrumb-border: light-dark(
+      var(--color-yellow-8),
+      var(--color-pink-5)
+    );
+
     --color-summary-text: light-dark(var(--color-dark-3), var(--color-text));
     --color-summary-bg: light-dark(var(--color-dark-0), var(--color-dark-3));
     --color-summary-border: light-dark(
@@ -861,7 +868,7 @@
     --color-logo: light-dark(var(--color-pink-5), var(--color-pink-5));
 
     --colog-dialog-bg: light-dark(var(--color-dark-1), var(--color-dark-3));
-    --colog-dialog-border: light-dark(var(--color-dark-4), var(--color-dark-5));
+    --colog-dialog-border: light-dark(var(--color-dark-4), var(--color-teal-8));
 
     --color-li-group-text: light-dark(var(--color-pink-7), var(--color-pink-4));
     --color-li-bg-hl: light-dark(var(--color-teal-8), var(--color-teal-5));
