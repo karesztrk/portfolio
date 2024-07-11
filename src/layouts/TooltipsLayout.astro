@@ -1,16 +1,11 @@
 ---
-import {
-  tooltipCollectionNames,
-  findTooltips,
-} from "@/util/collections.util.ts";
-import { formatTitle } from "@/util/blog.util";
+import { findTooltips } from "@/util/collections.util.ts";
 import Layout from "./Layout.astro";
-import Icon from "astro-svg-icon";
-import Search from "@/assets/images/icons/Search.svg";
-import InputButton from "@components/InputButton.astro";
 import SearchDialog from "@components/SearchDialog.astro";
 import Fields from "@/components/Fields.astro";
 import Tags from "@/components/Tags.astro";
+import TooltipHeader from "@/components/TooltipHeader.astro";
+import TooltipSidebar from "@/components/TooltipSidebar.astro";
 
 const collections = await findTooltips();
 ---
@@ -25,169 +20,93 @@ const collections = await findTooltips();
   />
   <h1>Tooltips</h1>
   <article>
-    <InputButton id="search-button">
-      <Icon
-        src={Search.src}
-        viewBox={`0 0 ${Search.width} ${Search.height}`}
-      />Search
-    </InputButton>
-    <input checked class="toggle" type="checkbox" />
     <tt-view>
-      <SearchDialog id="search-dialog" collections={collections} />
-      <form id="tt-tree">
-        <ul>
-          {
-            tooltipCollectionNames.map((name) => (
-              <li>
-                <details>
-                  <summary>{name}</summary>
-                  <ul>
-                    {collections[name].map((entry) => (
-                      <li>
-                        <button name="slug" value={entry.slug}>
-                          {formatTitle(entry.id)}
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-                </details>
-              </li>
-            ))
-          }
-        </ul>
-      </form>
+      <TooltipHeader class="tt-header" aria-label="Breadcrumb">
+        <span>Tooltips</span>
+      </TooltipHeader>
+      <tt-content>
+        <TooltipSidebar id="tt-tree" collections={collections} />
+        <article>
+          <p>☝️ Select a tooltip</p>
+        </article></tt-content
+      >
     </tt-view>
-  </article>
-</Layout>
 
-<template id="tt-article-template">
-  <article>
+    <SearchDialog id="search-dialog" collections={collections} />
+  </article>
+
+  <template id="tt-article-template">
     <h2 id="title"></h2>
     <Fields>
       <Tags data={["tag"]} />
     </Fields>
     <div id="content"></div>
-  </article>
-</template>
+  </template>
 
-<script is:inline>
-  fetch("/tooltips/collections.json")
-    .then((resp) => resp.json())
-    .then((resp) => {
-      globalThis.collections = resp;
-    });
-</script>
+  <script>
+    import { loadCollections } from "@/data/api";
+    import TooltipsView from "@/webcomponents/TooltipsView";
 
-<script>
-  const searchButton = document.getElementById("search-button");
-  const searchDialog = document.getElementById(
-    "search-dialog",
-  ) as HTMLDialogElement | null;
+    const view = document.querySelector("tt-view") as TooltipsView;
+    if (view) {
+      loadCollections().then((resp) => {
+        view.collections = resp;
+      });
+    }
+  </script>
 
-  if (searchButton && searchDialog) {
-    searchButton.addEventListener("click", () => {
-      searchDialog.showModal();
-    });
-  }
-</script>
-
-<script>
-  import "@/webcomponents/TooltipsView";
-</script>
-
-<style>
-  #search-button {
-    width: 300px;
-    display: block;
-    margin-block: 4rem 7rem;
-    margin-inline: auto;
-
-    &:hover {
-      outline: auto;
+  <style>
+    nav {
+      position: relative;
+      z-index: 2;
+      &:has(#toggle:checked) {
+        & ~ tt-content {
+          & > article {
+            --transition-time: 500ms;
+            --easing: cubic-bezier(0.32, 0, 0.67, 0);
+            translate: 90% 0;
+          }
+        }
+      }
+      &:not(:has(#toggle:checked)) {
+        & ~ tt-content {
+          aside {
+            opacity: 0;
+            display: none;
+          }
+        }
+      }
     }
 
-    .icon {
-      color: var(--_border-color);
-      vertical-align: middle;
-      margin-inline-end: 6px;
-    }
-  }
+    tt-content {
+      --_height: 500px;
+      display: block;
+      position: relative;
+      height: var(--_height);
+      z-index: 1;
+      isolation: isolate;
 
-  details {
-    background: none;
-    padding: 0;
-    margin: 0;
-    border: 0;
-  }
+      aside {
+        z-index: 1;
+      }
 
-  summary {
-    background: none;
-  }
-
-  li {
-    list-style: none;
-  }
-
-  .toggle {
-    &:checked ~ tt-view {
-      animation-duration: 400ms;
-      animation-name: show-tree;
-      animation-fill-mode: forwards;
-    }
-    &:not(:checked) ~ tt-view {
-      animation-duration: 400ms;
-      animation-name: hide-tree;
-      animation-fill-mode: forwards;
-    }
-  }
-
-  @keyframes hide-tree {
-    0% {
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    }
-    100% {
-      grid-template-columns: 0fr 0fr 1fr 1fr 1fr;
-    }
-  }
-
-  @keyframes show-tree {
-    0% {
-      grid-template-columns: 0fr 0fr 1fr 1fr 1fr;
-    }
-    100% {
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    }
-  }
-
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-
-  @keyframes fadeOut {
-    0% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
-
-  tt-view {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-areas: "tree tree content content content";
-
-    #tt-tree {
-      grid-area: tree;
+      article {
+        --easing: cubic-bezier(0.33, 1, 0.68, 1);
+        --transition-time: 400ms;
+        position: relative;
+        z-index: 2;
+        background: var(--color-background);
+        transition: translate var(--transition-time) var(--easing);
+        height: 100%;
+        box-shadow: 0 0 60px 60px var(--color-background);
+      }
     }
 
-    article {
-      grid-area: content;
+    tt-view {
+      position: relative;
+      display: block;
+      overflow: hidden;
+      isolation: isolate;
     }
-  }
-</style>
+  </style>
+</Layout>

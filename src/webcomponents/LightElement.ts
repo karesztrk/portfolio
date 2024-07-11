@@ -10,10 +10,13 @@ abstract class LightElement extends HTMLElement {
   }
 
   connectedCallback() {
+    this.dependencies();
     this.render();
   }
 
   abstract render(): void;
+
+  dependencies() {}
 }
 
 export default LightElement;

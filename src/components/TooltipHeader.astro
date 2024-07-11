@@ -1,0 +1,130 @@
+---
+import Sidebar from "@/assets/images/icons/Sidebar.svg";
+import Search from "@/assets/images/icons/Search.svg";
+import Icon from "astro-svg-icon";
+
+const props = Astro.props;
+---
+
+<nav {...props}>
+  <svg
+    role="presentation"
+    class="border"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect width="100%" height="100%"></rect>
+  </svg>
+  <input
+    id="toggle"
+    class="toggle visually-hidden"
+    type="checkbox"
+    aria-hidden="true"
+    aria-controls="tt-tree"
+  />
+  <label for="toggle" role="button">
+    <Icon
+      class="sidebar"
+      src={Sidebar.src}
+      viewBox={`0 0 ${Sidebar.width} ${Sidebar.height}`}
+      height="14px"
+    /><span class="visually-hidden">Toggle tree view</span></label
+  >
+  <tt-breadcrumb>
+    <slot />
+  </tt-breadcrumb>
+
+  <button id="search-button">
+    <Icon
+      src={Search.src}
+      viewBox={`0 0 ${Search.width} ${Search.height}`}
+      aria-label="Search button"
+    />
+  </button>
+</nav>
+
+<template id="tt-breadcrumb-template">
+  <span>Tooltips</span><span id="current-category">...</span><span
+    id="current-tooltip"
+    aria-current="page">...</span
+  >
+</template>
+
+<style>
+  nav {
+    display: flex;
+    gap: var(--space-xs);
+    align-items: safe center;
+    padding: 0.5rem 1rem;
+
+    font-variation-settings: "CASL" 0;
+  }
+
+  .toggle {
+    & ~ label {
+      cursor: pointer;
+    }
+
+    &:focus-visible ~ label {
+      outline-style: auto;
+      outline-offset: var(--button-outline-offset);
+    }
+  }
+
+  #search-button {
+    min-width: auto;
+    min-height: auto;
+    width: 1rem;
+    background: none;
+    margin-left: auto;
+
+    &::before,
+    &::after {
+      content: none;
+    }
+    &:hover {
+      outline: auto;
+    }
+
+    .icon {
+      vertical-align: middle;
+    }
+  }
+
+  .border {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    stroke: var(--color-breadcrumb-border);
+    stroke-dasharray: 5;
+    stroke-width: 2px;
+    pointer-events: none;
+  }
+
+  tt-breadcrumb {
+    width: min(50ch, 90%);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  span:not(:last-child)::after {
+    display: inline-block;
+    margin: 0 0.25rem;
+    content: "/";
+  }
+</style>
+
+<script>
+  const searchButton = document.getElementById("search-button");
+  const searchDialog = document.getElementById(
+    "search-dialog",
+  ) as HTMLDialogElement | null;
+
+  if (searchButton && searchDialog) {
+    searchButton.addEventListener("click", () => {
+      searchDialog.showModal();
+    });
+  }
+</script>
