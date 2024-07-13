@@ -253,13 +253,17 @@
 
   dialog {
     --entry-easing: cubic-bezier(0.33, 1, 0.68, 1);
-    --transition-time: 500ms;
+    --exit-easing: cubic-bezier(0.32, 0, 0.67, 0);
+    --entry-transition-time: 500ms;
+    --exit-transition-time: 300ms;
     background: var(--colog-dialog-bg);
     border: 1px solid var(--colog-dialog-border);
     width: calc(var(--content) + 2 * var(--popout-max));
     opacity: 0;
     transform: scale(0);
     margin-block-start: 1rem;
+    transition: all var(--exit-transition-time) var(--exit-easing)
+      allow-discrete;
 
     @media (prefers-reduced-motion: reduce) {
       transition: none;
@@ -267,8 +271,8 @@
 
     &::backdrop {
       opacity: 0;
-      transition: opacity var(--transition-time) display var(--transition-time)
-        allow-discrete;
+      transition: opacity var(--entry-transition-time) display
+        var(--entry-transition-time) allow-discrete;
       background: rgba(0, 0, 0, 0.61);
       backdrop-filter: blur(4px);
 
@@ -280,11 +284,8 @@
     &[open] {
       transform: scale(1);
       opacity: 1;
-      transition:
-        transform var(--transition-time) var(--entry-easing),
-        opacity var(--transition-time) var(--entry-easing),
-        overlay var(--transition-time) var(--entry-easing),
-        display var(--transition-time) var(--entry-easing) allow-discrete;
+      transition: all var(--entry-transition-time) var(--entry-easing)
+        allow-discrete;
 
       @media (prefers-reduced-motion: reduce) {
         transition: none;
@@ -295,9 +296,9 @@
   dialog[open]::backdrop {
     opacity: 1;
     transition:
-      opacity var(--transition-time) var(--entry-easing),
-      overlay var(--transition-time) var(--entry-easing),
-      display var(--transition-time) var(--entry-easing) allow-discrete;
+      opacity var(--entry-transition-time) var(--entry-easing),
+      overlay var(--entry-transition-time) var(--entry-easing),
+      display var(--entry-transition-time) var(--entry-easing) allow-discrete;
 
     @media (prefers-reduced-motion: reduce) {
       transition: none;
