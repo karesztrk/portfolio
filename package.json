@@ -10,13 +10,13 @@
     "e2e": "playwright test"
   },
   "dependencies": {
-    "astro": "^4.9.2",
+    "astro": "^4.11.5",
     "astro-svg-icon": "^1.1.0",
     "md4w": "^0.2.6",
     "sharp": "^0.33.2"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^3.0.1",
+    "@astrojs/mdx": "^3.1.2",
     "@benjc/rehype-scroll-to-top": "^0.1.5",
     "@playwright/test": "^1.45.0",
     "browserslist": "^4.23.0",
