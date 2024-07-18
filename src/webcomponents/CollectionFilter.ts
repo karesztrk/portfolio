@@ -1,37 +1,53 @@
 import LightElement from "@/webcomponents/LightElement";
+import type TooltipsView from "./TooltipsView";
 
 export class CollectionFilter extends LightElement {
   static {
     this.register("collection-filter", CollectionFilter);
   }
 
-  render() {
-    const input = this.querySelector("#search-input");
-    const onChange = (e: Event) => {
-      if (e.target instanceof HTMLInputElement) {
-        const value = e.target.value;
+  view: TooltipsView;
 
-        const entries = this.querySelectorAll(".entry");
+  constructor() {
+    super();
+    this.view = this.closest("tt-view") as TooltipsView;
+  }
 
-        entries.forEach((entry) => {
-          if (entry instanceof HTMLElement && entry.textContent !== null) {
-            const tags = entry.dataset.tags
-              ? entry.dataset.tags.split(",")
-              : [];
-            const show =
-              entry.textContent.toLowerCase().includes(value.toLowerCase()) ||
-              tags.some((tag) =>
-                tag.toLowerCase().includes(value.toLowerCase()),
-              );
+  getCollectionEntry(slug: string) {
+    return this.view.toCollectionEntry(slug);
+  }
 
-            (entry as HTMLElement).style.display = show ? "list-item" : "none";
-          }
-        });
+  getTags(slug: string): string[] {
+    const collectionEntry = this.getCollectionEntry(slug);
+    return collectionEntry?.entry?.data?.tags || [];
+  }
+
+  handleInput(target: HTMLInputElement) {
+    return () => {
+      const value = target.value;
+
+      const entries = this.querySelectorAll(
+        ".entry",
+      ) as NodeListOf<HTMLElement>;
+
+      for (const entry of entries) {
+        if (entry.textContent !== null) {
+          const tags = this.getTags(value);
+          const show =
+            entry.textContent.toLowerCase().includes(value.toLowerCase()) ||
+            tags.some((tag) => tag.toLowerCase().includes(value.toLowerCase()));
+
+          (entry as HTMLElement).style.display = show ? "list-item" : "none";
+        }
       }
     };
+  }
+
+  render() {
+    const input = this.querySelector("#search-input") as HTMLInputElement;
 
     if (input) {
-      input.addEventListener("input", onChange);
+      input.addEventListener("input", this.handleInput(input));
     }
   }
 }

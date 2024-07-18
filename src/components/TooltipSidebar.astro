@@ -1,31 +1,25 @@
 ---
-import {
-  tooltipCollectionNames,
-  type TooltipCollectionType,
-} from "@/util/collections.util.ts";
-import { formatTitle } from "@/util/blog.util";
-import Icon from "astro-svg-icon";
-import Markdown from "@/assets/images/icons/Markdown.svg";
-import Folder from "@/assets/images/icons/Folder.svg";
 import type { HTMLAttributes } from "astro/types";
-import type { CollectionEntry } from "astro:content";
+import Sidebar from "@/components/Sidebar.astro";
+import Icon from "astro-svg-icon";
+import Folder from "@/assets/images/icons/Folder.svg";
+import Markdown from "@/assets/images/icons/Markdown.svg";
+import { formatTitle } from "@/util/blog.util";
+import type { TooltipCollection } from "@/util/collections.util";
 
-interface Props extends HTMLAttributes<"div"> {
-  collections: Record<
-    TooltipCollectionType,
-    CollectionEntry<TooltipCollectionType>[]
-  >;
+interface Props extends HTMLAttributes<"aside"> {
+  collections: TooltipCollection;
+  name: string;
 }
 
-const { collections, ...rest } = Astro.props;
+const { id, name, collections, ...props } = Astro.props;
 ---
 
-<aside {...rest}>
+<Sidebar id={id} name={name} {...props}>
   <form>
-    <h3>Tree view</h3>
     <ul>
       {
-        tooltipCollectionNames.map((name) => (
+        Object.entries(collections).map(([name, value]) => (
           <li>
             <details name="category">
               <summary>
@@ -34,10 +28,10 @@ const { collections, ...rest } = Astro.props;
                   viewBox={`0 0 ${Folder.width} ${Folder.height}`}
                   height="14px"
                 />
-                {name}
+                <span>{name}</span>
               </summary>
               <ul>
-                {collections[name].map((entry) => (
+                {value.map((entry) => (
                   <li>
                     <button name="slug" value={entry.slug}>
                       <Icon
@@ -55,7 +49,7 @@ const { collections, ...rest } = Astro.props;
       }
     </ul>
   </form>
-</aside>
+</Sidebar>
 
 <style>
   details {
@@ -70,26 +64,14 @@ const { collections, ...rest } = Astro.props;
     font-variation-settings: "CASL" 0;
     font-size: 1rem;
 
+    > .icon,
+    > span {
+      vertical-align: middle;
+    }
+
     &:hover,
     &:focus {
       color: var(--color-title);
-    }
-  }
-
-  aside {
-    --easing: cubic-bezier(0.65, 0, 0.35, 1);
-    --transition-time: 500ms;
-    position: absolute;
-    inset: 0;
-    overflow: auto;
-    transition: all var(--transition-time) var(--easing) allow-discrete;
-    font-size: 1rem;
-    opacity: 1;
-  }
-
-  @starting-style {
-    aside {
-      opacity: 0;
     }
   }
 
@@ -109,15 +91,8 @@ const { collections, ...rest } = Astro.props;
     list-style: none;
   }
 
-  h3 {
-    margin-block-start: 0;
-  }
-
   ul {
     margin: 0;
-    > li:first-child {
-      margin-block-start: 0;
-    }
   }
 
   li {

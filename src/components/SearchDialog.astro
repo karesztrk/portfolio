@@ -5,14 +5,10 @@ import Icon from "astro-svg-icon";
 import Search from "@/assets/images/icons/Search.svg";
 import Markdown from "@/assets/images/icons/Markdown.svg";
 import Input from "@components/Input.astro";
-import type { CollectionEntry } from "astro:content";
-import type { TooltipCollectionType } from "@/util/collections.util.ts";
+import type { TooltipCollection } from "@/util/collections.util.ts";
 
 interface Props extends HTMLAttributes<"dialog"> {
-  collections: Record<
-    TooltipCollectionType,
-    CollectionEntry<TooltipCollectionType>[]
-  >;
+  collections: TooltipCollection;
 }
 
 const { collections, ...rest } = Astro.props;
@@ -39,23 +35,21 @@ const { collections, ...rest } = Astro.props;
 
       <menu tabindex={-1}>
         {
-          Object.keys(collections).map((collection) => (
+          Object.entries(collections).map(([name, collection]) => (
             <li class="collection">
-              {collection}
+              {name}
               <ul>
-                {collections[collection as TooltipCollectionType].map(
-                  (entry) => (
-                    <li class="entry" data-tags={entry.data.tags}>
-                      <button class="entry-button" value={entry.slug}>
-                        <Icon
-                          src={Markdown.src}
-                          viewBox={`0 0 ${Markdown.width} ${Markdown.height}`}
-                        />
-                        {formatTitle(entry.id)}
-                      </button>
-                    </li>
-                  ),
-                )}
+                {collection.map((entry) => (
+                  <li class="entry">
+                    <button class="entry-button" value={entry.slug}>
+                      <Icon
+                        src={Markdown.src}
+                        viewBox={`0 0 ${Markdown.width} ${Markdown.height}`}
+                      />
+                      {formatTitle(entry.id)}
+                    </button>
+                  </li>
+                ))}
               </ul>
             </li>
           ))

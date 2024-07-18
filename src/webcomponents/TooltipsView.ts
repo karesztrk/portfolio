@@ -1,11 +1,16 @@
-import type { TooltipCollectionType } from "@/util/collections.util.ts";
-import type { CollectionEntry } from "astro:content";
+import type {
+  TooltipCollection,
+  TooltipCollectionType,
+  TooltipCollectionValue,
+} from "@/util/collections.util.ts";
 import { init, mdToHtml } from "md4w";
 import { formatTitle } from "@/util/blog.util";
 import wasm from "/node_modules/md4w/js/md4w-small.wasm?url";
 import LightElement from "@/webcomponents/LightElement";
+import { loadCollections } from "@/data/api";
+import type TooltipSidebar from "./TooltipSidebar";
 
-export class TooltipsView extends LightElement {
+class TooltipsView extends LightElement {
   static {
     this.register("tt-view", TooltipsView);
   }
@@ -22,29 +27,20 @@ export class TooltipsView extends LightElement {
 
   loaded = false;
 
-  #collections: Record<
-    TooltipCollectionType,
-    CollectionEntry<TooltipCollectionType>[]
-  >;
+  collections: TooltipCollection = {
+    Articles: [],
+    Codepens: [],
+    Tools: [],
+    Snippets: [],
+    Libraries: [],
+    Stack: [],
+  };
 
   constructor() {
     super();
-    this.#collections = {
-      Articles: [],
-      Codepens: [],
-      Tools: [],
-      Snippets: [],
-      Libraries: [],
-      Stack: [],
-    };
-  }
-
-  get collections() {
-    return this.#collections;
-  }
-
-  set collections(value) {
-    this.#collections = value;
+    loadCollections().then((collections) => {
+      this.collections = collections;
+    });
   }
 
   onDialogClose(searchDialog: HTMLDialogElement) {
@@ -59,11 +55,15 @@ export class TooltipsView extends LightElement {
       const breadrumbTemplate = this.getTemplate(this.breadcrumbTemplate);
       const collectionEntry = this.toCollectionEntry(returnValue);
       if (collectionEntry) {
-        this.fillTemplate(template, collectionEntry);
+        this.fillTemplate(template, collectionEntry.entry);
         this.addTemplate(this.articleSelector, template);
         this.setCurrentItemBySlug(returnValue);
         if (breadrumbTemplate) {
-          this.fillBreadcrumbTemplate(breadrumbTemplate, collectionEntry);
+          this.fillBreadcrumbTemplate(
+            breadrumbTemplate,
+            collectionEntry.collection,
+            collectionEntry.entry,
+          );
           this.addTemplate(this.breadcrumbTag, breadrumbTemplate);
         }
         this.toggleSidebar();
@@ -83,11 +83,15 @@ export class TooltipsView extends LightElement {
       const collectionEntry = this.toCollectionEntry(slug);
       const breadrumbTemplate = this.getTemplate(this.breadcrumbTemplate);
       if (collectionEntry) {
-        this.fillTemplate(template, collectionEntry);
+        this.fillTemplate(template, collectionEntry.entry);
         this.addTemplate(this.articleSelector, template);
         this.setCurrentItem(e.submitter);
         if (breadrumbTemplate) {
-          this.fillBreadcrumbTemplate(breadrumbTemplate, collectionEntry);
+          this.fillBreadcrumbTemplate(
+            breadrumbTemplate,
+            collectionEntry.collection,
+            collectionEntry.entry,
+          );
           this.addTemplate(this.breadcrumbTag, breadrumbTemplate);
         }
         this.toggleSidebar();
@@ -126,25 +130,24 @@ export class TooltipsView extends LightElement {
 
   toCollectionEntry(
     slug: string,
-  ): CollectionEntry<TooltipCollectionType> | undefined {
-    for (const collection of Object.values(this.collections)) {
-      for (const entry of collection) {
+  ):
+    | { collection: TooltipCollectionType; entry: TooltipCollectionValue }
+    | undefined {
+    for (const [collection, collectionEntry] of Object.entries(
+      this.collections,
+    )) {
+      for (const entry of collectionEntry) {
         if (entry.slug === slug) {
-          return entry;
+          return { collection, entry } as {
+            collection: TooltipCollectionType;
+            entry: TooltipCollectionValue;
+          };
         }
       }
     }
   }
 
-  getTemplate(id: string) {
-    const template = document.getElementById(id) as HTMLTemplateElement | null;
-    return template?.content.cloneNode(true) as HTMLElement;
-  }
-
-  fillTemplate(
-    template: HTMLElement,
-    collectionEntry: CollectionEntry<TooltipCollectionType>,
-  ) {
+  fillTemplate(template: HTMLElement, collectionEntry: TooltipCollectionValue) {
     this.setTitle(template, collectionEntry);
     this.setContent(template, collectionEntry);
     this.setTags(template, collectionEntry);
@@ -152,11 +155,12 @@ export class TooltipsView extends LightElement {
 
   fillBreadcrumbTemplate(
     template: HTMLElement,
-    collectionEntry: CollectionEntry<TooltipCollectionType>,
+    collection: string,
+    collectionEntry: TooltipCollectionValue,
   ) {
     const category = template.querySelector("#current-category");
     if (category) {
-      category.textContent = collectionEntry.collection;
+      category.textContent = collection;
     }
 
     const currentTooltip = template.querySelector(
@@ -176,30 +180,21 @@ export class TooltipsView extends LightElement {
     }
   }
 
-  setTitle(
-    template: HTMLElement,
-    collectionEntry: CollectionEntry<TooltipCollectionType>,
-  ) {
+  setTitle(template: HTMLElement, collectionEntry: TooltipCollectionValue) {
     const title = template.querySelector("#title");
     if (title) {
       title.textContent = formatTitle(collectionEntry.id);
     }
   }
 
-  setContent(
-    template: HTMLElement,
-    collectionEntry: CollectionEntry<TooltipCollectionType>,
-  ) {
+  setContent(template: HTMLElement, collectionEntry: TooltipCollectionValue) {
     const content = template.querySelector("#content");
     if (content) {
       content.innerHTML = mdToHtml(collectionEntry.body);
     }
   }
 
-  setTags(
-    template: HTMLElement,
-    collectionEntry: CollectionEntry<TooltipCollectionType>,
-  ) {
+  setTags(template: HTMLElement, collectionEntry: TooltipCollectionValue) {
     const tags = template.querySelector("ul");
     const tagItem = template.querySelector("li");
     if (tags && tagItem) {

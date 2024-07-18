@@ -2,10 +2,9 @@
 import { findTooltips } from "@/util/collections.util.ts";
 import Layout from "./Layout.astro";
 import SearchDialog from "@components/SearchDialog.astro";
-import Fields from "@/components/Fields.astro";
-import Tags from "@/components/Tags.astro";
 import TooltipHeader from "@/components/TooltipHeader.astro";
 import TooltipSidebar from "@/components/TooltipSidebar.astro";
+import TooltipsView from "@/components/TooltipView.astro";
 
 const collections = await findTooltips();
 ---
@@ -20,40 +19,23 @@ const collections = await findTooltips();
   />
   <h1>Tooltips</h1>
   <article>
-    <tt-view>
+    <TooltipsView>
       <TooltipHeader class="tt-header" aria-label="Breadcrumb">
         <span>Tooltips</span>
       </TooltipHeader>
       <tt-content>
-        <TooltipSidebar id="tt-tree" collections={collections} />
+        <TooltipSidebar
+          id="tt-tree"
+          name="Tree view"
+          collections={collections}
+        />
         <article>
           <p>☝️ Select a tooltip</p>
-        </article></tt-content
-      >
-    </tt-view>
-
-    <SearchDialog id="search-dialog" collections={collections} />
+        </article>
+      </tt-content>
+      <SearchDialog id="search-dialog" collections={collections} />
+    </TooltipsView>
   </article>
-
-  <template id="tt-article-template">
-    <h2 id="title"></h2>
-    <Fields>
-      <Tags data={["tag"]} />
-    </Fields>
-    <div id="content"></div>
-  </template>
-
-  <script>
-    import { loadCollections } from "@/data/api";
-    import TooltipsView from "@/webcomponents/TooltipsView";
-
-    const view = document.querySelector("tt-view") as TooltipsView;
-    if (view) {
-      loadCollections().then((resp) => {
-        view.collections = resp;
-      });
-    }
-  </script>
 
   <style>
     nav {
@@ -63,7 +45,7 @@ const collections = await findTooltips();
         & ~ tt-content {
           & > article {
             --transition-time: 500ms;
-            --easing: cubic-bezier(0.32, 0, 0.67, 0);
+            --easing: cubic-bezier(0.77, 0, 0.175, 1);
             translate: 90% 0;
           }
         }
@@ -100,13 +82,6 @@ const collections = await findTooltips();
         height: 100%;
         box-shadow: 0 0 60px 60px var(--color-background);
       }
-    }
-
-    tt-view {
-      position: relative;
-      display: block;
-      overflow: hidden;
-      isolation: isolate;
     }
   </style>
 </Layout>

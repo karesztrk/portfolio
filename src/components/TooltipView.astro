@@ -1,0 +1,27 @@
+---
+import Fields from "@/components/Fields.astro";
+import Tags from "@/components/Tags.astro";
+---
+
+<tt-view><slot /></tt-view>
+
+<template id="tt-article-template">
+  <h2 id="title"></h2>
+  <Fields>
+    <Tags data={["tag"]} />
+  </Fields>
+  <div id="content"></div>
+</template>
+
+<style>
+  tt-view {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    isolation: isolate;
+  }
+</style>
+
+<script>
+  import "@/webcomponents/TooltipsView";
+</script>

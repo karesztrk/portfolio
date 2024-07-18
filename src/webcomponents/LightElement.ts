@@ -17,6 +17,11 @@ abstract class LightElement extends HTMLElement {
   abstract render(): void;
 
   dependencies() {}
+
+  getTemplate(id: string) {
+    const template = document.getElementById(id) as HTMLTemplateElement | null;
+    return template?.content.cloneNode(true) as HTMLElement;
+  }
 }
 
 export default LightElement;
