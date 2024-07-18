@@ -8,7 +8,6 @@ import { formatTitle } from "@/util/blog.util";
 import wasm from "/node_modules/md4w/js/md4w-small.wasm?url";
 import LightElement from "@/webcomponents/LightElement";
 import { loadCollections } from "@/data/api";
-import type TooltipSidebar from "./TooltipSidebar";
 
 class TooltipsView extends LightElement {
   static {
@@ -20,8 +19,6 @@ class TooltipsView extends LightElement {
   breadcrumbTemplate = "tt-breadcrumb-template";
 
   breadcrumbTag = "tt-breadcrumb";
-
-  searchDialogId = "search-dialog";
 
   articleSelector = "article";
 
@@ -43,90 +40,49 @@ class TooltipsView extends LightElement {
     });
   }
 
-  onDialogClose(searchDialog: HTMLDialogElement) {
-    return async () => {
-      const { returnValue } = searchDialog;
-
-      await this.init();
-      if (!returnValue) {
-        return;
+  handleSelect(slug: string) {
+    if (!slug) {
+      return;
+    }
+    const template = this.getTemplate(this.articleTemplate);
+    const collectionEntry = this.toCollectionEntry(slug);
+    const breadrumbTemplate = this.getTemplate(this.breadcrumbTemplate);
+    if (collectionEntry) {
+      this.fillTemplate(template, collectionEntry.entry);
+      this.addTemplate(this.articleSelector, template);
+      if (breadrumbTemplate) {
+        this.fillBreadcrumbTemplate(
+          breadrumbTemplate,
+          collectionEntry.collection,
+          collectionEntry.entry,
+        );
+        this.addTemplate(this.breadcrumbTag, breadrumbTemplate);
       }
-      const template = this.getTemplate(this.articleTemplate);
-      const breadrumbTemplate = this.getTemplate(this.breadcrumbTemplate);
-      const collectionEntry = this.toCollectionEntry(returnValue);
-      if (collectionEntry) {
-        this.fillTemplate(template, collectionEntry.entry);
-        this.addTemplate(this.articleSelector, template);
-        this.setCurrentItemBySlug(returnValue);
-        if (breadrumbTemplate) {
-          this.fillBreadcrumbTemplate(
-            breadrumbTemplate,
-            collectionEntry.collection,
-            collectionEntry.entry,
-          );
-          this.addTemplate(this.breadcrumbTag, breadrumbTemplate);
-        }
-        this.toggleSidebar();
-      }
-    };
-  }
-
-  onTreeLeafClick() {
-    return async (e: SubmitEvent) => {
-      e.preventDefault();
-      const values = new FormData(e.target as HTMLFormElement, e.submitter);
-      const slug = values.get("slug");
-      if (!slug || typeof slug !== "string" || !e.submitter) {
-        return;
-      }
-      const template = this.getTemplate(this.articleTemplate);
-      const collectionEntry = this.toCollectionEntry(slug);
-      const breadrumbTemplate = this.getTemplate(this.breadcrumbTemplate);
-      if (collectionEntry) {
-        this.fillTemplate(template, collectionEntry.entry);
-        this.addTemplate(this.articleSelector, template);
-        this.setCurrentItem(e.submitter);
-        if (breadrumbTemplate) {
-          this.fillBreadcrumbTemplate(
-            breadrumbTemplate,
-            collectionEntry.collection,
-            collectionEntry.entry,
-          );
-          this.addTemplate(this.breadcrumbTag, breadrumbTemplate);
-        }
-        this.toggleSidebar();
-      }
-    };
-  }
-
-  registerTreeSubmitHandler() {
-    const form = this.querySelector("form") as HTMLFormElement | null;
-    if (form) {
-      form.addEventListener("submit", this.onTreeLeafClick());
+      this.toggleSidebar();
     }
   }
 
-  registerDialogSubmitHandler() {
-    const searchDialog = document.getElementById(
-      this.searchDialogId,
-    ) as HTMLDialogElement | null;
-    if (searchDialog) {
-      searchDialog.addEventListener("close", this.onDialogClose(searchDialog));
-    }
-  }
-
-  async init() {
+  async dependencies() {
     if (!this.loaded) {
       await init(wasm);
       this.loaded = true;
     }
   }
 
-  render() {
-    this.init();
-    this.registerTreeSubmitHandler();
-    this.registerDialogSubmitHandler();
+  onSubmit(e: SubmitEvent) {
+    const target = e.target as HTMLFormElement;
+    if (target.method !== "dialog") {
+      e.preventDefault();
+    }
+    const values = new FormData(target, e.submitter);
+    const slug = values.get("slug");
+    if (!slug || typeof slug !== "string" || !e.submitter) {
+      return;
+    }
+    this.handleSelect(slug);
   }
+
+  render() {}
 
   toCollectionEntry(
     slug: string,

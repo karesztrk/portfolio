@@ -5,8 +5,23 @@ abstract class LightElement extends HTMLElement {
     customElements.define(tagName, ctor);
   }
 
+  static handlerSymbol = "$";
+
   constructor() {
     super();
+
+    for (const attribute of this.attributes) {
+      if (attribute.name.startsWith(LightElement.handlerSymbol)) {
+        const name = attribute.name.slice(1);
+        const value = attribute.value;
+        if (this.isOwnProperty(value)) {
+          this.addEventListener(
+            name as keyof HTMLElementEventMap,
+            this[value] as EventListener,
+          );
+        }
+      }
+    }
   }
 
   connectedCallback() {
@@ -21,6 +36,12 @@ abstract class LightElement extends HTMLElement {
   getTemplate(id: string) {
     const template = document.getElementById(id) as HTMLTemplateElement | null;
     return template?.content.cloneNode(true) as HTMLElement;
+  }
+
+  isOwnProperty(name: unknown): name is keyof this {
+    const o = Object.getPrototypeOf(this);
+    const names = Object.getOwnPropertyNames(o);
+    return names.includes(name as string);
   }
 }
 

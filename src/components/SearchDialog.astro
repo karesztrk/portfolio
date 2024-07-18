@@ -28,6 +28,7 @@ const { collections, ...rest } = Astro.props;
         <button
           id="close-button"
           value=""
+          name="slug"
           formmethod="dialog"
           aria-label="Close dialog">X</button
         >
@@ -41,7 +42,7 @@ const { collections, ...rest } = Astro.props;
               <ul>
                 {collection.map((entry) => (
                   <li class="entry">
-                    <button class="entry-button" value={entry.slug}>
+                    <button name="slug" class="entry-button" value={entry.slug}>
                       <Icon
                         src={Markdown.src}
                         viewBox={`0 0 ${Markdown.width} ${Markdown.height}`}

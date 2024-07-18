@@ -3,7 +3,7 @@ import Fields from "@/components/Fields.astro";
 import Tags from "@/components/Tags.astro";
 ---
 
-<tt-view><slot /></tt-view>
+<tt-view $submit="onSubmit"><slot /></tt-view>
 
 <template id="tt-article-template">
   <h2 id="title"></h2>
