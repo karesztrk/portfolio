@@ -9,7 +9,7 @@ publish = "dist"
     Cache-Control = "public, max-age=31536000"
 
 [[headers]]
-  for = "/*.(svg|webp|png|avif|png|jpeg|mp3)"
+  for = "/*.(svg|webp|png|avif|png|jpeg|mp3|wasm)"
   [headers.values]
     # Store cache-busted assets for one year
     Cache-Control = "public, max-age=31536000, immutable"
@@ -19,6 +19,12 @@ publish = "dist"
   [headers.values]
     # Store cache-busted CSS for one year
     Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/tooltips/meta.json"
+  [headers.values]
+    # Cache for one week, but can be reused for one day
+    Cache-Control = "public, max-age=604800, stale-while-revalidate=86400"
 
 [[headers]]
   for = "/*"
@@ -59,5 +65,11 @@ publish = "dist"
 [[redirects]]
   from = "/daily-drivers/"
   to = "/uses"
+  status = 301
+  force = false
+
+[[redirects]]
+  from = "/tooltips/* slug=:slug"
+  to = "/tooltips/:splat/"
   status = 301
   force = false

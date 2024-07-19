@@ -16,7 +16,7 @@ test.describe("Tooltips page", () => {
 
     const dialog = tooltips.searchDialog();
     // Fist button is the close button, the Second is the first inside the menu
-    const entryButton = dialog.locator("button").locator("nth=1");
+    const entryButton = dialog.locator("button:visible").locator("nth=1");
     const entryText = await entryButton.textContent();
 
     expect(entryText).not.toBeNull();
