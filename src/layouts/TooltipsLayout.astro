@@ -5,7 +5,7 @@ import SearchDialog from "@/components/SearchDialog.astro";
 import TooltipHeader from "@/components/TooltipHeader.astro";
 import TooltipSidebar from "@/components/TooltipSidebar.astro";
 import TooltipsView from "@/components/TooltipView.astro";
-
+import wasm from "/node_modules/md4w/js/md4w-small.wasm?url";
 const collections = await findTooltips();
 ---
 
@@ -17,6 +17,7 @@ const collections = await findTooltips();
     as="fetch"
     crossorigin
   />
+  <link slot="head" rel="preload" href={wasm} as="fetch" crossorigin />
   <h1>Tooltips</h1>
   <article>
     <TooltipsView>
@@ -37,10 +38,6 @@ const collections = await findTooltips();
     </TooltipsView>
   </article>
 </Layout>
-
-<script>
-  import "@/webcomponents/TooltipSelector";
-</script>
 
 <style>
   nav {
