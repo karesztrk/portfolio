@@ -30,25 +30,15 @@ export const findTooltips = (): Promise<TooltipCollection> =>
   )
     .then((collections) => collections.flat())
     .then((collections) => {
-      const groups = Object.groupBy(
-        collections,
-        ({ collection }) => collection,
-      );
+      const groups = collections.reduce((acc, curr) => {
+        const key = curr.collection;
+        if (!acc[key]) {
+          acc[key] = [];
+        }
+        const { collection, render, ...rest } = curr;
+        acc[key].push(rest);
+        return acc;
+      }, {} as TooltipCollection);
 
-      const result: TooltipCollection = {
-        Articles: [],
-        Codepens: [],
-        Libraries: [],
-        Snippets: [],
-        Stack: [],
-        Tools: [],
-      };
-
-      for (const [key, value] of Object.entries(groups)) {
-        result[key as TooltipCollectionType] = value.map(
-          ({ collection, render, ...rest }) => ({ ...rest }),
-        );
-      }
-
-      return result;
+      return groups;
     });
