@@ -1,3 +1,3 @@
 export const loadCollections = () => {
-  return fetch("/tooltips/collections.json").then((resp) => resp.json());
+  return fetch("/tooltips/meta.json").then((resp) => resp.json());
 };
