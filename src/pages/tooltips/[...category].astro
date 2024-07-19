@@ -25,7 +25,7 @@ await init();
     <p>{description}</p>
     {
       Object.values(entries).map((entry) => (
-        <details>
+        <details id={entry.slug}>
           <summary>{formatTitle(entry.id)}</summary>
           {mdToReadableHtml(entry.body)}
         </details>

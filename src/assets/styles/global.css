@@ -206,7 +206,8 @@
       background-color: var(--color-summary-bg);
     }
 
-    &:hover {
+    &:hover,
+    &:target {
       border: 2px solid var(--color-hover-summary-border);
     }
   }
