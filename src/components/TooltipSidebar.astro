@@ -16,7 +16,7 @@ const { id, name, collections, ...props } = Astro.props;
 ---
 
 <Sidebar id={id} name={name} {...props}>
-  <form>
+  <form method="get">
     <ul>
       {
         Object.entries(collections).map(([name, value]) => (
@@ -36,8 +36,7 @@ const { id, name, collections, ...props } = Astro.props;
                     <button
                       name="slug"
                       value={entry.slug}
-                      formmethod="get"
-                      formaction={`/tooltips/${entry.slug}`}
+                      formaction={`/tooltips/${name}#${entry.slug}`}
                     >
                       <Icon
                         src={Markdown.src}
