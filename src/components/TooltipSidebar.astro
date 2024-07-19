@@ -33,7 +33,12 @@ const { id, name, collections, ...props } = Astro.props;
               <ul>
                 {value.map((entry) => (
                   <li>
-                    <button name="slug" value={entry.slug}>
+                    <button
+                      name="slug"
+                      value={entry.slug}
+                      formmethod="get"
+                      formaction={`/tooltips/${entry.slug}`}
+                    >
                       <Icon
                         src={Markdown.src}
                         viewBox={`0 0 ${Markdown.width} ${Markdown.height}`}

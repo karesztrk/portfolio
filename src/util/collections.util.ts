@@ -1,16 +1,8 @@
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
+import tooltipCollections from "@/data/tooltips.json";
 
-export const tooltipCollectionNames = [
-  "Articles",
-  "Codepens",
-  "Libraries",
-  "Snippets",
-  "Stack",
-  "Tools",
-] as const;
-
-export type TooltipCollectionType = (typeof tooltipCollectionNames)[number];
+export type TooltipCollectionType = (typeof tooltipCollections)[number]["name"];
 
 export type TooltipCollectionValue = Omit<
   CollectionEntry<TooltipCollectionType>,
@@ -29,11 +21,11 @@ export const findTooltip = (c: TooltipCollectionType) =>
 
 export const findTooltips = (): Promise<TooltipCollection> =>
   Promise.all(
-    tooltipCollectionNames.map((c) =>
+    tooltipCollections.map((c) =>
       getCollection<
         TooltipCollectionType,
         CollectionEntry<TooltipCollectionType>
-      >(c),
+      >(c.name),
     ),
   )
     .then((collections) => collections.flat())

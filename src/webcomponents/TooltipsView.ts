@@ -3,11 +3,10 @@ import type {
   TooltipCollectionType,
   TooltipCollectionValue,
 } from "@/util/collections.util.ts";
-import { init, mdToHtml } from "md4w";
 import { formatTitle } from "@/util/blog.util";
-import wasm from "/node_modules/md4w/js/md4w-small.wasm?url";
 import LightElement from "@/webcomponents/LightElement";
 import { loadCollections } from "@/data/api";
+import type MarkdownContent from "./MarkdownContent";
 
 class TooltipsView extends LightElement {
   static {
@@ -21,8 +20,6 @@ class TooltipsView extends LightElement {
   breadcrumbTag = "tt-breadcrumb";
 
   articleSelector = "article";
-
-  loaded = false;
 
   collections: TooltipCollection = {
     Articles: [],
@@ -59,13 +56,6 @@ class TooltipsView extends LightElement {
         this.addTemplate(this.breadcrumbTag, breadrumbTemplate);
       }
       this.toggleSidebar();
-    }
-  }
-
-  async dependencies() {
-    if (!this.loaded) {
-      await init(wasm);
-      this.loaded = true;
     }
   }
 
@@ -144,10 +134,8 @@ class TooltipsView extends LightElement {
   }
 
   setContent(template: HTMLElement, collectionEntry: TooltipCollectionValue) {
-    const content = template.querySelector("#content");
-    if (content) {
-      content.innerHTML = mdToHtml(collectionEntry.body);
-    }
+    const md = template.querySelector("md-content") as MarkdownContent;
+    md.content = collectionEntry.body;
   }
 
   setTags(template: HTMLElement, collectionEntry: TooltipCollectionValue) {

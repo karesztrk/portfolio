@@ -1,16 +1,19 @@
 ---
 import Fields from "@/components/Fields.astro";
 import Tags from "@/components/Tags.astro";
+import wasm from "/node_modules/md4w/js/md4w-small.wasm?url";
 ---
 
-<tt-view $submit="onSubmit"><slot /></tt-view>
+<tt-view $submit="onSubmit"
+  ><md-context href={wasm}><slot /></md-context></tt-view
+>
 
 <template id="tt-article-template">
   <h2 id="title"></h2>
   <Fields>
     <Tags data={["tag"]} />
   </Fields>
-  <div id="content"></div>
+  <md-content></md-content>
 </template>
 
 <style>
@@ -24,4 +27,6 @@ import Tags from "@/components/Tags.astro";
 
 <script>
   import "@/webcomponents/TooltipsView";
+  import "@/webcomponents/MarkdownContext";
+  import "@/webcomponents/MarkdownContent";
 </script>
