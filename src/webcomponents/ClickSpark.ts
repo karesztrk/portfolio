@@ -1,4 +1,4 @@
-import ShadowElement from "@/webcomponents/ShadowElement";
+import { ShadowElement } from "@karesztrk/webcomponent-base";
 
 // Copyright (c) 2023 Ryan Mulligan
 // https://github.com/hexagoncircle/click-spark?tab=readme-ov-file

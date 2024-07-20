@@ -1,4 +1,4 @@
-import LightElement from "@/webcomponents/LightElement";
+import { LightElement } from "@karesztrk/webcomponent-base";
 import type TooltipsView from "./TooltipsView";
 
 export class CollectionFilter extends LightElement {

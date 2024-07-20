@@ -3,7 +3,7 @@ import type {
   TooltipCollectionType,
   TooltipCollectionValue,
 } from "@/util/collections.util.ts";
-import LightElement from "@/webcomponents/LightElement";
+import { LightElement } from "@karesztrk/webcomponent-base";
 import { loadCollections } from "@/data/api";
 
 class TooltipsView extends LightElement {

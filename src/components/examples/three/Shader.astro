@@ -30,7 +30,7 @@ const props = Astro.props;
     IcosahedronGeometry,
   } from "https://esm.sh/three@0.159.0";
   import vertexShader from "./displacer.glsl?raw";
-  import LightElement from "@/webcomponents/LightElement";
+  import { LightElement } from "@karesztrk/webcomponent-base";
 
   export class ThreeShader extends LightElement {
     static {
