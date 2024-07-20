@@ -1,6 +1,5 @@
-import LightElement from "./LightElement";
+import { LightElement } from "@karesztrk/webcomponent-base";
 import type { TooltipCollectionValue } from "@/util/collections.util";
-import type MarkdownContent from "./MarkdownContent";
 import { formatTitle } from "@/util/blog.util";
 
 class TooltipHeader extends LightElement {

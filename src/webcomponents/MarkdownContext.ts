@@ -1,5 +1,5 @@
 import { init } from "md4w";
-import LightElement from "./LightElement";
+import { LightElement } from "@karesztrk/webcomponent-base";
 
 class MarkdownContext extends LightElement {
   static {

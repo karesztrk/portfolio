@@ -1,4 +1,4 @@
-import LightElement from "@/webcomponents/LightElement";
+import { LightElement } from "@karesztrk/webcomponent-base";
 import quotes from "@/data/quotes.json";
 
 export class RandomQuote extends LightElement {

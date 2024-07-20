@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@karesztrk/webcomponent-base':
+        specifier: ^1.0.8
+        version: 1.0.8
       astro:
         specifier: ^4.11.5
         version: 4.11.5(lightningcss@1.24.1)(typescript@5.4.5)
@@ -648,6 +651,9 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
+
+  '@karesztrk/webcomponent-base@1.0.8':
+    resolution: {integrity: sha512-dDrTlY2aTKSNlUzQbCtMmc62dokW3rLSVhC9uoipfHNJXFWYH6TvHA3sfwwQ3juCxVrL5jGQSIVTSaN6rXpKwQ==}
 
   '@mdx-js/mdx@3.0.1':
     resolution: {integrity: sha512-eIQ4QTrOWyL3LWEe/bu6Taqzq2HQvHcyTMaOrI95P2/LmJE7AsfPfgJGuFLPVqBUE1BC1rik3VIhU+s9u72arA==}
@@ -2913,6 +2919,8 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
+
+  '@karesztrk/webcomponent-base@1.0.8': {}
 
   '@mdx-js/mdx@3.0.1':
     dependencies:
