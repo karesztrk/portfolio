@@ -6,18 +6,18 @@ class MarkdownContent extends LightElement {
     this.register("md-content", MarkdownContent);
   }
 
-  #content: string | undefined;
+  content?: string;
 
   constructor() {
     super();
-  }
 
-  set content(content: string) {
-    this.content = content;
-  }
-
-  get content(): string | undefined {
-    return this.#content;
+    this.addEventListener("render", (e) => {
+      if (e instanceof CustomEvent) {
+        const content = e.detail;
+        this.content = content;
+        this.render();
+      }
+    });
   }
 
   render() {

@@ -1,5 +1,8 @@
-// Inspired by: Hawk Ticehurst
-// https://hawkticehurst.com/writing/bring-your-own-base-class/
+/**
+ * A custom component base class that uses Shadow DOM.
+ * *Inspired by: Hawk Ticehurst*
+ * @see https://hawkticehurst.com/writing/bring-your-own-base-class/
+ */
 abstract class ShadowElement extends HTMLElement {
   static register(tagName: string, ctor: new () => HTMLElement) {
     customElements.define(tagName, ctor);

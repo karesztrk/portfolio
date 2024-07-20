@@ -6,7 +6,7 @@ import Icon from "astro-svg-icon";
 const props = Astro.props;
 ---
 
-<nav {...props}>
+<tt-header {...props} role="nav">
   <svg
     role="presentation"
     class="border"
@@ -41,7 +41,11 @@ const props = Astro.props;
       aria-label="Search button"
     />
   </button>
-</nav>
+</tt-header>
+
+<script>
+  import "@/webcomponents/TooltipHeader";
+</script>
 
 <template id="tt-breadcrumb-template">
   <span>Tooltips</span><span id="current-category">...</span><span
@@ -51,7 +55,7 @@ const props = Astro.props;
 </template>
 
 <style>
-  nav {
+  tt-header {
     display: flex;
     gap: var(--space-xs);
     align-items: safe center;

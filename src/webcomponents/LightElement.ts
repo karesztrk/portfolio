@@ -1,5 +1,8 @@
-// Inspired by: Mayank
-// https://www.mayank.co/blog/custom-element-base/
+/**
+ * A custom component base class that uses Light (regular) DOM.
+ * *Inspired by: Hawk Ticehurst*
+ * @see https://hawkticehurst.com/writing/bring-your-own-base-class/
+ */
 abstract class LightElement extends HTMLElement {
   static register(tagName: string, ctor: new () => HTMLElement) {
     customElements.define(tagName, ctor);
