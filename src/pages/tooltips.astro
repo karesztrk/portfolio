@@ -1,5 +1,94 @@
 ---
 import TooltipsLayout from "../layouts/TooltipsLayout.astro";
+import SearchDialog from "@/components/SearchDialog.astro";
+import TooltipHeader from "@/components/TooltipHeader.astro";
+import TooltipSidebar from "@/components/TooltipSidebar.astro";
+import TooltipsView from "@/components/TooltipView.astro";
+import wasm from "/node_modules/md4w/js/md4w-small.wasm?url";
+import { findTooltips } from "@/util/collections.util";
+
+const collections = await findTooltips();
 ---
 
-<TooltipsLayout />
+<TooltipsLayout>
+  <link
+    slot="head"
+    rel="preload"
+    href="/tooltips/meta.json"
+    as="fetch"
+    crossorigin
+  />
+  <link slot="head" rel="preload" href={wasm} as="fetch" crossorigin />
+  <h1>Tooltips</h1>
+  <article>
+    <TooltipsView>
+      <TooltipHeader class="tt-header" aria-label="Breadcrumb">
+        <span>Tooltips</span>
+      </TooltipHeader>
+      <tt-content>
+        <TooltipSidebar
+          id="tt-tree"
+          name="Tree view"
+          collections={collections}
+        />
+        <tt-article role="article">
+          <p>☝️ Select a tooltip</p>
+        </tt-article>
+      </tt-content>
+      <SearchDialog id="search-dialog" collections={collections} />
+    </TooltipsView>
+  </article>
+</TooltipsLayout>
+
+<script>
+  import "@/webcomponents/TooltipArticle";
+</script>
+
+<style>
+  tt-header {
+    position: relative;
+    z-index: 2;
+    &:has(#toggle:checked) {
+      & ~ tt-content {
+        & > tt-article {
+          --transition-time: 500ms;
+          --easing: cubic-bezier(0.77, 0, 0.175, 1);
+          translate: 90% 0;
+        }
+      }
+    }
+    &:not(:has(#toggle:checked)) {
+      & ~ tt-content {
+        aside {
+          opacity: 0;
+          display: none;
+        }
+      }
+    }
+  }
+
+  tt-content {
+    --_height: 500px;
+    display: block;
+    position: relative;
+    height: var(--_height);
+    z-index: 1;
+    isolation: isolate;
+
+    aside {
+      z-index: 1;
+    }
+
+    tt-article {
+      --easing: cubic-bezier(0.33, 1, 0.68, 1);
+      --transition-time: 400ms;
+      display: block;
+      position: relative;
+      z-index: 2;
+      background: var(--color-background);
+      transition: translate var(--transition-time) var(--easing);
+      height: 100%;
+      box-shadow: 0 0 60px 60px var(--color-background);
+    }
+  }
+</style>
