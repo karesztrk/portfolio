@@ -1,35 +1,13 @@
-import { init } from "md4w";
-import { LightElement } from "@karesztrk/webcomponent-base";
+import { MarkdownContext } from "md4wc";
 
-class MarkdownContext extends LightElement {
+class MarkdownContextComponent extends MarkdownContext {
   static {
     this.register("md-context", MarkdownContext);
   }
 
   constructor() {
     super();
-    this.init();
   }
-
-  init(): Promise<void> {
-    return new Promise<void>((resolve, reject) => {
-      if (this.href) {
-        init(this.href)
-          .then(() => {
-            resolve();
-          })
-          .catch(() => reject());
-      } else {
-        reject();
-      }
-    });
-  }
-
-  get href() {
-    return this.getAttribute("href");
-  }
-
-  render() {}
 }
 
-export default MarkdownContext;
+export default MarkdownContextComponent;

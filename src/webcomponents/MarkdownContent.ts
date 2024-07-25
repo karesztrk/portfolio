@@ -1,30 +1,13 @@
-import { mdToHtml } from "md4w";
-import { LightElement } from "@karesztrk/webcomponent-base";
+import { MarkdownContent } from "md4wc";
 
-class MarkdownContent extends LightElement {
+class MarkdownComponent extends MarkdownContent {
   static {
     this.register("md-content", MarkdownContent);
   }
 
-  content?: string;
-
   constructor() {
     super();
-
-    this.addEventListener("render", (e) => {
-      if (e instanceof CustomEvent) {
-        const content = e.detail;
-        this.content = content;
-        this.render();
-      }
-    });
-  }
-
-  render() {
-    if (this.content) {
-      this.innerHTML = mdToHtml(this.content);
-    }
   }
 }
 
-export default MarkdownContent;
+export default MarkdownComponent;

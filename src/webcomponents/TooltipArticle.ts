@@ -36,8 +36,8 @@ class TooltipArticle extends LightElement {
   }
 
   setContent() {
-    const md = this.querySelector("md-content") as MarkdownContent;
-    md.dispatchEvent(new CustomEvent("render", { detail: this.entry?.body }));
+    const md = this.querySelector("md-content") as MarkdownContent | null;
+    md?.dispatchEvent(new CustomEvent("render", { detail: this.entry?.body }));
   }
 
   setTags() {
