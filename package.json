@@ -34,5 +34,9 @@
     "rehype-autolink-headings": "^7.1.0",
     "rehype-figure": "^1.0.1",
     "rehype-slug": "^6.0.0"
+  },
+  "packageManager": "pnpm@9.5.0",
+  "engines": {
+    "pnpm": "^9.0.0"
   }
 }

@@ -43,7 +43,7 @@ test.describe("Tooltips page", () => {
     await expect(tooltips.searchDialog()).not.toBeVisible();
   });
 
-  test.only("Select entry from the sidebar", async ({ tooltips, page }) => {
+  test("Select entry from the sidebar", async ({ tooltips, page }) => {
     await page.getByLabel("Breadcrumb").locator("label svg").click();
 
     for (const category of tooltips.categories) {
