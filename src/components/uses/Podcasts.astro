@@ -1,0 +1,13 @@
+---
+import podcasts from "@/data/podcasts.json";
+---
+
+<ul>
+  {
+    podcasts.map((podcast) => (
+      <li>
+        <a href={podcast.url}>{podcast.name}</a>
+      </li>
+    ))
+  }
+</ul>

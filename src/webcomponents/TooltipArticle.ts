@@ -10,6 +10,10 @@ class TooltipArticle extends LightElement {
 
   entry?: TooltipCollectionValue;
 
+  articleTemplate = "tt-article-template";
+
+  articleSelector = "md-context";
+
   constructor() {
     super();
 
@@ -23,6 +27,17 @@ class TooltipArticle extends LightElement {
   }
 
   render() {
+    this.fillTemplate();
+  }
+
+  fillTemplate() {
+    if (!this.entry) {
+      return;
+    }
+    const articleTemplate = this.getTemplate(
+      this.articleTemplate,
+    ) as HTMLElement;
+    this.addTemplate(this.articleSelector, articleTemplate);
     this.setTitle();
     this.setContent();
     this.setTags();

@@ -1,5 +1,7 @@
 ---
 import Section from "@/components/Section.astro";
+import Podcasts from "@/components/uses/Podcasts.astro";
+import Channels from "@/components/uses/Channels.astro";
 import Layout from "@/layouts/Layout.astro";
 ---
 
@@ -9,45 +11,12 @@ import Layout from "@/layouts/Layout.astro";
   <article>
     <Section id="podcasts">
       <h2 slot="title">Podcasts</h2>
-      <ul>
-        <li><a href="https://syntax.fm/">Syntax.</a></li>
-        <li><a href="https://changelog.com/jsparty">JS Party</a></li>
-        <li><a href="https://changelog.com/podcast">The Changelog</a></li>
-        <li><a href="https://www.devtools.fm/">devtool.fm</a></li>
-      </ul>
+      <Podcasts />
     </Section>
 
     <Section id="youtube">
       <h2 slot="title">Youtube</h2>
-      <ul>
-        <li><a href="https://www.kevinpowell.co/">Kevin Powell</a></li>
-        <li><a href="https://fireship.io/">Fireship</a></li>
-        <li>
-          <a href="https://www.youtube.com/@dreamsofcode">Dreams of Code</a>
-        </li>
-        <li>
-          <a href="https://www.youtube.com/@devopstoolbox">DevOps Toolbox</a>
-        </li>
-        <li>
-          <a href="https://www.youtube.com/@codetothemoon">Coding to the Moon</a
-          >
-        </li>
-        <li><a href="https://www.mattpocock.com/">Mat Pocock</a></li>
-        <li>
-          <a href="https://www.youtube.com/@ThePrimeTimeagen">The Primeagen</a>
-        </li>
-        <li><a href="https://designcourse.com/">Design Course</a></li>
-        <li><a href="https://www.youtube.com/@Hyperplexed">Hyperplexed</a></li>
-        <li><a href="https://www.youtube.com/@NetNinja">Net Ninja</a></li>
-        <li>
-          <a href="https://www.youtube.com/@ifcodingwerenatural"
-            >If Coding Were Natural</a
-          >
-        </li>
-        <li>
-          <a href="https://www.youtube.com/@JoyofCodeDev">Joy of Code</a>
-        </li>
-      </ul>
+      <Channels />
     </Section>
   </article>
 

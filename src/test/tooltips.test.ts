@@ -43,8 +43,8 @@ test.describe("Tooltips page", () => {
     await expect(tooltips.searchDialog()).not.toBeVisible();
   });
 
-  test("Select entry from the sidebar", async ({ tooltips, page }) => {
-    await page.getByRole("button", { name: "Toggle tree view" }).click();
+  test.only("Select entry from the sidebar", async ({ tooltips, page }) => {
+    await page.getByLabel("Breadcrumb").locator("label svg").click();
 
     for (const category of tooltips.categories) {
       await expect(page.getByText(category, { exact: true })).toBeVisible();

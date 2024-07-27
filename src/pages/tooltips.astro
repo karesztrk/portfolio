@@ -1,9 +1,10 @@
 ---
 import TooltipsLayout from "../layouts/TooltipsLayout.astro";
 import SearchDialog from "@/components/SearchDialog.astro";
-import TooltipHeader from "@/components/TooltipHeader.astro";
-import TooltipSidebar from "@/components/TooltipSidebar.astro";
-import TooltipsView from "@/components/TooltipView.astro";
+import TooltipHeader from "@/components/tooltips/TooltipHeader.astro";
+import TooltipSidebar from "@/components/tooltips/TooltipSidebar.astro";
+import TooltipView from "@/components/tooltips/TooltipView.astro";
+import TooltipArticle from "@/components/tooltips/TooltipArticle.astro";
 import wasm from "/node_modules/md4w/js/md4w-small.wasm?url";
 import { findTooltips } from "@/util/collections.util";
 
@@ -21,7 +22,7 @@ const collections = await findTooltips();
   <link slot="head" rel="preload" href={wasm} as="fetch" crossorigin />
   <h1>Tooltips</h1>
   <article>
-    <TooltipsView>
+    <TooltipView>
       <TooltipHeader class="tt-header" aria-label="Breadcrumb">
         <span>Tooltips</span>
       </TooltipHeader>
@@ -31,18 +32,14 @@ const collections = await findTooltips();
           name="Tree view"
           collections={collections}
         />
-        <tt-article role="article">
-          <p>☝️ Select a tooltip</p>
-        </tt-article>
+        <TooltipArticle class="tt-article">
+          <p></p>
+        </TooltipArticle>
       </tt-content>
       <SearchDialog id="search-dialog" collections={collections} />
-    </TooltipsView>
+    </TooltipView>
   </article>
 </TooltipsLayout>
-
-<script>
-  import "@/webcomponents/TooltipArticle";
-</script>
 
 <style>
   tt-header {
@@ -50,7 +47,7 @@ const collections = await findTooltips();
     z-index: 2;
     &:has(#toggle:checked) {
       & ~ tt-content {
-        & > tt-article {
+        & > .tt-article {
           --transition-time: 500ms;
           --easing: cubic-bezier(0.77, 0, 0.175, 1);
           translate: 90% 0;
@@ -79,7 +76,7 @@ const collections = await findTooltips();
       z-index: 1;
     }
 
-    tt-article {
+    .tt-article {
       --easing: cubic-bezier(0.33, 1, 0.68, 1);
       --transition-time: 400ms;
       display: block;

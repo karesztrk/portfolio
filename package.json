@@ -10,7 +10,7 @@
     "e2e": "playwright test"
   },
   "dependencies": {
-    "@karesztrk/webcomponent-base": "^1.0.9",
+    "@karesztrk/webcomponent-base": "^1.0.10",
     "astro": "^4.12.2",
     "astro-svg-icon": "^1.1.0",
     "md4w": "^0.2.6",
