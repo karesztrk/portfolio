@@ -2,11 +2,15 @@
 import Fields from "@/components/Fields.astro";
 import Tags from "@/components/Tags.astro";
 import wasm from "/node_modules/md4w/js/md4w-small.wasm?url";
+
+const props = Astro.props;
 ---
 
-<tt-view $submit="onSubmit"
-  ><md-context href={wasm}><slot /></md-context></tt-view
->
+<tt-article {...props} role="article">
+  <md-context href={wasm}>
+    <slot />
+  </md-context>
+</tt-article>
 
 <template id="tt-article-template">
   <h2 id="title"></h2>
@@ -16,17 +20,8 @@ import wasm from "/node_modules/md4w/js/md4w-small.wasm?url";
   <md-content></md-content>
 </template>
 
-<style>
-  tt-view {
-    position: relative;
-    display: block;
-    overflow: hidden;
-    isolation: isolate;
-  }
-</style>
-
 <script>
-  import "@/webcomponents/TooltipsView";
+  import "@/webcomponents/TooltipArticle";
   import "@/webcomponents/MarkdownContext";
   import "@/webcomponents/MarkdownContent";
 </script>

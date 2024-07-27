@@ -1,16 +1,16 @@
 import { LightElement } from "@karesztrk/webcomponent-base";
-import type TooltipsView from "./TooltipsView";
+import type TooltipView from "./TooltipView";
 
 export class CollectionFilter extends LightElement {
   static {
     this.register("collection-filter", CollectionFilter);
   }
 
-  view: TooltipsView;
+  view: TooltipView;
 
   constructor() {
     super();
-    this.view = this.closest("tt-view") as TooltipsView;
+    this.view = this.closest("tt-view") as TooltipView;
   }
 
   getCollectionEntry(slug: string) {

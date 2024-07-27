@@ -1,6 +1,8 @@
 ---
 import Section from "@/components/Section.astro";
 import Layout from "@/layouts/Layout.astro";
+import Newsletters from "@/components/uses/Newsletters.astro";
+import Blogs from "@/components/uses/Blogs.astro";
 ---
 
 <Layout title="Blogroll">
@@ -9,28 +11,12 @@ import Layout from "@/layouts/Layout.astro";
   <article>
     <Section id="blogs">
       <h2 slot="title">Blogs</h2>
-      <ul>
-        <li><a href="https://www.stefanjudis.com/blog/">Stefan Judis</a></li>
-        <li><a href="https://chriscoyier.net/">Chris Coyier</a></li>
-        <li><a href="https://www.joshwcomeau.com/latest/">Josh Comeau</a></li>
-        <li>
-          <a href="https://joshcollinsworth.com/blog">Josh Collinsworth</a>
-        </li>
-        <li><a href="https://ryanmulligan.dev/blog/">Ryan Mulligan</a></li>
-        <li><a href="https://nerdy.dev/">Adam Argyle</a></li>
-      </ul>
+      <Blogs />
     </Section>
 
     <Section id="newsletters">
       <h2 slot="title">Newsletters</h2>
-      <ul>
-        <li>
-          <a href="https://changelog.com/news/">The Changelog Newsletter</a>
-        </li>
-        <li><a href="https://ui.dev/">ui.dev</a></li>
-        <li><a href="https://webweekly.email/">Web Weekly</a></li>
-        <li><a href="https://codepen.io/spark">CodePen Spark</a></li>
-      </ul>
+      <Newsletters />
     </Section>
   </article>
 

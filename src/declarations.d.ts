@@ -1,13 +1,1 @@
 declare module "https://esm.sh/*";
-
-declare module "@/data/tooltips.json" {
-  type TooltipCollectionType =
-    | "Articles"
-    | "Codepens"
-    | "Libraries"
-    | "Snippets"
-    | "Stack"
-    | "Tools";
-  const content: [{ name: TooltipCollectionType; description: string }];
-  export default content;
-}

@@ -1,0 +1,13 @@
+---
+import newsletters from "@/data/newsletters.json";
+---
+
+<ul>
+  {
+    newsletters.map((newsletter) => (
+      <li>
+        <a href={newsletter.url}>{newsletter.name}</a>
+      </li>
+    ))
+  }
+</ul>

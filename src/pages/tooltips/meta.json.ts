@@ -1,7 +1,7 @@
 import { findTooltips } from "@/util/collections.util.ts";
 import type { APIRoute } from "astro";
 
-export const GET: APIRoute = async () => {
+export const GET: APIRoute = async (): Promise<Response> => {
   const collections = await findTooltips();
   return new Response(JSON.stringify(collections), {
     headers: {

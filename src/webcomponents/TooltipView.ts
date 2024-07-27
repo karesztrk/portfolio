@@ -6,16 +6,10 @@ import type {
 import { LightElement } from "@karesztrk/webcomponent-base";
 import { loadCollections } from "@/data/api";
 
-class TooltipsView extends LightElement {
+class TooltipView extends LightElement {
   static {
-    this.register("tt-view", TooltipsView);
+    this.register("tt-view", TooltipView);
   }
-
-  articleTemplate = "tt-article-template";
-
-  breadcrumbTemplate = "tt-breadcrumb-template";
-
-  breadcrumbTag = "tt-breadcrumb";
 
   articleSelector = "tt-article";
 
@@ -46,16 +40,10 @@ class TooltipsView extends LightElement {
       return;
     }
 
-    const articleTemplate = this.getTemplate(this.articleTemplate);
-    this.addTemplate(this.articleSelector, articleTemplate);
-
     const article = this.querySelector(this.articleSelector);
     article?.dispatchEvent(
       new CustomEvent("render", { detail: collectionEntry.entry }),
     );
-
-    const breadrumbTemplate = this.getTemplate(this.breadcrumbTemplate);
-    this.addTemplate(this.breadcrumbTag, breadrumbTemplate);
 
     const header = this.querySelector(this.headerSelector);
     header?.dispatchEvent(
@@ -98,15 +86,6 @@ class TooltipsView extends LightElement {
     }
   }
 
-  addTemplate(selector: string, template: HTMLElement) {
-    const target = this.querySelector(selector);
-    if (target) {
-      target.replaceChildren(...template.children);
-    } else {
-      this.appendChild(template);
-    }
-  }
-
   toggleSidebar() {
     const treeToggle = document.getElementById(
       "toggle",
@@ -117,4 +96,4 @@ class TooltipsView extends LightElement {
   }
 }
 
-export default TooltipsView;
+export default TooltipView;

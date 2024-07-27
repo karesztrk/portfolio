@@ -11,6 +11,14 @@ class TooltipHeader extends LightElement {
 
   entry?: TooltipCollectionValue;
 
+  breadcrumbTemplate = "tt-breadcrumb-template";
+
+  breadcrumbTag = "tt-breadcrumb";
+
+  currentCategorySelector = "#current-category";
+
+  currentTooltipSelector = "#current-tooltip";
+
   constructor() {
     super();
 
@@ -29,15 +37,23 @@ class TooltipHeader extends LightElement {
   }
 
   setBreadcrumbTemplate() {
-    const category = this.querySelector("#current-category");
-    if (category && this.collection) {
+    if (!this.collection || !this.entry) {
+      return;
+    }
+
+    const breadrumbTemplate = this.getTemplate(
+      this.breadcrumbTemplate,
+    ) as HTMLElement;
+    this.addTemplate(this.breadcrumbTag, breadrumbTemplate);
+    const category = this.querySelector(this.currentCategorySelector);
+    if (category) {
       category.textContent = this.collection;
     }
 
     const currentTooltip = this.querySelector(
-      "#current-tooltip",
+      this.currentTooltipSelector,
     ) as HTMLInputElement | null;
-    if (currentTooltip && this.entry) {
+    if (currentTooltip) {
       currentTooltip.textContent = formatTitle(this.entry.id);
     }
   }
