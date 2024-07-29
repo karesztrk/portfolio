@@ -18,32 +18,26 @@ interface Fixtures {
 export const test = base.extend<Fixtures>({
   index: async ({ page }, use) => {
     const indexPage = new IndexPage(page);
-    await indexPage.goto();
     await use(indexPage);
   },
   hello: async ({ page }, use) => {
     const helloPage = new HelloPage(page);
-    await helloPage.goto();
     await use(helloPage);
   },
   about: async ({ page }, use) => {
     const aboutPage = new AboutPage(page);
-    await aboutPage.goto();
     await use(aboutPage);
   },
   tooltips: async ({ page }, use) => {
     const tooltipsPage = new TooltipsPage(page);
-    await tooltipsPage.goto();
     await use(tooltipsPage);
   },
   blog: async ({ page }, use) => {
     const blogPage = new BlogPage(page);
-    await blogPage.goto();
     await use(blogPage);
   },
   uses: async ({ page }, use) => {
     const usesPage = new UsesPage(page);
-    await usesPage.goto();
     await use(usesPage);
   },
 });

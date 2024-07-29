@@ -8,7 +8,7 @@ on:
       - master
 
 jobs:
-  e2e:
+  test:
     name: "Deploy"
     runs-on: ubuntu-latest
     environment: production
@@ -48,6 +48,6 @@ jobs:
           echo Preview is deployed @ $NETLIFY_PREVIEW_URL
           echo "NETLIFY_PREVIEW_URL=$NETLIFY_PREVIEW_URL" >> "$GITHUB_OUTPUT"
       - name: Run Playwright tests
-        run: pnpm e2e
+        run: pnpm test
         env:
           PLAYWRIGHT_BASE_URL: ${{ steps.deploy.outputs.NETLIFY_PREVIEW_URL }}

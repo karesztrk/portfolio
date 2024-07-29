@@ -1,7 +1,11 @@
 import { test, expect } from "./fixtures";
 
 test.describe("Menu", () => {
-  test("Logo navigation", async ({ index, page }) => {
+  test.beforeEach(async ({ index }) => {
+    await index.goto();
+  });
+
+  test("Logo navigation", async ({ index }) => {
     await index.logo().click();
   });
 

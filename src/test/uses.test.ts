@@ -2,6 +2,7 @@ import { test, expect } from "./fixtures";
 
 test.describe("Uses page", () => {
   test("Page elements present", async ({ uses, page }) => {
+    await uses.goto();
     await expect(
       page.getByRole("heading", { name: "Uses", level: 1 }),
     ).toBeVisible();
