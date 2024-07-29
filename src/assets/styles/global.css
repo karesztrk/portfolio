@@ -125,6 +125,8 @@
     line-height: 1.1;
     color: var(--color-title);
     margin-block: var(--h-margin, 0.75em);
+    /* Better matching to fallback font */
+    font-size-adjust: 0.53;
   }
 
   h1 {

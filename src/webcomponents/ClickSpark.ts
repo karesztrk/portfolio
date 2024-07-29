@@ -52,7 +52,7 @@ class ClickSpark extends ShadowElement {
     const offset = size / 2 + "px";
 
     const keyframes = (i: number) => {
-      let deg = `calc(${i} * (360deg / ${sparks.length}))`;
+      const deg = `calc(${i} * (360deg / ${sparks.length}))`;
 
       return [
         {
@@ -73,7 +73,7 @@ class ClickSpark extends ShadowElement {
     if (!this.svg) {
       return;
     }
-    let rect = this.root.getBoundingClientRect();
+    const rect = this.root.getBoundingClientRect();
 
     this.svg.style.left =
       e.clientX - rect.left - this.svg.clientWidth / 2 + "px";
@@ -81,8 +81,7 @@ class ClickSpark extends ShadowElement {
       e.clientY - rect.top - this.svg.clientHeight / 2 + "px";
   }
 
-  get styles() {
-    return `
+  styles = `
         :host {
           display: contents;
         }
@@ -100,7 +99,6 @@ class ClickSpark extends ShadowElement {
           transform-origin: center;
         }
     `;
-  }
 
   render() {
     return `

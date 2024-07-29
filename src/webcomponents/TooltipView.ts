@@ -26,9 +26,11 @@ class TooltipView extends LightElement {
 
   constructor() {
     super();
-    loadCollections().then((collections) => {
-      this.collections = collections;
-    });
+    loadCollections()
+      .then((collections) => {
+        this.collections = collections;
+      })
+      .catch(console.error);
   }
 
   handleSelect(slug: string) {

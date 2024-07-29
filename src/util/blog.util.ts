@@ -1,7 +1,7 @@
 export const removeMarkdown = (body: string) => {
   // - Remove special characters
   // - Remove parathesis
-  return body.replace(/([*_`~\[\]]|\([^)]*\))/g, "");
+  return body.replace(/([*_`~[\]]|\([^)]*\))/g, "");
 };
 
 export const formatTitle = (id: string) => {

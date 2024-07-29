@@ -1,6 +1,10 @@
 import { test, expect } from "./fixtures";
 
 test.describe("Tooltips page", () => {
+  test.beforeEach(async ({ tooltips }) => {
+    await tooltips.goto();
+  });
+
   test("Page elements present", async ({ tooltips, page }) => {
     await expect(
       page.getByRole("heading", { name: tooltips.title }),
