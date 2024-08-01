@@ -12,6 +12,7 @@ import { fromHtml } from "hast-util-from-html";
 import { h } from "hastscript";
 import { toString } from "hast-util-to-string";
 import rehypeFigure from "rehype-figure";
+import { VitePWA } from "vite-plugin-pwa";
 
 export default defineConfig({
   prefetch: true,
@@ -69,5 +70,24 @@ export default defineConfig({
     build: {
       cssMinify: "lightningcss",
     },
+    plugins: [
+      VitePWA({
+        registerType: "autoUpdate",
+        manifest: {
+          short_name: "Károly Török portfolio",
+          name: "Károly Török portfolio",
+          description:
+            "This is an application that introduces myself and collects my projects and interests.",
+          icons: [
+            { src: "/icon-192.png", type: "image/png", sizes: "192x192" },
+            { src: "/icon-512.png", type: "image/png", sizes: "512x512" },
+          ],
+          start_url: "/hello",
+          display: "standalone",
+          theme_color: "#fdd22b", // Calculated from oklch(87.5% 0.17 92.68)
+          background_color: "#01111e", // Calculated from hsl(207, 93%, 6%)
+        },
+      }),
+    ],
   },
 });
