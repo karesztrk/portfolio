@@ -1,10 +1,10 @@
 ---
 import TooltipsLayout from "../layouts/TooltipsLayout.astro";
-import SearchDialog from "@/components/SearchDialog.astro";
-import TooltipHeader from "@/components/tooltips/TooltipHeader.astro";
-import TooltipSidebar from "@/components/tooltips/TooltipSidebar.astro";
-import TooltipView from "@/components/tooltips/TooltipView.astro";
-import TooltipArticle from "@/components/tooltips/TooltipArticle.astro";
+import SearchDialog from "@/components/tooltips/dialog/TooltipSearchDialog.astro";
+import TooltipHeader from "@/components/tooltips/header/TooltipHeader.astro";
+import TooltipSidebar from "@/components/tooltips/sidebar/TooltipSidebar.astro";
+import TooltipView from "@/components/tooltips/view/TooltipView.astro";
+import TooltipArticle from "@/components/tooltips/article/TooltipArticle.astro";
 import wasm from "/node_modules/md4w/js/md4w-small.wasm?url";
 import { findTooltips } from "@/util/collections.util";
 
@@ -27,11 +27,7 @@ const collections = await findTooltips();
         <span>Tooltips</span>
       </TooltipHeader>
       <tt-content>
-        <TooltipSidebar
-          id="tt-tree"
-          name="Tree view"
-          collections={collections}
-        />
+        <TooltipSidebar id="tt-tree" collections={collections} />
         <TooltipArticle class="tt-article">
           <p></p>
         </TooltipArticle>
@@ -56,7 +52,7 @@ const collections = await findTooltips();
     }
     &:not(:has(#toggle:checked)) {
       & ~ tt-content {
-        aside {
+        tt-sidebar {
           opacity: 0;
           display: none;
         }
@@ -68,11 +64,11 @@ const collections = await findTooltips();
     --_height: 500px;
     display: block;
     position: relative;
-    height: var(--_height);
+    min-height: var(--_height);
     z-index: 1;
     isolation: isolate;
 
-    aside {
+    tt-sidebar {
       z-index: 1;
     }
 
@@ -86,6 +82,7 @@ const collections = await findTooltips();
       transition: translate var(--transition-time) var(--easing);
       height: 100%;
       box-shadow: 0 0 60px 60px var(--color-background);
+      overflow: auto;
     }
   }
 </style>

@@ -4,10 +4,10 @@ import tooltipCollections from "@/data/tooltips.json";
 
 export type TooltipCollectionType = (typeof tooltipCollections)[number]["name"];
 
-export type TooltipCollectionValue = Omit<
-  CollectionEntry<TooltipCollectionType>,
-  "collection" | "render"
->;
+export interface TooltipCollectionValue
+  extends Omit<CollectionEntry<TooltipCollectionType>, "render"> {
+  local?: boolean;
+}
 
 export type TooltipCollection = Record<
   TooltipCollectionType,
@@ -35,8 +35,7 @@ export const findTooltips = (): Promise<TooltipCollection> =>
         if (!acc[key]) {
           acc[key] = [];
         }
-        const { collection, render, ...rest } = curr;
-        acc[key].push(rest);
+        acc[key].push(curr);
         return acc;
       }, {} as TooltipCollection);
 

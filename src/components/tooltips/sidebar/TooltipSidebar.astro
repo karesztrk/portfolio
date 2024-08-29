@@ -1,6 +1,5 @@
 ---
 import type { HTMLAttributes } from "astro/types";
-import Sidebar from "@/components/Sidebar.astro";
 import Icon from "astro-svg-icon";
 import Folder from "@/assets/images/icons/Folder.svg";
 import Markdown from "@/assets/images/icons/Markdown.svg";
@@ -9,13 +8,12 @@ import type { TooltipCollection } from "@/util/collections.util";
 
 interface Props extends HTMLAttributes<"aside"> {
   collections: TooltipCollection;
-  name: string;
 }
 
-const { id, name, collections, ...props } = Astro.props;
+const { id, collections, ...props } = Astro.props;
 ---
 
-<Sidebar id={id} name={name} {...props}>
+<tt-sidebar id={id} {...props} role="complementary">
   <form method="get">
     <ul>
       {
@@ -30,7 +28,7 @@ const { id, name, collections, ...props } = Astro.props;
                 />
                 <span>{name}</span>
               </summary>
-              <ul>
+              <ul id={`${name}-list`}>
                 {value.map((entry) => (
                   <li>
                     <button
@@ -42,7 +40,7 @@ const { id, name, collections, ...props } = Astro.props;
                         src={Markdown.src}
                         viewBox={`0 0 ${Markdown.width} ${Markdown.height}`}
                       />
-                      {formatTitle(entry.id)}
+                      <span>{formatTitle(entry.id)}</span>
                     </button>
                   </li>
                 ))}
@@ -53,9 +51,43 @@ const { id, name, collections, ...props } = Astro.props;
       }
     </ul>
   </form>
-</Sidebar>
+</tt-sidebar>
+
+<template id="tt-item-template">
+  <li>
+    <button name="slug" value="" formaction={`/tooltips/`}>
+      <Icon
+        src={Markdown.src}
+        viewBox={`0 0 ${Markdown.width} ${Markdown.height}`}
+      />
+      <span class="local-item"></span>
+    </button>
+  </li>
+</template>
+
+<script>
+  import "@/components/tooltips/sidebar/TooltipSidebar";
+</script>
 
 <style>
+  tt-sidebar {
+    --easing: cubic-bezier(0.65, 0, 0.35, 1);
+    --transition-time: 500ms;
+    position: absolute;
+    inset: 0;
+    overflow: auto;
+    transition: all var(--transition-time) var(--easing) allow-discrete;
+    font-size: 1rem;
+    opacity: 1;
+    margin-block-start: calc(var(--p-margin) * 1.25);
+  }
+
+  @starting-style {
+    tt-sidebar {
+      opacity: 0;
+    }
+  }
+
   details {
     background: none;
     padding: 0;
@@ -137,6 +169,19 @@ const { id, name, collections, ...props } = Astro.props;
     &:before,
     &:after {
       content: none;
+    }
+
+    .local-item {
+      &::before {
+        content: "❲";
+      }
+      &::after {
+        content: "❳";
+      }
+      &::before,
+      &::after {
+        color: var(--color-yellow-5);
+      }
     }
   }
 

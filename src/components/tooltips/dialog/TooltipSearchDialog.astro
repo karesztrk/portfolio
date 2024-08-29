@@ -39,7 +39,7 @@ const { collections, ...rest } = Astro.props;
           Object.entries(collections).map(([name, collection]) => (
             <li class="collection">
               {name}
-              <ul>
+              <ul id={`${name}-list`}>
                 {collection.map((entry) => (
                   <li class="entry">
                     <button name="slug" class="entry-button" value={entry.slug}>
@@ -60,8 +60,19 @@ const { collections, ...rest } = Astro.props;
   </form>
 </dialog>
 
+<template id="tt-dialog-item-template">
+  <li class="entry">
+    <button name="slug" class="entry-button" value="">
+      <Icon
+        src={Markdown.src}
+        viewBox={`0 0 ${Markdown.width} ${Markdown.height}`}
+      />
+    </button>
+  </li>
+</template>
+
 <script>
-  import "@/webcomponents/CollectionFilter";
+  import "@/components/tooltips/dialog/TooltipSearchDialog";
 </script>
 
 <style>

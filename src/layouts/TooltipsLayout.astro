@@ -1,7 +1,9 @@
 ---
 import Layout from "./Layout.astro";
+
+const { title = "Tooltips" } = Astro.props;
 ---
 
-<Layout title="Tooltips">
+<Layout title={title}>
   <slot />
 </Layout>

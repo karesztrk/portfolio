@@ -1,8 +1,8 @@
-import { LightElement } from "@karesztrk/webcomponent-base";
 import type { TooltipCollectionValue } from "@/util/collections.util";
 import { formatTitle } from "@/util/blog.util";
+import TooltipBase from "../TooltipSubmit";
 
-class TooltipHeader extends LightElement {
+class TooltipHeader extends TooltipBase {
   static {
     this.register("tt-header", TooltipHeader);
   }
@@ -19,17 +19,53 @@ class TooltipHeader extends LightElement {
 
   currentTooltipSelector = "#current-tooltip";
 
+  searchButtonId = "#search-button";
+
+  searchDialogId = "search-dialog";
+
+  addButtonId = "#add-button";
+
   constructor() {
     super();
 
-    this.addEventListener("render", (e) => {
+    this.view?.addEventListener("select", (e: Event) => {
       if (e instanceof CustomEvent) {
-        const { collection, entry } = e.detail;
-        this.collection = collection;
-        this.entry = entry;
-        this.render();
+        this.onRender(e);
       }
     });
+    this.bindSearchButton();
+    this.bindAddButton();
+  }
+
+  bindSearchButton() {
+    const searchButton = this.querySelector(this.searchButtonId);
+    const searchDialog = document.getElementById(
+      this.searchDialogId,
+    ) as HTMLDialogElement | null;
+
+    if (searchButton && searchDialog) {
+      searchButton.addEventListener("click", () => {
+        searchDialog.showModal();
+      });
+    }
+  }
+
+  bindAddButton() {
+    const addButton = this.querySelector(
+      this.addButtonId,
+    ) as HTMLElement | null;
+    if (addButton) {
+      addButton.addEventListener("click", () => {
+        this.dispatchEvent(new CustomEvent("add", { bubbles: true }));
+      });
+    }
+  }
+
+  onRender(e: CustomEvent) {
+    const { collection, entry } = e.detail;
+    this.collection = collection;
+    this.entry = entry;
+    this.render();
   }
 
   render() {

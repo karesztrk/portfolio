@@ -1,0 +1,14 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"textarea"> {
+  "wrapper-class"?: string;
+}
+
+const { "wrapper-class": wrapperClass, ...props } = Astro.props;
+---
+
+<div class:list={["input-wrapper", wrapperClass]}>
+  <slot />
+  <input {...props} />
+</div>

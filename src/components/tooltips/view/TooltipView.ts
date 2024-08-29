@@ -1,36 +1,20 @@
 import type {
-  TooltipCollection,
   TooltipCollectionType,
   TooltipCollectionValue,
 } from "@/util/collections.util.ts";
 import { LightElement } from "@karesztrk/webcomponent-base";
-import { loadCollections } from "@/data/api";
+import TooltipCollectionController from "./TooltipCollectionController";
 
 class TooltipView extends LightElement {
   static {
     this.register("tt-view", TooltipView);
   }
 
-  articleSelector = "tt-article";
-
-  headerSelector = "tt-header";
-
-  collections: TooltipCollection = {
-    Articles: [],
-    Codepens: [],
-    Tools: [],
-    Snippets: [],
-    Libraries: [],
-    Stack: [],
-  };
+  #collectionController: TooltipCollectionController;
 
   constructor() {
     super();
-    loadCollections()
-      .then((collections) => {
-        this.collections = collections;
-      })
-      .catch(console.error);
+    this.#collectionController = new TooltipCollectionController(this);
   }
 
   handleSelect(slug: string) {
@@ -42,15 +26,11 @@ class TooltipView extends LightElement {
       return;
     }
 
-    const article = this.querySelector(this.articleSelector);
-    article?.dispatchEvent(
-      new CustomEvent("render", { detail: collectionEntry.entry }),
-    );
+    this.dispatchEvent(new CustomEvent("select", { detail: collectionEntry }));
+    this.toggleSidebar();
+  }
 
-    const header = this.querySelector(this.headerSelector);
-    header?.dispatchEvent(
-      new CustomEvent("render", { detail: collectionEntry }),
-    );
+  onAdd() {
     this.toggleSidebar();
   }
 
@@ -67,6 +47,12 @@ class TooltipView extends LightElement {
     this.handleSelect(slug);
   }
 
+  onSubmitTooltip(e: CustomEvent) {
+    const entry = e.detail;
+    const collection: TooltipCollectionType = entry.collection;
+    this.#collectionController.addTooltip(collection, entry);
+  }
+
   render() {}
 
   toCollectionEntry(
@@ -75,7 +61,7 @@ class TooltipView extends LightElement {
     | { collection: TooltipCollectionType; entry: TooltipCollectionValue }
     | undefined {
     for (const [collection, collectionEntry] of Object.entries(
-      this.collections,
+      this.#collectionController.collections,
     )) {
       for (const entry of collectionEntry) {
         if (entry.slug === slug) {

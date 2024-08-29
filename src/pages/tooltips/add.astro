@@ -1,0 +1,24 @@
+---
+import TooltipsLayout from "@/layouts/TooltipsLayout.astro";
+import TooltipForm from "@/components/tooltips/add/TooltipForm.astro";
+---
+
+<TooltipsLayout title="Add tooltip">
+  <h1>Add tooltip</h1>
+  <article>
+    <p>
+      Create and save short, helpful tips about your favorite developer
+      resources, like libraries, tools, or stacks. Just fill in a few details,
+      and you'll have a handy reference for yourself or to share with others.
+    </p>
+
+    <tt-add-view $submit="onSubmit">
+      <TooltipForm />
+    </tt-add-view>
+    <div id="target"></div>
+  </article>
+
+  <script>
+    import "@/components/tooltips/article/TooltipAddView";
+  </script>
+</TooltipsLayout>

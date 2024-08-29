@@ -1,0 +1,47 @@
+---
+import Button from "@components/Button.astro";
+import Input from "@components/Input.astro";
+import Select from "@components/Select.astro";
+import tooltipCollections from "@/data/tooltips.json";
+---
+
+<form method="post">
+  <label for="title">Collection</label>
+  <Select id="collection" name="collection" required>
+    {tooltipCollections.map(({ name }) => <option value={name}>{name}</option>)}
+  </Select>
+
+  <label for="title">Title</label>
+  <Input
+    id="title"
+    name="title"
+    type="text"
+    required
+    placeholder="Short name"
+    spellcheck="false"
+  />
+
+  <label for="tags">Tags</label>
+  <Input
+    id="tags"
+    name="tags"
+    type="text"
+    spellcheck="false"
+    placeholder="Comma separated list"
+  />
+
+  <label for="body">Body</label>
+  <Input
+    as="textarea"
+    id="body"
+    name="body"
+    required
+    placeholder="Tooltip markdown content"
+    spellcheck="false"
+  />
+
+  <div class="actions">
+    <Button as="button" class="primary">Submit</Button>
+    <Button as="button" class="secondary" type="reset">Clear</Button>
+  </div>
+</form>
