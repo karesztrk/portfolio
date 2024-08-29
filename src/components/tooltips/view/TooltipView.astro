@@ -2,7 +2,7 @@
 
 ---
 
-<tt-view $submit="onSubmit">
+<tt-view $submit="onSubmit" $add="onAdd" $submit-tooltip="onSubmitTooltip">
   <slot />
 </tt-view>
 
@@ -16,5 +16,5 @@
 </style>
 
 <script>
-  import "@/webcomponents/TooltipView";
+  import "@/components/tooltips/view/TooltipView";
 </script>

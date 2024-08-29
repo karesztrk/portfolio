@@ -33,17 +33,21 @@ const props = Astro.props;
     <slot />
   </tt-breadcrumb>
 
-  <button id="search-button">
+  <button id="add-button" class="header-button" aria-label="Add button"
+    >+</button
+  >
+
+  <button id="search-button" class="header-button" aria-label="Search button">
     <Icon
       src={Search.src}
       viewBox={`0 0 ${Search.width} ${Search.height}`}
-      aria-label="Search button"
+      role="presentation"
     />
   </button>
 </tt-header>
 
 <script>
-  import "@/webcomponents/TooltipHeader";
+  import "@/components/tooltips/header/TooltipHeader";
 </script>
 
 <template id="tt-breadcrumb-template">
@@ -74,7 +78,7 @@ const props = Astro.props;
     }
   }
 
-  #search-button {
+  .header-button {
     min-width: auto;
     min-height: auto;
     width: 1rem;
@@ -118,16 +122,3 @@ const props = Astro.props;
     content: "/";
   }
 </style>
-
-<script>
-  const searchButton = document.getElementById("search-button");
-  const searchDialog = document.getElementById(
-    "search-dialog",
-  ) as HTMLDialogElement | null;
-
-  if (searchButton && searchDialog) {
-    searchButton.addEventListener("click", () => {
-      searchDialog.showModal();
-    });
-  }
-</script>

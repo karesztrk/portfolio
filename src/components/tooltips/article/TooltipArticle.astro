@@ -2,11 +2,12 @@
 import Fields from "@/components/Fields.astro";
 import Tags from "@/components/Tags.astro";
 import wasm from "/node_modules/md4w/js/md4w-small.wasm?url";
+import TooltipForm from "../add/TooltipForm.astro";
 
 const props = Astro.props;
 ---
 
-<tt-article {...props} role="article">
+<tt-article {...props} role="article" $add="onAdd" $submit="onSubmit">
   <md-context href={wasm}>
     <slot />
   </md-context>
@@ -20,8 +21,13 @@ const props = Astro.props;
   <md-content></md-content>
 </template>
 
+<template id="tt-add-template">
+  <h2>Add tooltip</h2>
+  <TooltipForm />
+</template>
+
 <script>
-  import "@/webcomponents/TooltipArticle";
+  import "@/components/tooltips/article/TooltipArticle";
   import "@/webcomponents/MarkdownContext";
   import "@/webcomponents/MarkdownContent";
 </script>

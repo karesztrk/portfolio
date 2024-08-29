@@ -157,7 +157,8 @@
   }
 
   input,
-  select {
+  select,
+  textarea {
     font-family: var(--font-mono);
     font-size: var(--font-mono-size-s);
   }
@@ -365,7 +366,9 @@
       margin-inline-start: var(--space-xs);
     }
 
-    > input {
+    > input,
+    textarea,
+    select {
       width: 100%;
       height: calc(var(--input-height) - 8px);
       background: var(--color-input-bg);
@@ -374,11 +377,8 @@
       padding-inline: var(--space-xs);
     }
 
-    > select {
-      width: 100%;
-      height: calc(var(--input-height) - 8px);
-      border: 0;
-      background: none;
+    > textarea {
+      resize: none;
     }
 
     &:before,
