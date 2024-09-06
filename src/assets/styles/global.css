@@ -45,9 +45,13 @@
   --input-height: 38px;
   --input-padding: 2px 4px;
 
-  --menu-font: "Silkscreen", monospace;
-  --menu-decoration-transition-duration: 250ms;
-  --menu-decoration-transition-easing: cubic-bezier(0.65, 0, 0.35, 1);
+  --font-mono: "Departure Mono", monospace;
+  --font-mono-size-s: 16.5px;
+  --font-mono-size-m: 22px;
+  --font-menu: var(--font-mono);
+  --font-base: "Recursive", system-ui;
+  --menu-transition-duration: 125ms;
+  --menu-transition-easing: cubic-bezier(0.36, 2.09, 0.07, -1.52);
 
   color-scheme: dark light;
 
@@ -61,7 +65,7 @@
 
 @layer typography {
   body {
-    font-family: "Recursive", system-ui;
+    font-family: var(--font-base);
     font-size: 1rem;
     line-height: 1.75;
   }
@@ -154,12 +158,14 @@
 
   input,
   select {
-    font-family: "Silkscreen", monospace;
+    font-family: var(--font-mono);
+    font-size: var(--font-mono-size-s);
   }
 
   button,
   a.button {
-    font-family: "Silkscreen", monospace;
+    font-family: var(--font-mono);
+    font-size: var(--font-mono-size-s);
   }
 
   mark {
@@ -543,17 +549,15 @@
     margin-block-start: calc(var(--p-margin) * 1.5);
 
     a {
-      font-family: var(--menu-font);
+      font-family: var(--font-menu);
       color: var(--color-menu);
       text-shadow: 1px 1px 0px var(--color-menu-shadow);
-      transition: text-decoration-color
-        var(--menu-decoration-transition-duration)
-        var(--menu-decoration-transition-easing);
-      text-decoration-color: transparent;
+      text-decoration: none;
+      transition: background-color var(--menu-transition-duration)
+        var(--menu-transition-easing);
 
       &:hover {
-        text-decoration-style: dashed;
-        text-decoration-color: currentColor;
+        background-color: var(--color-menu-bg);
       }
     }
   }
@@ -823,6 +827,7 @@
 
     --color-menu: light-dark(var(--color-pink-6), var(--color-yellow-5));
     --color-menu-shadow: light-dark(var(--color-pink-1), var(--color-pink-5));
+    --color-menu-bg: light-dark(var(--color-yellow-5), var(--color-pink-6));
 
     --color-link-text: light-dark(var(--color-pink-5), var(--color-yellow-4));
 

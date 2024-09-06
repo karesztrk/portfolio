@@ -56,14 +56,15 @@ const readMoreInput = `${id.replace(/\s/gi, "-")}-read-more`;
       margin-bottom: 0;
 
       ~ .read-more-label::before {
-        content: "less...";
+        content: "Less...";
       }
     }
   }
 
   .read-more {
     & ~ .read-more-label {
-      font-family: "Silkscreen", monospace;
+      font-family: var(--font-mono);
+      font-size: var(--font-mono-size-s);
       cursor: pointer;
       color: var(--color-link-text);
       font-size: 1rem;
@@ -81,11 +82,11 @@ const readMoreInput = `${id.replace(/\s/gi, "-")}-read-more`;
     }
 
     &:checked ~ .read-more-label::before {
-      content: "less...";
+      content: "Less...";
     }
 
     & ~ .read-more-label::before {
-      content: "more...";
+      content: "More...";
     }
 
     &:focus ~ .read-more-label::before {

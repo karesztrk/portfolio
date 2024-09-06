@@ -28,10 +28,10 @@
 }
 
 @font-face {
-  font-family: "Silkscreen";
-  font-weight: 400;
+  font-family: "Departure";
+  font-style: normal;
   font-display: fallback;
   src:
-    local("Silkscreen"),
-    url("/fonts/Silkscreen.ttf") format("truetype");
+    local("Departure Mono"),
+    url("/fonts//DepartureMono-Regular.woff2") format("woff2");
 }
