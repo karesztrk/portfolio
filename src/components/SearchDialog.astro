@@ -72,7 +72,8 @@ const { collections, ...rest } = Astro.props;
       gap: var(--space-xs);
       > #close-button {
         flex: 0;
-        font-family: "Silkscreen", monospace;
+        font-family: var(--font-mono);
+        font-size: var(--font-mono-size-s);
         color: var(--color-text);
         background: none;
         border: 0;
@@ -100,12 +101,13 @@ const { collections, ...rest } = Astro.props;
         max-height: 450px;
         > li {
           color: var(--color-li-group-text);
-          font-family: "Silkscreen", monospace;
+          font-family: var(--font-mono);
+          font-size: var(--font-mono-size-s);
         }
       }
 
       & .entry-button {
-        font-family: "Recursive", monospace;
+        font-family: var(--font-base);
         color: var(--color-text);
         background: var(--color-background);
         border: 0;
