@@ -4,9 +4,17 @@ import type {
   TooltipCollectionValue,
 } from "@/util/collections.util";
 import { loadCollections } from "@/data/api";
+import { has, get, set } from "@lo-fi/client-storage/idb";
 
 class TooltipCollectionController {
-  collections: TooltipCollection;
+  collections: TooltipCollection = {
+    Articles: [],
+    Codepens: [],
+    Tools: [],
+    Snippets: [],
+    Libraries: [],
+    Stack: [],
+  };
 
   #host: HTMLElement;
 
@@ -14,12 +22,10 @@ class TooltipCollectionController {
 
   constructor(host: HTMLElement) {
     this.#host = host;
-    this.collections = this.loadLocalCollections();
-    this.loadServerCollections()
-      .then((serverCollections) => {
+    Promise.all([this.loadLocalCollections(), this.loadServerCollections()])
+      .then(([localCollections, serverCollections]) => {
+        this.collections = localCollections;
         this.mergeCollections(serverCollections);
-      })
-      .finally(() => {
         this.emitStateChange();
       })
       .catch(console.error);
@@ -31,24 +37,27 @@ class TooltipCollectionController {
     }
   }
 
-  addTooltip(collection: TooltipCollectionType, entry: TooltipCollectionValue) {
+  addTooltip(entry: TooltipCollectionValue) {
     const newEntry = { ...entry, local: true };
-    this.collections[collection].push(newEntry);
-    this.persistLocalEntry(newEntry);
-    this.emitStateChange();
+    this.persistLocalEntry(newEntry)
+      .then(() => {
+        this.emitStateChange();
+      })
+      .catch(console.error);
   }
 
-  persistLocalEntry(entry: TooltipCollectionValue) {
+  async persistLocalEntry(entry: TooltipCollectionValue): Promise<void> {
     const key = this.#storageKey;
-    const current = this.loadLocalCollections();
-    current[entry.collection].push(entry);
-
-    localStorage.setItem(key, JSON.stringify(current));
+    return this.loadLocalCollections().then((current) => {
+      const newValue = { ...current };
+      newValue[entry.collection].push(entry);
+      this.collections = newValue;
+      return set(key, newValue);
+    });
   }
 
-  loadLocalCollections(): TooltipCollection {
+  async loadLocalCollections(): Promise<TooltipCollection> {
     const key = this.#storageKey;
-    const item = localStorage.getItem(key);
     const empty = {
       Articles: [],
       Codepens: [],
@@ -57,15 +66,12 @@ class TooltipCollectionController {
       Libraries: [],
       Stack: [],
     };
-    if (item === null) {
-      return empty;
-    }
-    try {
-      return JSON.parse(item);
-    } catch (e) {
-      console.error("Malformed data in storage.", e);
-    }
-    return empty;
+    return has(key).then((hasKey) => {
+      if (!hasKey) {
+        return empty;
+      }
+      return get<TooltipCollection>(key);
+    });
   }
 
   loadServerCollections(): Promise<TooltipCollection> {
