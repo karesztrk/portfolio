@@ -11,12 +11,18 @@ importers:
       '@karesztrk/webcomponent-base':
         specifier: ^1.0.10
         version: 1.0.10
+      '@lo-fi/client-storage':
+        specifier: ^0.10.0
+        version: 0.10.0
       astro:
         specifier: ^4.13.2
         version: 4.13.2(@types/node@22.0.0)(lightningcss@1.25.1)(typescript@5.5.4)
       astro-svg-icon:
         specifier: ^1.1.0
         version: 1.1.0(astro@4.13.2(@types/node@22.0.0)(lightningcss@1.25.1)(typescript@5.5.4))(prettier-plugin-astro@0.13.0)(prettier@3.3.3)
+      client-storage:
+        specifier: link:@types/lo-fi/client-storage
+        version: link:@types/lo-fi/client-storage
       md4w:
         specifier: ^0.2.6
         version: 0.2.6
@@ -571,6 +577,9 @@ packages:
 
   '@karesztrk/webcomponent-base@1.0.10':
     resolution: {integrity: sha512-cJpHmS/C0CobZkHeN0FNOxyvya82M54F5xD9zkUlwPoWUpJi3xO6nuTXpBHrzRamaKinjwWkdg6A7uKukbcNDQ==}
+
+  '@lo-fi/client-storage@0.10.0':
+    resolution: {integrity: sha512-OuEXvduvOGKgyFBr+SzHyid7DCK5Xp/aYMFSdege48OHVCnnOF5oOSdkkZudFLlVZUv2Qbwsj1Rlz+Tw/B0dpw==}
 
   '@mdx-js/mdx@3.0.1':
     resolution: {integrity: sha512-eIQ4QTrOWyL3LWEe/bu6Taqzq2HQvHcyTMaOrI95P2/LmJE7AsfPfgJGuFLPVqBUE1BC1rik3VIhU+s9u72arA==}
@@ -1414,6 +1423,9 @@ packages:
   human-signals@5.0.0:
     resolution: {integrity: sha512-AXcZb6vzzrFAUE61HnN4mpLqd/cSIwNQjtNWR0euPm6y0iqx3G4gOXaIDdtdDwZmhwe82LA6+zinmW4UBWVePQ==}
     engines: {node: '>=16.17.0'}
+
+  idb-keyval@6.2.1:
+    resolution: {integrity: sha512-8Sb3veuYCyrZL+VBt9LJfZjLUPWVvqn8tG28VqYNFCo43KHcKuq+b4EiXGeuaLAQWL2YmyDgMp2aSpH9JHsEQg==}
 
   ignore@5.3.1:
     resolution: {integrity: sha512-5Fytz/IraMjqpwfd34ke28PTVMjZjJG2MPn5t7OE4eUCUNf8BAa7b5WUS9/Qvr6mwOQS7Mk6vdsMno5he+T8Xw==}
@@ -3076,6 +3088,10 @@ snapshots:
 
   '@karesztrk/webcomponent-base@1.0.10': {}
 
+  '@lo-fi/client-storage@0.10.0':
+    dependencies:
+      idb-keyval: 6.2.1
+
   '@mdx-js/mdx@3.0.1':
     dependencies:
       '@types/estree': 1.0.5
@@ -4163,6 +4179,8 @@ snapshots:
   http-cache-semantics@4.1.1: {}
 
   human-signals@5.0.0: {}
+
+  idb-keyval@6.2.1: {}
 
   ignore@5.3.1: {}
 

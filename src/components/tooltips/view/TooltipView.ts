@@ -48,9 +48,7 @@ class TooltipView extends LightElement {
   }
 
   onSubmitTooltip(e: CustomEvent) {
-    const entry = e.detail;
-    const collection: TooltipCollectionType = entry.collection;
-    this.#collectionController.addTooltip(collection, entry);
+    this.#collectionController.addTooltip(e.detail);
   }
 
   render() {}
