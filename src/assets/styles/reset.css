@@ -43,6 +43,7 @@ h1,
 h2,
 h3,
 h4,
+h5,
 button,
 input,
 label {
@@ -53,7 +54,8 @@ label {
 h1,
 h2,
 h3,
-h4 {
+h4,
+h5 {
   text-wrap: balance;
 }
 
@@ -107,4 +109,11 @@ textarea:not([rows]) {
 
 button {
   cursor: pointer;
+}
+
+/* Makes larger text blocks well-balanced */
+p,
+li,
+figcaption {
+  text-wrap: pretty;
 }
