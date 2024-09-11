@@ -31,6 +31,7 @@
   font-family: "Departure Mono";
   font-style: normal;
   font-display: fallback;
+  size-adjust: 105%;
   src:
     local("Departure Mono"),
     url("/fonts//DepartureMono-Regular.woff2") format("woff2");
