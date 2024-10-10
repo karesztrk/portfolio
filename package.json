@@ -13,14 +13,14 @@
   "dependencies": {
     "@karesztrk/webcomponent-base": "^1.0.10",
     "@lo-fi/client-storage": "^0.10.0",
-    "astro": "^4.16.0",
+    "astro": "5.0.0-beta.4",
     "astro-svg-icon": "^1.1.0",
     "md4w": "^0.2.6",
     "md4wc": "^1.0.1",
     "sharp": "^0.33.2"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^3.1.8",
+    "@astrojs/mdx": "4.0.0-beta.2",
     "@benjc/rehype-scroll-to-top": "^0.1.5",
     "@eslint/js": "^8.56.0",
     "@playwright/test": "^1.45.0",
