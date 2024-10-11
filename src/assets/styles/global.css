@@ -1,6 +1,6 @@
 @import url("./reset.css") layer(reset);
 
-@layer reset, base, typography, theme, components, utilities, animations, viewtransition, customproperty;
+@layer reset, base, typography, theme, components, utilities, animations, viewtransition, customproperty, scrollanimation;
 
 :root {
   --mono: "MONO" 0;
@@ -1013,22 +1013,10 @@
   @keyframes image-reveal {
     from {
       opacity: 0;
-      transform: scale(0.8);
     }
     to {
+      --transition-percentage: 105%;
       opacity: 1;
-      transform: scale(1);
-    }
-  }
-
-  @keyframes image-reveal {
-    from {
-      opacity: 0;
-      transform: scale(0.8);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
     }
   }
 
@@ -1160,5 +1148,34 @@
     syntax: "<percentage>";
     inherits: true;
     initial-value: 100%;
+  }
+
+  @property --transition-percentage {
+    syntax: "<percentage>";
+    inherits: true;
+    initial-value: -5%;
+  }
+}
+
+@layer scrollanimation {
+  @supports (animation-timeline: scroll()) {
+    @media (prefers-reduced-motion: no-preference) {
+      figure {
+        --view-transition-gap: 2%;
+
+        view-timeline-name: --revealing-image;
+        view-timeline-axis: block;
+        animation: linear image-reveal both;
+        animation-timeline: --revealing-image;
+        animation-range: entry 5% cover 40%;
+
+        mask-image: conic-gradient(
+          from 0deg,
+          #fff calc(var(--transition-percentage) - var(--view-transition-gap)),
+          transparent
+            calc(var(--transition-percentage) + var(--view-transition-gap))
+        );
+      }
+    }
   }
 }
