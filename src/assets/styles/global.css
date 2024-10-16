@@ -684,6 +684,38 @@
   abbr {
     font-variant-caps: all-petite-caps;
   }
+
+  blockquote {
+    --_left-sign-padding: 2rem;
+    position: relative;
+    padding-inline: var(--_quote-padding);
+    display: flex;
+    margin-block: var(--p-margin);
+
+    p {
+      margin: 0;
+      flex: 1;
+    }
+
+    &:before,
+    &:after {
+      content: "";
+      mask: url("../images/icons/Quote.svg") no-repeat;
+      background-color: var(--color-quote);
+      width: 28px;
+      height: auto;
+      flex-shrink: 0;
+    }
+
+    &:before {
+      margin-inline-end: var(--_left-sign-padding);
+    }
+
+    &:after {
+      transform: rotate(180deg);
+      margin-inline-start: auto;
+    }
+  }
 }
 
 @layer base {
@@ -899,6 +931,8 @@
 
     --color-mark-1: light-dark(var(--color-pink-6), var(--color-pink-5));
     --color-mark-2: light-dark(var(--color-teal-6), var(--color-teal-5));
+
+    --color-quote: light-dark(var(--color-teal-6), var(--color-pink-5));
   }
 }
 
