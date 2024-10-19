@@ -69,11 +69,14 @@ import Icon from "astro-svg-icon";
         height: 2.5rem;
         width: auto;
         vertical-align: middle;
-        transform: rotate(-15deg);
         filter: url(#hero-filter);
 
         @media (prefers-reduced-motion: reduce) {
           filter: none;
+        }
+
+        @supports not (view-timeline-name: none) {
+          transform: rotate(-15deg);
         }
       }
     }
