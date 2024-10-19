@@ -4,7 +4,6 @@ const currentPath = Astro.url.pathname;
 ---
 
 <MenuButton
-  id="menu-button"
   aria-haspopup="menu"
   aria-controls="main-menu"
   aria-expanded="false"
@@ -41,19 +40,6 @@ const currentPath = Astro.url.pathname;
   </li>
 </menu>
 
-<script>
-  const button = document.querySelector("#menu-button");
-
-  if (button) {
-    const onChange = () => {
-      const current =
-        button.getAttribute("aria-expanded") === "true" ? true : false;
-      button.setAttribute("aria-expanded", String(!current));
-    };
-    button.addEventListener("click", onChange);
-  }
-</script>
-
 <style>
   menu {
     flex: 1 0 100%;
@@ -73,7 +59,7 @@ const currentPath = Astro.url.pathname;
     }
   }
 
-  #menu-button {
+  menu-button {
     min-block-size: revert;
     min-inline-size: revert;
     padding: 0;
@@ -121,7 +107,7 @@ const currentPath = Astro.url.pathname;
       margin: 0;
     }
 
-    #menu-button {
+    menu-button {
       &[aria-expanded] {
         display: none;
       }

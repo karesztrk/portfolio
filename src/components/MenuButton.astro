@@ -8,7 +8,13 @@ type Props = HTMLAttributes<"button">;
 const props = Astro.props;
 ---
 
-<button {...props}>
+<menu-button
+  {...props}
+  role="button"
+  tabindex="0"
+  $click="onClick"
+  $keydown="onClick"
+>
   <span class="dot"></span>
   <span class="dot"></span>
   <span class="dot"></span>
@@ -19,10 +25,14 @@ const props = Astro.props;
   <span class="dot"></span>
   <span class="dot"></span>
   <span class="visually-hidden">Toggle menu</span>
-</button>
+</menu-button>
+
+<script>
+  import "@/webcomponents/MenuButton";
+</script>
 
 <style>
-  button {
+  menu-button {
     --_size: 25px;
     --_dot-size: 5px;
     --_step: 2;
