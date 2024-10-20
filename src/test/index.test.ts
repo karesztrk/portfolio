@@ -9,4 +9,12 @@ test.describe("Index page", () => {
 
     await expect(page.getByText("Károly Török ©")).toBeVisible();
   });
+
+  test("should not have accessibility violations", async ({ index, axe }) => {
+    await index.goto();
+
+    const results = await axe().analyze();
+
+    expect(results.violations).toEqual([]);
+  });
 });

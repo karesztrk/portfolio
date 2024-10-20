@@ -5,4 +5,12 @@ test.describe("Hello page", () => {
     await hello.goto();
     await expect(hello.title()).toBeVisible();
   });
+
+  test("should not have accessibility violations", async ({ hello, axe }) => {
+    await hello.goto();
+
+    const results = await axe().analyze();
+
+    expect(results.violations).toEqual([]);
+  });
 });

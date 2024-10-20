@@ -14,4 +14,12 @@ test.describe("About page", () => {
       }
     }
   });
+
+  test("should not have accessibility violations", async ({ about, axe }) => {
+    await about.goto();
+
+    const results = await axe().analyze();
+
+    expect(results.violations).toEqual([]);
+  });
 });

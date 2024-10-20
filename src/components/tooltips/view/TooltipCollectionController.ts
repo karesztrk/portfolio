@@ -4,7 +4,7 @@ import type {
   TooltipCollectionValue,
 } from "@/util/collections.util";
 import { loadCollections } from "@/data/api";
-import { has, get, set } from "@lo-fi/client-storage/idb";
+import { has, get, set } from "@byojs/storage/idb";
 
 class TooltipCollectionController {
   collections: TooltipCollection = {

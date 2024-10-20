@@ -72,4 +72,15 @@ test.describe("Tooltips page", () => {
       await tooltips.expectBreadcrumbContent(selectedCategory);
     }
   });
+
+  test("should not have accessibility violations", async ({
+    tooltips,
+    axe,
+  }) => {
+    await tooltips.goto();
+
+    const results = await axe().analyze();
+
+    expect(results.violations).toEqual([]);
+  });
 });

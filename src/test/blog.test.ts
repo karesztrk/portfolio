@@ -10,4 +10,12 @@ test.describe("Blog page", () => {
     const articles = await page.getByRole("article").count();
     expect(articles).toBeGreaterThan(0);
   });
+
+  test("should not have accessibility violations", async ({ blog, axe }) => {
+    await blog.goto();
+
+    const results = await axe().analyze();
+
+    expect(results.violations).toEqual([]);
+  });
 });

@@ -23,4 +23,12 @@ test.describe("Uses page", () => {
       }
     }
   });
+
+  test("should not have accessibility violations", async ({ uses, axe }) => {
+    await uses.goto();
+
+    const results = await axe().analyze();
+
+    expect(results.violations).toEqual([]);
+  });
 });

@@ -5,6 +5,7 @@ import { TooltipsPage } from "./pages/tooltips-page";
 import { BlogPage } from "./pages/blog-page";
 import { UsesPage } from "./pages/uses-page";
 import { HelloPage } from "./pages/hello-page";
+import AxeBuilder from "@axe-core/playwright";
 
 interface Fixtures {
   index: IndexPage;
@@ -13,6 +14,7 @@ interface Fixtures {
   tooltips: TooltipsPage;
   blog: BlogPage;
   uses: UsesPage;
+  axe: () => AxeBuilder;
 }
 
 export const test = base.extend<Fixtures>({
@@ -39,6 +41,17 @@ export const test = base.extend<Fixtures>({
   uses: async ({ page }, use) => {
     const usesPage = new UsesPage(page);
     await use(usesPage);
+  },
+  axe: async ({ page }, use) => {
+    const makeAxeBuilder = () =>
+      new AxeBuilder({ page }).withTags([
+        "wcag2a",
+        "wcag2aa",
+        "wcag21a",
+        "wcag21aa",
+      ]);
+
+    await use(makeAxeBuilder);
   },
 });
 

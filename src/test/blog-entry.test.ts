@@ -22,4 +22,22 @@ test.describe("Blog entry page", () => {
     await expect(page.getByText(/Publish date/)).toBeVisible();
     await expect(page.getByText(/Read time/)).toBeVisible();
   });
+
+  test("should not have accessibility violations", async ({
+    blog,
+    page,
+    axe,
+  }) => {
+    await blog.goto();
+    await page
+      .getByRole("article")
+      .getByRole("article")
+      .first()
+      .getByRole("link")
+      .click();
+
+    const results = await axe().analyze();
+
+    expect(results.violations).toEqual([]);
+  });
 });
