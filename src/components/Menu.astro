@@ -42,6 +42,8 @@ const currentPath = Astro.url.pathname;
 
 <style>
   menu {
+    --entry-easing: cubic-bezier(0.33, 1, 0.68, 1);
+    --entry-transition-time: 500ms;
     flex: 1 0 100%;
     display: none;
     flex-flow: column wrap;
@@ -56,6 +58,18 @@ const currentPath = Astro.url.pathname;
     > li {
       list-style: none;
       margin: 0;
+    }
+    transition: all var(--entry-transition-time) var(--entry-easing)
+      allow-discrete;
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+  }
+
+  @starting-style {
+    menu {
+      opacity: 0;
     }
   }
 
@@ -105,6 +119,8 @@ const currentPath = Astro.url.pathname;
       flex-flow: row nowrap;
       flex: 0 0 auto;
       margin: 0;
+
+      transition: none;
     }
 
     menu-button {

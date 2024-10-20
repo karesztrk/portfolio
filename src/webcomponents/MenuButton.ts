@@ -14,6 +14,12 @@ class MenuButton extends LightElement {
       this.getAttribute("aria-expanded") === "true" ? true : false;
     this.setAttribute("aria-expanded", String(!current));
   }
+
+  onKeyDown(e: KeyboardEvent) {
+    if (e.key === "Enter") {
+      this.onClick();
+    }
+  }
 }
 
 export default MenuButton;
