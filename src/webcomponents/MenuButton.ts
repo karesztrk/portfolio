@@ -1,15 +1,14 @@
-import { LightElement } from "@karesztrk/webcomponent-base";
-
-class MenuButton extends LightElement {
+class MenuButton extends HTMLButtonElement {
   static {
-    this.register("menu-button", MenuButton);
+    customElements.define("menu-button", MenuButton, { extends: "button" });
   }
 
   constructor() {
     super();
+    this.addEventListener("click", this);
   }
 
-  onClick() {
+  handleEvent() {
     const current =
       this.getAttribute("aria-expanded") === "true" ? true : false;
     this.setAttribute("aria-expanded", String(!current));
