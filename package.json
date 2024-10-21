@@ -23,12 +23,12 @@
     "@astrojs/mdx": "^3.1.8",
     "@axe-core/playwright": "^4.10.0",
     "@benjc/rehype-scroll-to-top": "^0.1.5",
-    "@eslint/js": "^8.56.0",
+    "@eslint/js": "^9.13.0",
     "@playwright/test": "^1.48.1",
     "@types/eslint__js": "^8.42.3",
-    "@types/node": "^22.5.4",
-    "browserslist": "^4.23.3",
-    "eslint": "^8.56.0",
+    "@types/node": "^22.7.7",
+    "browserslist": "^4.24.0",
+    "eslint": "^9.13.0",
     "hast-util-from-html": "^2.0.3",
     "hast-util-to-string": "^3.0.1",
     "hastscript": "^9.0.0",
@@ -42,7 +42,7 @@
     "rehype-figure": "^1.0.1",
     "rehype-slug": "^6.0.0",
     "typescript": "^5.5.4",
-    "typescript-eslint": "^7.17.0"
+    "typescript-eslint": "^8.10.0"
   },
   "packageManager": "pnpm@9.5.0",
   "engines": {
