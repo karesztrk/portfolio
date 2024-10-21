@@ -25,7 +25,10 @@ export class IndexPage {
     });
   }
 
-  async goto() {
+  async goto({ dark } = { dark: false }) {
+    if (dark) {
+      await this.page.emulateMedia({ colorScheme: "dark" });
+    }
     await this.page.goto("./");
   }
 

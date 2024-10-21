@@ -10,11 +10,21 @@ test.describe("Index page", () => {
     await expect(page.getByText("Károly Török ©")).toBeVisible();
   });
 
-  test("should not have accessibility violations", async ({ index, axe }) => {
-    await index.goto();
+  test.describe("A11Y", () => {
+    test("no a11y violations", async ({ index, axe }) => {
+      await index.goto();
 
-    const results = await axe().analyze();
+      const results = await axe().analyze();
 
-    expect(results.violations).toEqual([]);
+      expect(results.violations).toEqual([]);
+    });
+
+    test("no a11y violations in dark mode", async ({ index, axe }) => {
+      await index.goto({ dark: true });
+
+      const results = await axe().analyze();
+
+      expect(results.violations).toEqual([]);
+    });
   });
 });

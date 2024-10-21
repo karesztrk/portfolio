@@ -11,7 +11,10 @@ export class AboutPage {
 
   constructor(public readonly page: Page) {}
 
-  async goto() {
+  async goto({ dark } = { dark: false }) {
+    if (dark) {
+      await this.page.emulateMedia({ colorScheme: "dark" });
+    }
     await this.page.goto("./about");
   }
 }

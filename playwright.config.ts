@@ -1,4 +1,4 @@
-import { defineConfig } from "@playwright/test";
+import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
   use: {
@@ -14,4 +14,25 @@ export default defineConfig({
       reuseExistingServer: !process.env.CI,
     },
   }),
+  projects: [
+    {
+      name: "chromium",
+      use: {
+        ...devices["Desktop Chrome"],
+        contextOptions: {
+          reducedMotion: "reduce",
+        },
+      },
+    },
+    {
+      name: "firefox",
+      use: {
+        ...devices["Desktop Firefox"],
+        contextOptions: {
+          reducedMotion: "reduce",
+        },
+      },
+    },
+  ],
+  maxFailures: process.env.CI ? 10 : undefined,
 });
