@@ -7,47 +7,48 @@ import Instagram from "@/assets/images/icons/Instagram.svg";
 import LinkedIn from "@/assets/images/icons/LinkedIn.svg";
 import Mail from "@/assets/images/icons/Mail.svg";
 import Youtube from "@/assets/images/icons/Youtube.svg";
+import socials from "@/data/socials.json";
 
 const year = new Date().getFullYear();
 
-const socials: Record<
+const data: Record<
   string,
   { icon: string; url: string; title: string; viewBox: string }
 > = {
   github: {
-    title: "Check me on Github",
+    title: socials.github.title,
     icon: Github.src,
-    url: "https://github.com/karesztrk",
+    url: socials.github.url,
     viewBox: `0 0 ${Github.width} ${Github.height}`,
   },
   email: {
-    title: "Send me a mail",
+    title: socials.email.title,
     icon: Mail.src,
-    url: "mailto:torok.karoly.krisztian@gmail.com",
+    url: `mailto:${socials.email.url}`,
     viewBox: `0 0 ${Mail.width} ${Mail.height}`,
   },
   linkedin: {
-    title: "Check my profile on LinkedIn",
+    title: socials.linkedin.title,
     icon: LinkedIn.src,
-    url: "https://www.linkedin.com/in/k%C3%A1roly-t%C3%B6r%C3%B6k-17541b80/",
+    url: socials.linkedin.url,
     viewBox: `0 0 ${LinkedIn.width} ${LinkedIn.height}`,
   },
   instagram: {
-    title: "My activity on Instagram",
+    title: socials.instagram.title,
     icon: Instagram.src,
-    url: "https://www.instagram.com/karesztrk/",
+    url: socials.instagram.url,
     viewBox: `0 0 ${Instagram.width} ${Instagram.height}`,
   },
   youtube: {
-    title: "Things i watch on Youtube",
+    title: socials.youtube.title,
     icon: Youtube.src,
-    url: "https://www.youtube.com/user/r0nan87",
+    url: socials.youtube.url,
     viewBox: `0 0 ${Youtube.width} ${Youtube.height}`,
   },
   facebook: {
-    title: "My Facebook profile",
+    title: socials.facebook.title,
     icon: Facebook.src,
-    url: "https://www.facebook.com/karoly.torok.9/",
+    url: socials.facebook.url,
     viewBox: `0 0 ${Facebook.width} ${Facebook.height}`,
   },
 };
@@ -57,7 +58,7 @@ const socials: Record<
   <Divider />
   <div class="socials">
     {
-      Object.values(socials).map(({ title, icon, url, viewBox }) => (
+      Object.values(data).map(({ title, icon, url, viewBox }) => (
         <a href={url} rel="me">
           <span class="visually-hidden">{title}</span>
           <Icon src={icon} viewBox={viewBox} />

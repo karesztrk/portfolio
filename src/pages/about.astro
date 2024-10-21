@@ -12,6 +12,7 @@ import Temporal from "@components/Temporal.astro";
 import Button from "@/components/Button.astro";
 import Title from "@/components/Title.astro";
 import MarvinPro from "@/assets/images/marvinpro.webp";
+import socials from "@/data/socials.json";
 ---
 
 <Layout title="About me">
@@ -317,16 +318,18 @@ import MarvinPro from "@/assets/images/marvinpro.webp";
       </Title>
       <p data-sparks>
         Are you still here with me? If you'd like to connect, don't hesitate to
-        shoot me an <a href="mailto:karoly.torok.krisztian@gmail.com">email</a>,
-        and I'll get back to you as quickly as I can. And if you're interested
-        in my work or thinking about doing some business together, be sure to
-        grab a copy of my <a href="/doc/Karoly_Torok.pdf" download>resume</a
+        shoot me an email to <a href={`mailto:${socials.email.url}`}>
+          torok.karoly.krisztina@gmail.com</a
+        >, and I'll get back to you as quickly as I can. And if you're
+        interested in my work or thinking about doing some business together, be
+        sure to grab a copy of my <a href="/doc/Karoly_Torok.pdf" download
+          >resume (PDF 342.3 KiB)</a
         >!📄😊
       </p>
 
       <div class="actions" data-sparks>
         <Button as="a" href="/doc/Karoly_Torok.pdf" download class="primary">
-          Download CV
+          Download CV (PDF 342.3 KiB)
         </Button>
       </div>
     </Section>
