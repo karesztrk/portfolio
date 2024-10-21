@@ -11,11 +11,21 @@ test.describe("Blog page", () => {
     expect(articles).toBeGreaterThan(0);
   });
 
-  test("should not have accessibility violations", async ({ blog, axe }) => {
-    await blog.goto();
+  test.describe("A11Y", () => {
+    test("no a11y violations", async ({ blog, axe }) => {
+      await blog.goto();
 
-    const results = await axe().analyze();
+      const results = await axe().analyze();
 
-    expect(results.violations).toEqual([]);
+      expect(results.violations).toEqual([]);
+    });
+
+    test("no a11y violations in dark mode", async ({ blog, axe }) => {
+      await blog.goto({ dark: true });
+
+      const results = await axe().analyze();
+
+      expect(results.violations).toEqual([]);
+    });
   });
 });

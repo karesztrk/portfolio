@@ -73,14 +73,21 @@ test.describe("Tooltips page", () => {
     }
   });
 
-  test("should not have accessibility violations", async ({
-    tooltips,
-    axe,
-  }) => {
-    await tooltips.goto();
+  test.describe("A11Y", () => {
+    test("no a11y violations", async ({ tooltips, axe }) => {
+      await tooltips.goto();
 
-    const results = await axe().analyze();
+      const results = await axe().analyze();
 
-    expect(results.violations).toEqual([]);
+      expect(results.violations).toEqual([]);
+    });
+
+    test("no a11y violations in dark mode", async ({ tooltips, axe }) => {
+      await tooltips.goto({ dark: true });
+
+      const results = await axe().analyze();
+
+      expect(results.violations).toEqual([]);
+    });
   });
 });
