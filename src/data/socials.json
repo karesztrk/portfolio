@@ -1,0 +1,26 @@
+{
+  "github": {
+    "title": "Check me on Github",
+    "url": "https://github.com/karesztrk"
+  },
+  "email": {
+    "title": "Send me a mail",
+    "url": "torok.karoly.krisztian@gmail.com"
+  },
+  "linkedin": {
+    "title": "Check my profile on LinkedIn",
+    "url": "https://www.linkedin.com/in/k%C3%A1roly-t%C3%B6r%C3%B6k-17541b80/"
+  },
+  "instagram": {
+    "title": "My activity on Instagram",
+    "url": "https://www.instagram.com/karesztrk/"
+  },
+  "youtube": {
+    "title": "Things i watch on Youtube",
+    "url": "https://www.youtube.com/user/r0nan87"
+  },
+  "facebook": {
+    "title": "My Facebook profile",
+    "url": "https://www.facebook.com/karoly.torok.9/"
+  }
+}
