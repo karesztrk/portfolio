@@ -200,7 +200,6 @@
     padding: var(--_padding);
     margin: 1em 0;
     border-radius: var(--radius);
-    overflow: hidden;
     border: 2px solid var(--color-summary-border);
     color: var(--color-summary-text);
 
@@ -1034,6 +1033,34 @@
     }
     to {
       filter: grayscale(0);
+    }
+  }
+
+  @keyframes list-item-enter {
+    0% {
+      transform-origin: top;
+      transform: perspective(500px) rotate3d(1, 0, 0, calc(-1 * var(--tilt)))
+        translate3d(0, 0, var(--push-back));
+    }
+    100% {
+      transform-origin: top;
+      transform: perspective(500px) rotate3d(1, 0, 0, 0deg) translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes list-item-exit {
+    0% {
+      transform-origin: bottom;
+      transform: perspective(500px) rotate3d(1, 0, 0, 0deg) translate3d(0, 0, 0);
+      opacity: 1;
+      filter: blur(0);
+    }
+    100% {
+      transform-origin: bottom;
+      transform: perspective(500px) rotate3d(1, 0, 0, var(--tilt))
+        translate3d(0, 0, var(--push-back));
+      opacity: var(--top-fade);
+      filter: blur(--top-blur);
     }
   }
 }
