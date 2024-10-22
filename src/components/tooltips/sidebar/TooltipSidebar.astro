@@ -193,4 +193,28 @@ const { id, collections, ...props } = Astro.props;
       outline-offset: var(--button-outline-offset);
     }
   }
+
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      tt-sidebar {
+        ul {
+          ul {
+            li {
+              --tilt: 30deg;
+              --push-back: -10px;
+              --top-fade: 0.75;
+              --top-blur: 1px;
+              animation:
+                list-item-enter linear forwards,
+                list-item-exit linear forwards;
+              animation-duration: auto, auto;
+              animation-timeline: view();
+              animation-range-start: entry, exit;
+              animation-range-end: entry, exit;
+            }
+          }
+        }
+      }
+    }
+  }
 </style>
