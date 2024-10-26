@@ -70,6 +70,7 @@ const props = Astro.props;
   .toggle {
     & ~ label {
       cursor: pointer;
+      user-select: none;
     }
 
     &:focus-visible ~ label {
