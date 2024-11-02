@@ -6,7 +6,7 @@ test.describe("Blog entry page", () => {
     await expect(blog.firstPost().getByText(/Publish date/)).toBeVisible();
     await blog.firstPost().getByRole("link").click();
 
-    await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+    await expect(page.getByRole("heading", { level: 1 }).first()).toBeVisible();
     await expect(page.getByText(/Tags/)).toBeVisible();
     await expect(page.getByText(/Publish date/)).toBeVisible();
     await expect(page.getByText(/Read time/)).toBeVisible();
