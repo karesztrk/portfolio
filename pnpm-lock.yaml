@@ -11,6 +11,9 @@ importers:
       '@byojs/storage':
         specifier: ^0.11.1
         version: 0.11.1
+      '@karesztrk/baseline-status':
+        specifier: ^1.0.10
+        version: 1.0.10
       '@karesztrk/webcomponent-base':
         specifier: ^1.0.10
         version: 1.0.10
@@ -603,6 +606,9 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
+
+  '@karesztrk/baseline-status@1.0.10':
+    resolution: {integrity: sha512-v5Ft0qReStas5PxV3v0WRUAvt1dTqqzArhww1fr1kc6V94pqSF8pKBDH3B5KjoJuXKw1QwtOzO3YQPC37DwuEA==}
 
   '@karesztrk/webcomponent-base@1.0.10':
     resolution: {integrity: sha512-cJpHmS/C0CobZkHeN0FNOxyvya82M54F5xD9zkUlwPoWUpJi3xO6nuTXpBHrzRamaKinjwWkdg6A7uKukbcNDQ==}
@@ -3097,6 +3103,10 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
+
+  '@karesztrk/baseline-status@1.0.10':
+    dependencies:
+      '@karesztrk/webcomponent-base': 1.0.10
 
   '@karesztrk/webcomponent-base@1.0.10': {}
 
