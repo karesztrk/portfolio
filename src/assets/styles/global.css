@@ -715,6 +715,26 @@
       margin-inline-start: auto;
     }
   }
+
+  baseline-status {
+    --baseline-status-color-link: var(--color-link-text);
+    --baseline-status-color-text: var(--color-text);
+    --baseline-status-color-outline: var(--color-summary-border);
+    font-family: inherit;
+    border-radius: var(--radius);
+    border-width: 2px;
+
+    background-color: var(--color-summary-bg);
+    margin-block: var(--p-margin);
+
+    &:hover {
+      border: 2px solid var(--color-hover-summary-border);
+    }
+
+    p {
+      padding: 5rem;
+    }
+  }
 }
 
 @layer base {
