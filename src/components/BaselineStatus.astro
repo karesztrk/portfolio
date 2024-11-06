@@ -1,0 +1,341 @@
+---
+import Icon from "astro-svg-icon";
+import Chrome from "@/assets/images/icons/baseline/Chrome.svg";
+import Edge from "@/assets/images/icons/baseline/Edge.svg";
+import Firefox from "@/assets/images/icons/baseline/Firefox.svg";
+import Safari from "@/assets/images/icons/baseline/Safari.svg";
+
+import Widely from "@/assets/images/icons/baseline/Widely.svg";
+import Limited from "@/assets/images/icons/baseline/Limited.svg";
+import Newly from "@/assets/images/icons/baseline/Newly.svg";
+import NoBaselineData from "@/assets/images/icons/baseline/NoBaselineData.svg";
+
+import Available from "@/assets/images/icons/baseline/Available.svg";
+import Unavailable from "@/assets/images/icons/baseline/Unavailable.svg";
+import NoBrowserData from "@/assets/images/icons/baseline/NoBrowserData.svg";
+import { type ImageMetadata } from "astro";
+import BaselineBrowser from "./BaselineBrowser.astro";
+
+interface Props {
+  "feature-id": string;
+  browsers?: (keyof BrowserImplementations)[];
+}
+
+const { "feature-id": featureId, browsers = [] } = Astro.props;
+
+export interface Feature {
+  baseline: BaselineType;
+  feature_id?: string;
+  name: string;
+  spec?: SpecType;
+  browser_implementations?: BrowserImplementations;
+}
+
+export interface BaselineType {
+  high_date?: string;
+  low_date?: string;
+  status: Status;
+}
+
+export interface BrowserImplementations {
+  chrome: BrowserImplementation;
+  edge: BrowserImplementation;
+  firefox: BrowserImplementation;
+  safari: BrowserImplementation;
+}
+
+export interface BrowserImplementation {
+  date: string;
+  status: Status;
+  version: string;
+}
+
+export type Status = "limited" | "newly" | "widely" | "no_data";
+
+interface SpecType {
+  links: object[];
+}
+
+const BASELINE_DEFS = {
+  limited: "Limited availability",
+  newly: "",
+  widely: "Widely available",
+  loading: "Loading",
+  no_data: "Unknown availability",
+} as const;
+
+if (!featureId) {
+  throw new Error("Missing feature-Id");
+}
+
+const url = `https://api.webstatus.dev/v1/features/${featureId}`;
+const response = await fetch(url);
+const feature: Feature = await response.json();
+
+/**
+ * Returns feature's low_date as mm-yyyy string or empty string if low_date
+ * is not present.
+ */
+const getBaselineDate = (feature: Feature): string => {
+  return feature.baseline.low_date
+    ? new Intl.DateTimeFormat("en-US", {
+        year: "numeric",
+        month: "long",
+      }).format(new Date(feature.baseline.low_date))
+    : "";
+};
+
+const baseline = feature.baseline.status || "no_data";
+
+const baselineDate = getBaselineDate(feature);
+const year =
+  baseline === "newly" && baselineDate ? baselineDate.split(" ")[1] : "";
+
+const getBaselineImage = (status: Status): ImageMetadata => {
+  switch (status) {
+    case "limited":
+      return Limited;
+
+    case "widely":
+      return Widely;
+
+    case "newly":
+      return Newly;
+
+    default:
+      return NoBaselineData;
+  }
+};
+
+const getBrowserSupport = (status: Status, browserStatus?: Status) => {
+  return status === "limited" ? browserStatus || "unavailable" : status;
+};
+
+const getBrowserSupportImage = (status: Status, browserStatus?: Status) => {
+  const baseline = getBrowserSupport(status, browserStatus);
+  const icon =
+    baseline === "newly" || baseline === "widely" || baseline === "limited"
+      ? "available"
+      : baseline;
+
+  switch (icon) {
+    case "available":
+      return { baseline, support: Available };
+
+    case "unavailable":
+      return { baseline, support: Unavailable };
+
+    default:
+      return { baseline, support: NoBaselineData };
+  }
+};
+
+const baselineImage = getBaselineImage(baseline);
+
+const browserSupportImages = browsers.reduce(
+  (acc, curr) => {
+    const image = getBrowserSupportImage(
+      baseline,
+      feature.browser_implementations?.[curr]?.status,
+    );
+
+    return {
+      ...acc,
+      [curr]: { ...acc[curr], ...image },
+    };
+  },
+  {
+    chrome: {
+      baseline: "unavailable",
+      support: NoBrowserData,
+      browser: Chrome,
+      label: "Chrome",
+    },
+    edge: {
+      baseline: "unavailable",
+      support: NoBrowserData,
+      browser: Edge,
+      label: "Edge",
+    },
+    firefox: {
+      baseline: "unavailable",
+      support: NoBrowserData,
+      browser: Firefox,
+      label: "Firefox",
+    },
+    safari: {
+      baseline: "unavailable",
+      support: NoBrowserData,
+      browser: Safari,
+      label: "Safari",
+    },
+  },
+);
+---
+
+<baseline-status
+  role="complementary"
+  aria-label={`Baseline: ${feature.name} ${baseline}`}
+>
+  <baseline-status-title>{feature.name}</baseline-status-title>
+  <baseline-status-details>
+    <Icon
+      role="img"
+      aria-labelledby={`baseline-icon-${feature.feature_id}`}
+      class={baseline}
+      src={baselineImage.src}
+      viewBox={`0 0 ${baselineImage.width} ${baselineImage.height}`}
+    />
+    <baseline-status-description>
+      <span id={`baseline-icon-${feature.feature_id}`}
+        >{BASELINE_DEFS[baseline]}</span
+      >
+      {year}
+      {baseline === "newly" && <baseline-badge>newly available</baseline-badge>}
+    </baseline-status-description>
+    <baseline-status-browsers>
+      {
+        Object.values(browserSupportImages).map(
+          ({ baseline, support, browser, label }) => (
+            <BaselineBrowser>
+              <Icon
+                slot="browser"
+                role="img"
+                aria-label={label}
+                src={browser.src}
+                viewBox={`0 0 ${browser.width} ${browser.height}`}
+              />
+              <Icon
+                slot="support"
+                role="img"
+                aria-label={`${baseline}`}
+                class={`support-${baseline}`}
+                src={support.src}
+                viewBox={`0 0 ${support.width} ${support.height}`}
+              />
+            </BaselineBrowser>
+          ),
+        )
+      }
+    </baseline-status-browsers>
+  </baseline-status-details>
+
+  <style>
+    baseline-status {
+      --_browsers-size: 200px;
+      --_description-size: 20ch;
+      --_icon-size: 1.5rem;
+
+      display: block;
+
+      margin-block: var(--p-margin);
+      padding: var(--space-md);
+
+      background-color: var(--color-summary-bg);
+      border: 2px solid var(--baseline-status-color-border);
+      border-radius: var(--radius);
+
+      container: inline-size;
+
+      baseline-status-details {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--space-sm);
+
+        > .icon:first-of-type {
+          height: 2em;
+          width: auto;
+          grid-area: icon;
+
+          &.limited {
+            color: var(--baseline-status-icon-color-limited);
+          }
+
+          &.newly {
+            color: var(--baseline-status-icon-color-newly);
+            --dot-color: var(--baseline-status-icon-dot-color-newly);
+          }
+
+          &.widely {
+            color: var(--baseline-status-icon-color-widely);
+          }
+
+          &.no_data {
+            color: var(--baseloine-status-icon-color-no_data);
+          }
+        }
+
+        .support-no_data {
+          color: var(--baseline-status-color-no_data);
+        }
+
+        .support-unavailable {
+          color: var(--baseline-status-color-unavailable);
+        }
+
+        .support-newly {
+          color: var(--baseline-status-color-newly);
+        }
+
+        .support-widely,
+        .support-available {
+          color: var(--baseline-status-color-widely);
+        }
+
+        baseline-status-description {
+          flex: 1 1 var(--_description-size);
+        }
+
+        baseline-status-browsers {
+          display: flex;
+          flex-wrap: wrap;
+
+          align-items: center;
+          gap: var(--space-sm);
+          width: min(var(--_browsers-size), 100%);
+
+          font-size: var(--_icon-size);
+          line-height: 1;
+          height: var(--_icon-size);
+
+          .icon {
+            width: var(--_icon-size);
+            aspect-ratio: 1;
+          }
+
+          .icon:nth-of-type(even) {
+            margin-left: -0.25em;
+          }
+        }
+      }
+
+      baseline-status-title {
+        color: var(--color-title);
+        font-variation-settings: "CASL" 0;
+        text-transform: capitalize;
+        margin: 0;
+
+        @supports (font-size: 0.75cqi) {
+          font-size: calc(var(--p) + 0.75cqi);
+        }
+      }
+
+      baseline-badge {
+        background: #3367d6;
+        color: #fff;
+        font-size: 11px;
+        padding-inline: var(--space-xs);
+        border-radius: 2px;
+        text-transform: uppercase;
+        line-height: 20px;
+        white-space: nowrap;
+        vertical-align: middle;
+      }
+
+      &:hover {
+        border: 2px solid var(--color-hover-summary-border);
+      }
+    }
+  </style>
+</baseline-status>
