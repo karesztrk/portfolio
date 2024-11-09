@@ -34,7 +34,7 @@ ol[role="list"] {
 
 /* Set core body defaults */
 body {
-  min-height: 100vh;
+  min-block-size: 100vh;
   line-height: 1.5;
 }
 
@@ -68,8 +68,8 @@ a:not([class]) {
 /* Make images easier to work with */
 img,
 picture {
-  max-width: 100%;
-  height: auto;
+  max-inline-size: 100%;
+  block-size: auto;
   vertical-align: middle;
   font-style: italic;
   background-repeat: no-repeat;
@@ -95,11 +95,13 @@ button,
 textarea,
 select {
   font: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
 }
 
 /* Make sure textareas without a rows attribute are not tiny */
 textarea:not([rows]) {
-  min-height: 10em;
+  min-block-size: 10em;
 }
 
 /* Anything that has been anchored to should have extra scroll margin */
