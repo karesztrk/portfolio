@@ -1,0 +1,41 @@
+---
+import BaselineStatus from "astro-baseline-status";
+import Icon from "astro-svg-icon";
+import Chrome from "@/assets/images/icons/baseline/Chrome.svg";
+import Edge from "@/assets/images/icons/baseline/Edge.svg";
+import Firefox from "@/assets/images/icons/baseline/Firefox.svg";
+import Safari from "@/assets/images/icons/baseline/Safari.svg";
+
+const { "feature-id": feature } = Astro.props;
+---
+
+<BaselineStatus feature-id={feature}>
+  <Icon
+    slot="chrome"
+    role="img"
+    aria-label="Chrome"
+    src={Chrome.src}
+    viewBox={`0 0 ${Chrome.width} ${Chrome.height}`}
+  />
+  <Icon
+    slot="edge"
+    role="img"
+    aria-label="Edge"
+    src={Edge.src}
+    viewBox={`0 0 ${Edge.width} ${Edge.height}`}
+  />
+  <Icon
+    slot="firefox"
+    role="img"
+    aria-label="Firefox"
+    src={Firefox.src}
+    viewBox={`0 0 ${Firefox.width} ${Firefox.height}`}
+  />
+  <Icon
+    slot="safari"
+    role="img"
+    aria-label="Safari"
+    src={Safari.src}
+    viewBox={`0 0 ${Safari.width} ${Safari.height}`}
+  />
+</BaselineStatus>

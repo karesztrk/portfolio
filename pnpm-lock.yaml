@@ -11,14 +11,11 @@ importers:
       '@byojs/storage':
         specifier: ^0.11.1
         version: 0.11.1
-      '@karesztrk/baseline-status':
-        specifier: ^1.1.0
-        version: 1.1.0
       '@karesztrk/webcomponent-base':
         specifier: ^1.0.10
         version: 1.0.10
       astro:
-        specifier: ^4.16.0
+        specifier: ^4.16.6
         version: 4.16.6(@types/node@22.7.7)(lightningcss@1.27.0)(rollup@4.24.0)(typescript@5.6.3)
       astro-svg-icon:
         specifier: ^1.1.0
@@ -30,7 +27,7 @@ importers:
         specifier: ^1.0.1
         version: 1.0.1(md4w@0.2.6)
       sharp:
-        specifier: ^0.33.2
+        specifier: ^0.33.4
         version: 0.33.4
     devDependencies:
       '@astrojs/mdx':
@@ -54,6 +51,9 @@ importers:
       '@types/node':
         specifier: ^22.7.7
         version: 22.7.7
+      astro-baseline-status:
+        specifier: ^1.0.1
+        version: 1.0.1(astro-svg-icon@1.1.0(astro@4.16.6(@types/node@22.7.7)(lightningcss@1.27.0)(rollup@4.24.0)(typescript@5.6.3))(prettier-plugin-astro@0.14.1)(prettier@3.3.3))(astro@4.16.6(@types/node@22.7.7)(lightningcss@1.27.0)(rollup@4.24.0)(typescript@5.6.3))
       browserslist:
         specifier: ^4.24.0
         version: 4.24.0
@@ -79,7 +79,7 @@ importers:
         specifier: ^1.48.1
         version: 1.48.1
       prettier:
-        specifier: ^3.2.4
+        specifier: ^3.3.3
         version: 3.3.3
       prettier-plugin-astro:
         specifier: ^0.14.1
@@ -97,7 +97,7 @@ importers:
         specifier: ^6.0.0
         version: 6.0.0
       typescript:
-        specifier: ^5.5.4
+        specifier: ^5.6.3
         version: 5.6.3
       typescript-eslint:
         specifier: ^8.10.0
@@ -607,9 +607,6 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
-  '@karesztrk/baseline-status@1.1.0':
-    resolution: {integrity: sha512-TQRdPFQCxkOLv9N1tCCBCVBy6mMYSPA79oZNRBBYESiFW79pDp7D0hL1artlNTh0V+Qm08g7DAchv1kTG8JdWQ==}
-
   '@karesztrk/webcomponent-base@1.0.10':
     resolution: {integrity: sha512-cJpHmS/C0CobZkHeN0FNOxyvya82M54F5xD9zkUlwPoWUpJi3xO6nuTXpBHrzRamaKinjwWkdg6A7uKukbcNDQ==}
 
@@ -951,6 +948,12 @@ packages:
   astring@1.8.6:
     resolution: {integrity: sha512-ISvCdHdlTDlH5IpxQJIex7BWBywFWgjJSVdwst+/iQCoEYnyOaQ95+X1JGshuBjGp6nxKUy1jMgE3zPqN7fQdg==}
     hasBin: true
+
+  astro-baseline-status@1.0.1:
+    resolution: {integrity: sha512-88k8kSwDoaAE1LWydRQFqAKo8pK84WyRepj6alGViyR6LFIzTWLdtlVRLQ5jz64tmSfJMXSCd8AiH9XVxLZKDQ==}
+    peerDependencies:
+      astro: ^4.0.0
+      astro-svg-icon: ^1.0.0
 
   astro-svg-icon@1.1.0:
     resolution: {integrity: sha512-TdTJAUmStySANtHIn62fsmcbLficYO3J4QGrI0DhRIQjNVWnNGWkVa8kLZb9yxRVVctAz4XR+yVUfy10bP3pOA==}
@@ -3104,10 +3107,6 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@karesztrk/baseline-status@1.1.0':
-    dependencies:
-      '@karesztrk/webcomponent-base': 1.0.10
-
   '@karesztrk/webcomponent-base@1.0.10': {}
 
   '@mdx-js/mdx@3.0.1':
@@ -3503,6 +3502,11 @@ snapshots:
   array-iterate@2.0.1: {}
 
   astring@1.8.6: {}
+
+  astro-baseline-status@1.0.1(astro-svg-icon@1.1.0(astro@4.16.6(@types/node@22.7.7)(lightningcss@1.27.0)(rollup@4.24.0)(typescript@5.6.3))(prettier-plugin-astro@0.14.1)(prettier@3.3.3))(astro@4.16.6(@types/node@22.7.7)(lightningcss@1.27.0)(rollup@4.24.0)(typescript@5.6.3)):
+    dependencies:
+      astro: 4.16.6(@types/node@22.7.7)(lightningcss@1.27.0)(rollup@4.24.0)(typescript@5.6.3)
+      astro-svg-icon: 1.1.0(astro@4.16.6(@types/node@22.7.7)(lightningcss@1.27.0)(rollup@4.24.0)(typescript@5.6.3))(prettier-plugin-astro@0.14.1)(prettier@3.3.3)
 
   astro-svg-icon@1.1.0(astro@4.16.6(@types/node@22.7.7)(lightningcss@1.27.0)(rollup@4.24.0)(typescript@5.6.3))(prettier-plugin-astro@0.14.1)(prettier@3.3.3):
     dependencies:

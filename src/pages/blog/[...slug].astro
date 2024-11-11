@@ -6,7 +6,7 @@ import Temporal from "@components/Temporal.astro";
 import Tags from "@components/Tags.astro";
 import Fields from "@components/Fields.astro";
 import ReadTime from "@components/ReadTime.astro";
-import BaselineStatus from "@/components/BaselineStatus.astro";
+import Feature from "@/components/Feature.astro";
 
 export async function getStaticPaths() {
   const blog = await getCollection("Blog");
@@ -19,6 +19,7 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content, remarkPluginFrontmatter } = await entry.render();
 const title = formatTitle(entry.id);
+const features = entry.data.features?.filter(Boolean);
 ---
 
 <Layout title={title}>
@@ -35,14 +36,13 @@ const title = formatTitle(entry.id);
       </ReadTime>
     </Fields>
     {
-      entry.data.features
-        ?.filter(Boolean)
-        .map((feature) => (
-          <BaselineStatus
-            feature-id={feature}
-            browsers={["chrome", "edge", "firefox", "safari"]}
-          />
-        ))
+      features && (
+        <features>
+          {features.map((featureId) => (
+            <Feature feature-id={featureId} />
+          ))}
+        </features>
+      )
     }
     <Content />
   </article>
@@ -71,13 +71,14 @@ const title = formatTitle(entry.id);
     .fields {
       margin-block-end: var(--content-spacer);
 
-      &:has(+ baseline-status) {
+      &:has(+ features) {
         margin-block-end: var(--p-margin);
       }
+    }
 
-      ~ baseline-status:last-of-type {
-        margin-block-end: var(--content-spacer);
-      }
+    features {
+      display: block;
+      margin-block: var(--p-margin) var(--content-spacer);
     }
   }
 </style>

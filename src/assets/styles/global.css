@@ -622,6 +622,10 @@
         }
       }
     }
+
+    &:has(.anchor-link) {
+      position: relative;
+    }
   }
 
   :target {
@@ -933,7 +937,7 @@
     --color-quote: light-dark(var(--color-teal-6), var(--color-pink-5));
 
     --baseline-status-color-border: var(--color-summary-border);
-
+    --baseline-status-color-bg: var(--color-summary-bg);
     --baseline-status-color-unavailable: light-dark(#ea8600, #f09418);
     --baseline-status-color-newly: light-dark(#1a73e8, #4185ff);
     --baseline-status-color-widely: light-dark(#1e8e3e, #24a446);
@@ -942,7 +946,7 @@
     --baseline-status-icon-color-newly: light-dark(#1b6ef3, #4185ff);
     --baseline-status-icon-dot-color-newly: light-dark(#a8c7fa, #2d509e);
     --baseline-status-icon-color-widely: light-dark(#c4eed0, #125225);
-    --baseloine-status-icon-color-no_data: light-dark(#909090, #666666);
+    --baseline-status-icon-color-no_data: light-dark(#909090, #666666);
   }
 }
 
