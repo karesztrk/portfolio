@@ -99,6 +99,27 @@ const { collections, ...rest } = Astro.props;
         padding: 0;
       }
 
+      li {
+        --easing: cubic-bezier(0.76, 0, 0.24, 1);
+        --transition-time: 200ms;
+        display: list-item;
+        transition: all var(--transition-time) var(--easing) allow-discrete;
+
+        transform: scaleY(1);
+
+        @starting-style {
+          opacity: 0;
+
+          transform: scaleY(0.25);
+        }
+
+        &.hidden {
+          opacity: 0;
+          display: none;
+          transform: scaleY(0.25);
+        }
+      }
+
       & ul {
         margin: 0;
         > li:first-child {

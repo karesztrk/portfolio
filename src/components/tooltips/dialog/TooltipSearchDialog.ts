@@ -83,7 +83,11 @@ export class TooltipSearchDialog extends TooltipBase {
             entry.textContent.toLowerCase().includes(value.toLowerCase()) ||
             tags.some((tag) => tag.toLowerCase().includes(value.toLowerCase()));
 
-          (entry as HTMLElement).style.display = show ? "list-item" : "none";
+          if (show) {
+            (entry as HTMLElement).classList.remove("hidden");
+          } else {
+            (entry as HTMLElement).classList.add("hidden");
+          }
         }
       }
     };
