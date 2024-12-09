@@ -15,12 +15,14 @@ test.describe("Tooltips page", () => {
   test("Search entry", async ({ tooltips, page }) => {
     await tooltips.openSearch();
 
-    await expect(tooltips.searchDialog()).toBeVisible();
-    await page.locator("#search-input").fill("html");
-
     const dialog = tooltips.searchDialog();
+
+    await expect(dialog).toBeVisible();
+    await page.getByRole("searchbox").fill("html");
+
     // Fist button is the close button, the Second is the first inside the menu
-    const entryButton = dialog.locator("button:visible").locator("nth=1");
+    const buttons = await dialog.getByRole("button").all();
+    const entryButton = buttons[1];
     const entryText = await entryButton.textContent();
 
     expect(entryText).not.toBeNull();
@@ -29,7 +31,7 @@ test.describe("Tooltips page", () => {
     await expect(tooltips.searchDialog()).not.toBeVisible();
     if (entryText) {
       await expect(
-        page.getByRole("article").getByRole("article").getByText(entryText),
+        page.getByRole("heading", { name: entryText.trim(), level: 2 }),
       ).toBeVisible();
       await tooltips.expectBreadcrumbContent("Articles");
     }
@@ -42,7 +44,7 @@ test.describe("Tooltips page", () => {
     await tooltips.openSearch();
     await expect(tooltips.searchDialog()).toBeVisible();
 
-    await page.locator("id=search-dialog").press("Escape");
+    await page.getByRole("dialog").press("Escape");
 
     await expect(tooltips.searchDialog()).not.toBeVisible();
   });
