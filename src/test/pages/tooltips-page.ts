@@ -29,7 +29,7 @@ export class TooltipsPage {
   }
 
   searchDialog() {
-    return this.page.locator("#search-dialog");
+    return this.page.getByRole("dialog");
   }
 
   async expectBreadcrumbContent(category: (typeof this.categories)[number]) {
