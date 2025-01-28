@@ -20,9 +20,8 @@ test.describe("Tooltips page", () => {
     await expect(dialog).toBeVisible();
     await page.getByRole("searchbox").fill("html");
 
-    // Fist button is the close button, the Second is the first inside the menu
-    const buttons = await dialog.getByRole("button").all();
-    const entryButton = buttons[1];
+    const buttons = await dialog.getByRole("button", { name: /html/i }).all();
+    const entryButton = buttons[0];
     const entryText = await entryButton.textContent();
 
     expect(entryText).not.toBeNull();
