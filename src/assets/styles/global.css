@@ -790,7 +790,7 @@
         }
 
         /* Highlight the hovered cell */
-        tr:not(:first-of-type) td:hover {
+        tr td:hover {
           background-color: var(--color-table-hovered-cell-bg);
           color: canvasText;
           opacity: 1;
@@ -1061,12 +1061,12 @@
       var(--color-teal-6)
     );
     --color-table-hovered-cell-bg: light-dark(
-      oklch(0.5 0.2 calc(var(--color-pink-hue) * 1deg) / 0.8),
-      oklch(0.5 0.2 calc(var(--color-teal-hue) * 1deg) / 0.8)
+      oklch(0.5 0.2 calc(var(--color-pink-hue) * 1deg) / 0.5),
+      oklch(0.5 0.2 calc(var(--color-teal-hue) * 1deg) / 0.5)
     );
     --color-table-helper-cell-bg: light-dark(
-      oklch(0.5 0.1 calc(var(--color-pink-hue) * 1deg) / 0.4),
-      oklch(0.5 0.2 calc(var(--color-teal-hue) * 1deg) / 0.4)
+      oklch(0.5 0.1 calc(var(--color-pink-hue) * 1deg) / 0.2),
+      oklch(0.5 0.2 calc(var(--color-teal-hue) * 1deg) / 0.2)
     );
 
     --baseline-status-color-border: var(--color-summary-border);
