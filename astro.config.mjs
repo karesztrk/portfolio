@@ -12,6 +12,7 @@ import { fromHtml } from "hast-util-from-html";
 import { h } from "hastscript";
 import { toString } from "hast-util-to-string";
 import rehypeFigure from "rehype-figure";
+import rehypeWrap from "rehype-wrap-all";
 
 export default defineConfig({
   prefetch: true,
@@ -56,6 +57,13 @@ export default defineConfig({
         },
       ],
       rehypeFigure,
+      [
+        rehypeWrap,
+        {
+          selector: "table",
+          wrapper: "div.table-wrapper",
+        },
+      ],
     ],
   },
   integrations: [mdx()],

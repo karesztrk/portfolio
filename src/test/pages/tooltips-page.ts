@@ -7,7 +7,6 @@ export class TooltipsPage {
     "Codepens",
     "Libraries",
     "Snippets",
-    "Stack",
     "Tools",
   ] as const;
 

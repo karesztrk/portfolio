@@ -719,6 +719,126 @@
       margin-inline-start: auto;
     }
   }
+
+  .table-wrapper {
+    overflow: scroll;
+    table {
+      border-collapse: collapse;
+
+      thead {
+        border-block-end: 2px solid var(--color-table-header-border);
+      }
+
+      thead th {
+        vertical-align: baseline;
+      }
+
+      th {
+        &:first-child {
+          position: sticky;
+          background-color: var(--color-background);
+          inset-inline-start: 0;
+        }
+      }
+
+      th,
+      td {
+        vertical-align: baseline;
+        transition-property: color, opacity, background;
+        transition-duration: 200ms, 200ms, 500ms;
+        transition-timing-function: linear(
+          0,
+          0.402 7.4%,
+          0.711 15.3%,
+          0.929 23.7%,
+          1.008 28.2%,
+          1.067 33%,
+          1.099 36.9%,
+          1.12 41%,
+          1.13 45.4%,
+          1.13 50.1%,
+          1.111 58.5%,
+          1.019 83.2%,
+          1.004 91.3%,
+          1
+        );
+
+        @media (prefers-reduced-motion: reduce) {
+          transition-duration: 0ms;
+        }
+      }
+
+      th,
+      caption {
+        text-align: start;
+      }
+
+      tr {
+        border-block-end: 1px dashed var(--color-table-header-border);
+
+        td:first-child {
+          background-color: var(--color-background);
+          position: sticky;
+          inset-inline-start: 0;
+        }
+      }
+
+      @media (prefers-contrast: no-preference) {
+        /* Dim the whole table when hovering a cell */
+        &:has(td:hover) :where(th, td) {
+          color: color-mix(in hsl, canvasText, #0000 60%);
+        }
+
+        /* Highlight the hovered cell */
+        tr:not(:first-of-type) td:hover {
+          background-color: var(--color-table-hovered-cell-bg);
+          color: canvasText;
+          opacity: 1;
+        }
+
+        /* Treat the first column as row headers */
+        td:first-of-type:has(~ td:hover) {
+          color: canvasText;
+        }
+
+        /* Highlight the first cell of the hovered row */
+        /* + highlight the first cell of the hovered row */
+        td:not(:first-of-type):has(~ td:hover),
+        &:has(td:nth-of-type(1):hover) tr:has(~ tr:hover) td:nth-of-type(1),
+        &:has(td:nth-of-type(2):hover) tr:has(~ tr:hover) td:nth-of-type(2),
+        &:has(td:nth-of-type(3):hover) tr:has(~ tr:hover) td:nth-of-type(3),
+        &:has(td:nth-of-type(4):hover) tr:has(~ tr:hover) td:nth-of-type(4),
+        &:has(td:nth-of-type(5):hover) tr:has(~ tr:hover) td:nth-of-type(5),
+        &:has(td:nth-of-type(6):hover) tr:has(~ tr:hover) td:nth-of-type(6),
+        &:has(td:nth-of-type(7):hover) tr:has(~ tr:hover) td:nth-of-type(7),
+        &:has(td:nth-of-type(8):hover) tr:has(~ tr:hover) td:nth-of-type(8),
+        &:has(td:nth-of-type(9):hover) tr:has(~ tr:hover) td:nth-of-type(9),
+        &:has(td:nth-of-type(10):hover) tr:has(~ tr:hover) td:nth-of-type(10) {
+          opacity: 1;
+          color: canvasText;
+          background-color: var(--color-table-helper-cell-bg);
+        }
+
+        /* Highlight the table header on cell hover */
+        tr:not(:first-of-type):hover:not(:has(th:hover)) th,
+        &:has(tr:not(:first-of-type) td:nth-of-type(1):hover)
+          tr:first-of-type
+          th:nth-of-type(1),
+        &:has(td:nth-of-type(2):hover) tr:first-of-type th:nth-of-type(2),
+        &:has(td:nth-of-type(3):hover) tr:first-of-type th:nth-of-type(3),
+        &:has(td:nth-of-type(4):hover) tr:first-of-type th:nth-of-type(4),
+        &:has(td:nth-of-type(5):hover) tr:first-of-type th:nth-of-type(5),
+        &:has(td:nth-of-type(6):hover) tr:first-of-type th:nth-of-type(6),
+        &:has(td:nth-of-type(7):hover) tr:first-of-type th:nth-of-type(7),
+        &:has(td:nth-of-type(8):hover) tr:first-of-type th:nth-of-type(8),
+        &:has(td:nth-of-type(9):hover) tr:first-of-type th:nth-of-type(9),
+        &:has(td:nth-of-type(10):hover) tr:first-of-type th:nth-of-type(10) {
+          opacity: 1;
+          color: canvasText;
+        }
+      }
+    }
+  }
 }
 
 @layer base {
@@ -935,6 +1055,19 @@
     --color-mark-2: light-dark(var(--color-teal-6), var(--color-teal-5));
 
     --color-quote: light-dark(var(--color-teal-6), var(--color-pink-5));
+
+    --color-table-header-border: light-dark(
+      var(--color-teal-8),
+      var(--color-teal-6)
+    );
+    --color-table-hovered-cell-bg: light-dark(
+      oklch(0.5 0.2 calc(var(--color-pink-hue) * 1deg) / 0.8),
+      oklch(0.5 0.2 calc(var(--color-teal-hue) * 1deg) / 0.8)
+    );
+    --color-table-helper-cell-bg: light-dark(
+      oklch(0.5 0.1 calc(var(--color-pink-hue) * 1deg) / 0.4),
+      oklch(0.5 0.2 calc(var(--color-teal-hue) * 1deg) / 0.4)
+    );
 
     --baseline-status-color-border: var(--color-summary-border);
     --baseline-status-color-bg: var(--color-summary-bg);
