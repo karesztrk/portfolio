@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     container:
-      image: mcr.microsoft.com/playwright:v1.48.1-jammy
+      image: mcr.microsoft.com/playwright:v1.51.1-jammy
     steps:
       - name: Install jq
         run: |
