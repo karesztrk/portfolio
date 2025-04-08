@@ -6,7 +6,6 @@ declare module "@/data/tooltips.json" {
     | "Codepens"
     | "Libraries"
     | "Snippets"
-    | "Stack"
     | "Tools";
   const content: [{ name: TooltipCollectionType; description: string }];
   export default content;

@@ -16,7 +16,6 @@ class TooltipSidebar extends TooltipBase {
     Tools: [],
     Snippets: [],
     Libraries: [],
-    Stack: [],
   };
 
   constructor() {

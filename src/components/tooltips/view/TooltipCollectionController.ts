@@ -13,7 +13,6 @@ class TooltipCollectionController {
     Tools: [],
     Snippets: [],
     Libraries: [],
-    Stack: [],
   };
 
   #host: HTMLElement;
@@ -64,7 +63,6 @@ class TooltipCollectionController {
       Tools: [],
       Snippets: [],
       Libraries: [],
-      Stack: [],
     };
     return has(key).then((hasKey) => {
       if (!hasKey) {
