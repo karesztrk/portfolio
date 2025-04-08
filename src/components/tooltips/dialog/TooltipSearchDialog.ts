@@ -16,7 +16,6 @@ export class TooltipSearchDialog extends TooltipBase {
     Tools: [],
     Snippets: [],
     Libraries: [],
-    Stack: [],
   };
 
   constructor() {
