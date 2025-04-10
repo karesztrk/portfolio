@@ -10,6 +10,18 @@ test.describe("Blog entry page", () => {
     await expect(page.getByText(/Tags/)).toBeVisible();
     await expect(page.getByText(/Publish date/)).toBeVisible();
     await expect(page.getByText(/Read time/)).toBeVisible();
+    await expect(page.getByRole("button", { name: "Copy URL" })).toBeVisible();
+    await expect(page.getByRole("button", { name: "Share" })).toBeHidden();
+    await expect(page.getByRole("link", { name: "Back to top" })).toBeVisible();
+  });
+
+  test("copy url", async ({ blog, page }) => {
+    await blog.goto();
+    await expect(blog.firstPost().getByText(/Publish date/)).toBeVisible();
+    await blog.firstPost().getByRole("link").click();
+
+    await page.getByRole("button", { name: "Copy URL" }).click();
+    await expect(page.getByRole("alert").getByText("Copied!")).toBeVisible();
   });
 
   test.describe("A11Y", () => {
