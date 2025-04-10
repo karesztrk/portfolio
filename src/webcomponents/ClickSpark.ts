@@ -1,7 +1,9 @@
 import { ShadowElement } from "@karesztrk/webcomponent-base";
 
-// Copyright (c) 2023 Ryan Mulligan
-// https://github.com/hexagoncircle/click-spark?tab=readme-ov-file
+/**
+ * Copyright (c) 2023 Ryan Mulligan
+ * @see https://github.com/hexagoncircle/click-spark?tab=readme-ov-file
+ */
 class ClickSpark extends ShadowElement {
   static {
     this.register("click-spark", ClickSpark);

@@ -3,7 +3,6 @@ import nuDiscoTheme from "./nu-disco-dark.color-theme.json";
 import { remarkReadingTime } from "./remark-reading-time.mjs";
 import { browserslistToTargets } from "lightningcss";
 import browserslist from "browserslist";
-import rehypeScrollToTop from "@benjc/rehype-scroll-to-top";
 import mdx from "@astrojs/mdx";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
@@ -13,6 +12,8 @@ import { h } from "hastscript";
 import { toString } from "hast-util-to-string";
 import rehypeFigure from "rehype-figure";
 import rehypeWrap from "rehype-wrap-all";
+import { rehypeAppendHtml } from "./rehype-append.mjs";
+import Actions from "./src/components/Actions.html?raw";
 
 export default defineConfig({
   prefetch: true,
@@ -31,16 +32,6 @@ export default defineConfig({
     },
     remarkPlugins: [remarkReadingTime],
     rehypePlugins: [
-      [
-        rehypeScrollToTop,
-        {
-          topLink: { disabled: true },
-          bottomLink: {
-            text: "Back to top",
-            ariaLabel: "Back to top",
-          },
-        },
-      ],
       rehypeSlug,
       [
         rehypeAutolinkHeadings,
@@ -62,6 +53,12 @@ export default defineConfig({
         {
           selector: "table",
           wrapper: "div.table-wrapper",
+        },
+      ],
+      [
+        rehypeAppendHtml,
+        {
+          element: fromHtml(Actions),
         },
       ],
     ],

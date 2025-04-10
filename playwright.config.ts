@@ -22,6 +22,7 @@ export default defineConfig({
         contextOptions: {
           reducedMotion: "reduce",
         },
+        permissions: ["clipboard-read", "clipboard-write"],
       },
     },
     {
