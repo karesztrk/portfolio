@@ -3,21 +3,15 @@
 @layer reset, base, typography, theme, components, utilities, animations, viewtransition, customproperty, scrollanimation;
 
 :root {
-  --mono: "MONO" 0;
-  --casl: "CASL" 0;
-  --wght: "wght" 400;
-  --slnt: "slnt" 0;
-  --CRSV: "CRSV" 0.5;
-
   --gap: clamp(1rem, 1vw, 3rem);
   --full: minmax(var(--gap), 1fr);
-  --content: min(65ch, 100% - var(--gap) * 2);
+  --content: min(70ch, 100% - var(--gap) * 2);
   --popout-max: 2rem;
   --popout: minmax(0, var(--popout-max));
 
   --grid-row-nav: min-content;
 
-  --h1-base: 3.5rem;
+  --h1-base: 5rem;
   --h2-base: 2rem;
   --h3-base: 1.1rem;
   --h4-base: 1.333rem;
@@ -26,6 +20,7 @@
 
   --radius: 6px;
 
+  --h1-margin: 0.25em;
   --h-margin: 0.75em;
   --p-margin: 1.5rem;
 
@@ -46,10 +41,10 @@
   --input-border-size: 3px;
   --input-height: 38px;
   --input-padding: 2px 4px;
-
   --font-mono: "Departure Mono", monospace;
   --font-menu: var(--font-mono);
   --font-base: "Recursive", system-ui;
+  --font-heading: "Tanker", sans-serif;
   --menu-transition-duration: 115ms;
   --menu-transition-easing: cubic-bezier(0.36, 2.09, 0.07, -1.52);
 
@@ -96,7 +91,7 @@
   pre,
   code {
     font-size: 0.875rem;
-    font-family: "Recursive", monospace;
+    font-family: var(--font-base);
     font-variation-settings: "MONO" 1;
   }
 
@@ -117,7 +112,6 @@
   p,
   ol,
   ul {
-    font-variation-settings: "CASL" 1;
     margin-block: var(--p-margin, 1.5rem);
   }
 
@@ -130,16 +124,17 @@
   h3,
   h4,
   h5 {
+    font-family: var(--font-heading);
     font-weight: 400;
-    line-height: 1.1;
+    line-height: 1;
     color: var(--color-title);
     margin-block: var(--h-margin, 0.75em);
-    /* Better matching to fallback font */
-    font-size-adjust: 0.53;
   }
 
   h1 {
     font-weight: 700;
+    margin-block: var(--h1-margin, 0.25em);
+    text-transform: uppercase;
     --font-size-base: var(--h1-base);
   }
 
@@ -170,10 +165,6 @@
   button,
   a.button {
     font-family: var(--font-mono);
-  }
-
-  mark {
-    font-variation-settings: "CASL" 0;
   }
 }
 
@@ -268,7 +259,6 @@
     --_gardient-end: calc(var(--_edge-end) + var(--_dot-space));
     --_width: calc(var(--_gardient-end) * var(--_colums) - var(--_dot-space));
     position: relative;
-    line-height: 110%;
     padding-inline-end: var(--_width);
     word-break: break-word;
     hyphens: auto;
