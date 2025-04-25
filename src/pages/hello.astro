@@ -26,8 +26,6 @@ import Button from "@components/Button.astro";
     </Section>
   </hgroup>
 
-  <article></article>
-
   <article>
     <section class="grid">
       <Button as="a" class="secondary large" href="/blog/" data-astro-prefetch>
@@ -49,27 +47,29 @@ import Button from "@components/Button.astro";
       </Button>
     </section>
   </article>
-</Layout>
 
-<style>
-  h1 {
-    margin-block-end: 0;
-  }
-
-  .phonetic {
-    /* https://github.com/system-fonts/modern-font-stacks#transitional */
-    font-family: Charter, "Bitstream Charter", "Sitka Text", Cambria, serif;
-  }
-
-  .grid {
-    font-family: var(--font-mono);
-    margin-block: 3rem;
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
-
-    > .secondary {
-      text-decoration: none;
+  <style>
+    h1 {
+      margin-block-end: 0;
     }
-  }
-</style>
+
+    .phonetic {
+      /* https://github.com/system-fonts/modern-font-stacks#transitional */
+      font-family: Charter, "Bitstream Charter", "Sitka Text", Cambria, serif;
+      font-size: 0.75em;
+      text-transform: none;
+    }
+
+    .grid {
+      font-family: var(--font-mono);
+      margin-block: 3rem;
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+
+      > .secondary {
+        text-decoration: none;
+      }
+    }
+  </style>
+</Layout>
