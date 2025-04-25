@@ -2,8 +2,8 @@
 import Spark from "@components/Spark.astro";
 import Click from "@components/Click.astro";
 import Share from "@components/Share.astro";
-import "@/assets/styles/fonts.css";
 import "@/assets/styles/global.css";
+import { Font } from "astro:assets";
 
 interface Props {
   title: string;
@@ -12,7 +12,6 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<!doctype html>
 <html lang="en">
   <head>
     <!-- Order of the head elements matters -->
@@ -21,13 +20,8 @@ const { title } = Astro.props;
     <meta name="description" content="Károly Török portfolio" />
     <title>{title}</title>
     <!-- Prioritizing the hero font loading -->
-    <link
-      rel="preload"
-      href="/fonts/Recursive-Normal-Var.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
+    <Font cssVariable="--font-recursive" preload />
+    <Font cssVariable="--font-departure" />
     <link
       rel="icon"
       href={`/favicon${import.meta.env.DEV ? "-dev" : ""}.ico`}
