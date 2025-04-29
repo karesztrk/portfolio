@@ -598,7 +598,7 @@
         opacity: 0;
         width: auto;
         height: var(--_icon-size);
-        vertical-align: baseline;
+        vertical-align: middle;
         color: var(--color-anchor);
         transition:
           opacity 150ms cubic-bezier(0.61, 1, 0.88, 1),
