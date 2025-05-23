@@ -1,11 +1,12 @@
+import { ROUTES } from "@/routes";
 import type { Page } from "@playwright/test";
 
 export class IndexPage {
   menuItems = [
-    { title: "Blog", path: "/blog" },
-    { title: "Tips", path: "/tooltips" },
-    { title: "About", path: "/about" },
-    { title: "Uses", path: "/uses" },
+    { title: "Blog", path: ROUTES.blog },
+    { title: "Tips", path: ROUTES.tips },
+    { title: "About", path: ROUTES.about },
+    { title: "Uses", path: ROUTES.uses },
   ] as const;
 
   footerTexts = [
@@ -29,7 +30,7 @@ export class IndexPage {
     if (dark) {
       await this.page.emulateMedia({ colorScheme: "dark" });
     }
-    await this.page.goto("./");
+    await this.page.goto(`.${ROUTES.root}`);
   }
 
   menu() {

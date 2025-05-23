@@ -1,3 +1,4 @@
+import { ROUTES } from "@/routes";
 import type { Page } from "@playwright/test";
 
 export class AboutPage {
@@ -15,6 +16,6 @@ export class AboutPage {
     if (dark) {
       await this.page.emulateMedia({ colorScheme: "dark" });
     }
-    await this.page.goto("./about");
+    await this.page.goto(`.${ROUTES.about}`);
   }
 }

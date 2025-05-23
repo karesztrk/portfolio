@@ -1,5 +1,6 @@
 import type { Page } from "@playwright/test";
 import { expect } from "../fixtures";
+import { ROUTES } from "@/routes";
 
 export class TooltipsPage {
   categories = [
@@ -20,7 +21,7 @@ export class TooltipsPage {
     if (dark) {
       await this.page.emulateMedia({ colorScheme: "dark" });
     }
-    await this.page.goto("./tooltips");
+    await this.page.goto(`.${ROUTES.tips}`);
   }
 
   async openSearch() {
