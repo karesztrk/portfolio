@@ -1,5 +1,6 @@
 ---
 import MenuButton from "./MenuButton.astro";
+import { ROUTES } from "@/routes"
 const currentPath = Astro.url.pathname;
 ---
 
@@ -12,29 +13,29 @@ const currentPath = Astro.url.pathname;
 <menu id="main-menu">
   <li>
     <a
-      class:list={[{ active: currentPath.endsWith("/blog/") }]}
-      href="/blog/"
+      class:list={[{ active: currentPath.endsWith(`${ROUTES.blog}/`) }]}
+      href={`${ROUTES.blog}/`}
       data-astro-prefetch>Blog</a
     >
   </li>
   <li>
     <a
-      class:list={[{ active: currentPath.startsWith("/tooltips/") }]}
-      href="/tooltips/"
+      class:list={[{ active: currentPath.startsWith(`${ROUTES.tips}/`) }]}
+      href={`${ROUTES.tips}/`}
       data-astro-prefetch>Tips</a
     >
   </li>
   <li>
     <a
-      class:list={[{ active: currentPath.startsWith("/uses/") }]}
-      href="/uses/"
+      class:list={[{ active: currentPath.startsWith(`${ROUTES.uses}/`) }]}
+      href={`${ROUTES.uses}/`}
       data-astro-prefetch>Uses</a
     >
   </li>
   <li>
     <a
-      class:list={[{ active: currentPath.startsWith("/about/") }]}
-      href="/about/"
+      class:list={[{ active: currentPath.startsWith(`${ROUTES.about}/`) }]}
+      href={`${ROUTES.about}/`}
       data-astro-prefetch>About</a
     >
   </li>

@@ -1,3 +1,4 @@
+import { ROUTES } from "@/routes";
 import type { Page } from "@playwright/test";
 
 export class BlogPage {
@@ -8,7 +9,7 @@ export class BlogPage {
       await this.page.emulateMedia({ colorScheme: "dark" });
     }
 
-    await this.page.goto("./blog");
+    await this.page.goto(`.${ROUTES.blog}`);
   }
 
   firstPost() {

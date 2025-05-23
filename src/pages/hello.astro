@@ -2,6 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import Section from "@components/Section.astro";
 import Button from "@components/Button.astro";
+import { ROUTES } from "@/routes";
 ---
 
 <Layout title="Károly-Török { developer: web; }">
@@ -28,21 +29,21 @@ import Button from "@components/Button.astro";
 
   <article>
     <section class="grid">
-      <Button as="a" class="secondary large" href="/blog/" data-astro-prefetch>
+      <Button as="a" class="secondary large" href={`${ROUTES.blog}/`} data-astro-prefetch>
         Learnt recently
       </Button>
       <Button
         as="a"
         class="secondary large"
-        href="/tooltips/"
+        href={`${ROUTES.tips}/`}
         data-astro-prefetch
       >
         Things that i like
       </Button>
-      <Button as="a" class="secondary large" href="/uses/" data-astro-prefetch>
+      <Button as="a" class="secondary large" href={`${ROUTES.uses}/`} data-astro-prefetch>
         How i work
       </Button>
-      <Button as="a" class="secondary large" href="/about/" data-astro-prefetch>
+      <Button as="a" class="secondary large" href={`${ROUTES.about}/`} data-astro-prefetch>
         More about me
       </Button>
     </section>

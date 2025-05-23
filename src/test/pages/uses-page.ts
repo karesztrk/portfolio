@@ -1,3 +1,4 @@
+import { ROUTES } from "@/routes";
 import type { Page } from "@playwright/test";
 
 export class UsesPage {
@@ -22,6 +23,6 @@ export class UsesPage {
     if (dark) {
       await this.page.emulateMedia({ colorScheme: "dark" });
     }
-    await this.page.goto("./uses");
+    await this.page.goto(`.${ROUTES.uses}`);
   }
 }
