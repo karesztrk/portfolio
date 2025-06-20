@@ -14,6 +14,7 @@ import rehypeFigure from "rehype-figure";
 import rehypeWrap from "rehype-wrap-all";
 import { rehypeAppendHtml } from "./rehype-append.mjs";
 import Actions from "./src/components/Actions.html?raw";
+import rehypeCast from "./rehype-cast.mjs";
 
 export default defineConfig({
   prefetch: true,
@@ -61,6 +62,7 @@ export default defineConfig({
           element: fromHtml(Actions),
         },
       ],
+      rehypeCast,
     ],
   },
   integrations: [mdx()],

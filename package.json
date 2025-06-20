@@ -12,14 +12,14 @@
   "dependencies": {
     "@byojs/storage": "^0.12.1",
     "@karesztrk/webcomponent-base": "^1.0.10",
-    "astro": "^5.7.8",
+    "astro": "^5.10.0",
     "astro-svg-icon": "^1.1.1",
-    "md4w": "^0.2.6",
+    "md4w": "^0.2.7",
     "md4wc": "^1.0.1",
     "sharp": "^0.33.5"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^4.2.5",
+    "@astrojs/mdx": "^4.3.0",
     "@axe-core/playwright": "^4.10.1",
     "@benjc/rehype-scroll-to-top": "^0.1.5",
     "@eslint/js": "^9.24.0",
@@ -33,7 +33,7 @@
     "hast-util-from-html": "^2.0.3",
     "hast-util-to-string": "^3.0.1",
     "hastscript": "^9.0.1",
-    "lightningcss": "^1.29.3",
+    "lightningcss": "^1.30.1",
     "mdast-util-to-string": "^4.0.0",
     "playwright": "^1.51.1",
     "prettier": "^3.5.3",
@@ -44,7 +44,8 @@
     "rehype-slug": "^6.0.0",
     "rehype-wrap-all": "^1.1.0",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.29.1"
+    "typescript-eslint": "^8.29.1",
+    "unist-util-visit": "^5.0.0"
   },
   "packageManager": "pnpm@9.5.0",
   "engines": {
