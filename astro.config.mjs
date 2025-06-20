@@ -65,6 +65,20 @@ export default defineConfig({
   },
   integrations: [mdx()],
   vite: {
+    assetsInclude: ["**/*.cast"],
+    plugins: [
+      {
+        name: "cast-mime-type",
+        configureServer(server) {
+          server.middlewares.use((req, res, next) => {
+            if (req.url?.includes(".cast")) {
+              res.setHeader("Content-Type", "application/x-asciicast");
+            }
+            next();
+          });
+        },
+      },
+    ],
     css: {
       transformer: "lightningcss",
       lightningcss: {
