@@ -17,6 +17,10 @@ import Actions from "./src/components/Actions.html?raw";
 import rehypeCast from "./rehype-cast.mjs";
 
 export default defineConfig({
+  image: {
+    responsiveStyles: true,
+    layout: "full-width",
+  },
   prefetch: true,
   experimental: {
     clientPrerender: true,
