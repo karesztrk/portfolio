@@ -11,18 +11,9 @@ import { ROUTES } from "@/routes";
       Hello<br /><span lang="hu">Szia</span><wbr />
       <span class="phonetic">[&#712;sij&#594;]</span>
     </h1>
-    <Section id="hello" expandable>
+    <Section id="hello">
       <p>
-        My name is <mark>Károly</mark>. I'm a seasoned <span
-          >&lbrace; Web Developer &rbrace;</span
-        > with a strong professional focus on web development and UX design. My professional
-        endeavors frequently involve working with technologies such as Java and JavaScript,
-        as I'm deeply dedicated to crafting exceptional web experiences with accessibilty
-        in the main focus.
-      </p><p>
-        Beyond the professional realm, I maintain a diverse range of interests
-        and activities, including fitness, culinary arts, baking, and, of
-        course, the precious time spent with my family.
+        My name is Károly. I'm a seasoned <mark>&lbrace;Web Developer&rbrace;</mark> with a strong professional focus on web development and UX design. I often work with technologies like Java and JavaScript in my job.
       </p>
     </Section>
   </hgroup>
@@ -59,6 +50,10 @@ import { ROUTES } from "@/routes";
       font-family: Charter, "Bitstream Charter", "Sitka Text", Cambria, serif;
       font-size: 0.75em;
       text-transform: none;
+    }
+
+    mark {
+      white-space: nowrap;
     }
 
     .grid {

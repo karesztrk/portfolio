@@ -15,11 +15,11 @@ importers:
         specifier: ^1.0.10
         version: 1.0.10
       astro:
-        specifier: ^5.10.0
-        version: 5.10.0(@types/node@22.14.1)(idb-keyval@6.2.1)(lightningcss@1.30.1)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1)
+        specifier: ^5.11.1
+        version: 5.11.1(@types/node@22.14.1)(idb-keyval@6.2.1)(lightningcss@1.30.1)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1)
       astro-svg-icon:
         specifier: ^1.1.1
-        version: 1.1.1(astro@5.10.0(@types/node@22.14.1)(idb-keyval@6.2.1)(lightningcss@1.30.1)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1))(prettier-plugin-astro@0.14.1)(prettier@3.5.3)
+        version: 1.1.1(astro@5.11.1(@types/node@22.14.1)(idb-keyval@6.2.1)(lightningcss@1.30.1)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1))(prettier-plugin-astro@0.14.1)(prettier@3.5.3)
       md4w:
         specifier: ^0.2.7
         version: 0.2.7
@@ -32,7 +32,7 @@ importers:
     devDependencies:
       '@astrojs/mdx':
         specifier: ^4.3.0
-        version: 4.3.0(astro@5.10.0(@types/node@22.14.1)(idb-keyval@6.2.1)(lightningcss@1.30.1)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1))
+        version: 4.3.0(astro@5.11.1(@types/node@22.14.1)(idb-keyval@6.2.1)(lightningcss@1.30.1)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1))
       '@axe-core/playwright':
         specifier: ^4.10.1
         version: 4.10.1(playwright-core@1.51.1)
@@ -56,7 +56,7 @@ importers:
         version: 3.10.0
       astro-baseline-status:
         specifier: ^1.0.2
-        version: 1.0.2(astro-svg-icon@1.1.1(astro@5.10.0(@types/node@22.14.1)(idb-keyval@6.2.1)(lightningcss@1.30.1)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1))(prettier-plugin-astro@0.14.1)(prettier@3.5.3))(astro@5.10.0(@types/node@22.14.1)(idb-keyval@6.2.1)(lightningcss@1.30.1)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1))
+        version: 1.0.2(astro-svg-icon@1.1.1(astro@5.11.1(@types/node@22.14.1)(idb-keyval@6.2.1)(lightningcss@1.30.1)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1))(prettier-plugin-astro@0.14.1)(prettier@3.5.3))(astro@5.11.1(@types/node@22.14.1)(idb-keyval@6.2.1)(lightningcss@1.30.1)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1))
       browserslist:
         specifier: ^4.24.4
         version: 4.24.4
@@ -888,8 +888,8 @@ packages:
     peerDependencies:
       astro: ^5.1.9
 
-  astro@5.10.0:
-    resolution: {integrity: sha512-g/t54kVzQnFVijs+GbbbX/NBAFTl/3yNAEA/AQYq4FumLLVv7n4BIF+jKhcPGn9iFGyT1Cjvr7KB/qYyNvHEIg==}
+  astro@5.11.1:
+    resolution: {integrity: sha512-32dpUh0tXSV/FR2q2/z7LOA6IXl7RqET9J51IA0pPSSi3exhRP3EOSQGjBq10DzXT7VrvplDrFqwfiiWBS8oYA==}
     engines: {node: 18.20.8 || ^20.3.0 || >=22.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -1263,14 +1263,6 @@ packages:
 
   fastq@1.19.1:
     resolution: {integrity: sha512-GwLTyxkCXjXbxqIhTsMI2Nui8huMPtnxg7krajPJAjnEG/iiOS7i+zCtWGZR9G0NBKbXKh6X9m9UIsYX/N6vvQ==}
-
-  fdir@6.4.3:
-    resolution: {integrity: sha512-PMXmW2y1hDDfTSRc9gaXIuCCRpuoz3Kaz8cUelp3smouvfT632ozg2vrT6lJsHKKOF59YLbOGfAWGUcKEfRMQw==}
-    peerDependencies:
-      picomatch: ^3 || ^4
-    peerDependenciesMeta:
-      picomatch:
-        optional: true
 
   fdir@6.4.6:
     resolution: {integrity: sha512-hiFoqpyZcfNm1yc4u8oWCf9A2c4D3QjCrks3zmoVKVxpQRzmPNar1hUJcBG2RQHvEVGDN+Jm81ZheVLAQMK6+w==}
@@ -2234,10 +2226,6 @@ packages:
   tinyexec@0.3.2:
     resolution: {integrity: sha512-KQQR9yN7R5+OSwaK0XQoj22pwHoTlgYqmUscPYoknOoWCWfj/5/ABTMRi69FrKU5ffPVh5QcFikpWJI/P1ocHA==}
 
-  tinyglobby@0.2.12:
-    resolution: {integrity: sha512-qkf4trmKSIiMTs/E63cxH+ojC2unam7rJ0WrauAzpT3ECNTxGRMlaXxVbfxMUC/w0LaYk6jQ4y/nGR9uBO3tww==}
-    engines: {node: '>=12.0.0'}
-
   tinyglobby@0.2.14:
     resolution: {integrity: sha512-tX5e7OM1HnYr2+a2C/4V0htOcSQcoSTH9KgJnVvNm5zm/cyEWKJ7j7YutsH9CxMdtOkkLFy2AHrMci9IM8IPZQ==}
     engines: {node: '>=12.0.0'}
@@ -2768,12 +2756,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@4.3.0(astro@5.10.0(@types/node@22.14.1)(idb-keyval@6.2.1)(lightningcss@1.30.1)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1))':
+  '@astrojs/mdx@4.3.0(astro@5.11.1(@types/node@22.14.1)(idb-keyval@6.2.1)(lightningcss@1.30.1)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1))':
     dependencies:
       '@astrojs/markdown-remark': 6.3.2
       '@mdx-js/mdx': 3.1.0(acorn@8.14.1)
       acorn: 8.14.1
-      astro: 5.10.0(@types/node@22.14.1)(idb-keyval@6.2.1)(lightningcss@1.30.1)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1)
+      astro: 5.11.1(@types/node@22.14.1)(idb-keyval@6.2.1)(lightningcss@1.30.1)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1)
       es-module-lexer: 1.6.0
       estree-util-visit: 2.0.0
       hast-util-to-html: 9.0.5
@@ -3465,21 +3453,21 @@ snapshots:
 
   astring@1.9.0: {}
 
-  astro-baseline-status@1.0.2(astro-svg-icon@1.1.1(astro@5.10.0(@types/node@22.14.1)(idb-keyval@6.2.1)(lightningcss@1.30.1)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1))(prettier-plugin-astro@0.14.1)(prettier@3.5.3))(astro@5.10.0(@types/node@22.14.1)(idb-keyval@6.2.1)(lightningcss@1.30.1)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1)):
+  astro-baseline-status@1.0.2(astro-svg-icon@1.1.1(astro@5.11.1(@types/node@22.14.1)(idb-keyval@6.2.1)(lightningcss@1.30.1)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1))(prettier-plugin-astro@0.14.1)(prettier@3.5.3))(astro@5.11.1(@types/node@22.14.1)(idb-keyval@6.2.1)(lightningcss@1.30.1)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1)):
     dependencies:
-      astro: 5.10.0(@types/node@22.14.1)(idb-keyval@6.2.1)(lightningcss@1.30.1)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1)
-      astro-svg-icon: 1.1.1(astro@5.10.0(@types/node@22.14.1)(idb-keyval@6.2.1)(lightningcss@1.30.1)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1))(prettier-plugin-astro@0.14.1)(prettier@3.5.3)
+      astro: 5.11.1(@types/node@22.14.1)(idb-keyval@6.2.1)(lightningcss@1.30.1)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1)
+      astro-svg-icon: 1.1.1(astro@5.11.1(@types/node@22.14.1)(idb-keyval@6.2.1)(lightningcss@1.30.1)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1))(prettier-plugin-astro@0.14.1)(prettier@3.5.3)
 
-  astro-svg-icon@1.1.1(astro@5.10.0(@types/node@22.14.1)(idb-keyval@6.2.1)(lightningcss@1.30.1)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1))(prettier-plugin-astro@0.14.1)(prettier@3.5.3):
+  astro-svg-icon@1.1.1(astro@5.11.1(@types/node@22.14.1)(idb-keyval@6.2.1)(lightningcss@1.30.1)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1))(prettier-plugin-astro@0.14.1)(prettier@3.5.3):
     dependencies:
       '@astrojs/check': 0.7.0(prettier-plugin-astro@0.14.1)(prettier@3.5.3)(typescript@5.8.3)
-      astro: 5.10.0(@types/node@22.14.1)(idb-keyval@6.2.1)(lightningcss@1.30.1)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1)
+      astro: 5.11.1(@types/node@22.14.1)(idb-keyval@6.2.1)(lightningcss@1.30.1)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1)
       typescript: 5.8.3
     transitivePeerDependencies:
       - prettier
       - prettier-plugin-astro
 
-  astro@5.10.0(@types/node@22.14.1)(idb-keyval@6.2.1)(lightningcss@1.30.1)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1):
+  astro@5.11.1(@types/node@22.14.1)(idb-keyval@6.2.1)(lightningcss@1.30.1)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1):
     dependencies:
       '@astrojs/compiler': 2.12.2
       '@astrojs/internal-helpers': 0.6.1
@@ -3527,7 +3515,7 @@ snapshots:
       semver: 7.7.1
       shiki: 3.2.1
       tinyexec: 0.3.2
-      tinyglobby: 0.2.12
+      tinyglobby: 0.2.14
       tsconfck: 3.1.5(typescript@5.8.3)
       ultrahtml: 1.6.0
       unifont: 0.5.0
@@ -3972,10 +3960,6 @@ snapshots:
   fastq@1.19.1:
     dependencies:
       reusify: 1.1.0
-
-  fdir@6.4.3(picomatch@4.0.2):
-    optionalDependencies:
-      picomatch: 4.0.2
 
   fdir@6.4.6(picomatch@4.0.2):
     optionalDependencies:
@@ -5371,11 +5355,6 @@ snapshots:
   tiny-inflate@1.0.3: {}
 
   tinyexec@0.3.2: {}
-
-  tinyglobby@0.2.12:
-    dependencies:
-      fdir: 6.4.3(picomatch@4.0.2)
-      picomatch: 4.0.2
 
   tinyglobby@0.2.14:
     dependencies:
