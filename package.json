@@ -12,7 +12,7 @@
   "dependencies": {
     "@byojs/storage": "^0.12.1",
     "@karesztrk/webcomponent-base": "^1.0.10",
-    "astro": "^5.11.1",
+    "astro": "^5.12.9",
     "astro-svg-icon": "^1.1.1",
     "md4w": "^0.2.7",
     "md4wc": "^1.0.1",
