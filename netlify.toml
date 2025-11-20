@@ -38,7 +38,7 @@ publish = "dist"
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
-    Content-Security-Policy = "default-src 'self'; base-uri 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; form-action 'self'; font-src 'self'; connect-src 'self'; frame-src 'self'; frame-ancestors 'none'; object-src 'none'"
+    Content-Security-Policy = "default-src 'self'; base-uri 'self'; script-src 'self' 'sha256-xMZ9iGvRUZmsXqbnyAqXCmedDovPQchszutECHoOz0s=' 'sha256-vBM83YwqEjgGkGNPkKB5adbmcGmRtQHgYALgCqQkYsY='; style-src 'self' 'unsafe-inline'; img-src 'self'; form-action 'self'; font-src 'self'; connect-src 'self'; frame-src 'self'; frame-ancestors 'none'; object-src 'none'; media-src 'self' data:"
 
 [[headers]]
   for = "/tooltips/"
