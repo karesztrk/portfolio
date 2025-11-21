@@ -481,7 +481,7 @@
     margin: var(--_offset);
     background-color: var(--_color-button-shadow);
     outline-offset: var(--button-outline-offset);
-
+    user-select:none;
     text-decoration: none;
 
     > span.front {
