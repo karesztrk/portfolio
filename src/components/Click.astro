@@ -11,26 +11,20 @@ import buttonSound from "@/assets/sounds/pop.mp3";
 </style>
 
 <script>
-  const play =
-    (button: HTMLButtonElement, audio: HTMLAudioElement) => async () => {
-      if (!button.dataset.finished || button.dataset.finished === "true") {
-        audio.play();
-        audio.addEventListener("ended", () => {
-          button.dataset.finished = "true";
-        });
-      }
-    };
+  const play = (audio: HTMLAudioElement) => async () => {
+    await audio.play();
+  };
 
   const audioElement = document.querySelector("audio");
   if (audioElement) {
+    audioElement.volume = 0.1;
     const buttons = document.getElementsByClassName(
       "button",
     ) as HTMLCollectionOf<HTMLButtonElement>;
 
+    const player = play(audioElement);
     for (const button of buttons) {
-      const player = play(button, audioElement);
-      button.addEventListener("pointerdown", player);
-      button.addEventListener("pointerup", player);
+      button.addEventListener("click", player);
     }
   }
 </script>
