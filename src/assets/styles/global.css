@@ -191,7 +191,8 @@
 
   img,
   pre,
-  canvas {
+  canvas,
+  .canvas {
     border-radius: var(--radius);
     border: 2px solid var(--color-summary-border);
 
