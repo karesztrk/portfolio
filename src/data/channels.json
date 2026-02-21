@@ -28,16 +28,8 @@
     "url": "https://www.youtube.com/@ThePrimeTimeagen"
   },
   {
-    "name": "Design Course",
-    "url": "https://designcourse.com/"
-  },
-  {
     "name": "Hyperplexed",
     "url": "https://www.youtube.com/@Hyperplexed"
-  },
-  {
-    "name": "Net Ninja",
-    "url": "https://www.youtube.com/@NetNinja"
   },
   {
     "name": "If Coding Were Natural",
@@ -46,5 +38,17 @@
   {
     "name": "Joy of Code",
     "url": "https://www.youtube.com/@JoyofCodeDev"
+  },
+  {
+    "name": "Linkarzu",
+    "url": "https://www.youtube.com/@linkarzu"
+  },
+  {
+    "name": "tony",
+    "url": "https://www.youtube.com/@tony-btw"
+  },
+  {
+    "name": "Marco Peluso",
+    "url": "https://www.youtube.com/@marco_peluso"
   }
 ]

@@ -14,5 +14,25 @@
   {
     "name": "devtool.fm",
     "url": "https://www.devtools.fm/"
+  },
+  {
+    "name": "beamrad.io",
+    "url": "https://www.beamrad.io/"
+  },
+  {
+    "name": "linkarzu",
+    "url": "https://linkarzu.com/"
+  },
+  {
+    "name": "Go make things",
+    "url": "https://gomakethings.com/podcast/"
+  },
+  {
+    "name": "localfirst.fm",
+    "url": "https://www.localfirst.fm/"
+  },
+  {
+    "name": "The CSS podcast",
+    "url": "https://thecsspodcast.libsyn.com/"
   }
 ]
