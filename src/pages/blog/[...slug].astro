@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import { formatTitle, formatDate } from "@/util/blog.util.ts";
 import Temporal from "@components/Temporal.astro";
@@ -9,15 +9,15 @@ import ReadTime from "@components/ReadTime.astro";
 import Feature from "@/components/Feature.astro";
 
 export async function getStaticPaths() {
-  const blog = await getCollection("Blog");
+  const blog = await getCollection("blog");
   return blog.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: post.id },
     props: { entry: post },
   }));
 }
 
 const { entry } = Astro.props;
-const { Content, remarkPluginFrontmatter } = await entry.render();
+const { Content, remarkPluginFrontmatter } = await render(entry);
 const title = formatTitle(entry.id);
 const features = entry.data.features?.filter(Boolean);
 ---

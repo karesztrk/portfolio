@@ -25,9 +25,9 @@ await init();
     <p>{description}</p>
     {
       Object.values(entries).map((entry) => (
-        <details id={entry.slug}>
+        <details id={entry.id}>
           <summary>{formatTitle(entry.id)}</summary>
-          {mdToReadableHtml(entry.body)}
+          {entry.body && mdToReadableHtml(entry.body)}
         </details>
       ))
     }

@@ -3,7 +3,7 @@ import type { HTMLAttributes } from "astro/types";
 import Icon from "astro-svg-icon";
 import Folder from "@/assets/images/icons/Folder.svg";
 import Markdown from "@/assets/images/icons/Markdown.svg";
-import { formatTitle } from "@/util/blog.util";
+import { formatTitle, capitalize } from "@/util/blog.util";
 import type { TooltipCollection } from "@/util/collections.util";
 
 interface Props extends HTMLAttributes<"aside"> {
@@ -26,15 +26,15 @@ const { id, collections, ...props } = Astro.props;
                   viewBox={`0 0 ${Folder.width} ${Folder.height}`}
                   height="14px"
                 />
-                <span>{name}</span>
+                <span>{capitalize(name)}</span>
               </summary>
               <ul id={`${name}-list`}>
                 {value.map((entry) => (
                   <li>
                     <button
                       name="slug"
-                      value={entry.slug}
-                      formaction={`/tooltips/${name}#${entry.slug}`}
+                      value={entry.id}
+                      formaction={`/tooltips/${name}#${entry.id}`}
                     >
                       <Icon
                         src={Markdown.src}
