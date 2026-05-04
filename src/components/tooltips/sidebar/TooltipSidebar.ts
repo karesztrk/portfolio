@@ -11,11 +11,11 @@ class TooltipSidebar extends TooltipBase {
   }
 
   #collections: TooltipCollection = {
-    Articles: [],
-    Codepens: [],
-    Tools: [],
-    Snippets: [],
-    Libraries: [],
+    articles: [],
+    codepens: [],
+    tools: [],
+    snippets: [],
+    libraries: [],
   };
 
   constructor() {
@@ -62,7 +62,7 @@ class TooltipSidebar extends TooltipBase {
     key: string,
     entry: TooltipCollectionValue,
   ) {
-    button.value = entry.slug;
+    button.value = entry.id;
     button.formAction = this.createFormAction(key, entry);
     const title = button.querySelector("span");
     if (title) {
@@ -71,7 +71,7 @@ class TooltipSidebar extends TooltipBase {
   }
 
   createFormAction(key: string, entry: TooltipCollectionValue) {
-    return `/tooltips/${key}#${entry.slug}`;
+    return `/tooltips/${key}#${entry.id}`;
   }
 }
 

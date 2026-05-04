@@ -24,7 +24,7 @@ export const GET = async (context) => {
   // Load MDX renderer. Other renderers for UI frameworks (e.g. React, Vue, etc.) would need adding here if you were using those.
   const renderers = await loadRenderers([getMDXRenderer()]);
 
-  const posts = (await getCollection("Blog")).sort((a, b) =>
+  const posts = (await getCollection("blog")).sort((a, b) =>
     // Sort by publication date descending.
     a.data.date > b.data.date ? -1 : 1,
   );
@@ -60,7 +60,7 @@ export const GET = async (context) => {
     items.push({
       title: formatTitle(post.id),
       pubDate: post.data.date,
-      link: `/blog/${post.slug}`,
+      link: `/blog/${post.id}`,
       content: `
         <![CDATA[
           ${content}

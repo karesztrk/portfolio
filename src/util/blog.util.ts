@@ -4,9 +4,17 @@ export const removeMarkdown = (body: string) => {
   return body.replace(/([*_`~[\]]|\([^)]*\))/g, "");
 };
 
+export const capitalize = (value: string): string => {
+  return `${value.charAt(0).toUpperCase()}${value.slice(1)}`;
+};
+
 export const formatTitle = (id: string) => {
   const parts = id.split(".");
-  return parts[0];
+  if (parts.length === 0) {
+    return "";
+  }
+  const replaced = parts[0].replaceAll("-", " ");
+  return capitalize(replaced);
 };
 
 export const formatExcerpt = (body: string) => {

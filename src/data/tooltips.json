@@ -1,22 +1,22 @@
 [
   {
-    "name": "Articles",
+    "name": "articles",
     "description": "A collection of useful blog articles on various tech topics. Perfect for quick learning and staying updated."
   },
   {
-    "name": "Codepens",
+    "name": "codepens",
     "description": "A showcase of creative and unique CodePen projects. Great for inspiration and learning new techniques."
   },
   {
-    "name": "Libraries",
+    "name": "libraries",
     "description": "A curated list of powerful libraries to simplify development. These tools help make coding faster and easier."
   },
   {
-    "name": "Snippets",
+    "name": "snippets",
     "description": "A handy set of code snippets for common tasks. Save time with these ready-to-use pieces of code."
   },
   {
-    "name": "Tools",
+    "name": "tools",
     "description": "A collection of essential tools and utilities for developers. Enhance your workflow and productivity with these resources."
   }
 ]

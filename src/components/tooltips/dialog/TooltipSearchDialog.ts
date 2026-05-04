@@ -11,11 +11,11 @@ export class TooltipSearchDialog extends TooltipBase {
   }
 
   #collections: TooltipCollection = {
-    Articles: [],
-    Codepens: [],
-    Tools: [],
-    Snippets: [],
-    Libraries: [],
+    articles: [],
+    codepens: [],
+    tools: [],
+    snippets: [],
+    libraries: [],
   };
 
   constructor() {
@@ -63,7 +63,7 @@ export class TooltipSearchDialog extends TooltipBase {
   }
 
   setupButton(button: HTMLButtonElement, entry: TooltipCollectionValue) {
-    button.value = entry.slug;
+    button.value = entry.id;
     button.append(formatTitle(entry.id));
   }
 

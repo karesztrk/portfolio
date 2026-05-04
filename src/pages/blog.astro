@@ -7,7 +7,7 @@ import { formatTitle, formatExcerpt, formatDate } from "@/util/blog.util.ts";
 import Divider from "@components/Divider.astro";
 import Fields from "@components/Fields.astro";
 
-const blog = await getCollection("Blog");
+const blog = await getCollection("blog");
 
 const sortedPosts = blog.sort(
   (left, right) => right.data.date.getTime() - left.data.date.getTime(),
@@ -23,15 +23,15 @@ const basePath = `${ROUTES.blog}/`;
         return (
           <>
             <article>
-              <a href={`${basePath}${post.slug}`} data-astro-prefetch>
-                <h2 id={post.slug}>{formatTitle(post.id)}</h2>
+              <a href={`${basePath}${post.id}`} data-astro-prefetch>
+                <h2 id={post.id}>{formatTitle(post.id)}</h2>
               </a>
               <Fields>
                 <Temporal type="text" icon={true} aria-label="Publish date">
                   {formatDate(post.data.date)}
                 </Temporal>
               </Fields>
-              <p>{formatExcerpt(post.body)}</p>
+              {post.body && <p>{formatExcerpt(post.body)}</p>}
             </article>
             {index < sortedPosts.length - 1 && <Divider />}
           </>

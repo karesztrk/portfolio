@@ -8,11 +8,11 @@ import { has, get, set } from "@byojs/storage/idb";
 
 class TooltipCollectionController {
   collections: TooltipCollection = {
-    Articles: [],
-    Codepens: [],
-    Tools: [],
-    Snippets: [],
-    Libraries: [],
+    articles: [],
+    codepens: [],
+    tools: [],
+    snippets: [],
+    libraries: [],
   };
 
   #host: HTMLElement;
@@ -58,11 +58,11 @@ class TooltipCollectionController {
   async loadLocalCollections(): Promise<TooltipCollection> {
     const key = this.#storageKey;
     const empty = {
-      Articles: [],
-      Codepens: [],
-      Tools: [],
-      Snippets: [],
-      Libraries: [],
+      articles: [],
+      codepens: [],
+      tools: [],
+      snippets: [],
+      libraries: [],
     };
     return has(key).then((hasKey) => {
       if (!hasKey) {

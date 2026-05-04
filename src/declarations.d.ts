@@ -2,11 +2,11 @@ declare module "https://esm.sh/*";
 
 declare module "@/data/tooltips.json" {
   type TooltipCollectionType =
-    | "Articles"
-    | "Codepens"
-    | "Libraries"
-    | "Snippets"
-    | "Tools";
+    | "articles"
+    | "codepens"
+    | "libraries"
+    | "snippets"
+    | "tools";
   const content: [{ name: TooltipCollectionType; description: string }];
   export default content;
 }

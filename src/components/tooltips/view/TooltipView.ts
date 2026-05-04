@@ -62,7 +62,7 @@ class TooltipView extends LightElement {
       this.#collectionController.collections,
     )) {
       for (const entry of collectionEntry) {
-        if (entry.slug === slug) {
+        if (entry.id === slug) {
           return { collection, entry } as {
             collection: TooltipCollectionType;
             entry: TooltipCollectionValue;

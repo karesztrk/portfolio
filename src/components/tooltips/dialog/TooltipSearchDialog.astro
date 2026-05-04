@@ -1,6 +1,6 @@
 ---
 import type { HTMLAttributes } from "astro/types";
-import { formatTitle } from "@/util/blog.util.ts";
+import { formatTitle, capitalize } from "@/util/blog.util.ts";
 import Icon from "astro-svg-icon";
 import Search from "@/assets/images/icons/Search.svg";
 import Markdown from "@/assets/images/icons/Markdown.svg";
@@ -38,11 +38,11 @@ const { collections, ...rest } = Astro.props;
         {
           Object.entries(collections).map(([name, collection]) => (
             <li class="collection">
-              {name}
+              {capitalize(name)}
               <ul id={`${name}-list`}>
                 {collection.map((entry) => (
                   <li class="entry">
-                    <button name="slug" class="entry-button" value={entry.slug}>
+                    <button name="slug" class="entry-button" value={entry.id}>
                       <Icon
                         src={Markdown.src}
                         viewBox={`0 0 ${Markdown.width} ${Markdown.height}`}
